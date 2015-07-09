@@ -8,7 +8,7 @@ UWEC Language Tools
 	* [Student Corpus Scripts](#student-corpus-scripts)
 		* [Pipeline](#pipeline)
 		* [Intermediate Files](#intermediate-files)
-	* [Available Functions](#available-functions)
+	* [UWEC Language Tools - Available Functions](#uwec-language-tools-available-functions)
 	* [Additional Resources](#additional-resources)
 
 ### Introduction
@@ -43,11 +43,11 @@ Student Corpus Scripts
 
 The student corpus scripts can each be used on single files or on entire directories. To process a single file use the following syntax:
 
-	script-name file [output_directory]
+	script-name file -o output_directory
 
 If the output directory is not supplied, the resulting output will be in the current directory. To process a directory use the following syntax:
 
-	script-name [-b [batch_size]] input_directory output_directory
+	script-name [-b [batch_size]] input_directory -o output_directory
 
 If the `-b` flag is provided, the output will be subdivided into batch directories, each containing `batch-size` files. (The default batch size is 10.)
 
@@ -83,8 +83,8 @@ The student corpus scripts are meant to be run in sequence to accomplish the fol
       - batchXXX
     * Tagged Files
 
-Available Functions
------------------------------
+UWEC Language Tools - Available Functions
+-----------------------------------------
 
 * uweclang
   + batch
