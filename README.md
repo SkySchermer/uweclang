@@ -7,6 +7,7 @@ UWEC Language Tools
 	* [Introduction](#introduction)
 	* [Student Corpus Scripts](#student-corpus-scripts)
 		* [Pipeline](#pipeline)
+		* [Intermediate Files](#intermediate-files)
 	* [Available Functions](#available-functions)
 	* [Additional Resources](#additional-resources)
 
@@ -65,6 +66,18 @@ The student corpus scripts are meant to be run in sequence to accomplish the fol
 * Tag student files. (Script: [tag.py](scripts/tag.py))
   - output file.tag.txt
 * Summarize tagged files. (Script: [summary.py](scripts/summary.py))
+
+### Intermediate Files
+
+
+
+* Summer 2015
+  + Student Corpus
+    * Unprocessed Files
+    * Plain Files
+    * Processed Files
+      - batchXXX
+    * Tagged Files
 
 Available Functions
 -----------------------------
