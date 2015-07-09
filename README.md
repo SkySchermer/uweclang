@@ -90,15 +90,15 @@ Available Functions
   + batch
     * [tools](uweclang/batch/tools.py)
       - `BATCH_PARSER`
-      - `batch_process(process, in_files=['.'], out_dir='.', batch_size=10, batch_dir_prefix='batch', verbosity=1)`
+      - `batch_process(process)`
   + binary
     * [docx](uweclang/binary/docx.py)
-      - `get_document_xml(filename, encoding='utf-8', doc_part='word/document.xml')`
+      - `get_document_xml(filename)`
       - `xml_to_plain(document)`
   + plain
     * [student](uweclang/plain/student.py)
     * [tools](uweclang/plain/tools.py)
-      - `line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n')`
+      - `line_split(text)`
   + tagged
 
 
