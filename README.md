@@ -46,17 +46,16 @@ If the `-b` flag is provided, the output will be subdivided into batch directori
 Available Functions
 -----------------------------
 
-* `uweclang`
-  * `batch`
-    * `tools`
-  * `binary`
-    * `docx`
-  * `plain`
-    * `student`
-    * `tools`
-      - ```python
-line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n')```
-  * `tagged`
+* uweclang
+  * batch
+    * tools
+  * binary
+    * docx
+  * plain
+    * student
+    * tools
+      - `line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n')`
+  * tagged
 
 
 Additional Resources
