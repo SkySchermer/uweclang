@@ -8,7 +8,7 @@ UWEC Language Tools
 	* [Student Corpus Scripts](#student-corpus-scripts)
 		* [Pipeline](#pipeline)
 		* [Intermediate Files](#intermediate-files)
-	* [UWEC Language Tools - Available Functions](#uwec-language-tools-available-functions)
+	* [UWEC Language Tools - Available Functions](#uwec-language-tools---available-functions)
 	* [Additional Resources](#additional-resources)
 
 ### Introduction
