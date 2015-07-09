@@ -33,7 +33,7 @@ This project houses a number of python scripts for analyzing student paper corpo
   uweclang.get_document_xml('myfile.docx')
   ```
 
-  It is important to note that this import will only work if the [uweclang](uweclang) folder is in PYTHONPATH. The simplest (and least flexible) way to do this is to put the [uweclang](uweclang) folder in the current directory when running scripts.
+  It is important to note that this import will only work if the [uweclang](uweclang) folder is in PYTHONPATH. The simplest (and least flexible) way to do this is to put the [uweclang](uweclang) folder in the current directory when running scripts. (On *nix-like systems, you may need to run `export PYTHONPATH=.` first.)
 
 There is an additional [misc](scripts/misc) folder that contains older scripts for reference.
 
@@ -43,13 +43,17 @@ Student Corpus Scripts
 
 The student corpus scripts can each be used on single files or on entire directories. To process a single file use the following syntax:
 
-	script-name file [output-directory]
+	script-name file [output_directory]
 
 If the output directory is not supplied, the resulting output will be in the current directory. To process a directory use the following syntax:
 
-	script-name [-b [batch-size]] input-directory output-directory
+	script-name [-b [batch_size]] input_directory output_directory
 
 If the `-b` flag is provided, the output will be subdivided into batch directories, each containing `batch-size` files. (The default batch size is 10.)
+
+For help on a given script, use:
+
+    script-name -h
 
 ### Pipeline
 
@@ -85,6 +89,8 @@ Available Functions
 * uweclang
   + batch
     * [tools](uweclang/batch/tools.py)
+      - `BATCH_PARSER`
+      - `batch_process(process, in_files=['.'], out_dir='.', batch_size=10, batch_dir_prefix='batch', verbosity=1)`
   + binary
     * [docx](uweclang/binary/docx.py)
       - `get_document_xml(filename, encoding='utf-8', doc_part='word/document.xml')`
