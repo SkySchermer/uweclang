@@ -31,19 +31,32 @@ import zipfile
 import re
 
 
-#-----------------------------------------------------------------------------
-def get_document_xml(filename):
+def get_document_xml(filename,
+                     encoding='utf-8',
+                     doc_part='word/document.xml'):
     """Opens a Microsoft Word docx file and returns the raw XML data for the
     document's text content.
+
+    Arguments:
+        filename (str): The name of the docx file to open.
+        encoding (Optional[str]): The file encoding. Defaults to 'utf-8'.
+        doc_part (Optional[str]): The XML document to open. Defaults to
+            'word/document.xml'.
+    Returns:
+        The document's XML data as a string.
     """
     with zipfile.ZipFile(docx_file) as document:
         # Open document XML from the docx (ZIP) file.
-        return document.open('word/document.xml', "r").read().decode("utf-8")
+        return document.open(doc_part, "r").read().decode(encoding)
 
 
-#-----------------------------------------------------------------------------
 def xml_to_plain(document):
     """Extracts plaintext from Word XML document data.
+
+    Arguments:
+        document (str): The xml document to parse.
+    Returns:
+        The document in plaintext.
     """
     # This is a list of find/replace pairs for editing the docx XML data. See
     #   https://docs.python.org/2/library/re.html
