@@ -1,19 +1,36 @@
+UWEC Language Tools
+===================
 
-# UWEC Language Tools
+### Table of Contents
+* [UWEC Language Tools](#uwec-language-tools)
+	* [Table of Contents](#table-of-contents)
+	* [Introduction](#introduction)
+	* [Pipeline](#pipeline)
+	* [Student Corpus Scripts](#student-corpus-scripts)
+	* [Available Functions](#available-functions)
+	* [Additional Resources](#additional-resources)
 
-## Pipeline:
+### Introduction
+
+
+
+Pipeline
+--------
 
 * Extract XML from docx files.
-* Extract plaintext from XML.
+* Extract plaintext from XML. (Script: extract.py)
 	- output file.raw.txt
-* Process plaintext to extract citations, dates, titles, and writer's memos.
+* Process plaintext to extract citations, dates, titles, and writer's memos. (Script: scrub.py)
 	- output file.txt
 	- output file.log
 	- output file.memo.txt
-* Tag student files.
+* Manually verify each file.
+* Tag student files. (Script: tag.py)
 	- output file.tag.txt
+* Summarize tagged files. (Script: summary.py)
 
-## Student corpus scripts:
+Student Corpus Scripts
+----------------------
 
 These scripts can each be used on single files or on entire directories. To process a single file use the following syntax:
 
@@ -26,18 +43,20 @@ If the output directory is not supplied, the resulting output will be in the cur
 If the `-b` flag is provided, the output will be subdivided into batch directories, each containing `batch-size` files. (The default batch size is 10.)
 
 
+Available Functions
+-----------------------------
 
-## UWEC Language Tools package:
-```
-uweclang/
-	__init__.py
-	batch/
-		__init__.py
-	binary/
-		__init__.py
-	plain/
-		__init__.py
-	tagged/
-		__init__.py
-```
+*`uweclang`
+	*`batch`
+		*`tools`
+	*`binary`
+		*`docx`
+	*`plain`
+		*`student`
+		*`tools`
+			-`line_split()`
+	*`tagged`
 
+
+Additional Resources
+--------------------
