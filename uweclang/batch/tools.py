@@ -20,9 +20,27 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""UWEC Language Tools batch module.
+"""UWEC Language Tools batch tools module
 
-    This module provide tools for processing files in batches.
+    Provides functions for processing data in batches.
 """
 
-__all__ = ['tolls.py']
+
+def batch_process(process,
+                  in_dir='.',
+                  out_dir='.',
+                  subdirs=True,
+                  batch_size=10,
+                  batch_dir_prefix='batch'):
+    """
+    Arguments:
+        process
+        in_dir
+        out_dir
+        subdirs
+        batch_size
+        batch_dir_prefix
+    Returns:
+        Nothing
+    """
+
