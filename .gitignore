@@ -10,6 +10,7 @@ Week\ 1\ Unprocessed\ Files/
 *.exe
 *.o
 *.so
+*.pyc
  
 # Packages #
 ############
