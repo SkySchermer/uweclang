@@ -48,12 +48,14 @@ Available Functions
 
 * uweclang
   * batch
-    * tools
+    * [tools](uweclang/batch/tools.py)
   * binary
-    * docx
+    * [docx](uweclang/binary/docx.py)
+      - `get_document_xml(filename, encoding='utf-8', doc_part='word/document.xml')`
+      - `xml_to_plain(document)`
   * plain
-    * student
-    * tools
+    * [student](uweclang/plain/student.py)
+    * [tools](uweclang/plain/tools.pu)
       - `line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n')`
   * tagged
 
