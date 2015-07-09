@@ -18,16 +18,16 @@ Pipeline
 --------
 
 * Extract XML from docx files.
-* Extract plaintext from XML. (Script: extract.py)
+* Extract plaintext from XML. (Script: [extract.py](scripts/extract.py))
   - output file.raw.txt
-* Process plaintext to extract citations, dates, titles, and writer's memos. (Script: scrub.py)
+* Process plaintext to extract citations, dates, titles, and writer's memos. (Script: [scrub.py](scripts/scrub.py))
   - output file.txt
   - output file.log
   - output file.memo.txt
 * Manually verify each file.
-* Tag student files. (Script: tag.py)
+* Tag student files. (Script: [tag.py](scripts/tag.py))
   - output file.tag.txt
-* Summarize tagged files. (Script: summary.py)
+* Summarize tagged files. (Script: [summary.py](scripts/summary.py))
 
 Student Corpus Scripts
 ----------------------
@@ -55,7 +55,7 @@ Available Functions
       - `xml_to_plain(document)`
   * plain
     * [student](uweclang/plain/student.py)
-    * [tools](uweclang/plain/tools.pu)
+    * [tools](uweclang/plain/tools.py)
       - `line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n')`
   * tagged
 
