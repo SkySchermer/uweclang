@@ -3,13 +3,14 @@ UWEC Language Tools
 
 ### Table of Contents
 * [UWEC Language Tools](#uwec-language-tools)
-	* [Table of Contents](#table-of-contents)
-	* [Introduction](#introduction)
-	* [Student Corpus Scripts](#student-corpus-scripts)
-		* [Pipeline](#pipeline)
-		* [Intermediate Files](#intermediate-files)
-	* [UWEC Language Tools - Available Functions](#uwec-language-tools---available-functions)
-	* [Additional Resources](#additional-resources)
+  * [Table of Contents](#table-of-contents)
+  * [Introduction](#introduction)
+  * [Student Corpus Scripts](#student-corpus-scripts)
+    * [Pipeline](#pipeline)
+    * [Intermediate Files](#intermediate-files)
+  * [UWEC Language Tools - Available Functions](#uwec-language-tools---available-functions)
+    * [Verbosity Conventions](#verbosity-conventions)
+  * [Additional Resources](#additional-resources)
 
 ### Introduction
 
@@ -33,7 +34,7 @@ This project houses a number of python scripts for analyzing student paper corpo
   uweclang.get_document_xml('myfile.docx')
   ```
 
-  It is important to note that this import will only work if the [uweclang](uweclang) folder is in PYTHONPATH. The simplest (and least flexible) way to do this is to put the [uweclang](uweclang) folder in the current directory when running scripts. (On *nix-like systems, you may need to run `export PYTHONPATH=.` first.)
+  It is important to note that this import will only work if the [uweclang](uweclang) folder is in PYTHONPATH. The simplest (and least flexible) way to do this is to ensure the [uweclang](uweclang) folder is in the current directory when running scripts. (On *nix-like systems, you may need to run `export PYTHONPATH=.` first.)
 
 There is an additional [misc](scripts/misc) folder that contains older scripts for reference.
 
@@ -73,8 +74,6 @@ The student corpus scripts are meant to be run in sequence to accomplish the fol
 
 ### Intermediate Files
 
-
-
 * Summer 2015
   + Student Corpus
     * Unprocessed Files
@@ -101,6 +100,16 @@ UWEC Language Tools - Available Functions
       - `line_split(text)`
   + tagged
 
+### Verbosity Conventions:
+
+Whever a script or function uses a verbosity option, they can be interpreted as such:
+
+| level | flag | Result							|
+|:-----:|------|--------------------------------|
+| 0     | -q   | No output						|
+| 1     | -v   | Completed task output			|
+| 2     | -vv  | Resource access/subtask output |
+| 3     | -vvv | Excessive output 				|
 
 Additional Resources
 --------------------
