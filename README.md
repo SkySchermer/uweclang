@@ -46,16 +46,16 @@ If the `-b` flag is provided, the output will be subdivided into batch directori
 Available Functions
 -----------------------------
 
-*`uweclang`
-	*`batch`
-		*`tools`
-	*`binary`
-		*`docx`
-	*`plain`
-		*`student`
-		*`tools`
-			-`line_split()`
-	*`tagged`
+* `uweclang`
+	* `batch`
+		* `tools`
+	* `binary`
+		* `docx`
+	* `plain`
+		* `student`
+		* `tools`
+			- `line_split()`
+	* `tagged`
 
 
 Additional Resources
