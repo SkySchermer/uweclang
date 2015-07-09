@@ -11,7 +11,8 @@ import re
 
 def get_document_xml(filename,
                      encoding='utf-8',
-                     doc_part='word/document.xml'):
+                     doc_part='word/document.xml',
+                     verbosity=1):
     """Opens a Microsoft Word docx file and returns the raw XML data for the
     document's text content.
 
@@ -20,19 +21,35 @@ def get_document_xml(filename,
         encoding (Optional[str]): The file encoding. Defaults to 'utf-8'.
         doc_part (Optional[str]): The XML document to open. Defaults to
             'word/document.xml'.
+        verbosity (int): The verbosity of the output.
     Returns:
         The document's XML data as a string.
     """
+    if verbosity >= 2:
+        print('Unzipping file "{}"'.format(filename))
+
     with zipfile.ZipFile(docx_file) as document:
         # Open document XML from the docx (ZIP) file.
-        return document.open(doc_part, "r").read().decode(encoding)
+
+        doc_file = document.open(doc_part, "r")
+
+        if verbosity >= 3:
+            print('Reading file output')
+
+        data = doc_file.read()
+
+        if verbosity >= 3:
+            print('Decoding data using', doc_part)
+
+        return data.decode(encoding)
 
 
-def xml_to_plain(document):
+def xml_to_plain(document, verbosity=1):
     """Extracts plaintext from Word XML document data.
 
     Arguments:
         document (str): The xml document to parse.
+        verbosity (int): The verbosity of the output.
     Returns:
         The document in plaintext.
     """
@@ -48,6 +65,10 @@ def xml_to_plain(document):
 
     # Perform text substitutions on XML data:
     for edit in edits:
+        if verbosity >= 3:
+            print('Performing edit "{}" -> "{}"'.format(edit['FIND'],
+                                                        edit['REPLACE']))
+
         document = re.sub(edit['FIND'], edit['REPLACE'], document)
 
     return document
