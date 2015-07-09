@@ -54,8 +54,7 @@ Available Functions
 	* `plain`
 		* `student`
 		* `tools`
-			- ```python
-				line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n')```
+			* ``` python line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n')```
 	* `tagged`
 
 
