@@ -60,17 +60,17 @@ For help on a given script, use:
 
 The student corpus scripts are meant to be run in sequence to accomplish the following tasks:
 
-* Extract XML from docx files.
-* Extract plaintext from XML. (Script: [extract](scripts/extract))
+1. Extract XML from docx files.
+2. Extract plaintext from XML. (Script: [extract](scripts/extract))
   - output file.raw.txt
-* Process plaintext to extract citations, dates, titles, and writer's memos. (Script: [scrub](scripts/scrub))
+3. Process plaintext to extract citations, dates, titles, and writer's memos. (Script: [scrub](scripts/scrub))
   - output file.txt
   - output file.log
   - output file.memo.txt
-* Manually verify each file.
-* Tag student files. (Script: [tag](scripts/tag))
+4. Manually verify each file.
+5. Tag student files. (Script: [tag](scripts/tag))
   - output file.tag.txt
-* Summarize tagged files. (Script: [summary](scripts/summary))
+6. Summarize tagged files. (Script: [summary](scripts/summary))
 
 ### Intermediate Files
 
