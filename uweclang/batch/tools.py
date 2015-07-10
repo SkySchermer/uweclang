@@ -42,15 +42,30 @@ BATCH_PARSER.add_argument('-b', '--batch',
                           default=10,
                           metavar='batch-size',
                           help="""
-    batch the output into subdirectories of batch-size files each (Default: 10)
+    batch the output into subdirectories. The batch-size parameter is used
+    together with the --batch-mode option to determine how many subdirectories
+    or files per subdirectories to use.
     """)
 
+BATCH_PARSER.add_argument('-m', '--batch-mode',
+                          nargs='?',
+                          choices=['count', 'divide'],
+                          default='count',
+                          metavar='mode',
+                          dest='batch_mode',
+                          help="""
+    sets the batch mode. In count mode, each batch will contain at most the
+    number of files specified by the --batch argument (default 10). In divide
+    mode, there will be that number of batch directories, and files will be
+    divided evenly between them.
+    """)
 
 
 def batch_process(process,
                   in_files=['.'],
                   out_dir='.',
                   batch_size=10,
+                  batch_mode='count',
                   batch_dir_prefix='batch',
                   verbosity=1):
     """
@@ -59,7 +74,13 @@ def batch_process(process,
             file.
         in_dir (Optional[str]): The input directory.
         out_dir (Optional[str]): The output directory.
-        batch_size (Optional[int]): The size of each subdirectory.
+        batch_size (Optional[int]): The size of each subdirectory or the number
+            of subdirectories, depending on the batch_mode.
+        batch_mode (Optional[str]): The batch mode. Can be one of 'count' or
+            'divide'. In count mode, each batch will contain at most the number
+            of files specified by the batch_size (default 10). In divide mode,
+            there will be that number of batch directories, and files will be
+            divided evenly between them.
         batch_dir_prefix (Optional[str]): The prefix for batch subdirectories.
         verbosity: The verbosity of the output.
     Returns:
