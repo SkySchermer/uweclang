@@ -26,9 +26,9 @@ def get_document_xml(filename,
         The document's XML data as a string.
     """
     if verbosity >= 2:
-        print('Unzipping file "{}"'.format(filename))
+        print('Unzipping file', os.path.basename(filename))
 
-    with zipfile.ZipFile(docx_file) as document:
+    with zipfile.ZipFile(filename) as document:
         # Open document XML from the docx (ZIP) file.
 
         doc_file = document.open(doc_part, "r")

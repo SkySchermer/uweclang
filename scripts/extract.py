@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 import sys
 import os
@@ -8,38 +8,40 @@ import uweclang
 
 
 def extract_plaintext_from_docx(input_filename, output_filename, verbosity=1):
-    doc = xml_to_plain(get_document_xml(input_file,
-                                        verbosity=verbosity),
-                       verbosity=verbosity)
+    xml = uweclang.get_document_xml(input_filename, verbosity=verbosity)
+    doc = uweclang.xml_to_plain(xml, verbosity=verbosity)
 
 
     # Open file for writing.
     if verbosity >= 2:
-        print('Opening file {}'.format(output_filename))
+        print('Opening file', os.path.basename(output_filename))
 
     try:
-        out = open(output_file_name, 'w')
+        out = open(output_filename, 'w')
     except IOError as e:
         print('Output file "{}" '
-              'could not be created: {}.'.format(output_filename, e))
+              'could not be created: {}.'.format(os.path.basename(output_filename),
+                                                 e))
         sys.exit(0)
 
 
     # Write to file.
     if verbosity >= 2:
-        print('Writing to file {}'.format(output_filename))
+        print('Writing to file',os.path.basename(output_filename))
 
     try:
-        out.write(doc.strip())
+        pass
+        # out.write(doc.strip())
     except IOError as e:
-        print('Could not write to file: {}'.format(e))
+        print('Could not write to file {}: {}'.format(os.path.basename(output_filename),
+                                                      e))
         sys.exit(0)
 
     out.close()
 
     if verbosity >= 1:
-        print('Extracted plaintext from {} to {}'.format(input_filename,
-                                                         output_filename))
+        print('Extracted plaintext from {} to {}'.format(os.path.basename(input_filename),
+                                                         os.path.basename(output_filename)))
 
 
 if __name__ == '__main__':
@@ -56,7 +58,15 @@ if __name__ == '__main__':
                         dest='ext',
                         help='accepted file extensions for input')
 
-    #batch=10, ext='.docx', file='.', file_extra=None, output='.', quiet=False, verbose=None
+    parser.add_argument('-x', '--o-extension',
+                        nargs='?',
+                        default='.txt',
+                        metavar='oext',
+                        dest='oext',
+                        help='extension for output file')
+    # Example args:
+    # batch=10, ext='.docx', file='.', file_extra=None, output='.',
+    # quiet=False, verbose=None
 
     args = parser.parse_args()
 
@@ -71,15 +81,34 @@ if __name__ == '__main__':
         print('Converting input paths from relative to absolute...')
 
     paths = map(os.path.abspath, paths)
+    out_path = os.path.abspath(args.output)
 
 
-    # Process each file.
+    # Identify files to process.
+    batch_directories = []
+    single_files = []
     for path in paths:
         if os.path.isdir(path):
-            print('Process directory "{}"'.format(path))
+            print('Process directory', path)
+            batch_directories.append(path)
         else:
             # Check for docx file extension:
-            if os.path.splitext(path)[1] == '.docx':
-                print('Process file "{}"'.format(path))
+            if os.path.splitext(path)[1] == args.ext:
+                print('Process file', os.path.basename(path))
+                single_files.append(path)
             else:
-                print('Ignore file "{}"'.format(path))
+                print('Ignore file', path)
+
+    # Process files:
+    for filename in single_files:
+        name_part = os.path.splitext(path)[0]
+        extract_plaintext_from_docx(filename,
+                                    os.path.join(out_path, name_part + args.oext),
+                                    verbosity=args.verbose)
+    # Process directories:
+    if batch_directories:
+        uweclang.batch_process(extract_plaintext_from_docx,
+                               in_files=batch_directories,
+                               out_dir=out_path,
+                               batch_size=args.batch,
+                               verbosity=args.verbose)
