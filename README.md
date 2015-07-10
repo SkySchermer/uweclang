@@ -60,17 +60,16 @@ For help on a given script, use:
 
 The student corpus scripts are meant to be run in sequence to accomplish the following tasks:
 
-1. Extract XML from docx files.
-2. Extract plaintext from XML. (Script: [extract](scripts/extract))
-  - output file.raw.txt
-3. Process plaintext to extract citations, dates, titles, and writer's memos. (Script: [scrub](scripts/scrub))
-  - output file.txt
-  - output file.log
-  - output file.memo.txt
-4. Manually verify each file.
-5. Tag student files. (Script: [tag](scripts/tag))
-  - output file.tag.txt
-6. Summarize tagged files. (Script: [summary](scripts/summary))
+1. Extract plaintext from Word. (Script: [extract](scripts/extract))
+  - output: ___.raw.txt
+2. Process plaintext to extract citations, dates, titles, and writer's memos. (Script: [scrub](scripts/scrub))
+  - output: ___.txt
+  - output: ___.log
+  - output: ___.memo.txt
+3. Manually verify each file.
+4. Tag student files. (Script: [tag](scripts/tag))
+  - output: ___.tag.txt
+5. Summarize tagged files. (Script: [summary](scripts/summary))
 
 ### Intermediate Files
 
@@ -89,6 +88,7 @@ UWEC Language Tools - Available Functions
   + batch
     * [tools](uweclang/batch/tools.py)
       - `BATCH_PARSER`
+      - `select_files(args)`
       - `batch_process(process)`
   + binary
     * [docx](uweclang/binary/docx.py)

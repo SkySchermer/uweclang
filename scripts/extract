@@ -62,7 +62,7 @@ if __name__ == '__main__':
 
     parser.add_argument('-x', '--o-extension',
                         nargs='?',
-                        default='.txt',
+                        default='.raw.txt',
                         metavar='oext',
                         dest='oext',
                         help='extension for output file')
