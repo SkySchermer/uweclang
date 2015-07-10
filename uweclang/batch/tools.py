@@ -120,7 +120,6 @@ def select_files(args, file_selector=_all_files):
         (str, str): A tuple containing a list of selected filenames and a list
             of ignored filenames.
     """
-
     # Combine extra '-f' files with position file arguments.
     paths = args.file
     if args.extra_files is not None:
@@ -202,8 +201,6 @@ def batch_process(process,
     Returns:
         None
     """
-
-
     # Process each file seperately.
     for filename in files:
         name_part = os.path.splitext(os.path.basename(filename))[0]
