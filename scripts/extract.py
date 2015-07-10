@@ -83,7 +83,7 @@ if __name__ == '__main__':
     # Setup extension checking function
     args.ext = args.ext
     def is_valid_target(file):
-        return os.path.splitext(file)[1] in args.ext
+        return os.path.isfile(file) and os.path.splitext(file)[1] in args.ext
 
 
     # Identify all the files to process.
@@ -96,11 +96,19 @@ if __name__ == '__main__':
                 print('Finding files in', path)
 
             # The os.walk call will traverse the directory producing
-            # (path, dir, file) tuples. The lambda joins the path to the file,
-            # and chain.from_iterable will flatten the list of lists.
+            # (path, dirs, files) tuples.
             targets = []
             for x in os.walk(path):
-                targets.append(list(map(lambda l: os.path.join(x[0], l), x[2])))
+                if not args.recursive:
+                    # Prevent recursive walk. This deletes all items in the
+                    # list x[1] before the next level of the hierarchy is
+                    # generated.
+                    del x[1][:]
+
+                # Get all files in the directory.
+                targets.append([os.path.join(x[0], l) for l in x[2]])
+
+            # Flatten the list of lists of files.
             targets = chain.from_iterable(targets)
 
             for x in targets:
