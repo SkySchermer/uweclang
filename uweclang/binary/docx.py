@@ -22,6 +22,7 @@ def get_document_xml(filename,
         doc_part (Optional[str]): The XML document to open. Defaults to
             'word/document.xml'.
         verbosity (int): The verbosity of the output.
+
     Returns:
         The document's XML data as a string.
     """
@@ -50,6 +51,7 @@ def xml_to_plain(document, verbosity=1):
     Arguments:
         document (str): The xml document to parse.
         verbosity (int): The verbosity of the output.
+
     Returns:
         The document in plaintext.
     """
