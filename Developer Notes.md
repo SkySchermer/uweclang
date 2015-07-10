@@ -116,7 +116,7 @@ A *Python Module* is a python script that is meant to be imported by another scr
 
 A *Python Package* is a collection of modules. It is useful for grouping a number of modules together under a hierarchical naming scheme. In order to use a package, Python has to know which folders are package folders, and which modules to use. The Python `import` statment will look for `__init__.py` files in folders to determine if they are package folders. (This file doesn't need to have anything in it -- it just has to exist in the right location.) 
 
-* The [uweclang](#uweclang) folder is an example of a python package. This folder contains an [__init__.py](#uweclang/__init__.py) files that specifies what modules to import. It also provides detailed information about the package. 
+* The [uweclang](uweclang) folder is an example of a python package. This folder contains an [__init__.py](#uweclang/__init__.py) files that specifies what modules to import. It also provides detailed information about the package. 
 
 * Note that the particular way the `from _ import` statements are used allows the module functions to be used with shorter qualifications. E.g., `uweclang.x()` instead of `uweclang.batch.tools.x()`. This is not normal! This will cause problems if you have modules with attributes that have the same name.
 
@@ -155,7 +155,7 @@ The following code is a common pattern in Python scripts:
 if __name__ == '__main__':
 ```
 
-(As seen in [extract](#scripts/extract))
+(As seen in [extract](scripts/extract))
 
 The purpose of this code is to determine if the script is being run as an executable or imported as a script. Since Python is a dynamic, interpretted language, statements such as defining functions and classes happen when the code is being executed, so importing a script will cause it to run.
 
@@ -168,7 +168,7 @@ for x in targets:
     (ignored_files, files)[is_valid_target(x)].append(x)
 ```
 
-(As seen in [extract](#scripts/extract))
+(As seen in [extract](scripts/extract))
 
 This is a fancy way of partitioning a list into two lists based on a predicate. The normal (less efficient, but more readable) way of doing this looks like so:
 
