@@ -177,4 +177,14 @@ ignored_files = [x for x in targets if not is_valid_target(x)]
 files         = [x for x in targets if     is_valid_target(x)]
 ```
 
+Or, alternatively (equally efficient, but more verbose):
+
+```python
+for x in targets:
+    if is_valid_target(x):
+        files.append(x)
+    else:
+        ignored_files.append(x)
+```
+
 This pattern exploits a quirk of python that allows `True` to act like `1`, and `False` to act like `0`. So we take the tuple `(ignored_files, files)`, and take the first item if `is_valid_target(x)` evaluates to false, and the second otherwise. Then we call the `.append()` method on `x` to add it to the selected list
