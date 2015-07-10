@@ -9,7 +9,7 @@ BATCH_PARSER = argparse.ArgumentParser(add_help=False)
 
 BATCH_PARSER.add_argument('file',
                           nargs='*',
-                          default='.',
+                          default=['.'],
                           metavar='input-file',
                           help="""
     the files and directories to process. Each directory will be scanned for
@@ -21,6 +21,10 @@ BATCH_PARSER.add_argument('-f', '--file',
                           metavar='input-file',
                           dest='extra_files',
                           help='additional input files')
+
+BATCH_PARSER.add_argument('-r', '--recursive',
+                          action='store_true',
+                          help='search directories for input files recursively')
 
 BATCH_PARSER.add_argument('-o', '--output',
                           default='.',
@@ -42,22 +46,23 @@ BATCH_PARSER.add_argument('-b', '--batch',
                           default=10,
                           metavar='batch-size',
                           help="""
-    batch the output into subdirectories. The batch-size parameter is used
-    together with the --batch-mode option to determine how many subdirectories
-    or files per subdirectories to use.
+    batch the output into subdirectories according to the batch-mode. The
+    batch-size parameter is used together with the --batch-mode option to
+    determine how many subdirectories or files per subdirectories to use.
     """)
 
 BATCH_PARSER.add_argument('-m', '--batch-mode',
                           nargs='?',
-                          choices=['count', 'divide'],
-                          default='count',
+                          choices=['none', 'count', 'divide'],
+                          default='none',
                           metavar='mode',
                           dest='batch_mode',
                           help="""
-    sets the batch mode. In count mode, each batch will contain at most the
-    number of files specified by the --batch argument (default 10). In divide
-    mode, there will be that number of batch directories, and files will be
-    divided evenly between them.
+    sets the batch mode. By default, no batch mode is used, and all files are
+    placed in the output directory. In count mode, each batch will contain at
+    most the number of files specified by the --batch argument (default 10).
+    In divide mode, there will be that number of batch directories, and files
+    will be divided evenly between them.
     """)
 
 
@@ -87,10 +92,12 @@ def batch_process(process,
         None
     """
 
-    # Process files:
-    # for filename in single_files:
-    #     name_part = os.path.splitext(path)[0]
-    #     extract_plaintext_from_docx(filename,
-    #                                 os.path.join(out_path, name_part + args.oext),
-    #                                 verbosity=args.verbose)
+
+    # Process each file seperately.
+    for filename in files:
+        name_part = os.path.splitext(os.path.basename(filename))[0]
+        extract_plaintext_from_docx(filename,
+                                    os.path.join(out_path,
+                                                 name_part + args.oext),
+                                    verbosity=args.verbose)
 
