@@ -124,7 +124,7 @@ if __name__ == '__main__':
     else:
         # Process files in batch mode.
         uweclang.batch_process(extract_plaintext_from_docx,
-                               in_files=batch_directories,
+                               in_files=list(files),
                                out_dir=out_path,
                                batch_size=args.batch_size,
                                batch_mode=args.batch_mode,
