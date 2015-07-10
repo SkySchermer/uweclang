@@ -201,11 +201,18 @@ def batch_process(process,
     Returns:
         None
     """
+
+    if batch_mode == 'divide':
+        batch_size = len(in_files) / batch_size
+
+    batch_number = 0
+
+
     # Process each file seperately.
-    for filename in files:
+    for filename in in_files:
+        batch_name = batch_dir_prefix
         name_part = os.path.splitext(os.path.basename(filename))[0]
-        extract_plaintext_from_docx(filename,
-                                    os.path.join(out_path,
-                                                 name_part + args.oext),
-                                    verbosity=args.verbose)
+        process(filename,
+                os.path.join(os.abspath(out_dir), batch_name),
+                verbosity=args.verbose)
 

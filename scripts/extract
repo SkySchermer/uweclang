@@ -6,10 +6,22 @@ import argparse
 
 import uweclang
 
+# Module global variable for setting the extension for output files.
+OUTPUT_EXTENSION = ''
 
-def extract_plaintext_from_docx(input_filename, output_filename, verbosity=1):
+
+def extract_plaintext_from_docx(input_filename, output_dir, verbosity=1):
+    """
+    """
+    # Get document text.
     xml = uweclang.get_document_xml(input_filename, verbosity=verbosity)
     doc = uweclang.xml_to_plain(xml, verbosity=verbosity)
+
+    # Construct output filename.
+    global OUTPUT_EXTENSION
+    output_filename = os.path.join(output_dir,
+                                   os.path.splitext(os.path.basename(input_filename))[0]
+                                   + OUTPUT_EXTENSION)
 
     # Open file for writing.
     if verbosity >= 2:
@@ -76,6 +88,8 @@ if __name__ == '__main__':
     if args.verbose is None:
         args.verbose = 1
 
+    global OUTPUT_EXTENSION
+    OUTPUT_EXTENSION = args.oext
 
     # Setup extension checking function.
     args.ext = args.ext
@@ -105,8 +119,7 @@ if __name__ == '__main__':
         for filename in files:
             name_part = os.path.splitext(os.path.basename(filename))[0]
             extract_plaintext_from_docx(filename,
-                                        os.path.join(out_path,
-                                                     name_part + args.oext),
+                                        out_path,
                                         verbosity=args.verbose)
     else:
         # Process files in batch mode.
