@@ -55,6 +55,7 @@ BATCH_PARSER.add_argument('-m', '--batch-mode',
                           nargs='?',
                           choices=['none', 'count', 'divide'],
                           default='none',
+                          const='count',
                           metavar='mode',
                           dest='batch_mode',
                           help="""
@@ -62,7 +63,8 @@ BATCH_PARSER.add_argument('-m', '--batch-mode',
     placed in the output directory. In count mode, each batch will contain at
     most the number of files specified by the --batch argument (default 10).
     In divide mode, there will be that number of batch directories, and files
-    will be divided evenly between them.
+    will be divided evenly between them. If the flag is provided but no mode
+    is given, count mode will be used.
     """)
 
 
