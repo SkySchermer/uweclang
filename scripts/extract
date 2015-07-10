@@ -3,7 +3,6 @@
 import sys
 import os
 import argparse
-from itertools import chain
 
 import uweclang
 
@@ -46,11 +45,14 @@ def extract_plaintext_from_docx(input_filename, output_filename, verbosity=1):
 
 if __name__ == '__main__':
 
-    # Add extra command line arguments for this script.
+    # Create a command line argument parser based on the BATCH_PARSER template.
+    # See uweclang/batch/tools.py for details.
     parser = argparse.ArgumentParser(
         description='Extracts plaintext from docx files',
         parents=[uweclang.BATCH_PARSER])
 
+
+    # Add extra command line arguments for this script.
     parser.add_argument('-e', '--extensions',
                         nargs='*',
                         default=['.docx'],
@@ -65,6 +67,7 @@ if __name__ == '__main__':
                         dest='oext',
                         help='extension for output file')
 
+
     # Parse command line arguments.
     args = parser.parse_args()
 
@@ -74,64 +77,18 @@ if __name__ == '__main__':
         args.verbose = 1
 
 
-    # Comnine extra '-f' files with position file arguments.
-    paths = args.file
-    if args.extra_files is not None:
-        paths.extend(args.extra_files)
-
-
-    # Setup extension checking function
+    # Setup extension checking function.
     args.ext = args.ext
     def is_valid_target(file):
         return os.path.isfile(file) and os.path.splitext(file)[1] in args.ext
 
 
-    # Identify all the files to process.
-    files = []
-    ignored_files = []
-    for path in paths:
-        if os.path.isdir(path):
-            # Handle a directory.
-            if args.verbose >= 3:
-                print('Finding files in', path)
-
-            # The os.walk call will traverse the directory producing
-            # (path, dirs, files) tuples.
-            targets = []
-            for x in os.walk(path):
-                if not args.recursive:
-                    # Prevent recursive walk. This deletes all items in the
-                    # list x[1] before the next level of the hierarchy is
-                    # generated.
-                    del x[1][:]
-
-                # Get all files in the directory.
-                targets.append([os.path.join(x[0], l) for l in x[2]])
-
-            # Flatten the list of lists of files.
-            targets = chain.from_iterable(targets)
-
-            for x in targets:
-                if args.verbose >= 3:
-                    print('  Found file', path)
-
-                # Select list based on is_valid_target, and append to it.
-                # This is a bit clever...
-                (ignored_files, files)[is_valid_target(x)].append(x)
-
-        else:
-            if args.verbose >= 3:
-                print('Found file', path)
-
-            # Handle a file.
-            (ignored_files, files)[is_valid_target(path)].append(path)
+    # Select the files to process.
+    (files, ignored_files) = uweclang.select_files(args,
+                                                   file_selector=is_valid_target)
 
 
-    # Resolve absolute paths.
-    if args.verbose >= 3:
-        print('Resolving absolute paths...')
-
-    files = map(os.path.abspath, files)
+    # Resolve relative ouput path.
     out_path = os.path.abspath(args.output)
 
 

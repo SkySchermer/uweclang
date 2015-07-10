@@ -1,8 +1,30 @@
 """UWEC Language Tools batch tools module
 
     Provides functions for processing data in batches.
+
+Module Globals:
+
+    BATCH_PARSER: Provides a template ArgumentParser for accepting arguments
+        concerning batch file processing. It provides the following setup:
+
+        Positional Arguments:
+            file: Any number of input files or directories.
+
+        Optional Arguments:
+            --file: Any number of extra input files or directories.
+            --recursive: Flag to select for recursive traversal of directories.
+            --output: Output directory.
+            --quiet: Silence process output.
+            --verbose: Select process output level.
+            --batch: Batch-size for batch mode.
+            --batch-mode: Select how to do batching.
+
 """
+
+import os
 import argparse
+from itertools import chain
+
 
 # Build base for batch argument parsing.
 BATCH_PARSER = argparse.ArgumentParser(add_help=False)
@@ -66,6 +88,93 @@ BATCH_PARSER.add_argument('-m', '--batch-mode',
     will be divided evenly between them. If the flag is provided but no mode
     is given, count mode will be used.
     """)
+
+
+def _all_files(path):
+    """Default file selector for select_files.
+
+    Arguments:
+        path (str): The path to a file.
+
+    Returns:
+        True
+    """
+    return True
+
+
+def select_files(args, file_selector=_all_files):
+    """Select files to process based upon parsed arguments from a BATCH_PARSER.
+
+    This function will traverse each input directory for valid files and add
+    them to a list. It will also keep track of invalid files to return for
+    reference. The behavior of this function is controlled by command line
+    arguments.
+
+    Arguments:
+        args (NameSpace): The parsed command line arguments to use for
+            selecting files.
+        file_selector (str -> bool): A function for determining if a file
+            should be selected or not. Defaults to accepting all files.
+
+    Returns:
+        (str, str): A tuple containing a list of selected filenames and a list
+            of ignored filenames.
+    """
+
+    # Combine extra '-f' files with position file arguments.
+    paths = args.file
+    if args.extra_files is not None:
+        paths.extend(args.extra_files)
+
+
+    # Identify all the files to process.
+    files = []
+    ignored_files = []
+    for path in paths:
+        if os.path.isdir(path):
+            # Handle a directory.
+            if args.verbose >= 3:
+                print('Finding files in', path)
+
+            # The os.walk call will traverse the directory producing
+            # (path, dirs, files) tuples.
+            targets = []
+            for x in os.walk(path):
+                if not args.recursive:
+                    # Prevent recursive walk. This deletes all items in the
+                    # list x[1] before the next level of the hierarchy is
+                    # generated.
+                    del x[1][:]
+
+                # Get all files in the directory.
+                targets.append([os.path.join(x[0], l) for l in x[2]])
+
+            # Flatten the list of lists of files.
+            targets = chain.from_iterable(targets)
+
+            for x in targets:
+                if args.verbose >= 3:
+                    print('  Found file', path)
+
+                # Select list based on file_selector, and append to it.
+                # This is a bit clever...
+                (ignored_files, files)[file_selector(x)].append(x)
+
+        else:
+            if args.verbose >= 3:
+                print('Found file', path)
+
+            # Handle a file.
+            (ignored_files, files)[file_selector(path)].append(path)
+
+
+    # Resolve absolute paths.
+    if args.verbose >= 3:
+        print('Resolving absolute paths...')
+
+    files = map(os.path.abspath, files)
+
+    return (files, ignored_files)
 
 
 def batch_process(process,
