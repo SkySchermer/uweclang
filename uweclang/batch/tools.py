@@ -19,7 +19,7 @@ BATCH_PARSER.add_argument('file',
 BATCH_PARSER.add_argument('-f', '--file',
                           nargs='*',
                           metavar='input-file',
-                          dest='file_extra',
+                          dest='extra_files',
                           help='additional input files')
 
 BATCH_PARSER.add_argument('-o', '--output',
@@ -55,12 +55,21 @@ def batch_process(process,
                   verbosity=1):
     """
     Arguments:
-        process
-        in_dir
-        out_dir
-        batch_size
-        batch_dir_prefix
+        process ((IN, OUT, Verbosity) -> str): The function to execute on each
+            file.
+        in_dir (Optional[str]): The input directory.
+        out_dir (Optional[str]): The output directory.
+        batch_size (Optional[int]): The size of each subdirectory.
+        batch_dir_prefix (Optional[str]): The prefix for batch subdirectories.
+        verbosity: The verbosity of the output.
     Returns:
-        Nothing
+        None
     """
+
+    # Process files:
+    # for filename in single_files:
+    #     name_part = os.path.splitext(path)[0]
+    #     extract_plaintext_from_docx(filename,
+    #                                 os.path.join(out_path, name_part + args.oext),
+    #                                 verbosity=args.verbose)
 

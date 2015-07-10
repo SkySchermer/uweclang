@@ -3,6 +3,7 @@
 import sys
 import os
 import argparse
+from itertools import chain
 
 import uweclang
 
@@ -75,40 +76,58 @@ if __name__ == '__main__':
     if args.extra_files is not None:
         paths.extend(args.extra_files)
 
+    if args.verbose is None:
+        args.verbose = 1
 
     # Resolve absolute paths.
     if args.verbose >= 3:
         print('Converting input paths from relative to absolute...')
 
-    paths = map(os.path.abspath, paths)
     out_path = os.path.abspath(args.output)
 
 
-    # Identify files to process.
-    batch_directories = []
-    single_files = []
+    def is_valid_target(file):
+        return os.path.splitext(file)[1] == args.ext
+
+    # Identify all the files to process.
+    files = []
+    ignored_files = []
     for path in paths:
         if os.path.isdir(path):
-            print('Process directory', path)
-            batch_directories.append(path)
-        else:
-            # Check for docx file extension:
-            if os.path.splitext(path)[1] == args.ext:
-                print('Process file', os.path.basename(path))
-                single_files.append(path)
-            else:
-                print('Ignore file', path)
+            # Handle a directory.
 
-    # Process files:
-    for filename in single_files:
+            # The os.walk call will traverse the directory. x[2] Pulls out the
+            # list of files. The chain.from_iterable will flatten the list of
+            # lists.
+            targets = chain.from_iterable([x[2] for x in os.walk(path)])
+
+            for x in targets:
+                # Select list based on is_valid_target, and append to it.
+                # This is a bit clever...
+                (ignored_files, files)[is_valid_target(x)].append(x)
+
+        else:
+            # Handle a file.
+            (ignored_files, files)[is_valid_target(path)].append(path)
+
+    # Resolve absolute paths.
+    files = map(os.path.abspath, files)
+
+    # Print list of ignored files.
+    if args.verbose >= 1:
+        for x in ignored_files:
+            print("Ignore file:", x)
+
+    # Normal Process:
+    for filename in files:
         name_part = os.path.splitext(path)[0]
         extract_plaintext_from_docx(filename,
                                     os.path.join(out_path, name_part + args.oext),
                                     verbosity=args.verbose)
-    # Process directories:
-    if batch_directories:
-        uweclang.batch_process(extract_plaintext_from_docx,
-                               in_files=batch_directories,
-                               out_dir=out_path,
-                               batch_size=args.batch,
-                               verbosity=args.verbose)
+
+    # # Batch process:
+    # uweclang.batch_process(extract_plaintext_from_docx,
+    #                            in_files=batch_directories,
+    #                            out_dir=out_path,
+    #                            batch_size=args.batch,
+    #                            verbosity=args.verbose)
