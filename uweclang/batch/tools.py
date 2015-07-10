@@ -143,7 +143,7 @@ def select_files(args, file_selector=_all_files):
                     # Prevent recursive walk. This deletes all items in the
                     # list x[1] before the next level of the hierarchy is
                     # generated.
-                    del x[1][:]
+                    x[1].clear()
 
                 # Get all files in the directory.
                 targets.append([os.path.join(x[0], l) for l in x[2]])
