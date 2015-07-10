@@ -188,7 +188,7 @@ Python allows for a number of different syntax styles for representing text data
     """So does 
        this one."""
 
-    ('This one is written out on multiple lines,'
+    ('This one is written out on multiple lines' # <- No comma here!
      ' but the two strings will be joined together as one!')
     ```
 
@@ -210,10 +210,11 @@ Python allows for a number of different syntax styles for representing text data
     ```python
     r'Raw strings allow you to ignore certain escape sequences.'
     r"These are represented directly: \n, \r, \t, \0, etc."
-    r'This doesn\'t work on quotes, because they are needed to terminate the string'
+    r'This doesn\'t work on quotes, because they are needed to terminate the string.'
 
     ```
-
+    
+    (Raw strings are very useful for working with [Regular Expressions](#regular-expressions).)
 
 ### Lists
 
@@ -310,7 +311,7 @@ print('The number is {}.'.format(number))
 This will insert the number at the `{}` symbol. You can provide indices in the brackets to print something multiple times:
 
 ```python
->>>print('{1} {2} {1} {3}'.format('a', 'b', 'c'))
+>>>print('{0} {1} {0} {2}'.format('a', 'b', 'c'))
 a b a c
 ```
 
@@ -332,7 +333,7 @@ def myfunction(arg1, arg2='default value'):
     print(arg1, arg2)
 ```
 
-The value of arg2 is a keyword argument. Thus we can call the function in multiple ways:
+The argument arg2 is a keyword argument. Thus we can call the function in multiple ways:
 
 ```python
 >>> myfunction(5)
