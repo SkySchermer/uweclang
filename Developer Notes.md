@@ -43,12 +43,16 @@ Student Corpus Scripts
 
 ## Command Line Arguments
 
+Todo...
+
 https://docs.python.org/3/howto/argparse.html
 
 UWEC Language Tools package
 ---------------------------
 
 ## Packages, Modules, and Imports
+
+Todo...
 
 ## File Headers
 
@@ -98,10 +102,11 @@ However, with the shebang, the interpreter knows to use Python, so you can write
 
 ## Future Imports
 
+Todo...
 
 ## PYTHONPATH
 
-
+Todo...
 
 Conventions
 -----------
@@ -386,12 +391,32 @@ We can achieve the same results as the list comprehension by using `map` and `fi
 (Note: In Python 3, these functions return [generator objects](#generators), so you'll need to use `list()` to convert them into lists for printing.)
 
 ### Generators
+
+Todo...
+
 ### Lambda
+
+Todo...
+
 ### Slices
+
+Todo...
+
 ### Dictionaries
+
+Todo...
+
 ### Args & Kwargs
+
+Todo...
+
 ### Objects
+
+Todo...
+
 ### Regular Expressions
+
+Todo...
 
 ## Code Examples
 
