@@ -102,7 +102,7 @@ UWEC Language Tools - Available Functions
 
 ### Verbosity Conventions:
 
-Whever a script or function uses a verbosity option, they can be interpreted as such:
+Whever a script or function uses a verbosity option, they can be interpreted as follows:
 
 | level | flag | Result							|
 |:-----:|------|--------------------------------|
