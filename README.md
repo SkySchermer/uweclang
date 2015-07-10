@@ -14,7 +14,7 @@ UWEC Language Tools
 
 ### Introduction
 
-This project houses a number of python scripts for analyzing student paper corpora. It is meant to be used in conjunction with [NLTK][nltk.org]. This repository calssifies scripts into two major categories:
+This project houses a number of python scripts for analyzing student paper corpora. It is meant to be used in conjunction with [NLTK][nltk.org]. This repository classifies scripts into two major categories:
 
 1. Student Corpus scripts
 
@@ -38,6 +38,7 @@ This project houses a number of python scripts for analyzing student paper corpo
 
 There is an additional [misc](scripts/misc) folder that contains older scripts for reference.
 
+The [Developer Notes](Developer Notes.md) file contains a list of programming guidlines for writing scripts. It has basic information about Python, and it is mostly focused on the patterns that are used in this project.
 
 Student Corpus Scripts
 ----------------------
