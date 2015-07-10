@@ -230,18 +230,18 @@ Notice that lists can contain just about anything, including other lists.
 To find the length of a list use the builtin `len` function:
 
 ```python
->>>len(my_list_of_items)
+>>> len(my_list_of_items)
 8
->>>len([])
+>>> len([])
 0
->>>len([[]])
+>>> len([[]])
 1
 ```
 
 To access an element of a list, use the `[]` index operator:
 
 ```python
->>>my_list_of_items[3]
+>>> my_list_of_items[3]
 'item4'
 ```
 
@@ -261,33 +261,33 @@ my_tuple = (1, 2, 3, 'item4', 5.5, [], False, (1, 2))
 
 In fact, it is easy to convert between the two:
 ```python
->>>tuple([1, 2, 'a'])
+>>> tuple([1, 2, 'a'])
 (1, 2, 'a')
->>>list((1, 2, 'a'))
+>>> list((1, 2, 'a'))
 [1, 2, 'a']
 ```
 
 They an be indexed the same way:
 
 ```python
->>>my_tuple[3]
+>>> my_tuple[3]
 'item4'
 ```
 
 But that is about where the similarities end. Tuples cannot change length like lists can, so many of the functions available to lists are not available to tuples. They also have additional functionality called 'unpacking':
 
 ```python
->>>(a, b) = (1, 2)
->>>a
+>>> (a, b) = (1, 2)
+>>> a
 1
->>>b
+>>> b
 2
 ```
 
 This allows for conveniently returning mulitple values from a function, for instance. Note that the parenthesis around are not necessary in this pattern:
 
 ```python
->>>a, b = 1, 2
+>>> a, b = 1, 2
 ```
 
 Tuples are also useful with the 'splat' or 'unpack' operator `*`, as described [below](#args--kwargs).
@@ -311,14 +311,14 @@ print('The number is {}.'.format(number))
 This will insert the number at the `{}` symbol. You can provide indices in the brackets to print something multiple times:
 
 ```python
->>>print('{0} {1} {0} {2}'.format('a', 'b', 'c'))
+>>> print('{0} {1} {0} {2}'.format('a', 'b', 'c'))
 a b a c
 ```
 
 You can also use floating-point format specifiers to deal with decimal digits easily:
 
 ```python
->>>print('{:.2f}, {:.4f}, {:.0f}'.format(1.34343434343, 1.34343434343, 3.555))
+>>> print('{:.2f}, {:.4f}, {:.0f}'.format(1.34343434343, 1.34343434343, 3.555))
 1.34, 1.3434, 4
 ```
 
@@ -336,16 +336,16 @@ def myfunction(arg1, arg2='default value'):
 The argument arg2 is a keyword argument. Thus we can call the function in multiple ways:
 
 ```python
->>> myfunction(5)
+>>>  myfunction(5)
 5 'default value'
->>> myfunction(5, arg2='new value')
+>>>  myfunction(5, arg2='new value')
 5 'new value'
 ```
 
 The name `arg2` is only bound inside the function, even though you use it when calling the function. This might be confusing if you use the same variable names inside and outside:
 ```python
->>>arg2 = 'my arg2 value'
->>>myfunction(5, arg2=arg2)
+>>> arg2 = 'my arg2 value'
+>>> myfunction(5, arg2=arg2)
 5 'my arg2 value'
 ```
 
@@ -354,10 +354,10 @@ The name `arg2` is only bound inside the function, even though you use it when c
 List comprehesions are the idiomatic way to generate lists and perform [map and filter](#map--filter) operations on data. They essentially operate like `for` loops, but they will always return a list:
 
 ```python
->>>myitems = [1, 3, 5, 8]
->>>[x+1 for x in myitems]
+>>> myitems = [1, 3, 5, 8]
+>>> [x+1 for x in myitems]
 [2, 4, 6, 9]
->>>[x+1 for x in myitems if x < 4]
+>>> [x+1 for x in myitems if x < 4]
 [2, 4]
 ```
 
@@ -376,10 +376,10 @@ def is_small(x):
 We can achieve the same results as the list comprehension by using `map` and `filter`:
 
 ```python
->>>myitems = [1, 3, 5, 8]
->>>list(map(increment, myitems))
+>>> myitems = [1, 3, 5, 8]
+>>> list(map(increment, myitems))
 [2, 4, 6, 9]
->>>list(map(increment, filter(is_small, myitems)))
+>>> list(map(increment, filter(is_small, myitems)))
 [2, 4]
 ```
 
@@ -416,7 +416,7 @@ for x in targets:
     (ignored_files, files)[file_selector(x)].append(x)
 ```
 
-(As seen in [extract](scripts/extract))
+(As seen in [uweclang/batch/tools.py](uweclang/batch/tools.py))
 
 This is a fancy way of partitioning a list into two lists based on a predicate. The normal (less efficient, but more readable) way of doing this looks like so:
 
