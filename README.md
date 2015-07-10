@@ -9,7 +9,6 @@ UWEC Language Tools
     * [Pipeline](#pipeline)
     * [Intermediate Files](#intermediate-files)
   * [UWEC Language Tools - Available Functions](#uwec-language-tools---available-functions)
-    * [Verbosity Conventions](#verbosity-conventions)
   * [Additional Resources](#additional-resources)
 
 ### Introduction
@@ -62,16 +61,16 @@ For help on a given script, use:
 The student corpus scripts are meant to be run in sequence to accomplish the following tasks:
 
 * Extract XML from docx files.
-* Extract plaintext from XML. (Script: [extract.py](scripts/extract.py))
+* Extract plaintext from XML. (Script: [extract](scripts/extract))
   - output file.raw.txt
-* Process plaintext to extract citations, dates, titles, and writer's memos. (Script: [scrub.py](scripts/scrub.py))
+* Process plaintext to extract citations, dates, titles, and writer's memos. (Script: [scrub](scripts/scrub))
   - output file.txt
   - output file.log
   - output file.memo.txt
 * Manually verify each file.
-* Tag student files. (Script: [tag.py](scripts/tag.py))
+* Tag student files. (Script: [tag](scripts/tag))
   - output file.tag.txt
-* Summarize tagged files. (Script: [summary.py](scripts/summary.py))
+* Summarize tagged files. (Script: [summary](scripts/summary))
 
 ### Intermediate Files
 
@@ -101,16 +100,6 @@ UWEC Language Tools - Available Functions
       - `line_split(text)`
   + tagged
 
-### Verbosity Conventions:
-
-Whever a script or function uses a verbosity option, they can be interpreted as follows:
-
-| level | flag | Result							|
-|:-----:|------|--------------------------------|
-| 0     | -q   | No output						|
-| 1     | -v   | Completed task output			|
-| 2     | -vv  | Resource access/subtask output |
-| 3     | -vvv | Excessive output 				|
 
 Additional Resources
 --------------------
