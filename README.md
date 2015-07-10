@@ -3,13 +3,14 @@ UWEC Language Tools
 
 ### Table of Contents
 * [UWEC Language Tools](#uwec-language-tools)
-  * [Table of Contents](#table-of-contents)
-  * [Introduction](#introduction)
-  * [Student Corpus Scripts](#student-corpus-scripts)
+  + [Table of Contents](#table-of-contents)
+  + [Introduction](#introduction)
+  + [Student Corpus Scripts](#student-corpus-scripts)
+      - [Examples](#examples)
     * [Pipeline](#pipeline)
     * [Intermediate Files](#intermediate-files)
-  * [UWEC Language Tools - Available Functions](#uwec-language-tools---available-functions)
-  * [Additional Resources](#additional-resources)
+  + [UWEC Language Tools - Available Functions](#uwec-language-tools---available-functions)
+  + [Additional Resources](#additional-resources)
 
 ### Introduction
 
@@ -46,15 +47,17 @@ The student corpus scripts can each be used on single files or on entire directo
 
 	script-name file -o output_directory
 
-If the output directory is not supplied, the resulting output will be in the current directory. To process a directory use the following syntax:
-
-	script-name [-b [batch_size]] input_directory -o output_directory
-
-If the `-b` flag is provided, the output will be subdivided into batch directories, each containing `batch-size` files. (The default batch size is 10.)
+If the output directory is not supplied, the resulting output will be in the current directory. 
 
 For help on a given script, use:
 
     script-name -h
+
+#### Examples
+```shell
+scripts/extract "Summer 2015/Student Corpus/Unprocessed Files/" -o "Summer 2015/Student Corpus/Plain Files/" -b 5 -m count
+```
+
 
 ### Pipeline
 
