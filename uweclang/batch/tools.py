@@ -67,6 +67,7 @@ BATCH_PARSER.add_argument('-b', '--batch',
                           type=int,
                           default=10,
                           metavar='batch-size',
+                          dest='batch_size',
                           help="""
     batch the output into subdirectories according to the batch-mode. The
     batch-size parameter is used together with the --batch-mode option to
@@ -183,7 +184,8 @@ def batch_process(process,
                   batch_mode='count',
                   batch_dir_prefix='batch',
                   verbosity=1):
-    """
+    """Runs a process on a set of files and batches them into subdirectories.
+
     Arguments:
         process ((IN, OUT, Verbosity) -> str): The function to execute on each
             file.
@@ -198,21 +200,49 @@ def batch_process(process,
             divided evenly between them.
         batch_dir_prefix (Optional[str]): The prefix for batch subdirectories.
         verbosity: The verbosity of the output.
+
     Returns:
         None
     """
-
     if batch_mode == 'divide':
-        batch_size = len(in_files) / batch_size
+        batch_size = len(in_files) // (batch_size-1)
 
-    batch_number = 0
+    current_batch = 0
+    file_number = None
+    batch_name = None
+    batch_dir = None
 
 
     # Process each file seperately.
     for filename in in_files:
-        batch_name = batch_dir_prefix
-        name_part = os.path.splitext(os.path.basename(filename))[0]
+
+        if file_number is not None and file_number >= batch_size:
+            current_batch += 1
+            file_number = None
+
+        if file_number is None:
+            file_number = 0
+            # Get details for next batch.
+            batch_name = '{}{:03}'.format(batch_dir_prefix, current_batch)
+            batch_dir = os.path.join(os.path.abspath(out_dir), batch_name)
+
+            # Create batch directory.
+            if verbosity >= 2:
+                print(' -> Creating directory', batch_dir)
+            try:
+                os.makedirs(batch_dir)
+            except FileExistsError:
+                pass
+
+            if verbosity >= 3:
+                print(' -> Starting batch ', current_batch)
+
+        # Process the file.
         process(filename,
-                os.path.join(os.abspath(out_dir), batch_name),
-                verbosity=args.verbose)
+                batch_dir,
+                verbosity=verbosity)
+
+        file_number += 1
+
+
 
