@@ -2,6 +2,7 @@
 
 import sys
 import os
+import re
 import argparse
 
 import uweclang
@@ -12,13 +13,32 @@ _MEMO_OUTPUT_EXTENSION = ''
 _LOG_OUTPUT_EXTENSION = ''
 
 
+# Inline citation detector:
+def citation_detector(text, is_parenthetical):
+
+    if is_parenthetical:
+        punc = uweclang.punctuation_density(text)
+        caps = uweclang.capitalization_density(text)
+
+        if punc > 0.05:
+            print('Line {}: EDIT OUT '
+                  '(Parenthetical Punctuation = {:.3f}):'
+                  '\n\t({})\n'.format(line_number, caps, text),
+                  file=log)
+            return False
+
+        if caps > 0.06:
+            print('Line {}: EDIT OUT '
+                  '(Parenthetical Capitalization = {:.3f}):'
+                  '\n\t({})\n'.format(line_number, caps, line),
+                  file=log)
+            return False
+    return True
+
+
 def scrub_plaintext(input_filename, output_dir, verbosity=1):
     """
     """
-    # Get document text.
-    try:
-        doc = open(input_filename, 'r').read()
-    except:
 
     # Construct output filenames.
     global _OUTPUT_EXTENSION, _MEMO_OUTPUT_EXTENSION, _LOG_OUTPUT_EXTENSION
@@ -28,41 +48,97 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                                    + _OUTPUT_EXTENSION)
     memo_filename = os.path.join(output_dir,
                                  os.path.splitext(os.path.basename(input_filename))[0]
-                                 + _OUTPUT_EXTENSION)
+                                 + _MEMO_OUTPUT_EXTENSION)
     log_filename = os.path.join(output_dir,
                                 os.path.splitext(os.path.basename(input_filename))[0]
-                                + _OUTPUT_EXTENSION)
-
-    # Open file for writing.
-    # if verbosity >= 2:
-    #     print('  Opening file', os.path.basename(output_filename))
-
-    # try:
-    #     out = open(output_filename, 'w')
-    # except IOError as e:
-    #     print('Output file "{}" '
-    #           'could not be created: {}.'.format(os.path.basename(output_filename),
-    #                                              e))
-    #     sys.exit(0)
+                                + _LOG_OUTPUT_EXTENSION)
 
 
-    # # Write to file.
-    # if verbosity >= 2:
-    #     print('  Writing to file',os.path.basename(output_filename))
+    # Get document text and split into lines.
+    try:
+        lines = uweclang.line_split(open(input_filename, 'r').read())
+    except IOError as e:
+        print('Error openning file {}: {}'.format(input_filename, e))
+        sys.exit(0)
 
-    # try:
-    #     out.write(doc.strip())
-    # except IOError as e:
-    #     print('Could not write to file {}: {}'.format(os.path.basename(output_filename),
-    #                                                   e))
-    #     sys.exit(0)
+    # Open output file.
+    try:
+        out = open(output_filename, 'w')
+    except IOError as e:
+        print('Error creating file {}: {}'.format(output_filename, e))
+        sys.exit(0)
 
-    # out.close()
 
-    # if verbosity >= 1:
-    #     print('Extracted plaintext from '
-    #           '{} into {}'.format(os.path.basename(input_filename),
-    #                               os.path.basename(output_filename)))
+    # Open log file.
+    try:
+        log = open(log_filename, 'w')
+    except IOError as e:
+        print('Error creating file {}: {}'.format(log_filename, e))
+        sys.exit(0)
+
+
+    found_memo = False
+    result = []
+    memo = []
+    for line_number, line in enumerate(lines):
+        # Straighten quotes.
+        line = uweclang.straighten_quotes(line)
+
+        # Remove empty lines.
+        if re.fullmatch(r'\s*', line):
+            print('Line {}: REMOVE (Empty Line, {} characters):'
+                  '\n\t{}\n'.format(line_number, len(line), line),
+                  file=log)
+            continue
+
+        # Remove number lines.
+        if re.fullmatch(r'\d+', line):
+            print('Line {}: REMOVE (Number Line, {} characters):'
+                  '\n\t{}\n'.format(line_number, len(line), line),
+                  file=log)
+            continue
+
+        punc = uweclang.punctuation_density(line)
+        caps = uweclang.capitalization_density(line)
+
+        # Remove citations
+        if punc > 0.05:
+            print('Line {}: REMOVE (Line Punctuation = {:.3f}):'
+                  '\n\t{}\n'.format(line_number, caps, line),
+                  file=log)
+            continue
+
+        # Remove titles
+        if caps > 0.06:
+            if re.match('writer.*memo', line, flags=re.IGNORECASE):
+                found_memo = True
+                # Open memo file.
+                try:
+                    memo = open(memo_filename, 'w')
+                except IOError as e:
+                    print('Error creating file {}: {}'.format(memo_filename, e))
+                    sys.exit(0)
+
+            print('Line {}: REMOVE (Line Capitalization = {:.3f}):'
+                  '\n\t{}\n'.format(line_number, caps, line),
+                  file=log)
+            continue
+
+        # Remove inline citations:
+        pars = uweclang.seperate_parentheticals(line)
+        line = uweclang.recombine_selected(citation_detector, pars)
+
+
+        if found_memo:
+            print(line, file=memo)
+        else:
+            print(line, file=out)
+
+
+    if verbosity >= 1:
+        print('Scrubbed text from '
+              '{} into {}'.format(os.path.basename(input_filename),
+                                  os.path.basename(output_filename)))
 
 
 if __name__ == '__main__':
@@ -98,7 +174,7 @@ if __name__ == '__main__':
 
     parser.add_argument('-xm', '--m-extension',
                         nargs='?',
-                        default='.memo.txt',
+                        default='.memo',
                         metavar='mext',
                         dest='mext',
                         help='extension for output memo file')
@@ -112,7 +188,6 @@ if __name__ == '__main__':
     if args.verbose is None:
         args.verbose = 1
 
-    global _OUTPUT_EXTENSION, _MEMO_OUTPUT_EXTENSION, _LOG_OUTPUT_EXTENSION
     _OUTPUT_EXTENSION = args.oext
     _MEMO_OUTPUT_EXTENSION = args.mext
     _LOG_OUTPUT_EXTENSION = args.lext
@@ -135,7 +210,7 @@ if __name__ == '__main__':
     if args.verbose >= 1:
         for x in ignored_files:
             print("Ignore file:", x)
-        print('--- Begin Processing ---')
+        print('\n--- Begin Processing ---')
 
 
     # Process the files.
@@ -143,12 +218,12 @@ if __name__ == '__main__':
         # Process each file seperately.
         for filename in files:
             name_part = os.path.splitext(os.path.basename(filename))[0]
-            extract_plaintext_from_docx(filename,
-                                        out_path,
-                                        verbosity=args.verbose)
+            scrub_plaintext(filename,
+                            out_path,
+                            verbosity=args.verbose)
     else:
         # Process files in batch mode.
-        uweclang.batch_process(extract_plaintext_from_docx,
+        uweclang.batch_process(scrub_plaintext,
                                in_files=list(files),
                                out_dir=out_path,
                                batch_size=args.batch_size,
