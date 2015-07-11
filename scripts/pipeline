@@ -5,7 +5,11 @@ export PYTHONPATH=.
 scripts/extract "Summer 2015/Student Corpus/Unprocessed Files/" \
 			 -o "Summer 2015/Student Corpus/Plain Files/"
 
+if [ $? -ne 0 ]; then { echo "Aborting: 'extract' failed." ; exit 1; } fi
+
 scripts/scrub "Summer 2015/Student Corpus/Plain Files/"		\
 		   -o "Summer 2015/Student Corpus/Processed Files/" \
 		   --batch-size 4									\
 		   --batch-mode divide
+
+if [ $? -ne 0 ]; then { echo "Aborting: 'scrub' failed." ; exit 1; } fi

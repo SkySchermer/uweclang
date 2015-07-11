@@ -12,28 +12,8 @@ _OUTPUT_EXTENSION = ''
 _MEMO_OUTPUT_EXTENSION = ''
 _LOG_OUTPUT_EXTENSION = ''
 
-
-# Inline citation detector:
-def citation_detector(text, is_parenthetical):
-
-    if is_parenthetical:
-        punc = uweclang.punctuation_density(text)
-        caps = uweclang.capitalization_density(text)
-
-        if punc > 0.05:
-            print('Line {}: EDIT OUT '
-                  '(Parenthetical Punctuation = {:.3f}):'
-                  '\n\t({})\n'.format(line_number, caps, text),
-                  file=log)
-            return False
-
-        if caps > 0.06:
-            print('Line {}: EDIT OUT '
-                  '(Parenthetical Capitalization = {:.3f}):'
-                  '\n\t({})\n'.format(line_number, caps, line),
-                  file=log)
-            return False
-    return True
+_CAPS_LIMIT = 100
+_PUNC_LIMIT = 100
 
 
 def scrub_plaintext(input_filename, output_dir, verbosity=1):
@@ -98,18 +78,19 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                   file=log)
             continue
 
+        global _CAPS_LIMIT, _PUNC_LIMIT
         punc = uweclang.punctuation_density(line)
         caps = uweclang.capitalization_density(line)
 
         # Remove citations
-        if punc > 0.05:
+        if punc > _PUNC_LIMIT:
             print('Line {}: REMOVE (Line Punctuation = {:.3f}):'
                   '\n\t{}\n'.format(line_number, caps, line),
                   file=log)
             continue
 
         # Remove titles
-        if caps > 0.06:
+        if caps > _CAPS_LIMIT:
             if re.match('writer.*memo', line, flags=re.IGNORECASE):
                 found_memo = True
                 # Open memo file.
@@ -123,6 +104,29 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                   '\n\t{}\n'.format(line_number, caps, line),
                   file=log)
             continue
+
+        # Inline citation detector:
+        def citation_detector(text, is_parenthetical):
+            global _CAPS_LIMIT, _PUNC_LIMIT
+
+            if is_parenthetical:
+                punc = uweclang.punctuation_density(text)
+                caps = uweclang.capitalization_density(text)
+
+                if punc > _PUNC_LIMIT:
+                    print('Line {}: EDIT OUT '
+                          '(Parenthetical Punctuation = {:.3f}):'
+                          '\n\t({})\n'.format(line_number, punc, text),
+                          file=log)
+                    return False
+
+                if caps > _CAPS_LIMIT:
+                    print('Line {}: EDIT OUT '
+                          '(Parenthetical Capitalization = {:.3f}):'
+                          '\n\t({})\n'.format(line_number, caps, line),
+                          file=log)
+                    return False
+            return True
 
         # Remove inline citations:
         pars = uweclang.seperate_parentheticals(line)
@@ -165,20 +169,33 @@ if __name__ == '__main__':
                         dest='oext',
                         help='extension for output file')
 
-    parser.add_argument('-xl', '--l-extension',
+    parser.add_argument('--l-extension',
                         nargs='?',
                         default='.log',
                         metavar='lext',
                         dest='lext',
                         help='extension for output log file')
 
-    parser.add_argument('-xm', '--m-extension',
+    parser.add_argument('--m-extension',
                         nargs='?',
                         default='.memo',
                         metavar='mext',
                         dest='mext',
                         help='extension for output memo file')
 
+    parser.add_argument('--caps-limit',
+                        type=float,
+                        default=0.06,
+                        metavar='percent',
+                        dest='caps',
+                        help='capitalization percent for title removal')
+
+    parser.add_argument('--punc-limit',
+                        type=float,
+                        default=0.05,
+                        metavar='percent',
+                        dest='punc',
+                        help='punctuation percent for citation removal')
 
     # Parse command line arguments.
     args = parser.parse_args()
@@ -191,6 +208,8 @@ if __name__ == '__main__':
     _OUTPUT_EXTENSION = args.oext
     _MEMO_OUTPUT_EXTENSION = args.mext
     _LOG_OUTPUT_EXTENSION = args.lext
+    _CAPS_LIMIT = args.caps
+    _PUNC_LIMIT = args.punc
 
     # Setup extension checking function.
     def is_valid_target(file):
@@ -231,4 +250,4 @@ if __name__ == '__main__':
                                verbosity=args.verbose)
 
     if args.verbose >= 1:
-        print('--- End Processing ---')
+        print('--- End Processing ---\n')

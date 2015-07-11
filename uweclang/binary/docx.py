@@ -7,6 +7,7 @@ import sys
 import os
 import zipfile
 import re
+import xml.etree.ElementTree
 
 
 def get_document_xml(filename,
