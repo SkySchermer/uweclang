@@ -39,14 +39,14 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
         lines = uweclang.line_split(open(input_filename, 'r').read())
     except IOError as e:
         print('Error openning file {}: {}'.format(input_filename, e))
-        sys.exit(0)
+        sys.exit(1)
 
     # Open output file.
     try:
         out = open(output_filename, 'w')
     except IOError as e:
         print('Error creating file {}: {}'.format(output_filename, e))
-        sys.exit(0)
+        sys.exit(1)
 
 
     # Open log file.
@@ -54,7 +54,7 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
         log = open(log_filename, 'w')
     except IOError as e:
         print('Error creating file {}: {}'.format(log_filename, e))
-        sys.exit(0)
+        sys.exit(1)
 
 
     found_memo = False
@@ -98,7 +98,7 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                     memo = open(memo_filename, 'w')
                 except IOError as e:
                     print('Error creating file {}: {}'.format(memo_filename, e))
-                    sys.exit(0)
+                    sys.exit(1)
 
             print('Line {}: REMOVE (Line Capitalization = {:.3f}):'
                   '\n\t{}\n'.format(line_number, caps, line),

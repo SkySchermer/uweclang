@@ -29,7 +29,7 @@ def extract_plaintext_from_docx(input_filename, output_dir, verbosity=1):
     except IOError as e:
         print('Error creating file'
               ' {}: {}.'.format(os.path.basename(output_filename), e))
-        sys.exit(0)
+        sys.exit(1)
 
 
     # Write to file.
@@ -38,7 +38,7 @@ def extract_plaintext_from_docx(input_filename, output_dir, verbosity=1):
     except IOError as e:
         print('Error writing to file'
               ' {}: {}'.format(os.path.basename(output_filename), e))
-        sys.exit(0)
+        sys.exit(1)
 
 
     out.close()

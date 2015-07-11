@@ -31,8 +31,8 @@ def get_document_xml(filename,
         print('Unzipping file', os.path.basename(filename))
 
     with zipfile.ZipFile(filename) as document:
-        # Open document XML from the docx (ZIP) file.
 
+        # Open document XML from the docx (ZIP) file.
         doc_file = document.open(doc_part, "r")
 
         if verbosity >= 3:
