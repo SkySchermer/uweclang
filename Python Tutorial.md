@@ -18,6 +18,7 @@ Table of Contents
   + [Map & Filter](#map--filter)
   + [Lambda](#lambda)
   + [Slices](#slices)
+  + [Ranges and Enumeration](#ranges-and-enumeration)
   + [Dictionaries](#dictionaries)
   + [Args & Kwargs](#args--kwargs)
   + [Objects](#Objects)
@@ -32,7 +33,7 @@ This section contains an introduction to many of the basic features fo the Pytho
 
 ### Docstrings
 
-Python provides a builtin means of documenting functions, objects, and packages using *docstrings*. A docstring is a string that is provided on the first line of an object, and not explicitly assigned to anything. A docstring for a function looks like this:
+Python provides a built-in means of documenting functions, objects, and packages using *docstrings*. A docstring is a string that is provided on the first line of an object, and not explicitly assigned to anything. A docstring for a function looks like this:
 
 ```python
 def my_function(args):
@@ -109,7 +110,7 @@ Python allows for a number of different syntax styles for representing text data
 
 ### Lists
 
-Lists are a means of assinging a name to a collection of data. They are probably the most commonly used kind of object in Python (aside from [Dictionaries](#dictionaries)). To create a list:
+Lists are a means of assinging a name to a collection of data. They are probably the most commonly used kind of object in Python (aside from [dictionaries](#dictionaries)). To create a list:
 
 ```python
 my_empty_list = []
@@ -118,7 +119,7 @@ my_list_of_items = [1, 2, 3, 'item4', 5.5, [], False, (1, 2)]
 ```
 
 Notice that lists can contain just about anything, including other lists.
-To find the length of a list use the builtin `len` function:
+To find the length of a list use the built-in [`len`](https://docs.python.org/3/library/functions.html#len) function:
 
 ```python
 >>> len(my_list_of_items)
@@ -182,7 +183,7 @@ This allows for conveniently returning mulitple values from a function, for inst
 >>> a, b = 1, 2
 ```
 
-Tuples are also useful with the 'splat' or 'unpack' operator `*`, as described [below](#args--kwargs).
+Tuples are also useful with the 'splat' or 'pack/unpack' operator `*`, as described [below](#args--kwargs).
 
 
 ### Format Strings
@@ -194,7 +195,13 @@ number = 3.4
 print('The number is', number, '.')
 ```
 
-By default, the arguments to `print` are seperated using spaces, which makes the output look like `the number is 3.4 .`. This can be fixed by configuring the print seperator, but there is a simpler, more flexable way to do this kind of thing:
+By default, the arguments to `print` are seperated using spaces, which makes the output look like so:
+
+```
+the number is 3.4 .
+```
+
+This can be fixed by configuring the [print seperator](https://docs.python.org/3.4/library/functions.html#print), but there is a simpler, more flexable way to do this kind of thing:
 
 ```python
 number = 2.3
@@ -236,7 +243,8 @@ The argument arg2 is a keyword argument. Thus we can call the function in multip
 5 'new value'
 ```
 
-The name `arg2` is only bound inside the function, even though you use it when calling the function. This might be confusing if you use the same variable names inside and outside:
+The name `arg2` is only bound inside the function, even though you use it when calling the function. This may be confusing if you use the same variable names inside and outside:
+
 ```python
 >>> arg2 = 'my arg2 value'
 >>> myfunction(5, arg2=arg2)
@@ -284,7 +292,7 @@ We can achieve the same results as the list comprehension by using `map` and `fi
 
 ### Generators
 
-Oftentimes, when operating on lists of data, you don't need access to the whole list at once to produce the results you want. Rather than storing a whole list of data in memory, you can store a function that looks up the next value and returns it when requested. *Generators Objects* are objects that implement this behavior.
+Oftentimes, when operating on lists of data, you don't need access to the whole list at once to produce the results you want. Rather than passing around a whole list of data in memory, you can pass a function that looks up the next value and returns it when requested. *Generators Objects* are objects that implement this behavior.
 
 For instance, in Python 3, if you try to print the results returned by the `map` function, you may get something like `<map object at 0x104ef8358>`. You can convert this to a list by calling `list` on it. In general, you want to avoid converting these objects to lists unless it is really necessary. Rather than converting it to a list, you could write:
 
@@ -293,7 +301,7 @@ for item in map_object:
     print(item)
 ```
 
-This is preserve the efficiency of the generator object.
+This will preserve the efficiency of the generator object.
 
 You can create your own generators by defining functions using the [`yield`](https://docs.python.org/2/reference/simple_stmts.html#the-yield-statement) statement. You can also use *Generator Comprehensions*, which behave like list comprehensions, but produce a generator object instead of a list:
 
@@ -301,10 +309,11 @@ You can create your own generators by defining functions using the [`yield`](htt
 my_generator = (item for item in my_list if condition)
 ```
 
+See [here](https://docs.python.org/2/reference/simple_stmts.html#the-yield-statement) for more information.
 
 ### Lambda
 
-A *Lambda Expression* is a way to define anonymous functions. They are mostly used to provide simple functions as arguments to functions like `map` and `filter`. For example, to quickly increment numbers in a list:
+A *Lambda Expression* is a way to define anonymous functions. They are mostly used to provide simple functions as arguments to other functions like `map` and `filter`. For example, to quickly increment numbers in a list:
 
 ```python
 result = map(lambda x: x+1, my_list)
@@ -320,7 +329,7 @@ result = [x+1 for x in my_list]
 
 However, when passing arguments to functions other than `map` and `filter`, lambdas may be more appropriate.
 
-Note that it is a violation of the [style guide](https://www.python.org/dev/peps/pep-0008/) to directly assign names to lambdas. This defeats the whole point of using them: just use a `def` statement instead.
+Note that it is a violation of the [style guide](https://www.python.org/dev/peps/pep-0008/) to directly assign names to lambdas. This defeats the whole point of using them and possibly obfuscates their arguments; just use a `def` statement instead.
 
 
 ### Slices
@@ -328,6 +337,7 @@ Note that it is a violation of the [style guide](https://www.python.org/dev/peps
 *Slicing* is a technique for concisely producing subsets of lists and tuples. A slice is a variation of indexing, where you use `:`'s to specify the limits and step of a sublist. The syntax is `my_list[start:end:step]`. Here are some examples:
 
 ```python
+>>> my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 >>> my_list[3:6]    # Select elements 3 to 6
 [4, 5, 6]
 >>> my_list[1:8:2]  # Select 1 to 8, stepping by 2
@@ -344,7 +354,7 @@ Note that it is a violation of the [style guide](https://www.python.org/dev/peps
 [0, 8, 6, 4, 2]
 ```
 
-Slices work on tuples in the same manner. Not that slice is inclusive on the start index, but exclusive on the end index. (This is to ensure the number of elements selected is equal to the difference `end - start`.)
+Slices work on tuples in the same manner. Note that the slice is inclusive on the start index, but exclusive on the end index. This is to ensure the number of elements selected is equal to the difference `end - start`.
 
 
 ### Dictionaries
@@ -391,6 +401,30 @@ else:
 
 
 For a listing of dictionary functions, see the [documentation](https://docs.python.org/2/library/stdtypes.html#typesmapping).
+
+
+### Ranges and Enumeration
+
+Oftentimes, you may want to enumerate over some data or perform a task a specific number of times. The [`range`](https://docs.python.org/3/library/functions.html#func-range) built-in function is useful for creating lists of numbers. (In Python 3, it produces a [generator](#generators).) For example, to print a list of 15 numbers, you can do this:
+
+```python
+for x in range(0, 15):
+    print(x)
+```
+
+(Note that the start value is included and the end value is not -- this will print all numbers 0 to 14.)
+
+If you want to loop over a list and keep track of the current index, you can use the [`enumerate`](https://docs.python.org/3/library/functions.html#enumerate) built-in, which returns the index and value as a tuple:
+
+```python
+>>> for i, v in enumerate(['a', 'b', 'c', 'd']): 
+...     print(i, v)
+...
+0 a
+1 b
+2 c
+3 d
+```
 
 
 ### Args & Kwargs
