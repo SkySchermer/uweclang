@@ -60,10 +60,8 @@ def xml_to_plain(document, verbosity=1):
     # for details.
     edits = [{'FIND': '</w:p>', 'REPLACE': '\n'},  # Preserve paragraphs.
              {'FIND': '<[^>]+>', 'REPLACE': ''},  # Remove formatting XML.
-             {'FIND': '[\x7f\x80]+', 'REPLACE': ''},  # Remove non-printable
-                                                      # characters.
-             {'FIND': ' +,', 'REPLACE': ","}  # Remove spaces before commas.
-             ]
+             {'FIND': '[\x7f\x80]+', 'REPLACE': ''}] # Remove non-printable
+                                                     # characters.
 
     # Perform text substitutions on XML data:
     for edit in edits:
