@@ -24,28 +24,22 @@ def extract_plaintext_from_docx(input_filename, output_dir, verbosity=1):
                                    + _OUTPUT_EXTENSION)
 
     # Open file for writing.
-    if verbosity >= 2:
-        print('  Opening file', os.path.basename(output_filename))
-
     try:
         out = open(output_filename, 'w')
     except IOError as e:
-        print('Output file "{}" '
-              'could not be created: {}.'.format(os.path.basename(output_filename),
-                                                 e))
+        print('Error creating file'
+              ' {}: {}.'.format(os.path.basename(output_filename), e))
         sys.exit(0)
 
 
     # Write to file.
-    if verbosity >= 2:
-        print('  Writing to file',os.path.basename(output_filename))
-
     try:
         out.write(doc.strip())
     except IOError as e:
-        print('Could not write to file {}: {}'.format(os.path.basename(output_filename),
-                                                      e))
+        print('Error writing to file'
+              ' {}: {}'.format(os.path.basename(output_filename), e))
         sys.exit(0)
+
 
     out.close()
 
