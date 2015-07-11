@@ -408,8 +408,24 @@ For a listing of dictionary functions, see the [documentation](https://docs.pyth
 Oftentimes, you may want to enumerate over some data or perform a task a specific number of times. The [`range`](https://docs.python.org/3/library/functions.html#func-range) built-in function is useful for creating lists of numbers. (In Python 3, it produces a [generator](#generators).) For example, to print a list of 15 numbers, you can do this:
 
 ```python
-for x in range(0, 15):
-    print(x)
+>>> for x in range(0, 15):
+...     print(x)
+...
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 ```
 
 (Note that the start value is included and the end value is not -- this will print all numbers 0 to 14.)
