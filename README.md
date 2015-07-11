@@ -99,6 +99,11 @@ UWEC Language Tools - Available Functions
       - `xml_to_plain(document)`
   + plain
     * [student](uweclang/plain/student.py)
+      - `punctuation_density(text)`
+      - `capitalization_density(text)`
+      - `straighten_quotes(text)`
+      - `remove_punctuation_spaces(text)`
+      - `seperate_parentheticals(text)`
     * [tools](uweclang/plain/tools.py)
       - `line_split(text)`
   + tagged
