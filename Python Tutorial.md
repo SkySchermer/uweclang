@@ -428,7 +428,7 @@ Oftentimes, you may want to enumerate over some data or perform a task a specifi
 14
 ```
 
-(Note that the start value is included and the end value is not -- this will print all numbers 0 to 14.)
+(Note that the start value is included and the end value is not.)
 
 If you want to loop over a list and keep track of the current index, you can use the [`enumerate`](https://docs.python.org/3/library/functions.html#enumerate) built-in, which returns the index and value as a tuple:
 
