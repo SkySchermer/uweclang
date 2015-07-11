@@ -24,6 +24,7 @@ Module Globals:
 import os
 import argparse
 from itertools import chain
+from math import ceil
 
 
 # Build base for batch argument parsing.
@@ -62,7 +63,7 @@ _GROUP.add_argument('-v', '--verbose',
                     action='count',
                     help='provide detailed information')
 
-BATCH_PARSER.add_argument('-b', '--batch',
+BATCH_PARSER.add_argument('-b', '--batch-size',
                           nargs='?',
                           type=int,
                           default=10,
@@ -205,7 +206,7 @@ def batch_process(process,
         None
     """
     if batch_mode == 'divide':
-        batch_size = len(in_files) // (batch_size-1)
+        batch_size = ceil(len(in_files) / (batch_size))
 
     current_batch = 0
     file_number = None
@@ -234,8 +235,8 @@ def batch_process(process,
             except FileExistsError:
                 pass
 
-            if verbosity >= 3:
-                print(' -> Starting batch ', current_batch)
+            if verbosity >= 1:
+                print('Starting batch', current_batch)
 
         # Process the file.
         process(filename,
