@@ -5,7 +5,7 @@
 import re
 
 def punctuation_density(text, punctuation=r'[,.!?:;\\/]'):
-    '''Returns the punctuation density of the given text.
+    """Returns the punctuation density of the given text.
 
     Arguments:
         text (str): The input text.
@@ -13,7 +13,7 @@ def punctuation_density(text, punctuation=r'[,.!?:;\\/]'):
             Defaults to r'[,.!?:;\\/]'.
     Returns:
         (float): The density of puntuation in the text.
-    '''
+    """
     if len(text) == 0:
         return 0
 
@@ -21,7 +21,7 @@ def punctuation_density(text, punctuation=r'[,.!?:;\\/]'):
 
 
 def capitalization_density(text):
-    '''Returns the word-starting capitalized character density of the given
+    """Returns the word-starting capitalized character density of the given
     text.
 
     Arguments:
@@ -29,7 +29,7 @@ def capitalization_density(text):
 
     Returns:
         (float): The density of capitalized words in the text.
-    '''
+    """
     if len(text) == 0:
         return 0
 
@@ -37,14 +37,14 @@ def capitalization_density(text):
 
 
 def straighten_quotes(text):
-    '''Returns the text with angled quotes replaced with straight quotes.
+    """Returns the text with angled quotes replaced with straight quotes.
 
     Arguments:
         text (str): The input text.
 
     Returns:
         (str) The modified text.
-    '''
+    """
 
     text = re.sub(r'[“”]', '', text)
     text = re.sub(r'[‘’]', '', text)
@@ -53,7 +53,7 @@ def straighten_quotes(text):
 
 
 def remove_punctuation_spaces(text, punctuation=',.!?:;'):
-    '''Returns text modified by removing whitespace before punctuation.
+    """Returns text modified by removing whitespace before punctuation.
 
     Arguments:
         text (str): The input text.
@@ -62,7 +62,7 @@ def remove_punctuation_spaces(text, punctuation=',.!?:;'):
 
     Returns:
         (str): The modified text.
-    '''
+    """
     for char in punctuation:
         text = re.sub(r'\b\s+{}'.format(char), char, text)
 
@@ -70,21 +70,29 @@ def remove_punctuation_spaces(text, punctuation=',.!?:;'):
 
 
 def seperate_parentheticals(text, lparen='\(', rparen='\)'):
-    '''Returns the text split into a list of parenthetical and
+    """Returns the text split into a list of parenthetical and
     non-parenthetical text.
 
-    It is important to remember to escape the parentheticals if the have a
-    meaning in regex.
+    This function is not suitable for processing nested parentheticals.
 
     Arguments:
         text (str): The input text.
         lparen (str): The regex of the left parenthetical. Defaults to '\('.
         rparen (str): The regex of the right parenthetical. Defaults to '\)'.
 
+        (It is important to remember to escape the parenthetical arguments if
+        theyhave a meaning in regex.)
+
     Returns:
-        ([(str, bool)]): A generator of tuples containing the text and whether or
-            not the text was in a parenthetical.
-    '''
+        ([(str, bool)]): A generator of tuples containing the text and whether
+            or not the text was in a parenthetical.
+
+    Simple example:
+
+        >>> list(seperate_parentheticals('ab(c)()de'))
+        [('ab', False), ('c', True), ('', True), ('de', False)]
+
+    """
     def tuplify(x):
         if x[0] == '\x1e':
             return (x[1:], True)
