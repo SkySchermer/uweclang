@@ -428,7 +428,7 @@ The following code is a common pattern in Python scripts:
 if __name__ == '__main__':
 ```
 
-(As seen in [extract](scripts/extract))
+(As seen in [extract](scripts/extract).)
 
 The purpose of this code is to determine if the script is being run as an executable or imported as a script. Since Python is a dynamic, interpretted language, statements such as defining functions and classes happen when the code is being executed, so importing a script will cause it to run.
 
@@ -441,7 +441,7 @@ for x in targets:
     (ignored_files, files)[file_selector(x)].append(x)
 ```
 
-(As seen in [uweclang/batch/tools.py](uweclang/batch/tools.py))
+(As seen in [uweclang/batch/tools.py](uweclang/batch/tools.py).)
 
 This is a fancy way of partitioning a list into two lists based on a predicate. The normal (less efficient, but more readable) way of doing this looks like so:
 
@@ -461,3 +461,21 @@ for x in targets:
 ```
 
 This pattern exploits a quirk of python that allows `True` to act like `1`, and `False` to act like `0`. So we take the tuple `(ignored_files, files)`, and take the first item if `is_valid_target(x)` evaluates to false, and the second otherwise. Then we call the `.append()` method on `x` to add it to the selected list
+
+#### Argument Unpacking
+
+```python
+[x[0] for x in seperated_text if selector_function(*x)]
+```
+
+(As seen in [uweclang/plain/student.py](uweclang/plain/student.py).)
+
+In this example, `seperated_text` is a list of tuples, so the each `x` is a tuple. The `*` operator 'unpacks' the tuple, allowing its components to be passed as arguments to the function. So this code is equivalent to the following:
+
+```python
+[x[0] for x in seperated_text if selector_function(x[0], x[1])]
+```
+
+If we just passed `x` to the function directly, it would be passing a tuple to the first argument, rather than the contents of the tuple to each argument.
+
+A similar thing can be achieved by unpacking dictionaries into keyword arguments using the double-splat operator `**`. See [Args & Kwargs](#args--kwargs) for the reverse operation.
