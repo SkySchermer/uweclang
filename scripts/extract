@@ -109,7 +109,7 @@ if __name__ == '__main__':
     if args.verbose >= 1:
         for x in ignored_files:
             print("Ignore file:", x)
-        print('--- Begin Processing ---')
+        print('\n--- Begin Processing ---')
 
 
     # Process the files.
