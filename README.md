@@ -1,6 +1,7 @@
 UWEC Language Tools
 ===================
 
+
 ### Table of Contents
 * [UWEC Language Tools](#uwec-language-tools)
   + [Table of Contents](#table-of-contents)
@@ -11,6 +12,7 @@ UWEC Language Tools
     * [Intermediate Files](#intermediate-files)
   + [UWEC Language Tools - Available Functions](#uwec-language-tools---available-functions)
   + [Additional Resources](#additional-resources)
+
 
 ### Introduction
 
@@ -40,6 +42,7 @@ There is an additional [misc](scripts/misc) folder that contains older scripts f
 
 The [Developer Notes](Developer Notes.md) contain a list of programming guidelines for writing scripts. It has basic information about Python, and it is mostly focused on the patterns that are used in this project. The [Python Tutorial](Python Tutorial.md) contains a very rapid introduction to most of Python's common features. It is somewhat of a reference tool.
 
+
 Student Corpus Scripts
 ----------------------
 
@@ -52,6 +55,7 @@ If the output directory is not supplied, the resulting output will be in the cur
 For help on a given script, use:
 
     script-name -h
+
 
 #### Examples
 ```shell
@@ -74,6 +78,7 @@ The student corpus scripts are meant to be run in sequence to accomplish the fol
   - output: ___.tag.txt
 5. Summarize tagged files. (Script: [summary](scripts/summary))
 
+
 ### Intermediate Files
 
 * Summer 2015
@@ -83,6 +88,7 @@ The student corpus scripts are meant to be run in sequence to accomplish the fol
     * Processed Files
       - batchXXX
     * Tagged Files
+
 
 UWEC Language Tools - Available Functions
 -----------------------------------------
