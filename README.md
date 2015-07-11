@@ -123,5 +123,8 @@ Additional Resources
   - [NLTK book](http://www.nltk.org/book/)
 * [Python](https://www.python.org/)
   - [Style Guide](https://www.python.org/dev/peps/pep-0008/)
+  - [Regular Expressions](https://docs.python.org/2/howto/regex.html)
+    * [Regexr](http://www.regexr.com/) -- helpful tool for building and understanding regex. (This uses JavaScript, so its regular expressions may not behave exactly like python in corner cases.)
+    * [Pythex](http://pythex.org/) -- A not-as-good regex tester that uses Python.
 
 [nltk.org]: http://www.nltk.org/
