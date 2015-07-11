@@ -1,6 +1,163 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 import sys
+import os
+import argparse
+
+import uweclang
+
+# Module global variable for setting the extension for output files.
+_OUTPUT_EXTENSION = ''
+_MEMO_OUTPUT_EXTENSION = ''
+_LOG_OUTPUT_EXTENSION = ''
+
+
+def scrub_plaintext(input_filename, output_dir, verbosity=1):
+    """
+    """
+    # Get document text.
+    try:
+        doc = open(input_filename, 'r').read()
+    except:
+
+    # Construct output filenames.
+    global _OUTPUT_EXTENSION
+    global _MEMO_OUTPUT_EXTENSION
+    global _LOG_OUTPUT_EXTENSION
+
+    output_filename = os.path.join(output_dir,
+                                   os.path.splitext(os.path.basename(input_filename))[0]
+                                   + _OUTPUT_EXTENSION)
+    memo_filename = os.path.join(output_dir,
+                                 os.path.splitext(os.path.basename(input_filename))[0]
+                                 + _OUTPUT_EXTENSION)
+    log_filename = os.path.join(output_dir,
+                                os.path.splitext(os.path.basename(input_filename))[0]
+                                + _OUTPUT_EXTENSION)
+
+    # Open file for writing.
+    # if verbosity >= 2:
+    #     print('  Opening file', os.path.basename(output_filename))
+
+    # try:
+    #     out = open(output_filename, 'w')
+    # except IOError as e:
+    #     print('Output file "{}" '
+    #           'could not be created: {}.'.format(os.path.basename(output_filename),
+    #                                              e))
+    #     sys.exit(0)
+
+
+    # # Write to file.
+    # if verbosity >= 2:
+    #     print('  Writing to file',os.path.basename(output_filename))
+
+    # try:
+    #     out.write(doc.strip())
+    # except IOError as e:
+    #     print('Could not write to file {}: {}'.format(os.path.basename(output_filename),
+    #                                                   e))
+    #     sys.exit(0)
+
+    # out.close()
+
+    # if verbosity >= 1:
+    #     print('Extracted plaintext from '
+    #           '{} into {}'.format(os.path.basename(input_filename),
+    #                               os.path.basename(output_filename)))
+
 
 if __name__ == '__main__':
-	print('Unimplemented')
+
+    # Create a command line argument parser based on the BATCH_PARSER template.
+    # See uweclang/batch/tools.py for details.
+    parser = argparse.ArgumentParser(
+        description='Extracts plaintext from docx files',
+        parents=[uweclang.BATCH_PARSER])
+
+
+    # Add extra command line arguments for this script.
+    parser.add_argument('-e', '--extensions',
+                        nargs='*',
+                        default=['.txt'],
+                        metavar='ext',
+                        dest='ext',
+                        help='accepted file extensions for input')
+
+    parser.add_argument('-x', '--o-extension',
+                        nargs='?',
+                        default='.txt',
+                        metavar='oext',
+                        dest='oext',
+                        help='extension for output file')
+
+    parser.add_argument('-xl', '--l-extension',
+                        nargs='?',
+                        default='.log',
+                        metavar='lext',
+                        dest='lext',
+                        help='extension for output log file')
+
+    parser.add_argument('-xm', '--m-extension',
+                        nargs='?',
+                        default='.memo.txt',
+                        metavar='mext',
+                        dest='mext',
+                        help='extension for output memo file')
+
+
+    # Parse command line arguments.
+    args = parser.parse_args()
+
+
+    # Set default verbosity.
+    if args.verbose is None:
+        args.verbose = 1
+
+    global _OUTPUT_EXTENSION
+    global _MEMO_OUTPUT_EXTENSION
+    global _LOG_OUTPUT_EXTENSION
+    _OUTPUT_EXTENSION = args.oext
+    _MEMO_OUTPUT_EXTENSION = args.mext
+    _LOG_OUTPUT_EXTENSION = args.lext
+
+    # Setup extension checking function.
+    def is_valid_target(file):
+        return os.path.isfile(file) and os.path.splitext(file)[1] in args.ext
+
+
+    # Select the files to process.
+    (files, ignored_files) = uweclang.select_files(args,
+                                                   file_selector=is_valid_target)
+
+
+    # Resolve relative ouput path.
+    out_path = os.path.abspath(args.output)
+
+
+    # Print list of ignored files.
+    if args.verbose >= 1:
+        for x in ignored_files:
+            print("Ignore file:", x)
+        print('--- Begin Processing ---')
+
+
+    # Process the files.
+    if args.batch_mode == 'none':
+        # Process each file seperately.
+        for filename in files:
+            name_part = os.path.splitext(os.path.basename(filename))[0]
+            extract_plaintext_from_docx(filename,
+                                        out_path,
+                                        verbosity=args.verbose)
+    else:
+        # Process files in batch mode.
+        uweclang.batch_process(extract_plaintext_from_docx,
+                               in_files=list(files),
+                               out_dir=out_path,
+                               batch_size=args.batch_size,
+                               batch_mode=args.batch_mode,
+                               verbosity=args.verbose)
+
+    if args.verbose >= 1:
+        print('--- End Processing ---')
