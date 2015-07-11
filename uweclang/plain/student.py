@@ -114,3 +114,19 @@ def seperate_parentheticals(text, lparen='\(', rparen='\)'):
 
     return (tuplify(x) for x in text.split('\x1d') if x)
 
+
+def recombine_selected(selector_function, seperated_text, sep=''):
+    """Recombines text seperated by the seperate_parentheticals function by
+    using a selector function to determine which portions to keep or discard.
+
+    Arguments:
+        seperated_text ([(str, bool)]): A list of tuples containing text and a
+            data value.
+        selector_function (str, bool -> bool): A function taking the text and
+            data value and returning whether or not to keep the text.
+        sep (str): The seperator to use when combining the text. Defaults to ''.
+
+    Returns:
+        (str): The resulting text.
+    """
+    return sep.join([x[0] for x in seperated_text if selector_function(*x)])
