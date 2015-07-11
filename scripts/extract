@@ -92,7 +92,6 @@ if __name__ == '__main__':
     _OUTPUT_EXTENSION = args.oext
 
     # Setup extension checking function.
-    args.ext = args.ext
     def is_valid_target(file):
         return os.path.isfile(file) and os.path.splitext(file)[1] in args.ext
 
