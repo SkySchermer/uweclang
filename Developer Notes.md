@@ -6,18 +6,18 @@ Table of Contents
 
 * [Table of Contents](#table-of-contents)
 * [Student Corpus Scripts](#student-corpus-scripts)
-  * [Command Line Arguments](#command-line-arguments)
+  + [Command Line Arguments](#command-line-arguments)
 * [UWEC Language Tools package](#uwec-language-tools-package)
-  * [Packages, Modules, and Imports](#packages-modules-and-imports)
-  * [File Headers](#file-headers)
+  + [Packages, Modules, and Imports](#packages-modules-and-imports)
+  + [File Headers](#file-headers)
 * [Python Versions](#python-versions)
-  * [Shebang](#shebang)
-  * [Future Imports](#future-imports)
-  * [PYTHONPATH](#pythonpath)
+  + [Shebang](#shebang)
+  + [Future Imports](#future-imports)
+  + [PYTHONPATH](#pythonpath)
 * [Conventions](#conventions)
-  * [The Differences Between Scripts, Modules, and Packages](#the-differences-between-scripts-modules-and-packages)
-  * [Verbosity](#verbosity)
-  * [Python Introduction](#python-introduction)
+  + [The Differences Between Scripts, Modules, and Packages](#the-differences-between-scripts-modules-and-packages)
+  + [Verbosity](#verbosity)
+  + [Python Introduction](#python-introduction)
     * [Docstrings](#docstrings)
     * [Strings](#Strings)
     * [Lists](#lists)
@@ -33,15 +33,16 @@ Table of Contents
     * [Args & Kwargs](#args--kwargs)
     * [Objects](#Objects)
     * [Regular Expressions](#regular-expressions)
-  * [Code Examples](#code-examples)
+  + [Code Examples](#code-examples)
     * [Main](#main)
     * [Tuple Selector](#tuple-selector)
+    * [Argument Unpacking](#argument-unpacking)
 
 
 Student Corpus Scripts
 ----------------------
 
-## Command Line Arguments
+### Command Line Arguments
 
 Todo...
 
@@ -50,11 +51,15 @@ https://docs.python.org/3/howto/argparse.html
 UWEC Language Tools package
 ---------------------------
 
-## Packages, Modules, and Imports
+Todo...
+
+### Packages, Modules, and Imports
 
 Todo...
 
-## File Headers
+### File Headers
+
+Todo...
 
 Python Versions
 ---------------
@@ -71,7 +76,7 @@ If you have Python 3 installed, you may need to use:
 * `which python3`
 * `python3 --version`
 
-## Shebang
+### Shebang
 
 *This section's information may not apply to machines running Microsoft Windows.*
 
@@ -100,18 +105,18 @@ However, with the shebang, the interpreter knows to use Python, so you can write
 
 (This assumes you have permissions for executing the file. You may need to do `chmod +x myscript`.)
 
-## Future Imports
+### Future Imports
 
 Todo...
 
-## PYTHONPATH
+### PYTHONPATH
 
 Todo...
 
 Conventions
 -----------
 
-## The Differences Between Scripts, Modules, and Packages
+### The Differences Between Scripts, Modules, and Packages
 
 A *Python Script* is any file that contains python code. These tend not to have file extensions, since you can invoke them from the command line (using the shebang) more conveniently and idiomatically without it.
 
@@ -123,7 +128,7 @@ A *Python Module* is a python script that is meant to be imported by another scr
 
 * The [docx.py](uweclang/binary/docx.py) file is a good example of a python module. It defines a couple of functions and does nothing else. (If run as an executable, it would load those functions into the interpreter and then quit, and the functions would then unload.) The only way to use these functions is to `import` them. 
 
-* All of the variables, functions, classes, and objects in the module are called 'attributes' of the module. By default, if an attribute name starts with `_`, it will not available to be imported.
+* All of the variables, functions, classes, and objects in the module are called 'attributes' of the module. By default, if an attribute name starts with `_`, it will not be available to be imported.
 
 A *Python Package* is a collection of modules. It is useful for grouping a number of modules together under a hierarchical naming scheme. In order to use a package, Python has to know which folders are package folders, and which modules to use. The Python `import` statment will look for `__init__.py` files in folders to determine if they are package folders. (This file doesn't need to have anything in it -- it just has to exist in the right location.) 
 
@@ -131,7 +136,7 @@ A *Python Package* is a collection of modules. It is useful for grouping a numbe
 
 * Note that the particular way the `from _ import` statements are used allows the module functions to be used with shorter qualifications. E.g., `uweclang.x()` instead of `uweclang.batch.tools.x()`. This is not normal! This will cause problems if you have modules with attributes that have the same name.
 
-## Verbosity
+### Verbosity
 
 Whever a script or function uses a verbosity option, they can be interpreted as follows:
 
@@ -142,11 +147,11 @@ Whever a script or function uses a verbosity option, they can be interpreted as 
 | 2     | -vv  | Resource access/subtask output |
 | 3     | -vvv | Excessive output               |
 
-## Python Introduction
+### Python Introduction
 
 This section contains an introduction to many of the basic features fo the Python language. It focuses mainly on the syntax of common, generally applicable constructs.
 
-### Docstrings
+#### Docstrings
 
 Python provides a builtin means of documenting functions, objects, and packages using *docstrings*. A docstring is a string that is provided on the first line of an object, and not explicitly assigned to anything. A docstring for a function looks like this:
 
@@ -170,7 +175,7 @@ myfunction.__doc__
 
 For additional information see [PEP-257](https://www.python.org/dev/peps/pep-0257/).
 
-### Strings
+#### Strings
 
 Python allows for a number of different syntax styles for representing text data. Below is a summary of the common ones.
 
@@ -193,7 +198,7 @@ Python allows for a number of different syntax styles for representing text data
     """So does 
        this one."""
 
-    ('This one is written out on multiple lines' # <- No comma here!
+    ('This one is written out on multiple lines' ## <- No comma here!
      ' but the two strings will be joined together as one!')
     ```
 
@@ -202,13 +207,13 @@ Python allows for a number of different syntax styles for representing text data
     'Escape sequences \'allow\' you to embed special characters in a string.'
 
     #Common escape sequences:
-    '\n' # Newline
-    '\r' # Carriage return (\r\n is how new lines are handled on Microsoft Windows.)
-    '\t' # Tab
-    '\'' # Single quote
-    '\"' # Double quote
-    '\0' # Null character
-    '\x00' # Special character selected by numerical code
+    '\n' ## Newline
+    '\r' ## Carriage return (\r\n is how new lines are handled on Microsoft Windows.)
+    '\t' ## Tab
+    '\'' ## Single quote
+    '\"' ## Double quote
+    '\0' ## Null character
+    '\x00' ## Special character selected by numerical code
     ```
 
 * Raw strings
@@ -221,7 +226,7 @@ Python allows for a number of different syntax styles for representing text data
     
     (Raw strings are very useful for working with [Regular Expressions](#regular-expressions).)
 
-### Lists
+#### Lists
 
 Lists are a means of assinging a name to a collection of data. They are probably the most commonly used kind of object in Python. To create a list:
 
@@ -254,7 +259,7 @@ Notice that the list indexes start at 0, not at 1. (This is to allow easy calcul
 
 For a listing of list functions, see the [documentation](https://docs.python.org/2.7/tutorial/datastructures.html).
 
-### Tuples
+#### Tuples
 
 Tuples behave much like lists in that they are collections of data. To create a tuple:
 
@@ -297,7 +302,7 @@ This allows for conveniently returning mulitple values from a function, for inst
 
 Tuples are also useful with the 'splat' or 'unpack' operator `*`, as described [below](#args--kwargs).
 
-### Format Strings
+#### Format Strings
 
 There are two basic ways of displaying formatted output in Python. The first is to manually `print` how you want it:
 
@@ -329,7 +334,7 @@ You can also use floating-point format specifiers to deal with decimal digits ea
 
 The documentation of format strings can be found [here](https://docs.python.org/2/library/string.html#format-string-syntax).
 
-### Keyword Arguments
+#### Keyword Arguments
 
 Keyword arguments allow you to provide default values to functions and simplify how they are used. To define a keyword argument:
 
@@ -354,7 +359,7 @@ The name `arg2` is only bound inside the function, even though you use it when c
 5 'my arg2 value'
 ```
 
-### List Comprehensions
+#### List Comprehensions
 
 List comprehesions are the idiomatic way to generate lists and perform [map and filter](#map--filter) operations on data. They essentially operate like `for` loops, but they will always return a list:
 
@@ -366,7 +371,7 @@ List comprehesions are the idiomatic way to generate lists and perform [map and 
 [2, 4]
 ```
 
-### Map & Filter
+#### Map & Filter
 
 The `map` and `filter` functions are a more functional-based way of applying functions to lists. If we have a few functions we with to apply to data:
 
@@ -390,37 +395,37 @@ We can achieve the same results as the list comprehension by using `map` and `fi
 
 (Note: In Python 3, these functions return [generator objects](#generators), so you'll need to use `list()` to convert them into lists for printing.)
 
-### Generators
+#### Generators
 
 Todo...
 
-### Lambda
+#### Lambda
 
 Todo...
 
-### Slices
+#### Slices
 
 Todo...
 
-### Dictionaries
+#### Dictionaries
 
 Todo...
 
-### Args & Kwargs
+#### Args & Kwargs
 
 Todo...
 
-### Objects
+#### Objects
 
 Todo...
 
-### Regular Expressions
+#### Regular Expressions
 
 Todo...
 
-## Code Examples
+### Code Examples
 
-#### Main
+##### Main
 
 The following code is a common pattern in Python scripts:
 
@@ -434,7 +439,7 @@ The purpose of this code is to determine if the script is being run as an execut
 
 This pattern is useful to guard code that shouldn't run when the file is imported.
 
-#### Tuple Selector
+##### Tuple Selector
 
 ```python
 for x in targets:
@@ -462,7 +467,7 @@ for x in targets:
 
 This pattern exploits a quirk of python that allows `True` to act like `1`, and `False` to act like `0`. So we take the tuple `(ignored_files, files)`, and take the first item if `is_valid_target(x)` evaluates to false, and the second otherwise. Then we call the `.append()` method on `x` to add it to the selected list
 
-#### Argument Unpacking
+##### Argument Unpacking
 
 ```python
 [x[0] for x in seperated_text if selector_function(*x)]
