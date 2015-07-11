@@ -13,6 +13,7 @@ UWEC Language Tools
   + [UWEC Language Tools - Available Functions](#uwec-language-tools---available-functions)
   + [Additional Resources](#additional-resources)
 
+The [Developer Notes](Developer Notes.md) contain a list of programming guidelines for writing scripts. It has basic information about Python, and it is mostly focused on the patterns that are used in this project. The [Python Tutorial](Python Tutorial.md) contains a very rapid introduction to most of Python's common features. It is somewhat of a reference tool.
 
 ### Introduction
 
@@ -39,8 +40,6 @@ This project houses a number of python scripts for analyzing student paper corpo
   It is important to note that this import will only work if the [uweclang](uweclang) folder is in PYTHONPATH. The simplest (and least flexible) way to do this is to ensure the [uweclang](uweclang) folder is in the current directory when running scripts. (On *nix-like systems, you may need to run `export PYTHONPATH=.` first.)
 
 There is an additional [misc](scripts/misc) folder that contains older scripts for reference.
-
-The [Developer Notes](Developer Notes.md) contain a list of programming guidelines for writing scripts. It has basic information about Python, and it is mostly focused on the patterns that are used in this project. The [Python Tutorial](Python Tutorial.md) contains a very rapid introduction to most of Python's common features. It is somewhat of a reference tool.
 
 
 Student Corpus Scripts
