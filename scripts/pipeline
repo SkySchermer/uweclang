@@ -5,3 +5,7 @@ export PYTHONPATH=.
 scripts/extract "Summer 2015/Student Corpus/Unprocessed Files/" \
 			 -o "Summer 2015/Student Corpus/Plain Files/"
 
+scripts/scrub "Summer 2015/Student Corpus/Plain Files/"		\
+		   -o "Summer 2015/Student Corpus/Processed Files/" \
+		   -b 4												\
+		   -m divide
