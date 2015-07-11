@@ -21,9 +21,7 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
     except:
 
     # Construct output filenames.
-    global _OUTPUT_EXTENSION
-    global _MEMO_OUTPUT_EXTENSION
-    global _LOG_OUTPUT_EXTENSION
+    global _OUTPUT_EXTENSION, _MEMO_OUTPUT_EXTENSION, _LOG_OUTPUT_EXTENSION
 
     output_filename = os.path.join(output_dir,
                                    os.path.splitext(os.path.basename(input_filename))[0]
@@ -114,9 +112,7 @@ if __name__ == '__main__':
     if args.verbose is None:
         args.verbose = 1
 
-    global _OUTPUT_EXTENSION
-    global _MEMO_OUTPUT_EXTENSION
-    global _LOG_OUTPUT_EXTENSION
+    global _OUTPUT_EXTENSION, _MEMO_OUTPUT_EXTENSION, _LOG_OUTPUT_EXTENSION
     _OUTPUT_EXTENSION = args.oext
     _MEMO_OUTPUT_EXTENSION = args.mext
     _LOG_OUTPUT_EXTENSION = args.lext
