@@ -6,7 +6,7 @@ import argparse
 
 import uweclang
 
-# Module global variable for setting the extension for output files.
+# Script global variable for setting the extension for output files.
 _OUTPUT_EXTENSION = ''
 
 

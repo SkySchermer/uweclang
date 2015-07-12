@@ -8,10 +8,11 @@ import argparse
 import uweclang
 
 
-# Module global variable for setting the extension for output files.
+# Script global variables for setting the extension for output files.
 _OUTPUT_EXTENSION = ''
 _MEMO_OUTPUT_EXTENSION = ''
 _LOG_OUTPUT_EXTENSION = ''
+
 
 _CAPS_LIMIT = 100
 _PUNC_LIMIT = 100
