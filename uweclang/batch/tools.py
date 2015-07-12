@@ -16,7 +16,7 @@ Module Globals:
             --output: Output directory.
             --quiet: Silence process output.
             --verbose: Select process output level.
-            --batch: Batch-size for batch mode.
+            --batch-size: Size of batches, or number of division, depending on the batch-mode.
             --batch-mode: Select how to do batching.
 
 """
