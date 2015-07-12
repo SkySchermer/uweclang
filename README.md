@@ -100,6 +100,7 @@ UWEC Language Tools - Available Functions
       - `batch_process(process)`
   + binary
     * [docx](uweclang/binary/docx.py)
+      - `PlainTextExtractor`
       - `get_document_xml(filename)`
       - `xml_to_plain(document)`
   + plain
@@ -125,5 +126,6 @@ Additional Resources
   - [Regular Expressions](https://docs.python.org/2/howto/regex.html)
     * [Regexr](http://www.regexr.com/) -- helpful tool for building and understanding regex. (This uses JavaScript, so its regular expressions may not behave exactly like python in corner cases.)
     * [Pythex](http://pythex.org/) -- A not-as-good regex tester that uses Python.
+  - [Python 2/Python 3 compatability](http://python-future.org/compatible_idioms.html)
 
 [nltk.org]: http://www.nltk.org/
