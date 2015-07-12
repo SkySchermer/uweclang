@@ -18,7 +18,7 @@ def punctuation_density(text, punctuation=r'[,.!?:;\\/]'):
     if len(text) == 0:
         return 0
 
-    return len(re.findall(punctuation, text)) / len(text)
+    return len(re.findall(punctuation, text)) / len(re.findall(r'\b\w+', text))
 
 
 def capitalization_density(text):
@@ -34,7 +34,8 @@ def capitalization_density(text):
     if len(text) == 0:
         return 0
 
-    return len(re.findall(r'\b[A-Z]\w+', text)) / len(text)
+    text = re.sub('\W', ' ', text)
+    return len(re.findall(r'\b[A-Z]\w+', text)) / len(re.findall(r'\b\w+', text))
 
 
 def straighten_quotes(text):
@@ -92,7 +93,6 @@ def seperate_parentheticals(text, lparen='\(', rparen='\)'):
 
         >>> list(seperate_parentheticals('ab(c)()de'))
         [('ab', False), ('c', True), ('', True), ('de', False)]
-
     """
     def tuplify(x):
         if x[0] == '\x1e':

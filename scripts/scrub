@@ -13,9 +13,9 @@ _OUTPUT_EXTENSION = ''
 _MEMO_OUTPUT_EXTENSION = ''
 _LOG_OUTPUT_EXTENSION = ''
 
-
-_CAPS_LIMIT = 100
-_PUNC_LIMIT = 100
+# Set the default capitalization and punctuation percent-per-word limits
+_CAPS_LIMIT = 0.50
+_PUNC_LIMIT = 0.30
 
 
 def scrub_plaintext(input_filename, output_dir, verbosity=1):
@@ -97,14 +97,14 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
         caps = uweclang.capitalization_density(line)
 
         # Remove citations
-        if punc > _PUNC_LIMIT:
+        if punc >= _PUNC_LIMIT:
             print('Line {}: REMOVE (Line Punctuation = {:.3f}):'
                   '\n\t{}\n'.format(line_number, caps, line),
                   file=log)
             continue
 
         # Remove titles
-        if caps > _CAPS_LIMIT:
+        if caps >= _CAPS_LIMIT:
             if re.match('writer.*memo', line, flags=re.IGNORECASE):
                 found_memo = True
                 # Open memo file.
@@ -127,14 +127,14 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                 punc = uweclang.punctuation_density(text)
                 caps = uweclang.capitalization_density(text)
 
-                if punc > _PUNC_LIMIT:
+                if punc >= _PUNC_LIMIT:
                     print('Line {}: EDIT OUT '
                           '(Parenthetical Punctuation = {:.3f}):'
                           '\n\t({})\n'.format(line_number, punc, text),
                           file=log)
                     return False
 
-                if caps > _CAPS_LIMIT:
+                if caps >= _CAPS_LIMIT:
                     print('Line {}: EDIT OUT '
                           '(Parenthetical Capitalization = {:.3f}):'
                           '\n\t({})\n'.format(line_number, caps, line),
@@ -199,14 +199,14 @@ if __name__ == '__main__':
 
     parser.add_argument('--caps-limit',
                         type=float,
-                        default=0.06,
+                        default=_CAPS_LIMIT,
                         metavar='percent',
                         dest='caps',
                         help='capitalization percent for title removal')
 
     parser.add_argument('--punc-limit',
                         type=float,
-                        default=0.05,
+                        default=_PUNC_LIMIT,
                         metavar='percent',
                         dest='punc',
                         help='punctuation percent for citation removal')
