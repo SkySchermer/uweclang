@@ -1,0 +1,9 @@
+#! /usr/bin/env python3
+
+import uweclang
+from pprint import pprint
+
+text = 'This is before, (in the middle, (deep()er)), and after '
+tree = uweclang.extract_parentheticals(text)
+
+pprint(tree)

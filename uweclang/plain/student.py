@@ -71,6 +71,40 @@ def remove_punctuation_spaces(text, punctuation=',.!?:;'):
     return text
 
 
+def extract_parentheticals(text, lparen='\(', rparen='\)'):
+    """
+    """
+
+
+    par_regex = re.compile(r'([^{0}]*)'
+                            '({0})(.*)({1})'
+                            '([^{0}{1}]*)'.format(lparen, rparen))
+
+    def _extract_parentheticals_recursive(text, lparen, rparen):
+        tree = {}
+        match = par_regex.match(text)
+
+        if not match:
+            return text
+
+
+        tree['full'] = match.group(0)
+        tree['before'] = match.group(1)
+        tree['after'] = match.group(5)
+        tree['parens'] = (match.group(2), match.group(4))
+        tree['enclosed'] = _extract_parentheticals_recursive(match.group(3),
+                                                             lparen,
+                                                             rparen)
+        return tree
+
+    return _extract_parentheticals_recursive(text, lparen, rparen)
+
+
+
+
+
+
+
 def seperate_parentheticals(text, lparen='\(', rparen='\)'):
     """Returns the text split into a list of parenthetical and
     non-parenthetical text.
