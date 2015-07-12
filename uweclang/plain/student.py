@@ -74,28 +74,55 @@ def remove_punctuation_spaces(text, punctuation=',.!?:;'):
 def extract_parentheticals(text, lparen='\(', rparen='\)'):
     """
     """
+    n_regex = re.compile(r'([^{}{}]*)(.*)'.format(lparen, rparen))
+    l_regex = re.compile(r'({})(.*)'.format(lparen))
+    r_regex = re.compile(r'({})(.*)'.format(rparen))
+
+    tree = {'parens': None,
+            'text': []}
+    context = [tree]
+    depth = 0
+    rest = text
+    while rest:
+        node = context[0]
+
+        m = r_regex.fullmatch(rest)
+        if m:
+            print('Found rparen:', m.group(1))
+
+            if node['parens'] is None:
+                print('Unmatched rparen')
+                node['text'].append(m.group(1))
+            else:
+                node = context.pop(0)
+                node['parens'] = (node['parens'][0], m.group(1))
+
+            rest = m.group(2)
+            continue
+
+        m = l_regex.fullmatch(rest)
+        if m:
+            print('Found lparen:', m.group(1))
+            new_node = {'parens': (m.group(1), None),
+                                'text': []}
+            node['text'].append(new_node)
+            context.insert(0, new_node)
+
+            rest = m.group(2)
+            continue
+
+        m = n_regex.fullmatch(rest)
+        if m:
+            print('Found text:', m.group(1))
+            node['text'].append(m.group(1))
+
+            rest = m.group(2)
+
+    if len(tree['text']) == 1:
+        tree = tree['text'][0]
+    return tree
 
 
-    par_regex = re.compile(r'([^{0}]*)'
-                            '({0})(.*)({1})'
-                            '([^{0}{1}]*)'.format(lparen, rparen))
-
-    def _extract_parentheticals_recursive(text, lparen, rparen):
-        tree = {}
-        match = par_regex.match(text)
-
-        if not match:
-            return text
-
-
-        tree['full'] = match.group(0)
-        tree['before'] = match.group(1)
-        tree['after'] = match.group(5)
-        tree['parens'] = (match.group(2), match.group(4))
-        tree['enclosed'] = _extract_parentheticals_recursive(match.group(3),
-                                                             lparen,
-                                                             rparen)
-        return tree
 
     return _extract_parentheticals_recursive(text, lparen, rparen)
 
