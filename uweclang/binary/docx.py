@@ -7,7 +7,36 @@ import sys
 import os
 import zipfile
 import re
-import xml.etree.ElementTree
+
+from xml.etree.ElementTree import XMLParser
+
+class PlainTextExtractor:
+    """Simple XML parser for extracting plaintext.
+
+    See https://docs.python.org/2/library/xml.etree.elementtree.html for more
+    information.
+    """
+    depth = 0
+    text = []
+
+    def __init__(self):
+        self.depth = 0
+        self.text = []
+
+    def start(self, tag, attrib):
+        # Identify linebreaks / paragraph tags.
+        if tag.endswith('}br') or tag.endswith('}p'):
+            self.text.append('\n')
+        self.depth += 1
+
+    def end(self, tag):
+        self.depth -= 1
+
+    def data(self, data):
+        self.text.append(data)
+
+    def close(self):
+        return ''.join(self.text)
 
 
 def get_document_xml(filename,
@@ -56,20 +85,8 @@ def xml_to_plain(document, verbosity=1):
     Returns:
         The document in plaintext.
     """
-    # This is a list of find/replace pairs for editing the docx XML data. See
-    #   https://docs.python.org/2/library/re.html
-    # for details.
-    edits = [{'FIND': '</w:p>', 'REPLACE': '\n'},  # Preserve paragraphs.
-             {'FIND': '<[^>]+>', 'REPLACE': ''},  # Remove formatting XML.
-             {'FIND': '[\x7f\x80]+', 'REPLACE': ''}] # Remove non-printable
-                                                     # characters.
+    parser = XMLParser(target=PlainTextExtractor())
+    parser.feed(document)
 
-    # Perform text substitutions on XML data:
-    for edit in edits:
-        if verbosity >= 3:
-            print('Performing edit "{}" -> "{}"'.format(edit['FIND'],
-                                                        edit['REPLACE']))
+    return parser.close()
 
-        document = re.sub(edit['FIND'], edit['REPLACE'], document)
-
-    return document

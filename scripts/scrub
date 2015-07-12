@@ -7,6 +7,7 @@ import argparse
 
 import uweclang
 
+
 # Module global variable for setting the extension for output files.
 _OUTPUT_EXTENSION = ''
 _MEMO_OUTPUT_EXTENSION = ''
