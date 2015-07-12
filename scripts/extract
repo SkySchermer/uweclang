@@ -11,7 +11,19 @@ _OUTPUT_EXTENSION = ''
 
 
 def extract_plaintext_from_docx(input_filename, output_dir, verbosity=1):
-    """
+    """Batch processing function for extracting plaintext from Microsoft Word
+    .docx files.
+
+    Arguments:
+        input_filename (str): The input file.
+        output_dir (str): The directory of the ouput files.
+        verbosity (int): The verbosity of the output.
+
+    Returns:
+        (None)
+
+    Raises:
+        (None): Will kill the program on IOErrors.
     """
     # Get document text.
     xml = uweclang.get_document_xml(input_filename, verbosity=verbosity)

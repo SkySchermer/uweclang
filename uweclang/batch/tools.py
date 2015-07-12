@@ -85,26 +85,14 @@ BATCH_PARSER.add_argument('-m', '--batch-mode',
                           help="""
     sets the batch mode. By default, no batch mode is used, and all files are
     placed in the output directory. In count mode, each batch will contain at
-    most the number of files specified by the --batch argument (default 10).
-    In divide mode, there will be that number of batch directories, and files
-    will be divided evenly between them. If the flag is provided but no mode
-    is given, count mode will be used.
+    most the number of files specified by the --batch-size argument (default
+    10). In divide mode, there will be that number of batch directories, and
+    files will be divided evenly between them. If the flag is provided but no
+    mode is given, count mode will be used.
     """)
 
 
-def _all_files(path):
-    """Default file selector for select_files.
-
-    Arguments:
-        path (str): The path to a file.
-
-    Returns:
-        True
-    """
-    return True
-
-
-def select_files(args, file_selector=_all_files):
+def select_files(args, file_selector=(lambda x: True)):
     """Select files to process based upon parsed arguments from a BATCH_PARSER.
 
     This function will traverse each input directory for valid files and add
@@ -200,10 +188,10 @@ def batch_process(process,
             there will be that number of batch directories, and files will be
             divided evenly between them.
         batch_dir_prefix (Optional[str]): The prefix for batch subdirectories.
-        verbosity: The verbosity of the output.
+        verbosity (int): The verbosity of the output.
 
     Returns:
-        None
+        (None)
     """
     if batch_mode == 'divide':
         batch_size = ceil(len(in_files) / (batch_size))

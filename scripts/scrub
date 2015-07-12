@@ -19,7 +19,19 @@ _PUNC_LIMIT = 100
 
 
 def scrub_plaintext(input_filename, output_dir, verbosity=1):
-    """
+    """Batch processing function for removing unwanted data from plaintext
+    files.
+
+    Arguments:
+        input_filename (str): The input file.
+        output_dir (str): The directory of the ouput files.
+        verbosity (int): The verbosity of the output.
+
+    Returns:
+        (None)
+
+    Raises:
+        (None): Will kill the program on IOErrors.
     """
 
     # Construct output filenames.
