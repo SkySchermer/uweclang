@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-
+import nltk
 
 class TaggedText:
     """ 
     """
-    def __init__(self, text):
+    def __init__(self, text, do_tagging=False):
         pass
 
     def __str__(self):
@@ -29,5 +29,18 @@ class TaggedText:
 def tag(text):
     """
     """
-    pass
+    #Separate the input text into sentences
+    sentences = nltk.sent_tokenize(text)
+    print(sentences)
+
+    #Separate each sentence into words
+    nested = []
+    for sentence in sentences:
+        nested.append(nltk.word_tokenize(sentence))
+
+    print(nested)
+    #Add a part of speech tag to each word
+    nested_tagged = []
+    for sentence in nested:
+        nested_tagged.append(nltk.pos_tag(sentence))
 

@@ -50,7 +50,7 @@ from uweclang.plain.student import *
 from uweclang.plain.tools import *
 
 # Import all functions from the tagged module:
-from uweclang.tagged import *
+from uweclang.tagged.tools import *
 
 # Import all functions from the batch module:
 from uweclang.batch.tools import *
