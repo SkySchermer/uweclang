@@ -27,8 +27,6 @@ a taste of one's own medicine
 a taste of your own medicine
 a thin line
 a toss-up
-steep price to pay
-hold a belief
 abbreviated piece of nothing
 about face
 about turn
@@ -132,11 +130,6 @@ avowed intent
 away with the fairies
 back into shape
 back of beyond
-counting sheep
-catching some Z's
-put to sleep
-put to bed
-put to death
 back on your feet
 back seat driver
 back the wrong horse
@@ -199,6 +192,7 @@ beat/flog a dead horse
 beat/knock the (living) daylights
 beating around the bush
 beats me
+bed of roses
 bee in one's bonnet
 bee's knees
 beef something up
@@ -325,6 +319,7 @@ catch a wink
 catch as catch can
 catch redhanded
 catch somebody's eye
+catching some Z's
 caught between two stools
 caught in the crossfire
 caught red-handed
@@ -407,6 +402,7 @@ come up in the world
 cost an arm and a leg
 costs an arm and a leg
 couch potato
+counting sheep
 crack someone up
 cross that bridge when we come to it
 cross the line
@@ -945,6 +941,7 @@ hit the spot
 hitch one's wagon to a star
 hive of activity
 hocus pocus
+hold a belief
 hold all the aces
 hold good
 hold on for dear life
@@ -1641,6 +1638,9 @@ put the cat among the pigeons
 put the kibosh on
 put the records straight
 put through the mill
+put to bed
+put to death
+put to sleep
 put wool over other people's eyes
 put words in someone's mouth
 queer the pitch
@@ -1857,6 +1857,7 @@ square peg in round hole
 start from scratch
 start the ball rolling
 steal someone's thunder
+steep price to pay
 stiff upper lip
 straight from the horse's mouth
 strike pay dirt
@@ -1874,8 +1875,8 @@ take a nosedive
 take a rain check
 take a stand
 take as read
-take cover
 take care
+take cover
 take down a peg
 take flak
 take for a ride
