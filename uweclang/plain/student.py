@@ -21,7 +21,7 @@ def punctuation_density(text, punctuation=r'[^\w\s]'):
     words = re.sub(r'\W', ' ', text).split()
     puncs = float(sum([len(re.findall(punctuation, x)) for x in text]))
 
-    return (puncs / len(words)) if len(words) > 0 else puncs
+    return (puncs / len(words)) if len(words) > 0 else 0.0
 
 
 def capitalization_density(text):
@@ -40,7 +40,7 @@ def capitalization_density(text):
     words = re.sub(r'\W', ' ', text).split()
     caps = float(sum([1 for x in words if re.match('[A-Z]', x)]))
 
-    return (caps / len(words)) if len(words) > 0 else 0
+    return (caps / len(words)) if len(words) > 0 else 0.0
 
 
 def straighten_quotes(text):
