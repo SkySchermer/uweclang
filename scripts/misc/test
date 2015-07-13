@@ -3,7 +3,7 @@
 import uweclang
 from pprint import pprint
 
-text = 'This is b)))()()()()()((((()(())efore, (in the middle, (deep()er)), and after '
-tree = uweclang.extract_parentheticals(text)
+text = 'ab)c((d)ef)g()(hi'
+tree = uweclang.parse_parentheticals(text)
 
 pprint(tree)

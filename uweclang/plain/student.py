@@ -71,65 +71,90 @@ def remove_punctuation_spaces(text, punctuation=',.!?:;'):
     return text
 
 
-def extract_parentheticals(text, lparen='\(', rparen='\)'):
+def parse_parentheticals(text, lparen='\(', rparen='\)'):
+    """Parses the given text and returns a tree of parentheticals.
+
+    Arguments:
+        text (str): The input text.
+        lparen (str): A regex for matching the left parenthetical delimiter.
+        rparen (str): A regex for matching the right parenthetical delimiter.
+
+    Returns:
+        (dict): A dictionary representing the parse tree. Each node of the
+        tree will have the following structure:
+
+            {'parens': (l, r), 'text': []}
+
+        where (l, r) are the parentheticals wrapping the text, and the list
+        contains raw text and subnodes. For example, the following string
+
+            'ab)c((d)ef)g()(hi'
+
+        will return:
+
+            {'parens': None,
+             'text': ['ab',
+                      ')',
+                      'c',
+                      {'parens': ('(', ')'),
+                       'text': [{'parens': ('(', ')'), 'text': ['d']}, 'ef']},
+                      'g',
+                      {'parens': ('(', ')'), 'text': []},
+                      {'parens': ('(', None), 'text': ['hi']}]}
+
+        Unmatched lparens will be interpretted as regular text. Unmatched
+        rparens will have None as their second parens tuple element.
+
     """
-    """
-    n_regex = re.compile(r'([^{}{}]*)(.*)'.format(lparen, rparen))
-    l_regex = re.compile(r'({})(.*)'.format(lparen))
-    r_regex = re.compile(r'({})(.*)'.format(rparen))
+    n_regex = re.compile(r'([^{}{}]*)'.format(lparen, rparen))
+    l_regex = re.compile(r'({})'.format(lparen))
+    r_regex = re.compile(r'({})'.format(rparen))
 
     tree = {'parens': None,
             'text': []}
     context = [tree]
     depth = 0
     rest = text
+
+    # Keep parsing until nothing is left.
     while rest:
         node = context[0]
 
-        m = r_regex.fullmatch(rest)
+        # Match rparens.
+        m = r_regex.match(rest)
         if m:
-            print('Found rparen:', m.group(1))
-
             if node['parens'] is None:
-                print('Unmatched rparen')
                 node['text'].append(m.group(1))
             else:
                 node = context.pop(0)
                 node['parens'] = (node['parens'][0], m.group(1))
 
-            rest = m.group(2)
+            rest = rest[len(m.group(1)):]
             continue
 
-        m = l_regex.fullmatch(rest)
+        # Match lparens.
+        m = l_regex.match(rest)
         if m:
-            print('Found lparen:', m.group(1))
             new_node = {'parens': (m.group(1), None),
                                 'text': []}
             node['text'].append(new_node)
             context.insert(0, new_node)
 
-            rest = m.group(2)
+            rest = rest[len(m.group(1)):]
             continue
 
-        m = n_regex.fullmatch(rest)
+        # Match text.
+        m = n_regex.match(rest)
         if m:
-            print('Found text:', m.group(1))
             node['text'].append(m.group(1))
 
-            rest = m.group(2)
+            rest = rest[len(m.group(1)):]
 
+    # Remove highest level tree if whole string is parenthetical.
     if len(tree['text']) == 1:
         tree = tree['text'][0]
+
     return tree
-
-
-
-    return _extract_parentheticals_recursive(text, lparen, rparen)
-
-
-
-
-
 
 
 def seperate_parentheticals(text, lparen='\(', rparen='\)'):
