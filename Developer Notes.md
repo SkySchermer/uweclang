@@ -147,6 +147,21 @@ The purpose of this code is to determine if the script is being run as an execut
 
 This pattern is useful to guard code that shouldn't run when the file is imported.
 
+#### X = X or Y
+
+```python
+selector_function = selector_function or (lambda x,y: True)
+```
+
+(As seen in [uweclang/plain/student.py](uweclang/plain/student.py))
+
+The purpose of this code is to assign a value to selector_function in case one was not provided. This is different from using a default argument, because if the caller explicitly passes `None`, the function will still be assigned. This exploits two features of python:
+
+  * Most objects can be used in boolean expressions, even if they aren't boolean. Some objects have a 'truthy' value. Here, any of `[]`, `''`, `False`, `0`, etc., will all cause the function to assign.
+
+  * The `or` operator is *short circuited*. If the first item on the left evaluates to something truthy, then the item on the right is never evaluated at all. (Conversely, the `and` operator short circuits when a false value is evaluated.)
+  
+
 #### Tuple Selector
 
 ```python

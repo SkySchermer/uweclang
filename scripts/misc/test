@@ -5,5 +5,9 @@ from pprint import pprint
 
 text = 'ab)c((d)ef)g()(hi'
 tree = uweclang.parse_parentheticals(text)
-
+print(text)
 pprint(tree)
+
+
+
+print(uweclang.recombine_parentheticals(tree))

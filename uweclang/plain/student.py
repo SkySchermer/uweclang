@@ -110,7 +110,7 @@ def parse_parentheticals(text, lparen='\(', rparen='\)'):
     l_regex = re.compile(r'({})'.format(lparen))
     r_regex = re.compile(r'({})'.format(rparen))
 
-    tree = {'parens': None,
+    tree = {'parens': (None, None),
             'text': []}
     context = [tree]
     depth = 0
@@ -123,7 +123,7 @@ def parse_parentheticals(text, lparen='\(', rparen='\)'):
         # Match rparens.
         m = r_regex.match(rest)
         if m:
-            if node['parens'] is None:
+            if node['parens'] == (None, None):
                 node['text'].append(m.group(1))
             else:
                 node = context.pop(0)
@@ -157,63 +157,44 @@ def parse_parentheticals(text, lparen='\(', rparen='\)'):
     return tree
 
 
-def seperate_parentheticals(text, lparen='\(', rparen='\)'):
-    """Returns the text split into a list of parenthetical and
-    non-parenthetical text.
-
-    This function is not suitable for processing nested parentheticals.
-
-    Arguments:
-        text (str): The input text.
-        lparen (str): The regex of the left parenthetical. Defaults to '\('.
-        rparen (str): The regex of the right parenthetical. Defaults to '\)'.
-
-        (It is important to remember to escape the parenthetical arguments if
-        theyhave a meaning in regex.)
-
-    Returns:
-        ([(str, bool)]): A generator of tuples containing the text and whether
-            or not the text was in a parenthetical.
-
-    Simple example:
-
-        >>> list(seperate_parentheticals('ab(c)()de'))
-        [('ab', False), ('c', True), ('', True), ('de', False)]
-    """
-    def tuplify(x):
-        if x[0] == '\x1e':
-            return (x[1:], True)
-        return (x, False)
-
-    # This substitution is a little complicated. We want to match '<([^>])>',
-    # where the <, > characters are our parentheticals, and the middle part is
-    # captured as a group. We use the alternation '|' to ensure that we can
-    # match an empty string in the middle.
-    #
-    # In the second argument, we wrap the captured group in special characters
-    # (the ASCII 'group seperator' special code \x1d), and we prefix it with
-    # a different code (the ASCII 'record seperator' special code \x1e). These
-    # codes are used to split the text and identify what parts were
-    # parenthetical and which were not.
-    text = re.sub(r'{0}([^{1}]+|){1}'.format(lparen, rparen),
-                  '\x1d\x1e\\1\x1d',
-                  text)
-
-    return (tuplify(x) for x in text.split('\x1d') if x)
-
-
-def recombine_selected(selector_function, seperated_text, sep=''):
+def recombine_parentheticals(parse_tree, selector_function=None, sep=''):
     """Recombines text seperated by the seperate_parentheticals function by
     using a selector function to determine which portions to keep or discard.
 
     Arguments:
-        seperated_text ([(str, bool)]): A list of tuples containing text and a
-            data value.
-        selector_function (str, bool -> bool): A function taking the text and
-            data value and returning whether or not to keep the text.
+        parse_tree (dict): a tree of parsed parentheticals
+            (See parse_parentheticals.)
+        selector_function ((str, str), str -> true)
         sep (str): The seperator to use when combining the text. Defaults to ''.
 
     Returns:
         (str): The resulting text.
     """
-    return sep.join([x[0] for x in seperated_text if selector_function(*x)])
+    # Set default selector function if none is provided.
+    selector_function = selector_function or (lambda x,y: True)
+
+    text = []
+
+    for item in parse_tree['text']:
+
+        if isinstance(item, str):
+            if selector_function(parse_tree['parens'], item):
+                text.append(item)
+        elif isinstance(item, dict):
+            res = recombine_parentheticals(item,
+                                           selector_function = selector_function,
+                                           sep=sep)
+            if selector_function(parse_tree['parens'], res):
+                text.append(res)
+
+        else:
+            raise ValueError('Unknown parse tree content.')
+
+
+    res = sep.join(text)
+    if selector_function(parse_tree['parens'], res):
+        l = parse_tree['parens'][0]
+        r = parse_tree['parens'][1]
+        return sep.join([x for x in [l, res, r] if x is not None])
+    return ''
+
