@@ -2,7 +2,7 @@
 
 
 class TaggedText:
-    """
+    """ 
     """
 
     def __init__(self, text):
@@ -23,8 +23,12 @@ class TaggedText:
     def getTags(self):
         pass
 
+    def count_tags(self, tag_regex=None):
+        pass
+
 
 def tag(text):
     """
     """
     pass
+

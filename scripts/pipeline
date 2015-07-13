@@ -3,15 +3,15 @@
 export PYTHONPATH=.
 
 echo "Extracting docx files..."
-scripts/extract "Summer 2015/Student Corpus/Unprocessed Files/" \
-			 -o "Summer 2015/Student Corpus/Plain Files/"
+scripts/extract "Student Corpus/Unprocessed Files/" \
+			 -o "Student Corpus/Plain Files/"
 
 if [ $? -ne 0 ]; then { echo "Aborting: 'extract' failed." ; exit 1; } fi
 
 
 echo "Scrubbing plaintext files..."
-scripts/scrub "Summer 2015/Student Corpus/Plain Files/"		\
-		   -o "Summer 2015/Student Corpus/Processed Files/" \
+scripts/scrub "Student Corpus/Plain Files/"		\
+		   -o "Student Corpus/Processed Files/" \
 		   --batch-size 4									\
 		   --batch-mode divide
 
