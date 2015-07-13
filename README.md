@@ -113,6 +113,9 @@ UWEC Language Tools - Available Functions
     * [tools](uweclang/plain/tools.py)
       - `line_split(text)`
   + tagged
+    * [tools](uweclang/tagged/tools.py)
+      - `TaggedText`
+      - `tag(text)`
 
 
 Additional Resources
