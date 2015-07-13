@@ -545,6 +545,8 @@ In constructor with arg 2
 >>>
 ```
 
+Python classes can provide support for builting syntax by using [Magic Methods](http://www.rafekettler.com/magicmethods.html).
+
 For additional information, see the [documentation](https://docs.python.org/2/tutorial/classes.html).
 
 
