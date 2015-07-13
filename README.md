@@ -39,7 +39,7 @@ This project houses a number of python scripts for analyzing student paper corpo
   uweclang.get_document_xml('myfile.docx')
   ```
 
-  It is important to note that this import will only work if the [uweclang](uweclang) folder is in PYTHONPATH. The simplest (and least flexible) way to do this is to ensure the [uweclang](uweclang) folder is in the current directory when running scripts. (On *nix-like systems, you may need to run `export PYTHONPATH=.` first.)
+  It is important to note that this import will only work if the [uweclang](uweclang) folder is in PYTHONPATH. The simplest (and least flexible) way to do this is to ensure the [uweclang](uweclang) folder is in the current directory when running scripts. (On Unix-like systems, you may need to run `export PYTHONPATH=.` first.)
 
 There is an additional [misc](scripts/misc) folder that contains older scripts for reference.
 
@@ -60,7 +60,8 @@ For help on a given script, use:
 
 #### Examples
 ```shell
-scripts/extract "Summer 2015/Student Corpus/Unprocessed Files/" -o "Summer 2015/Student Corpus/Plain Files/" -b 5 -m count
+scripts/extract "Student Corpus/Unprocessed Files/" \
+             -o "Student Corpus/Plain Files/" -b 5 -m count
 ```
 
 
