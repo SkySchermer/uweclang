@@ -1,6 +1,8 @@
 UWEC Language Tools
 ===================
 
+This file is meant to be viewed on Github at:
+https://github.com/SkySchermer/uweclang
 
 ### Table of Contents
 * [UWEC Language Tools](#uwec-language-tools)
