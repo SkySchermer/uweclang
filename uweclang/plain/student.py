@@ -5,7 +5,7 @@
 """
 import re
 
-def punctuation_density(text, punctuation=r'[,.!?:;\\/]'):
+def punctuation_density(text, punctuation=r'[^\w\s]'):
     """Returns the punctuation density of the given text.
 
     Arguments:
@@ -18,7 +18,10 @@ def punctuation_density(text, punctuation=r'[,.!?:;\\/]'):
     if len(text) == 0:
         return 0
 
-    return len(re.findall(punctuation, text)) / len(re.findall(r'\b\w+', text))
+    words = re.sub(r'\W', ' ', text).split()
+    puncs = float(sum([len(re.findall(punctuation, x)) for x in text]))
+
+    return (puncs / len(words)) if len(words) > 0 else puncs
 
 
 def capitalization_density(text):
@@ -34,8 +37,10 @@ def capitalization_density(text):
     if len(text) == 0:
         return 0
 
-    text = re.sub('\W', ' ', text)
-    return len(re.findall(r'\b[A-Z]\w+', text)) / len(re.findall(r'\b\w+', text))
+    words = re.sub(r'\W', ' ', text).split()
+    caps = float(sum([1 for x in words if re.match('[A-Z]', x)]))
+
+    return (caps / len(words)) if len(words) > 0 else 0
 
 
 def straighten_quotes(text):
@@ -80,8 +85,8 @@ def parse_parentheticals(text, lparen='\(', rparen='\)'):
         rparen (str): A regex for matching the right parenthetical delimiter.
 
     Returns:
-        (dict): A dictionary representing the parse tree. Each node of the
-        tree will have the following structure:
+        (dict | [str]): A dictionary representing the parse tree or a list of
+        strings. Each node of the tree will have the following structure:
 
             {'parens': (l, r), 'text': []}
 
@@ -103,17 +108,20 @@ def parse_parentheticals(text, lparen='\(', rparen='\)'):
                       {'parens': ('(', None), 'text': ['hi']}]}
 
         Unmatched lparens will be interpretted as regular text. Unmatched
-        rparens will have None as their second parens tuple element.
+        rparens will have None as their second parens tuple element. If there
+        are no parentheticals, a list of text will be returned.
 
     """
+    # Precompile regular expressions for ease of use.
     n_regex = re.compile(r'([^{}{}]*)'.format(lparen, rparen))
     l_regex = re.compile(r'({})'.format(lparen))
     r_regex = re.compile(r'({})'.format(rparen))
 
+    # Build root of tree.
     tree = {'parens': (None, None),
             'text': []}
+
     context = [tree]
-    depth = 0
     rest = text
 
     # Keep parsing until nothing is left.
@@ -152,7 +160,7 @@ def parse_parentheticals(text, lparen='\(', rparen='\)'):
 
     # Remove highest level tree if whole string is parenthetical.
     if len(tree['text']) == 1:
-        tree = tree['text'][0]
+        tree = [tree['text'][0]]
 
     return tree
 
@@ -165,25 +173,32 @@ def recombine_parentheticals(parse_tree, selector_function=None, sep=''):
         parse_tree (dict): a tree of parsed parentheticals
             (See parse_parentheticals.)
         selector_function ((str, str), str -> true)
-        sep (str): The seperator to use when combining the text. Defaults to ''.
+        sep (str): The seperator to use when combining the text. Defaults to
+            ''.
 
     Returns:
         (str): The resulting text.
     """
-    # Set default selector function if none is provided.
+    # Set default selector test function if none is provided.
     selector_function = selector_function or (lambda x,y: True)
 
+    # Reconstruct parse tree root for lists and strings.
+    if isinstance(parse_tree, list):
+        parse_tree = {'parens': (None, None), 'text': parse_tree}
+    elif isinstance(parse_tree, str):
+        parse_tree = {'parens': (None, None), 'text': [parse_tree]}
+
     text = []
-
     for item in parse_tree['text']:
-
         if isinstance(item, str):
-            if selector_function(parse_tree['parens'], item):
-                text.append(item)
+            text.append(item)
+
         elif isinstance(item, dict):
+            # Recreate text from rest of this node.
             res = recombine_parentheticals(item,
-                                           selector_function = selector_function,
+                                           selector_function=selector_function,
                                            sep=sep)
+            # Append text if it passes selector test.
             if selector_function(parse_tree['parens'], res):
                 text.append(res)
 
@@ -192,9 +207,12 @@ def recombine_parentheticals(parse_tree, selector_function=None, sep=''):
 
 
     res = sep.join(text)
+    # Use selector test on the whole tree.
     if selector_function(parse_tree['parens'], res):
         l = parse_tree['parens'][0]
         r = parse_tree['parens'][1]
         return sep.join([x for x in [l, res, r] if x is not None])
     return ''
+
+
 

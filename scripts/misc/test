@@ -3,11 +3,26 @@
 import uweclang
 from pprint import pprint
 
-text = 'ab)c((d)ef)g()(hi'
+# Inline citation detector:
+def citation_detector(parens, text):
+    if parens != (None, None):
+        punc = uweclang.punctuation_density(text)
+        caps = uweclang.capitalization_density(text)
+        print('\t|P|C|', punc, caps)
+        if punc >= 0.3:
+            return False
+
+        if caps >= 0.5:
+            return False
+
+    return True
+
+
+text = """(The audience for this article consists of Radical Teacher readers, who are mostly college professors and administrators. Radical Teacher describes their journal as a socialist, feminist, and anti-racist journal on the theory and practice of teaching (Radical Teacher).)"""
 tree = uweclang.parse_parentheticals(text)
 print(text)
 pprint(tree)
+print('\n')
 
 
-
-print(uweclang.recombine_parentheticals(tree))
+print(uweclang.recombine_parentheticals(tree, selector_function=citation_detector))

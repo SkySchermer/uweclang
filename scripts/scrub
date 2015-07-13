@@ -120,10 +120,10 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
             continue
 
         # Inline citation detector:
-        def citation_detector(text, is_parenthetical):
+        def citation_detector(parens, text):
             global _CAPS_LIMIT, _PUNC_LIMIT
 
-            if is_parenthetical:
+            if parens != (None, None):
                 punc = uweclang.punctuation_density(text)
                 caps = uweclang.capitalization_density(text)
 
@@ -143,8 +143,9 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
             return True
 
         # Remove inline citations:
-        pars = uweclang.seperate_parentheticals(line)
-        line = uweclang.recombine_selected(citation_detector, pars)
+        tree = uweclang.parse_parentheticals(line)
+        line = uweclang.recombine_parentheticals(tree,
+                                                 selector_function=citation_detector)
 
 
         if found_memo:

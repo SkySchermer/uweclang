@@ -109,8 +109,8 @@ UWEC Language Tools - Available Functions
       - `capitalization_density(text)`
       - `straighten_quotes(text)`
       - `remove_punctuation_spaces(text)`
-      - `seperate_parentheticals(text)`
-      - `recombine_selected(selector_function, seperated_text)`
+      - `parse_parentheticals(text)`
+      - `recombine_parentheticals(parse_tree)`
     * [tools](uweclang/plain/tools.py)
       - `line_split(text)`
   + tagged
