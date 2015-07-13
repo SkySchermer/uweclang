@@ -170,17 +170,23 @@ def recombine_parentheticals(parse_tree, selector_function=None, sep=''):
     using a selector function to determine which portions to keep or discard.
 
     Arguments:
-        parse_tree (dict): a tree of parsed parentheticals
+        parse_tree (dict): A tree of parsed parentheticals
             (See parse_parentheticals.)
-        selector_function ((str, str), str -> true)
+        selector_function ((str, str), str -> true): A function taking a pair
+            of parenthesis and a string, and returning whether to keep the
+            string or discard it. Allows for selective recombination of text.
+            Defaults to None (everything is kept.)
         sep (str): The seperator to use when combining the text. Defaults to
             ''.
 
     Returns:
         (str): The resulting text.
+
+    Raises:
+        (ValueError): When unkown values are contained in parse_tree.
     """
     # Set default selector test function if none is provided.
-    selector_function = selector_function or (lambda x,y: True)
+    selector_function = selector_function or (lambda x, y: True)
 
     # Reconstruct parse tree root for lists and strings.
     if isinstance(parse_tree, list):

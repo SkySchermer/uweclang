@@ -130,14 +130,14 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                 if punc >= _PUNC_LIMIT:
                     print('Line {}: EDIT OUT '
                           '(Parenthetical Punctuation = {:.3f}):'
-                          '\n\t({})\n'.format(line_number, punc, text),
+                          '\n\t{}\n'.format(line_number, punc, text),
                           file=log)
                     return False
 
                 if caps >= _CAPS_LIMIT:
                     print('Line {}: EDIT OUT '
                           '(Parenthetical Capitalization = {:.3f}):'
-                          '\n\t({})\n'.format(line_number, caps, line),
+                          '\n\t{}\n'.format(line_number, caps, text),
                           file=log)
                     return False
             return True
@@ -146,7 +146,6 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
         tree = uweclang.parse_parentheticals(line)
         line = uweclang.recombine_parentheticals(tree,
                                                  selector_function=citation_detector)
-
 
         if found_memo:
             print(line, file=memo)
@@ -158,7 +157,6 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
         print('Scrubbed text from '
               '{} into {}'.format(os.path.basename(input_filename),
                                   os.path.basename(output_filename)))
-
 
 if __name__ == '__main__':
 

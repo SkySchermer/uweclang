@@ -8,7 +8,7 @@ def citation_detector(parens, text):
     if parens != (None, None):
         punc = uweclang.punctuation_density(text)
         caps = uweclang.capitalization_density(text)
-        print('\t|P|C|', punc, caps)
+        print('\t|P|C|', punc, caps, text)
         if punc >= 0.3:
             return False
 
@@ -18,7 +18,7 @@ def citation_detector(parens, text):
     return True
 
 
-text = """(The audience for this article consists of Radical Teacher readers, who are mostly college professors and administrators. Radical Teacher describes their journal as a socialist, feminist, and anti-racist journal on the theory and practice of teaching (Radical Teacher).)"""
+text = """Before the analysis of the articles rhetorical content, it is beneficial to examine the rhetorical situation in its entirety.  This articles situation begins with the evaluation of ethos, or credibility of the author (Watson, 2013).  Pinkert, the primary author assisted by three of her students, published this article in the peer-reviewed journal Radical Teacher.  Before having a number of her other works published in similar journals, Pinkert earned a Ph.D. at the University of Chicago (Department of Germanic Languages and Literatures, 2014).  Pinkerts objective throughout this article is to change the teaching methods, specifically inside prisons.  This would  produce a domino effect, changing individuals, improving the prison systems, and producing an improved society.  Purposefully producing a better society not only confirms the importance of this topic, but also provides insight into Pinkerts targeted audience.  She honed in on targeting people with the power to change the current situation; these three groups include teachers, prison administrators, and politically influential individuals.  Overall, Pinkerts article is effective rhetorically, demonstrating with clarity in the rhetoric discourse and functionality of adapting to an audience, assisting advocacy, and revealing human motives."""
 tree = uweclang.parse_parentheticals(text)
 print(text)
 pprint(tree)
