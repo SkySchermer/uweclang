@@ -43,35 +43,30 @@ def capitalization_density(text):
     return (caps / len(words)) if len(words) > 0 else 0.0
 
 
-def straighten_quotes(text):
-    """Returns the text with angled quotes replaced with straight quotes.
-
-    Arguments:
-        text (str): The input text.
-
-    Returns:
-        (str) The modified text.
-    """
-
-    text = re.sub(r'[“”]', '', text)
-    text = re.sub(r'[‘’]', '', text)
-
-    return text
-
-
-def remove_punctuation_spaces(text, punctuation=',.!?:;'):
+def clean_punctuation(text, punctuation=r',\.!\?:;…'):
     """Returns text modified by removing whitespace before punctuation.
 
     Arguments:
         text (str): The input text.
-        punctuation (str): string containing the punctuation to remove
-            whitespace before. Defaults to ',.!?:;'.
+        punctuation (str): regex containing the punctuation to remove
+            whitespace before. Defaults to ',\.!\?:;'.
 
     Returns:
         (str): The modified text.
     """
-    for char in punctuation:
-        text = re.sub(r'\b\s+{}'.format(char), char, text)
+    # Straighten quotes, remove interior spaces.
+    text = re.sub(r'“ ?| ?”', '\"', text)
+    text = re.sub(r'‘ ?| ?’', '\'', text)
+
+    # Remove punctuation after quotes.
+    text = re.sub(r'([”"])\s*([{0}])'.format(punctuation), r'\2\1 ', text)
+    text = re.sub(r'([”"])\s*([{0}])'.format(punctuation), r'\1 ', text)
+
+    # Remove strings of punctuation.
+    text = re.sub(r'\b ?([{0}])[{0}\s]+'.format(punctuation), r'\1 ', text)
+
+    # Remove extra whitespace.
+    text = re.sub(r'\s+', r' ', text)
 
     return text
 

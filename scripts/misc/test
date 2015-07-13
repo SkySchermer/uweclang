@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
 import uweclang
+import re
 from pprint import pprint
 
 # Inline citation detector:
@@ -18,11 +19,15 @@ def citation_detector(parens, text):
     return True
 
 
-text = """Before the analysis of the articles rhetorical content, it is beneficial to examine the rhetorical situation in its entirety.  This articles situation begins with the evaluation of ethos, or credibility of the author (Watson, 2013).  Pinkert, the primary author assisted by three of her students, published this article in the peer-reviewed journal Radical Teacher.  Before having a number of her other works published in similar journals, Pinkert earned a Ph.D. at the University of Chicago (Department of Germanic Languages and Literatures, 2014).  Pinkerts objective throughout this article is to change the teaching methods, specifically inside prisons.  This would  produce a domino effect, changing individuals, improving the prison systems, and producing an improved society.  Purposefully producing a better society not only confirms the importance of this topic, but also provides insight into Pinkerts targeted audience.  She honed in on targeting people with the power to change the current situation; these three groups include teachers, prison administrators, and politically influential individuals.  Overall, Pinkerts article is effective rhetorically, demonstrating with clarity in the rhetoric discourse and functionality of adapting to an audience, assisting advocacy, and revealing human motives."""
-tree = uweclang.parse_parentheticals(text)
-print(text)
-pprint(tree)
-print('\n')
+text = """Pinkert’s article emphasizes the enormous impact labeling has on individuals.  In the study she conducted, one concept they taught was the role labeling played in the progression leading to the Holocaust.  This is commonly thought of as the Germans labeling the Jews, convincing themselves that mass genocide was right; however, the way Jews currently label themselves as “survivors” is what continues to affect them today .  This example coincides with the labeling of modern day felons.  Society labels felons as “convicts” or “ex-cons,” similar to how the Germans labeled the Jews .  This produces the same effect on felons as it did on Jewish people; they begin to see themselves only as “convicts” or “ex-cons” .  The way individuals views themselves impacts the way they live their lives, thereby affecting what happens to them.  With that being said, both Jews and felons are hindering themselves by buying into these labels.  Pinkert illuminates how altering these self-perceptions would lead to changes for the individuals, prisons systems, and ultimately society as a whole."""
 
 
-print(uweclang.recombine_parentheticals(tree, selector_function=citation_detector))
+print(uweclang.clean_punctuation(text))
+
+# tree = uweclang.parse_parentheticals(text)
+# print(text)
+# pprint(tree)
+# print('\n')
+
+
+# print(uweclang.recombine_parentheticals(tree, selector_function=citation_detector))

@@ -107,8 +107,7 @@ UWEC Language Tools - Available Functions
     * [student](uweclang/plain/student.py)
       - `punctuation_density(text)`
       - `capitalization_density(text)`
-      - `straighten_quotes(text)`
-      - `remove_punctuation_spaces(text)`
+      - `clean_punctuation(text)`
       - `parse_parentheticals(text)`
       - `recombine_parentheticals(parse_tree)`
     * [tools](uweclang/plain/tools.py)

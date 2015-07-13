@@ -33,7 +33,6 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
     Raises:
         (None): Will kill the program on IOErrors.
     """
-
     # Construct output filenames.
     global _OUTPUT_EXTENSION, _MEMO_OUTPUT_EXTENSION, _LOG_OUTPUT_EXTENSION
 
@@ -71,12 +70,11 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
         sys.exit(1)
 
 
+    # Process each line.
     found_memo = False
     result = []
     memo = []
     for line_number, line in enumerate(lines):
-        # Straighten quotes.
-        line = uweclang.straighten_quotes(line)
 
         # Remove empty lines.
         if re.fullmatch(r'\s*', line):
@@ -119,12 +117,13 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                   file=log)
             continue
 
-        # Inline citation detector:
+        # Create inline citation detector:
         def citation_detector(parens, text):
             global _CAPS_LIMIT, _PUNC_LIMIT
 
             if parens != (None, None):
 
+                # Edit out numbers
                 if re.fullmatch(r'\d+', text):
                     print('Line {}: EDIT OUT '
                           '(Page/Date Number, {} characters):'
@@ -132,6 +131,7 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                           file=log)
                     return False
 
+                # Edit out short parentheticals containing numbers
                 words = text.split()
                 if len(words) < 10 and any([re.match(r'\d+', w) for w in words]):
                     print('Line {}: EDIT OUT '
@@ -140,9 +140,8 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                           file=log)
                     return False
 
+                # Edit out if too much punctuation per word.
                 punc = uweclang.punctuation_density(text)
-                caps = uweclang.capitalization_density(text)
-
                 if punc >= _PUNC_LIMIT:
                     print('Line {}: EDIT OUT '
                           '(Parenthetical Punctuation = {:.3f}):'
@@ -150,14 +149,14 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                           file=log)
                     return False
 
+                # Edit out if too many capitalized words.
+                caps = uweclang.capitalization_density(text)
                 if caps >= _CAPS_LIMIT:
                     print('Line {}: EDIT OUT '
                           '(Parenthetical Capitalization = {:.3f}):'
                           '\n\t{}\n'.format(line_number, caps, text),
                           file=log)
                     return False
-
-
 
             return True
 
@@ -166,18 +165,22 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
         line = uweclang.recombine_parentheticals(tree,
                                                  selector_function=citation_detector)
 
+        # Remove extra spaces:
+        line = uweclang.clean_punctuation(line)
+
+
         if found_memo:
             print(line, file=memo)
         else:
             print(line, file=out)
 
-        # Remove extra spaces:
-        line = uweclang.remove_punctuation_spaces(line)
 
+    # Print task completion.
     if verbosity >= 1:
         print('Scrubbed text from '
               '{} into {}'.format(os.path.basename(input_filename),
                                   os.path.basename(output_filename)))
+
 
 if __name__ == '__main__':
 
