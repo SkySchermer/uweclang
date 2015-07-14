@@ -4,17 +4,20 @@ export PYTHONPATH=.
 
 echo "Extracting docx files..."
 scripts/extract "Student Corpus/Unprocessed Files/" \
-			 -o "Student Corpus/Plain Files/"
+			 -o "Student Corpus/Plain Files/" 		\
+			 -w .txt
+
 
 if [ $? -ne 0 ]; then { echo "Aborting: 'extract' failed." ; exit 1; } fi
 
 
-echo "Scrubbing plaintext files..."
-scripts/scrub "Student Corpus/Plain Files/"		\
-		   -o "Student Corpus/Processed Files/" \
-		   --batch-size 4									\
-		   --batch-mode divide
+# echo "Scrubbing plaintext files..."
+# scripts/scrub "Student Corpus/Plain Files/"		\
+# 		   -o "Student Corpus/Processed Files/" \
+# 		   --batch-size 4						\
+# 		   --batch-mode divide					\
+# 		   -w .txt
 
-if [ $? -ne 0 ]; then { echo "Aborting: 'scrub' failed." ; exit 1; } fi
+# if [ $? -ne 0 ]; then { echo "Aborting: 'scrub' failed." ; exit 1; } fi
 
 echo "Done."

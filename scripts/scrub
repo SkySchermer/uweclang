@@ -205,13 +205,6 @@ if __name__ == '__main__':
 
 
     # Add extra command line arguments for this script.
-    parser.add_argument('-e', '--extensions',
-                        nargs='*',
-                        default=['.txt'],
-                        metavar='ext',
-                        dest='ext',
-                        help='accepted file extensions for input')
-
     parser.add_argument('-x', '--o-extension',
                         nargs='?',
                         default='.txt',
