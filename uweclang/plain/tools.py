@@ -2,6 +2,11 @@
 
     Provides basic functions for handling plaintext data.
 """
+# Python 3 forward compatability imports.
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
+
 
 def line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n'):
     """Splits plaintext input into lines.
@@ -27,3 +32,4 @@ def line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n'):
         res = (line for line in res if line)
 
     return res
+

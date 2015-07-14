@@ -20,8 +20,15 @@ Module Globals:
             --batch-mode: Select how to do batching.
 
 """
+# Python 3 forward compatability imports.
+from __future__ import print_function
+from __future__ import division
+from __future__ import unicode_literals
+from __future__ import absolute_import
 
+# Standard imports
 import os
+import errno
 import argparse
 from itertools import chain
 from math import ceil
@@ -133,7 +140,7 @@ def select_files(args, file_selector=(lambda x: True)):
                     # Prevent recursive walk. This deletes all items in the
                     # list x[1] before the next level of the hierarchy is
                     # generated.
-                    x[1].clear()
+                    del x[1][:]
 
                 # Get all files in the directory.
                 targets.append([os.path.join(x[0], l) for l in x[2]])
@@ -220,8 +227,9 @@ def batch_process(process,
                 print(' -> Creating directory', batch_dir)
             try:
                 os.makedirs(batch_dir)
-            except FileExistsError:
-                pass
+            except OSError as e:
+                if e.errno == errno.EEXIST:
+                    pass # We don't care if directory already exists.
 
             if verbosity >= 1:
                 print('Starting batch', current_batch)

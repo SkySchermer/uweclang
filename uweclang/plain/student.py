@@ -3,6 +3,13 @@
 
     Provides functions for processing student corpus data.
 """
+# Python 3 forward compatability imports.
+from __future__ import print_function
+from __future__ import division
+from __future__ import unicode_literals
+from __future__ import absolute_import
+
+# Standard imports
 import re
 
 def punctuation_density(text, punctuation=r'[^\w\s]'):
@@ -186,12 +193,12 @@ def recombine_parentheticals(parse_tree, selector_function=None, sep=''):
     # Reconstruct parse tree root for lists and strings.
     if isinstance(parse_tree, list):
         parse_tree = {'parens': (None, None), 'text': parse_tree}
-    elif isinstance(parse_tree, str):
+    elif isinstance(parse_tree, str) or isinstance(parse_tree, unicode):
         parse_tree = {'parens': (None, None), 'text': [parse_tree]}
 
     text = []
     for item in parse_tree['text']:
-        if isinstance(item, str):
+        if isinstance(item, str) or isinstance(item, unicode):
             text.append(item)
 
         elif isinstance(item, dict):

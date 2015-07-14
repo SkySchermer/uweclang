@@ -23,6 +23,7 @@ text = """Pinkert’s article emphasizes the enormous impact labeling has on ind
 
 text = uweclang.clean_punctuation(text)
 
+pprint(uweclang.TaggedText(text).originalText())
 
 # tree = uweclang.parse_parentheticals(text)
 # print(text)

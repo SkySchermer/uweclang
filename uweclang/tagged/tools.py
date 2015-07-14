@@ -1,11 +1,21 @@
 # -*- coding: utf-8 -*-
+# Python 3 forward compatability imports.
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
+
+# Standard imports
 import nltk
+from collections import defaultdict
 
 class TaggedText:
     """ 
     """
-    def __init__(self, text, do_tagging=False):
-        pass
+    nested_tagged = []
+    tags = defaultdict(set)
+
+    def __init__(self, text):
+        self.nested_tagged = _tag(text)
 
     def __str__(self):
         pass
@@ -19,14 +29,28 @@ class TaggedText:
     def recombine_parentheticals(self):
         pass
 
+    def originalText(self):
+        text = []
+        for sentence in self.nested_tagged:
+            for token, tag in sentence:
+                if token not in {'``', "''", '.', ','}:
+                    text.append(' ')
+                text.append(token)
+
+
+        return ''.join(text)
+
     def getTags(self):
-        pass
+        for sentence in self.nested_tagged:
+            for token, tag in sentence:
+                self.tags[tag].add(token)
+        return self.tags
 
     def count_tags(self, tag_regex=None):
         pass
 
 
-def tag(text):
+def _tag(text):
     """
     """
     #Separate the input text into sentences
@@ -43,4 +67,6 @@ def tag(text):
     nested_tagged = []
     for sentence in nested:
         nested_tagged.append(nltk.pos_tag(sentence))
+
+    return nested_tagged
 

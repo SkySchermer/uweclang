@@ -2,41 +2,44 @@
 
     Provides functions for handling Microsoft Word docx files.
 """
+# Python 3 forward compatability imports.
+from __future__ import print_function
+from __future__ import division
+from __future__ import unicode_literals
+from __future__ import absolute_import
 
+# Standard imports
 import sys
 import os
 import zipfile
 import re
 
-from xml.etree.ElementTree import XMLParser
+from xml.etree.cElementTree import XML
 
-class PlainTextExtractor:
-    """Simple XML parser for extracting plaintext.
 
-    See https://docs.python.org/2/library/xml.etree.elementtree.html for more
-    information.
+def parse_element_plain(element):
+    """Recursively parses an ElementTree Element object and returns a string
+    containing the text of each tag.
+
+    Arguments:
+        element (Element): The root element.
+
+    Returns:
+        (str): The text under the root.
     """
-    depth = 0
     text = []
 
-    def __init__(self):
-        self.depth = 0
-        self.text = []
+    if element.text is not None:
+        text.append(element.text)
 
-    def start(self, tag, attrib):
-        # Identify linebreaks / paragraph tags.
-        if tag.endswith('}br') or tag.endswith('}p'):
-            self.text.append('\n')
-        self.depth += 1
+    if element.tag.endswith('}br') or element.tag.endswith('}p'):
+        text.append('\n')
 
-    def end(self, tag):
-        self.depth -= 1
+    for child in element:
+        text.extend(parse_element_plain(child))
 
-    def data(self, data):
-        self.text.append(data)
+    return text
 
-    def close(self):
-        return ''.join(self.text)
 
 
 def get_document_xml(filename,
@@ -85,8 +88,7 @@ def xml_to_plain(document, verbosity=1):
     Returns:
         The document in plaintext.
     """
-    parser = XMLParser(target=PlainTextExtractor())
-    parser.feed(document)
+    root = XML(document.encode('utf-8'))
 
-    return parser.close()
+    return ''.join(parse_element_plain(root))
 
