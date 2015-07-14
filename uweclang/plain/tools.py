@@ -6,6 +6,7 @@
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
+from __future__ import unicode_literals
 
 
 def line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n'):
