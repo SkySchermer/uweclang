@@ -33,7 +33,6 @@ import argparse
 
 from itertools import chain
 from math import ceil
-from pprint import pprint
 
 
 # Build base for batch argument parsing.
@@ -120,8 +119,23 @@ BATCH_PARSER.add_argument('-m', '--batch-mode',
 
 
 def split_ext(filename):
+    """Splits a filename into its base name and extention part. This is
+    different from os.path.splitext because it collects nested extensions
+    together. Any path information will be stripped away. Examples:
+
+        os.path.splitext('file.ext1.ext2') = ('file.ext1', '.ext2')
+        uweclang.split_ext('file.ext1.ext2') = ('file', '.ext1.ext2')
+
+    Arguments:
+        filename (str): The filename to split.
+
+    Returns:
+        (str, str): The filename's (base, extension) pair.
+
+    """
     if not filename:
         return ''
+    filename = os.path.basename(filename)
 
     parts = filename.split('.')
     if parts[0] == '':
@@ -137,7 +151,23 @@ def split_ext(filename):
 
 
 
-def get_files(search_locations, extensions, recursive=False):
+def get_files(search_locations, extensions=None, recursive=False):
+    """Searches the given locations for files with the given extensions.
+
+    Arguments:
+        search_locations ([str]): A list of files and directories to search.
+        extensions ([str]): The file extensions to find in directories.
+            Defaults to None, which will find all files.
+        recursive: (bool): Whether to search directories recursively.
+
+    Returns:
+        (Generator(str), int): returns a pair containing a generator for
+            iterating over the found files, and the number of files found.
+
+    Note: Files given in search_locations that do not have the specified
+        extensions will be included in the output. The extensions argument only
+        effects files in the directories given.
+    """
     if (isinstance(search_locations, str)
         or isinstance(search_locations, unicode)):
         search_locations = [search_locations]
@@ -148,7 +178,6 @@ def get_files(search_locations, extensions, recursive=False):
     dirs =  [x for x in search_locations if os.path.isdir(x)]
     # Identify all the files to process.
     for item in dirs:
-        print('Searching in {}'.format(item))
         if os.path.isdir(item):
 
             # The os.walk call will traverse the directory producing
@@ -194,8 +223,10 @@ def batch_process(process, **kwargs):
     Arguments:
         process ((IN, OUT, Verbosity) -> str): The function to execute on each
             file.
-        in_dir (Optional[str]): The input directory.
-        out_dir (Optional[str]): The output directory.
+
+    Keyword Arguments:
+        file (Optional[str]): The input files and directories.
+        outpu_dir (Optional[str]): The output directory.
         batch_size (Optional[int]): The size of each subdirectory or the number
             of subdirectories, depending on the batch_mode.
         batch_mode (Optional[str]): The batch mode. Can be one of 'count' or
@@ -232,7 +263,6 @@ def batch_process(process, **kwargs):
                                   extensions,
                                   recursive)
 
-    # Print debug info.
     if verbosity >= 3:
         pprint(kwargs)
 
@@ -253,7 +283,10 @@ def batch_process(process, **kwargs):
 
         # Create batch directory.
         try:
+            if verbosity >= 3:
+                print('Creating directory: {}', os.path.relpath(batch_path))
             os.makedirs(batch_path)
+
         except OSError as e:
             if e.errno == errno.EEXIST:
                 # We don't care if directory already exists.
@@ -265,7 +298,7 @@ def batch_process(process, **kwargs):
     assigned_files = []
 
     for i, item in enumerate(files):
-        if batch_count >= 0:
+        if batch_count > 0:
             out, short = batches[i % len(batches)]
         assigned_files.append((item, out))
 
@@ -275,7 +308,7 @@ def batch_process(process, **kwargs):
                          no_overwrite,
                          recursive=True)[0]
 
-    existing = {split_ext(os.path.basename(x))[0] : x for x in existing}
+    existing = {split_ext(x)[0] : x for x in existing}
 
 
     if verbosity >= 3:
@@ -283,15 +316,16 @@ def batch_process(process, **kwargs):
 
     if no_overwrite:
         if verbosity >= 1:
-            print('\n--- Checking for existing files... ---')
+            print('\n--- Checking for existing files of types: {} ---'
+                  ''.format(no_overwrite))
 
         # Function for checking if file exists in output_dir
         def check(file_name):
-            base, ext = split_ext(os.path.basename(file_name))
+            base, ext = split_ext(file_name)
             over_written = existing.get(base, False)
 
             if over_written:
-                existing_ext = split_ext(os.path.basename(existing[base]))[1]
+                existing_ext = split_ext(existing[base])[1]
                 if existing_ext.endswith(tuple(no_overwrite)):
                     print('Skip {}{} -> "{}"'
                           ''.format(base, ext, os.path.relpath(existing[base])))

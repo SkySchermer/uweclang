@@ -50,13 +50,13 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
     global _OUTPUT_EXTENSION, _MEMO_OUTPUT_EXTENSION, _LOG_OUTPUT_EXTENSION
 
     output_filename = os.path.join(output_dir,
-                                   os.path.splitext(os.path.basename(input_filename))[0]
+                                   uweclang.split_ext(os.path.basename(input_filename))[0]
                                    + _OUTPUT_EXTENSION)
     memo_filename = os.path.join(output_dir,
-                                 os.path.splitext(os.path.basename(input_filename))[0]
+                                 uweclang.split_ext(os.path.basename(input_filename))[0]
                                  + _MEMO_OUTPUT_EXTENSION)
     log_filename = os.path.join(output_dir,
-                                os.path.splitext(os.path.basename(input_filename))[0]
+                                uweclang.split_ext(os.path.basename(input_filename))[0]
                                 + _LOG_OUTPUT_EXTENSION)
 
 
@@ -221,7 +221,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--m-extension',
                         nargs='?',
-                        default='.memo',
+                        default='.memo.txt',
                         metavar='mext',
                         dest='mext',
                         help='extension for output memo file')
@@ -240,19 +240,6 @@ if __name__ == '__main__':
                         dest='punc',
                         help='punctuation percent for citation removal')
 
-    # Parse command line arguments.
-    args = parser.parse_args()
-
-
-    # Set default verbosity.
-    if args.verbose is None:
-        args.verbose = 1
-
-    _OUTPUT_EXTENSION = args.oext
-    _MEMO_OUTPUT_EXTENSION = args.mext
-    _LOG_OUTPUT_EXTENSION = args.lext
-    _CAPS_LIMIT = args.caps
-    _PUNC_LIMIT = args.punc
 
     # Setup extension checking function.
     def is_valid_target(file):
@@ -262,51 +249,19 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Set input extensions to get.
-    args.extensions = args.extensions or ['.raw.text']
+    args.extensions = args.extensions or ['.raw.txt']
 
     # Set default verbosity.
     args.verbose = args.verbose or 1
 
-    # Capture the output extensions into a global variable to that it is
-    # visible to extract_plaintext_from_docx.
+    # Capture the output extensions into global variables to that they are
+    # visible to scrub_plaintext. Also save limit variables.
     _OUTPUT_EXTENSION = args.oext
+    _MEMO_OUTPUT_EXTENSION = args.mext
+    _LOG_OUTPUT_EXTENSION = args.lext
+    _CAPS_LIMIT = args.caps
+    _PUNC_LIMIT = args.punc
 
     # Process the files.
     uweclang.batch_process(scrub_plaintext, **vars(args))
 
-
-    # # Select the files to process.
-    # (files, ignored_files) = uweclang.select_files(args,
-    #                                                file_selector=is_valid_target)
-
-
-    # # Resolve relative ouput path.
-    # out_path = os.path.abspath(args.output)
-
-
-    # # Print list of ignored files.
-    # if args.verbose >= 1:
-    #     for x in ignored_files:
-    #         print("Ignore file:", x)
-    #     print('\n--- Begin Processing ---')
-
-
-    # # Process the files.
-    # if args.batch_mode == 'none':
-    #     # Process each file seperately.
-    #     for filename in files:
-    #         name_part = os.path.splitext(os.path.basename(filename))[0]
-    #         scrub_plaintext(filename,
-    #                         out_path,
-    #                         verbosity=args.verbose)
-    # else:
-    #     # Process files in batch mode.
-    #     uweclang.batch_process(scrub_plaintext,
-    #                            in_files=list(files),
-    #                            out_dir=out_path,
-    #                            batch_size=args.batch_size,
-    #                            batch_mode=args.batch_mode,
-    #                            verbosity=args.verbose)
-
-    # if args.verbose >= 1:
-    #     print('--- End Processing ---\n')

@@ -99,7 +99,8 @@ UWEC Language Tools - Available Functions
   + batch
     * [tools](uweclang/batch/tools.py)
       - `BATCH_PARSER`
-      - `select_files(args)`
+      - `split_ext(filename)`
+      - `get_files(search_locations)`
       - `batch_process(process)`
   + binary
     * [docx](uweclang/binary/docx.py)
