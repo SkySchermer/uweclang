@@ -39,8 +39,8 @@ def extract_plaintext_from_docx(input_filename, output_dir, verbosity=1):
         (None): Will kill the program on IOErrors.
     """
     # Get document text.
-    xml = uweclang.get_document_xml(input_filename, verbosity=verbosity)
-    doc = uweclang.xml_to_plain(xml, verbosity=verbosity)
+    xml = uweclang.get_document_xml(input_filename, verbosity=verbosity-1)
+    doc = uweclang.xml_to_plain(xml, verbosity=verbosity-1)
 
     # Construct output filename.
     global _OUTPUT_EXTENSION
@@ -69,9 +69,9 @@ def extract_plaintext_from_docx(input_filename, output_dir, verbosity=1):
     out.close()
 
     if verbosity >= 1:
-        print('Extracted plaintext from '
-              '{} into {}'.format(os.path.basename(input_filename),
-                                  os.path.basename(output_filename)))
+        print('Extract {} -> "{}"'
+              ''.format(os.path.basename(input_filename),
+                        os.path.relpath(output_filename)))
 
 
 if __name__ == '__main__':
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     # Add extra command line arguments for this script.
     parser.add_argument('-x', '--o-extension',
                         nargs='?',
-                        default='.txt',
+                        default='.raw.txt',
                         metavar='oext',
                         dest='oext',
                         help='extension for output file')
@@ -101,20 +101,9 @@ if __name__ == '__main__':
     # Set default verbosity.
     args.verbose = args.verbose or 1
 
-
+    # Capture the output extensions into a global variable to that it is
+    # visible to extract_plaintext_from_docx.
     _OUTPUT_EXTENSION = args.oext
-
-    # Setup extension checking function.
-    def is_valid_target(file):
-        return os.path.isfile(file) and os.path.splitext(file)[1] in args.ext
-
-
-    # # Select the files to process.
-    # (files, ignored_files) = uweclang.select_files(args,
-    #                                                file_selector=is_valid_target)
-
-
-
 
     # Process the files.
     uweclang.batch_process(extract_plaintext_from_docx, **vars(args))

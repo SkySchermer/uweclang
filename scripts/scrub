@@ -258,39 +258,55 @@ if __name__ == '__main__':
     def is_valid_target(file):
         return os.path.isfile(file) and os.path.splitext(file)[1] in args.ext
 
+    # Parse command line arguments.
+    args = parser.parse_args()
 
-    # Select the files to process.
-    (files, ignored_files) = uweclang.select_files(args,
-                                                   file_selector=is_valid_target)
+    # Set input extensions to get.
+    args.extensions = args.extensions or ['.raw.text']
 
+    # Set default verbosity.
+    args.verbose = args.verbose or 1
 
-    # Resolve relative ouput path.
-    out_path = os.path.abspath(args.output)
-
-
-    # Print list of ignored files.
-    if args.verbose >= 1:
-        for x in ignored_files:
-            print("Ignore file:", x)
-        print('\n--- Begin Processing ---')
-
+    # Capture the output extensions into a global variable to that it is
+    # visible to extract_plaintext_from_docx.
+    _OUTPUT_EXTENSION = args.oext
 
     # Process the files.
-    if args.batch_mode == 'none':
-        # Process each file seperately.
-        for filename in files:
-            name_part = os.path.splitext(os.path.basename(filename))[0]
-            scrub_plaintext(filename,
-                            out_path,
-                            verbosity=args.verbose)
-    else:
-        # Process files in batch mode.
-        uweclang.batch_process(scrub_plaintext,
-                               in_files=list(files),
-                               out_dir=out_path,
-                               batch_size=args.batch_size,
-                               batch_mode=args.batch_mode,
-                               verbosity=args.verbose)
+    uweclang.batch_process(scrub_plaintext, **vars(args))
 
-    if args.verbose >= 1:
-        print('--- End Processing ---\n')
+
+    # # Select the files to process.
+    # (files, ignored_files) = uweclang.select_files(args,
+    #                                                file_selector=is_valid_target)
+
+
+    # # Resolve relative ouput path.
+    # out_path = os.path.abspath(args.output)
+
+
+    # # Print list of ignored files.
+    # if args.verbose >= 1:
+    #     for x in ignored_files:
+    #         print("Ignore file:", x)
+    #     print('\n--- Begin Processing ---')
+
+
+    # # Process the files.
+    # if args.batch_mode == 'none':
+    #     # Process each file seperately.
+    #     for filename in files:
+    #         name_part = os.path.splitext(os.path.basename(filename))[0]
+    #         scrub_plaintext(filename,
+    #                         out_path,
+    #                         verbosity=args.verbose)
+    # else:
+    #     # Process files in batch mode.
+    #     uweclang.batch_process(scrub_plaintext,
+    #                            in_files=list(files),
+    #                            out_dir=out_path,
+    #                            batch_size=args.batch_size,
+    #                            batch_mode=args.batch_mode,
+    #                            verbosity=args.verbose)
+
+    # if args.verbose >= 1:
+    #     print('--- End Processing ---\n')

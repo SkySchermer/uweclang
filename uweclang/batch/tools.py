@@ -168,11 +168,17 @@ def get_files(search_locations, extensions, recursive=False):
             targets = chain.from_iterable(targets)
 
             for x in targets:
-                if extensions is None or split_ext(x)[1] in extensions:
+
+                # pprint(split_ext(x)[1]); pprint(extensions)
+                if (extensions is None or
+                    split_ext(x)[1].endswith(tuple(extensions))):
+
                     files.append(x)
         else:
             # Handle a file.
-            if extensions is None or split_ext(item)[1] in extensions:
+            if (extensions is None or
+                split_ext(item)[1].endswith(tuple(extensions))):
+
                 files.append(item)
 
     full_files = set()
@@ -183,13 +189,6 @@ def get_files(search_locations, extensions, recursive=False):
 
 
 def batch_process(process, **kwargs):
-                  # in_files=['.'],
-                  # out_dir='.',
-                  # batch_size=10,
-                  # batch_mode='count',
-                  # batch_dir_format='batch',
-                  # skip_exts=None,
-                  # verbosity=1):
     """Runs a process on a set of files and batches them into subdirectories.
 
     Arguments:
@@ -232,8 +231,6 @@ def batch_process(process, **kwargs):
     files, file_count = get_files(search_locations,
                                   extensions,
                                   recursive)
-
-    verbosity = 3
 
     # Print debug info.
     if verbosity >= 3:
@@ -280,8 +277,9 @@ def batch_process(process, **kwargs):
 
     existing = {split_ext(os.path.basename(x))[0] : x for x in existing}
 
+
     if verbosity >= 3:
-        print('Process preventing extensions:',no_overwrite)
+        print('Process preventing extensions:', no_overwrite)
 
     if no_overwrite:
         if verbosity >= 1:
@@ -291,10 +289,12 @@ def batch_process(process, **kwargs):
         def check(file_name):
             base, ext = split_ext(os.path.basename(file_name))
             over_written = existing.get(base, False)
+
             if over_written:
-                if split_ext(os.path.basename(existing[base]))[1] in no_overwrite:
-                    print('File {}{} skipped due to overwrite match:\n\t{}'
-                          ''.format(base, ext, existing[base]))
+                existing_ext = split_ext(os.path.basename(existing[base]))[1]
+                if existing_ext.endswith(tuple(no_overwrite)):
+                    print('Skip {}{} -> "{}"'
+                          ''.format(base, ext, os.path.relpath(existing[base])))
                     return False
             return True
 
@@ -303,7 +303,7 @@ def batch_process(process, **kwargs):
 
 
     if verbosity >= 1 and len(assigned_files) == 0:
-        print('\n--- No files to process ---')
+        print('--- No files to process ---\n')
         return
 
     if verbosity >= 1:
