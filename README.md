@@ -103,7 +103,7 @@ UWEC Language Tools - Available Functions
       - `batch_process(process)`
   + binary
     * [docx](uweclang/binary/docx.py)
-      - `PlainTextExtractor`
+      - `parse_element_plain(element)`
       - `get_document_xml(filename)`
       - `xml_to_plain(document)`
   + plain

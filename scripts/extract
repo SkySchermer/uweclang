@@ -95,7 +95,7 @@ if __name__ == '__main__':
     # Parse command line arguments.
     args = parser.parse_args()
 
-
+    # Set input extensions to get.
     args.extensions = args.extensions or ['.docx']
 
     # Set default verbosity.

@@ -5,7 +5,7 @@ export PYTHONPATH=.
 echo "Extracting docx files..."
 scripts/extract "Student Corpus/Unprocessed Files/" \
 			 -o "Student Corpus/Plain Files/" 		\
-			 -w .txt
+			 -w .txt -b 5 -m count
 
 
 if [ $? -ne 0 ]; then { echo "Aborting: 'extract' failed." ; exit 1; } fi

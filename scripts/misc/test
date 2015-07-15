@@ -1,29 +1,33 @@
 #! /usr/bin/env python
 
-import uweclang
-import re
+# import uweclang
+# import re
 from pprint import pprint
 
-# Inline citation detector:
-def citation_detector(parens, text):
-    if parens != (None, None):
-        punc = uweclang.punctuation_density(text)
-        caps = uweclang.capitalization_density(text)
-        print('\t|P|C|', punc, caps, text)
-        if punc >= 0.3:
-            return False
-
-        if caps >= 0.5:
-            return False
-
-    return True
-
-text = """Pinkert’s article emphasizes the enormous impact labeling has on individuals.  In the study she conducted, one concept they taught was the role labeling played in the progression leading to the Holocaust.  This is commonly thought of as the Germans labeling the Jews, convincing themselves that mass genocide was right; however, the way Jews currently label themselves as “survivors” is what continues to affect them today .  This example coincides with the labeling of modern day felons.  Society labels felons as “convicts” or “ex-cons,” similar to how the Germans labeled the Jews .  This produces the same effect on felons as it did on Jewish people; they begin to see themselves only as “convicts” or “ex-cons” .  The way individuals views themselves impacts the way they live their lives, thereby affecting what happens to them.  With that being said, both Jews and felons are hindering themselves by buying into these labels.  Pinkert illuminates how altering these self-perceptions would lead to changes for the individuals, prisons systems, and ultimately society as a whole."""
 
 
-text = uweclang.clean_punctuation(text)
 
-pprint(uweclang.TaggedText(text).originalText())
+print(split_ext('.secret'), split_ext('me.txt.memo'), split_ext('a.b.c.d.e'))
+
+# # Inline citation detector:
+# def citation_detector(parens, text):
+#     if parens != (None, None):
+#         punc = uweclang.punctuation_density(text)
+#         caps = uweclang.capitalization_density(text)
+#         print('\t|P|C|', punc, caps, text)
+#         if punc >= 0.3:
+#             return False
+
+#         if caps >= 0.5:
+#             return False
+
+#     return True
+
+
+
+# text = uweclang.clean_punctuation(text)
+
+# pprint(uweclang.TaggedText(text).originalText())
 
 # tree = uweclang.parse_parentheticals(text)
 # print(text)
