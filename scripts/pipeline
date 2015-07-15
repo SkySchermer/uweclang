@@ -35,7 +35,8 @@ echo "Tagging processed files..."
 
 scripts/tag "Student Corpus/Processed Files/" \
 		 -o "Student Corpus/Tagged Files/"	  \
-		 --recursive
+		 --recursive						  \
+		 --no-overwrite .tag.txt
 
 
 # Exit if the last command failed.
@@ -45,9 +46,9 @@ if [ $? -ne 0 ]; then { echo "Aborting: 'tag' failed." ; exit 1; } fi
 
 echo "Analyzing tagged files..."
 
-scripts/tag "Student Corpus/Tagged Files/" \
-		 -o "Student Corpus/Results/"	   \
-		 --recursive
+scripts/analyze "Student Corpus/Tagged Files/" \
+		 	 -o "Student Corpus/Results/"	   \
+		 	 --recursive
 
 
 # Exit if the last command failed.
@@ -57,7 +58,7 @@ if [ $? -ne 0 ]; then { echo "Aborting: 'analyze' failed." ; exit 1; } fi
 
 echo "Summarizing analyis..."
 
-scripts/tag "Student Corpus/Results/" --recursive
+scripts/summarize "Student Corpus/Results/" --recursive
 
 
 # Exit if the last command failed.

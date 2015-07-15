@@ -50,15 +50,22 @@ def tag_file(input_filename, output_dir, verbosity=1):
                                    os.path.splitext(os.path.basename(input_filename))[0]
                                    + _OUTPUT_EXTENSION)
 
-    # # Open output file.
-    # try:
-    #     out = io.open(output_filename, 'w', newline='\r\n')
-    # except IOError as e:
-    #     print('Error creating file {}: {}'.format(output_filename, e))
-    #     sys.exit(1)
+    # Open output file.
+    try:
+        out = io.open(output_filename, 'w', newline='\r\n')
+    except IOError as e:
+        print('Error creating file {}: {}'.format(output_filename, e))
+        sys.exit(1)
 
 
-    # TODO
+    tagged_text = uweclang.tag(text)
+
+    for sentence in tagged_text:
+        for token, tag in sentence:
+            out.write('{}/{} '.format(token, tag))
+        out.write('\r\n')
+
+    out.close()
 
     # Print task completion.
     if verbosity >= 1:
