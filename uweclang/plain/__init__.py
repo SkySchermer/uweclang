@@ -12,4 +12,4 @@ __email__      = 'schermsr@uwec.edu'
 __status__     = 'Development' # or Production/Deprecated
 
 
-__all__ = ['student', 'tools']
+__all__ = ['clean', 'plain']

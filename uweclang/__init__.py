@@ -46,11 +46,11 @@ __status__     = 'Development' # or Production/Deprecated
 from uweclang.binary.docx import *
 
 # Import all functions from the plain module:
-from uweclang.plain.student import *
-from uweclang.plain.tools import *
+from uweclang.plain.plain import *
+from uweclang.plain.clean import *
 
 # Import all functions from the tagged module:
-from uweclang.tagged.tools import *
+from uweclang.tagged.tag import *
 
 # Import all functions from the batch module:
-from uweclang.batch.tools import *
+from uweclang.batch.batch import *

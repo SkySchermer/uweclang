@@ -101,7 +101,7 @@ UWEC Language Tools - Available Functions
 
 * uweclang
   + batch
-    * [tools](uweclang/batch/tools.py)
+    * [batch](uweclang/batch/batch.py)
       - `BATCH_PARSER`
       - `split_ext(filename)`
       - `get_files(search_locations)`
@@ -112,16 +112,16 @@ UWEC Language Tools - Available Functions
       - `get_document_xml(filename)`
       - `xml_to_plain(document)`
   + plain
-    * [student](uweclang/plain/student.py)
+    * [clean](uweclang/plain/clean.py)
       - `punctuation_density(text)`
       - `capitalization_density(text)`
       - `clean_punctuation(text)`
       - `parse_parentheticals(text)`
       - `recombine_parentheticals(parse_tree)`
-    * [tools](uweclang/plain/tools.py)
+    * [plain](uweclang/plain/plain.py)
       - `line_split(text)`
   + tagged
-    * [tools](uweclang/tagged/tools.py)
+    * [tag](uweclang/tagged/tag.py)
       - `TaggedText`
       - `tag(text)`
 
