@@ -190,9 +190,9 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
 
     # Print task completion.
     if verbosity >= 1:
-        print('Scrubbed text from '
-              '{} into {}'.format(os.path.basename(input_filename),
-                                  os.path.basename(output_filename)))
+        print('Scrubbed {} -> "{}"'
+              ''.format(os.path.basename(input_filename),
+                        os.path.relpath(output_filename)))
 
 
 if __name__ == '__main__':
