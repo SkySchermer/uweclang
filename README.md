@@ -78,7 +78,10 @@ The student corpus scripts are meant to be run in sequence to accomplish the fol
 3. Manually verify each file.
 4. Tag student files. (Script: [tag](scripts/tag))
   - output: ___.tag.txt
-5. Summarize tagged files. (Script: [summary](scripts/summary))
+5. Analyze tagged files. (Script: [analyze](scripts/analyze))
+  - output: ___.res.txt
+6. Summarize analysis files. (Script: [summary](scripts/summary))
+  - output: summary.txt
 
 
 ### Intermediate Files
@@ -90,6 +93,7 @@ The student corpus scripts are meant to be run in sequence to accomplish the fol
     * Processed Files
       - batchXXX
     * Tagged Files
+    * Results
 
 
 UWEC Language Tools - Available Functions
