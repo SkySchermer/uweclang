@@ -153,7 +153,7 @@ This pattern is useful to guard code that shouldn't run when the file is importe
 selector_function = selector_function or (lambda x,y: True)
 ```
 
-(As seen in [uweclang/plain/student.py](uweclang/plain/student.py))
+(As seen in [uweclang/plain/plain.py](uweclang/plain/plain.py))
 
 The purpose of this code is to assign a value to selector_function in case one was not provided. This is different from using a default argument, because if the caller explicitly passes `None`, the function will still be assigned. This exploits two features of python:
 
@@ -162,41 +162,13 @@ The purpose of this code is to assign a value to selector_function in case one w
   * The `or` operator is *short circuited*. If the first item on the left evaluates to something truthy, then the item on the right is never evaluated at all. (Conversely, the `and` operator short circuits when a false value is evaluated.)
   
 
-#### Tuple Selector
-
-```python
-for x in targets:
-    (ignored_files, files)[file_selector(x)].append(x)
-```
-
-(As seen in [uweclang/batch/tools.py](uweclang/batch/tools.py).)
-
-This is a fancy way of partitioning a list into two lists based on a predicate. The normal (less efficient, but more readable) way of doing this looks like so:
-
-```python
-ignored_files = [x for x in targets if not file_selector(x)]
-files         = [x for x in targets if     file_selector(x)]
-```
-
-Or, alternatively (equally efficient, but more verbose):
-
-```python
-for x in targets:
-    if file_selector(x):
-        files.append(x)
-    else:
-        ignored_files.append(x)
-```
-
-This pattern exploits a quirk of python that allows `True` to act like `1`, and `False` to act like `0`. So we take the tuple `(ignored_files, files)`, and take the first item if `is_valid_target(x)` evaluates to false, and the second otherwise. Then we call the `.append()` method on `x` to add it to the selected list
-
 #### Argument Unpacking
 
 ```python
 [x[0] for x in seperated_text if selector_function(*x)]
 ```
 
-(As seen in [uweclang/plain/student.py](uweclang/plain/student.py).)
+(As seen in [uweclang/plain/plain.py](uweclang/plain/plain.py).)
 
 In this example, `seperated_text` is a list of tuples, so the each `x` is a tuple. The `*` operator 'unpacks' the tuple, allowing its components to be passed as arguments to the function. So this code is equivalent to the following:
 
