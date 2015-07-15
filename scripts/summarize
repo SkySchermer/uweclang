@@ -23,7 +23,7 @@ sys.setdefaultencoding('utf8')
 _OUTPUT_EXTENSION = ''
 
 
-def tag_file(input_filename, output_dir, verbosity=1):
+def collect_file(input_filename, output_dir, verbosity=1):
     """Batch processing function for tagging plaintext files.
 
     Arguments:
@@ -38,33 +38,28 @@ def tag_file(input_filename, output_dir, verbosity=1):
         (None): Will kill the program on IOErrors.
     """
     # Get document text.
-    try:
-        text = open(input_filename, 'r').read()
-    except IOError as e:
-        print('Error openning file {}: {}'.format(input_filename, e))
-        sys.exit(1)
-
-    # Construct output filename.
-    global _OUTPUT_EXTENSION
-    output_filename = os.path.join(output_dir,
-                                   os.path.splitext(os.path.basename(input_filename))[0]
-                                   + _OUTPUT_EXTENSION)
-
-    # # Open output file.
     # try:
-    #     out = io.open(output_filename, 'w', newline='\r\n')
+    #     text = open(input_filename, 'r').read()
     # except IOError as e:
-    #     print('Error creating file {}: {}'.format(output_filename, e))
+    #     print('Error openning file {}: {}'.format(input_filename, e))
     #     sys.exit(1)
+
+    # # Construct output filename.
+    # global _OUTPUT_EXTENSION
+    # output_filename = os.path.join(output_dir,
+    #                                os.path.splitext(os.path.basename(input_filename))[0]
+    #                                + _OUTPUT_EXTENSION)
+
+
 
 
     # TODO
 
-    # Print task completion.
-    if verbosity >= 1:
-        print('Tagged {} -> "{}"'
-              ''.format(os.path.basename(input_filename),
-                        os.path.relpath(output_filename)))
+    # # Print task completion.
+    # if verbosity >= 1:
+    #     print('Tagged {} -> "{}"'
+    #           ''.format(os.path.basename(input_filename),
+    #                     os.path.relpath(output_filename)))
 
 
 
@@ -73,14 +68,14 @@ if __name__ == '__main__':
     # Create a command line argument parser based on the BATCH_PARSER template.
     # See uweclang/batch/tools.py for details.
     parser = argparse.ArgumentParser(
-        description='Tags plaintext files',
+        description='Summarizes result files',
         parents=[uweclang.BATCH_PARSER])
 
 
     # Add extra command line arguments for this script.
     parser.add_argument('-x', '--o-extension',
                         nargs='?',
-                        default='.tag.txt',
+                        default='.txt',
                         metavar='oext',
                         dest='oext',
                         help='extension for output file')
@@ -90,7 +85,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Set input extensions to get.
-    args.extensions = args.extensions or ['.txt']
+    args.extensions = args.extensions or ['.res.txt']
 
     # Set default verbosity.
     args.verbose = args.verbose or 1
@@ -99,7 +94,14 @@ if __name__ == '__main__':
     # visible to extract_plaintext_from_docx.
     _OUTPUT_EXTENSION = args.oext
 
+    # Open output file.
+    # try:
+    #     out = io.open(output_filename, 'w', newline='\r\n')
+    # except IOError as e:
+    #     print('Error creating file {}: {}'.format(output_filename, e))
+    #     sys.exit(1)
+
     # Process the files.
-    uweclang.batch_process(tag_file, **vars(args))
+    uweclang.batch_process(collect_file, **vars(args))
 
 

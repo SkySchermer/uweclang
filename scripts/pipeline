@@ -21,7 +21,9 @@ scripts/scrub "Student Corpus/Plain Files/"		\
 		   -o "Student Corpus/Processed Files/" \
 		   --batch-size 4						\
 		   --batch-mode divide					\
-		   -w .txt
+		   --no-overwrite .txt # This will prevent processing if any .txt file
+		   					   # with the same name exists in the output 
+		   					   # directory.
 
 
 # Exit if the last command failed.
@@ -38,6 +40,28 @@ scripts/tag "Student Corpus/Processed Files/" \
 
 # Exit if the last command failed.
 if [ $? -ne 0 ]; then { echo "Aborting: 'tag' failed." ; exit 1; } fi
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+echo "Analyzing tagged files..."
+
+scripts/tag "Student Corpus/Tagged Files/" \
+		 -o "Student Corpus/Results/"	   \
+		 --recursive
+
+
+# Exit if the last command failed.
+if [ $? -ne 0 ]; then { echo "Aborting: 'analyze' failed." ; exit 1; } fi
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+echo "Summarizing analyis..."
+
+scripts/tag "Student Corpus/Results/" --recursive
+
+
+# Exit if the last command failed.
+if [ $? -ne 0 ]; then { echo "Aborting: 'sumarize' failed." ; exit 1; } fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

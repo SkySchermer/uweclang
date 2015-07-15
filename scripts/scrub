@@ -200,7 +200,7 @@ if __name__ == '__main__':
     # Create a command line argument parser based on the BATCH_PARSER template.
     # See uweclang/batch/tools.py for details.
     parser = argparse.ArgumentParser(
-        description='Extracts plaintext from docx files',
+        description='Cleans up errors in plaintext files',
         parents=[uweclang.BATCH_PARSER])
 
 

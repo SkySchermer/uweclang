@@ -80,7 +80,7 @@ The student corpus scripts are meant to be run in sequence to accomplish the fol
   - output: ___.tag.txt
 5. Analyze tagged files. (Script: [analyze](scripts/analyze))
   - output: ___.res.txt
-6. Summarize analysis files. (Script: [summary](scripts/summary))
+6. Summarize analysis files. (Script: [summarize](scripts/summarize))
   - output: summary.txt
 
 
