@@ -6,64 +6,24 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 # Standard imports
+from itertools import chain
+import re
 import nltk
+
 from collections import defaultdict
 
-class TaggedText:
-    """ 
-    """
-    nested_tagged = []
-    tags = defaultdict(set)
 
-    def __init__(self, text):
-        self.nested_tagged = _tag(text)
-
-    def __str__(self):
-        pass
-
-    def __repr__(self):
-        pass
-
-    def parse_parentheticals(self):
-        pass
-
-    def recombine_parentheticals(self):
-        pass
-
-    def originalText(self):
-        text = []
-        for sentence in self.nested_tagged:
-            for token, tag in sentence:
-                if token not in {'``', "''", '.', ','}:
-                    text.append(' ')
-                text.append(token)
-
-
-        return ''.join(text)
-
-    def getTags(self):
-        for sentence in self.nested_tagged:
-            for token, tag in sentence:
-                self.tags[tag].add(token)
-        return self.tags
-
-    def count_tags(self, tag_regex=None):
-        pass
-
-
-def _tag(text):
+def tag(text):
     """
     """
     #Separate the input text into sentences
     sentences = nltk.sent_tokenize(text)
-    print(sentences)
 
     #Separate each sentence into words
     nested = []
     for sentence in sentences:
         nested.append(nltk.word_tokenize(sentence))
 
-    print(nested)
     #Add a part of speech tag to each word
     nested_tagged = []
     for sentence in nested:
@@ -71,3 +31,145 @@ def _tag(text):
 
     return nested_tagged
 
+
+def get_tags(tagged):
+    tags = defaultdict(set)
+    for sentence in tagged:
+        for token, tag in sentence:
+            tags[tag].add(token)
+    return tags
+
+
+def read_tagged_string(text):
+    return [nltk.tag.str2tuple(x) for x in text.split()]
+
+
+def tagged_to_plain(tagged):
+    tagged = chain.from_iterable(tagged)
+    text = ' '.join((x[0] for x in tagged))
+
+    text = re.sub(r"`` | ''", '"', text)
+    text = re.sub(r' (n\'t|\'s|[^\w\s\"\'])', r'\1', text)
+
+    return text
+
+
+def parse_tag_parentheticals(tagged, lparen='(', rparen=')', use_tag=False):
+    """Parses the given text and returns a tree of parentheticals.
+
+    Arguments:
+        text (str): The input text.
+        lparen (str): The left parenthetical delimiter. Defaults to '('.
+        rparen (str): The right parenthetical delimiter. Defaults to ')'.
+        use_tag (bool): Whether to match the delimiter against the tag or the
+            text. Defaults to False (text).
+
+    Returns:
+        (dict | [(str, str)]): A dictionary representing the parse tree or a
+        list of tagged tokens. Each node of the tree will have the following
+        structure:
+
+            {'parens': (l, r), 'tagged': []}
+
+        where (l, r) are the parentheticals wrapping the text, and the list
+        contains tokens and subnodes.
+
+        Unmatched lparens will be interpretted as regular tokens. Unmatched
+        rparens will have None as their second parens tuple element. If there
+        are no parentheticals, a list of tagged tokens will be returned.
+    """
+    tagged = chain.from_iterable(tagged)
+
+    part = 1 if use_tag else 0
+
+    # Build root of tree.
+    tree = {'parens': (None, None),
+            'tagged': []}
+
+    context = [tree]
+
+    # Keep parsing until nothing is left.
+    for item in tagged:
+        node = context[0]
+
+        # Match rparens.
+        if item[part] == rparen:
+
+            if node['parens'] == (None, None):
+                node['tagged'].append(item[0])
+            else:
+                node = context.pop(0)
+                node['parens'] = (node['parens'][0], item)
+
+            continue
+
+        # Match lparens.
+        if item[part] == lparen:
+            new_node = {'parens': (item, None),
+                        'tagged': []}
+            node['tagged'].append(new_node)
+            context.insert(0, new_node)
+
+            continue
+
+        # Match text.
+        node['tagged'].append(item)
+
+    # Remove highest level tree if whole string is parenthetical.
+    if len(tree['tagged']) == 1:
+        tree = [tree['tagged'][0]]
+
+    return tree
+
+
+def recombine_tag_parentheticals(parse_tree, selector_function=None):
+    """Recombines tagged text seperated by the seperate_tag_parentheticals function by
+    using a selector function to determine which portions to keep or discard.
+
+    Arguments:
+        parse_tree (dict): A tree of parsed parentheticals
+            (See parse_parentheticals.)
+        selector_function ((TAG, TAG), [TAG] -> true): A function taking a pair
+            of tagged parenthesis and a list of tagged tokens, and returning
+            whether to keep the tokens or discard them. Allows for selective
+            recombination of text. Defaults to None (everything is kept.)
+            (TAG is of the form (str, str))
+
+    Returns:
+        ([(str, str)]): The resulting tagged text.
+
+    Raises:
+        (ValueError): When unkown values are contained in parse_tree.
+    """
+    # Set default selector test function if none is provided.
+    selector_function = selector_function or (lambda x, y: True)
+
+    # Reconstruct parse tree root for lists and strings.
+    if isinstance(parse_tree, list):
+        parse_tree = {'parens': (None, None), 'tagged': parse_tree}
+    elif isinstance(parse_tree, tuple):
+        parse_tree = {'parens': (None, None), 'tagged': [parse_tree]}
+
+    tagged = []
+    for item in parse_tree['tagged']:
+        if isinstance(item, tuple):
+            tagged.append(item)
+
+        elif isinstance(item, dict):
+            # Recreate text from rest of this node.
+            res = recombine_tag_parentheticals(item,
+                                           selector_function=selector_function)
+            # Append text if it passes selector test.
+            if selector_function(parse_tree['parens'], res):
+                tagged.extend(res)
+
+        else:
+            raise ValueError('Unknown parse tree content.')
+
+
+    # Use selector test on the whole tree.
+    if selector_function(parse_tree['parens'], tagged):
+        l = [parse_tree['parens'][0]]
+        r = [parse_tree['parens'][1]]
+        return [x for x in chain.from_iterable([l, tagged, r]) if x is not None]
+    return []

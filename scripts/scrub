@@ -16,7 +16,7 @@ import argparse
 import uweclang
 
 
-# We want to write all files in UTF-8 encoding. (This ia a Python 3 forward
+# We want to write all files in UTF-8 encoding. (This is a Python 3 forward
 # compatability issue.)
 reload(sys)
 sys.setdefaultencoding('utf8')
