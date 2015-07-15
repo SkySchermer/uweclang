@@ -62,7 +62,9 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
 
     # Get document text and split into lines.
     try:
-        lines = uweclang.line_split(open(input_filename, 'r').read())
+        with open(input_filename, 'r') as f:
+            lines = uweclang.line_split(f.read())
+
     except IOError as e:
         print('Error openning file {}: {}'.format(input_filename, e))
         sys.exit(1)

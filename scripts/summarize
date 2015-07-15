@@ -39,7 +39,8 @@ def collect_file(input_filename, output_dir, verbosity=1):
     """
     # Get document text.
     # try:
-    #     text = open(input_filename, 'r').read()
+    #    with open(input_filename, 'r') as f:
+    #        text = f.read()
     # except IOError as e:
     #     print('Error openning file {}: {}'.format(input_filename, e))
     #     sys.exit(1)

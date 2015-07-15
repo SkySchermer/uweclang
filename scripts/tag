@@ -39,7 +39,9 @@ def tag_file(input_filename, output_dir, verbosity=1):
     """
     # Get document text.
     try:
-        text = open(input_filename, 'r').read()
+        with open(input_filename, 'r') as f:
+            text = f.read()
+
     except IOError as e:
         print('Error openning file {}: {}'.format(input_filename, e))
         sys.exit(1)
@@ -50,6 +52,10 @@ def tag_file(input_filename, output_dir, verbosity=1):
                                    os.path.splitext(os.path.basename(input_filename))[0]
                                    + _OUTPUT_EXTENSION)
 
+    # Perform tagging.
+    tagged_text = uweclang.tag(text)
+
+
     # Open output file.
     try:
         out = io.open(output_filename, 'w', newline='\r\n')
@@ -57,14 +63,14 @@ def tag_file(input_filename, output_dir, verbosity=1):
         print('Error creating file {}: {}'.format(output_filename, e))
         sys.exit(1)
 
-
-    tagged_text = uweclang.tag(text)
-
+    ouput_text = []
     for sentence in tagged_text:
         for token, tag in sentence:
-            out.write('{}/{} '.format(token, tag))
-        out.write('\r\n')
+            output_text.append('{}/{} '.format(token, tag))
+        output_text.append('\r\n')
 
+    # Write text to file and close it.
+    out.write(''.join(output_text))
     out.close()
 
     # Print task completion.
