@@ -6,10 +6,10 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 # Standard imports
-from itertools import chain
 import re
 import nltk
 
+from itertools import chain
 from collections import defaultdict
 
 
@@ -33,15 +33,17 @@ def tag(text):
 
 
 def get_tags(tagged):
-    tags = defaultdict(set)
-    for sentence in tagged:
-        for token, tag in sentence:
-            tags[tag].add(token)
-    return tags
+    tag_dict = defaultdict(dict)
+    for token, tag in chain.from_iterable(tagged):
+        try:
+            tag_dict[tag][token] += 1
+        except KeyError:
+            tag_dict[tag].update({token : 1})
+    return tag_dict
 
 
 def read_tagged_string(text):
-    return [nltk.tag.str2tuple(x) for x in text.split()]
+    return [[nltk.tag.str2tuple(x) for x in line.split()] for line in text.split('\n')]
 
 
 def tagged_to_plain(tagged):

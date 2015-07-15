@@ -13,6 +13,6 @@ text = """There are numerous drug wars across the globe. Throughout all of them,
 tagged = tag(text)
 
 # print(tagged_to_plain(tagged))
-# pprint(dict(get_tags(tagged)))
+pprint(dict(get_tags(tagged)))
 
-pprint(recombine_tag_parentheticals(parse_tag_parentheticals(tagged)))
+# pprint(recombine_tag_parentheticals(parse_tag_parentheticals(tagged)))

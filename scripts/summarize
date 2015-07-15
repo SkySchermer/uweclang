@@ -19,8 +19,6 @@ import uweclang
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-# Script global variable for setting the extension for output files.
-_OUTPUT_EXTENSION = ''
 
 
 def collect_file(input_filename, output_dir, verbosity=1):
@@ -73,19 +71,11 @@ if __name__ == '__main__':
         parents=[uweclang.BATCH_PARSER])
 
 
-    # Add extra command line arguments for this script.
-    parser.add_argument('-x', '--o-extension',
-                        nargs='?',
-                        default='.txt',
-                        metavar='oext',
-                        dest='oext',
-                        help='extension for output file')
-
 
     # Parse command line arguments.
     args = parser.parse_args()
 
-    # Set input extensions to get.
+    # Set input extensions for files to read.
     args.extensions = args.extensions or ['.res.txt']
 
     # Set default verbosity.

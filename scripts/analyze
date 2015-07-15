@@ -10,9 +10,11 @@ from __future__ import unicode_literals
 import sys
 import os
 import io
+import re
 import argparse
 
 import uweclang
+from itertools import chain
 
 # We want to write all files in UTF-8 encoding. (This is a Python 3 forward
 # compatability issue.)
@@ -33,7 +35,6 @@ def analyze_text(text, file_name=None):
     Returns:
         (str): The analysis of the text.
     """
-
     lines = []
 
     # Add file header.
@@ -41,10 +42,40 @@ def analyze_text(text, file_name=None):
         lines.append('Text analysis for file "{}":'.format(os.path.basename(file_name)))
     else:
         lines.append('Text analysis:')
-    lines.append('\r\n')
+    lines.append('')
 
+    tagged = uweclang.read_tagged_string(text)
+    tokens = list(chain.from_iterable(tagged))
 
-    return '\r\n'.join(lines)
+    # Count sentences, words, tokens.
+    s_count = len(tagged)
+
+    punctuation = r'``|\'\'|[^\w\s]'
+    w_count = len([x for x in tokens if not re.match(punctuation, x[0])])
+
+    t_count = len(tokens)
+
+    lines.extend([
+        '{:<25}{}'.format('Sentence Count:', s_count),
+        '{:<25}{}'.format('Word Count:', w_count),
+        '{:<25}{}'.format('Token Count:', t_count),
+        '{:<25}{}'.format('Punctuation Token Count:', t_count - w_count),
+        '{:<25}{:.4f}'.format('AVG Words/Sentence:', w_count / s_count),
+        '{:<25}{:.4f}'.format('AVG Tokens/Sentence:', t_count / s_count),
+        '{:<25}{:.4f}'.format('AVG Tokens/Word:', t_count / w_count),
+        ''
+    ])
+
+    tag_lines = []
+    for tag, data in uweclang.get_tags(tagged).iteritems():
+        tag_lines.append('{:<12}{:<6} : {}'.format('Tag count:',
+                                               tag,
+                                               sum(data.values())))
+    tag_lines.sort()
+    lines.extend(tag_lines)
+    lines.append('')
+
+    return '\n'.join(lines)
 
 
 def analyze_file(input_filename, output_dir, verbosity=1):
