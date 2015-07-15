@@ -112,7 +112,6 @@ def parse_parentheticals(text, lparen='\(', rparen='\)'):
         Unmatched lparens will be interpretted as regular text. Unmatched
         rparens will have None as their second parens tuple element. If there
         are no parentheticals, a list of text will be returned.
-
     """
     # Precompile regular expressions for ease of use.
     n_regex = re.compile(r'([^{}{}]*)'.format(lparen, rparen))
@@ -146,7 +145,7 @@ def parse_parentheticals(text, lparen='\(', rparen='\)'):
         m = l_regex.match(rest)
         if m:
             new_node = {'parens': (m.group(1), None),
-                                'text': []}
+                        'text': []}
             node['text'].append(new_node)
             context.insert(0, new_node)
 
