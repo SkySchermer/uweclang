@@ -48,7 +48,7 @@ def collect_file(input_filename, output_dir, verbosity=1):
     # # Construct output filename.
     # global _OUTPUT_EXTENSION
     # output_filename = os.path.join(output_dir,
-    #                                os.path.splitext(os.path.basename(input_filename))[0]
+    #                                uweclang.split_ext(os.path.basename(input_filename))[0]
     #                                + _OUTPUT_EXTENSION)
 
 

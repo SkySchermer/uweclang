@@ -49,12 +49,8 @@ def tag_file(input_filename, output_dir, verbosity=1):
     # Construct output filename.
     global _OUTPUT_EXTENSION
     output_filename = os.path.join(output_dir,
-                                   os.path.splitext(os.path.basename(input_filename))[0]
+                                   uweclang.split_ext(os.path.basename(input_filename))[0]
                                    + _OUTPUT_EXTENSION)
-
-    # Perform tagging.
-    tagged_text = uweclang.tag(text)
-
 
     # Open output file.
     try:
@@ -63,6 +59,10 @@ def tag_file(input_filename, output_dir, verbosity=1):
         print('Error creating file {}: {}'.format(output_filename, e))
         sys.exit(1)
 
+    # Perform tagging.
+    tagged_text = uweclang.tag(text)
+
+    # Build text to write to file.
     ouput_text = []
     for sentence in tagged_text:
         for token, tag in sentence:
