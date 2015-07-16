@@ -67,7 +67,7 @@ def tag_file(input_filename, output_dir, verbosity=1):
     for sentence in tagged_text:
         for token, tag in sentence:
             output_text.append('{}/{} '.format(token, tag))
-        output_text.append('\r\n')
+        output_text.append('\n')
 
     # Write text to file and close it.
     out.write(''.join(output_text))
