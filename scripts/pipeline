@@ -58,11 +58,13 @@ if [ $? -ne 0 ]; then { echo "Aborting: 'analyze' failed." ; exit 1; } fi
 
 echo "Summarizing analyis..."
 
-scripts/summarize "Student Corpus/Results/" --recursive
+scripts/summarize "Student Corpus/Results/"    \
+			   -o "Student Corpus/summary.txt" \
+			   --recursive 
 
 
 # Exit if the last command failed.
-if [ $? -ne 0 ]; then { echo "Aborting: 'sumarize' failed." ; exit 1; } fi
+if [ $? -ne 0 ]; then { echo "Aborting: 'summarize' failed." ; exit 1; } fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

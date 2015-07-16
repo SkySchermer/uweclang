@@ -10,15 +10,20 @@ from __future__ import unicode_literals
 import sys
 import os
 import io
+import re
 import argparse
 
 import uweclang
+from collections import defaultdict
+from pprint import pprint
 
 # We want to write all files in UTF-8 encoding. (This is a Python 3 forward
 # compatability issue.)
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+_COLLECTED_DATA = dict()
+_COLLECTED_MEMO_DATA = dict()
 
 
 def collect_file(input_filename, output_dir, verbosity=1):
@@ -36,29 +41,43 @@ def collect_file(input_filename, output_dir, verbosity=1):
         (None): Will kill the program on IOErrors.
     """
     # Get document text.
-    # try:
-    #    with open(input_filename, 'r') as f:
-    #        text = f.read()
-    # except IOError as e:
-    #     print('Error openning file {}: {}'.format(input_filename, e))
-    #     sys.exit(1)
-
-    # # Construct output filename.
-    # global _OUTPUT_EXTENSION
-    # output_filename = os.path.join(output_dir,
-    #                                uweclang.split_ext(os.path.basename(input_filename))[0]
-    #                                + _OUTPUT_EXTENSION)
+    try:
+       with open(input_filename, 'r') as f:
+           text = f.read().splitlines()
+    except IOError as e:
+        print('Error openning file {}: {}'.format(input_filename, e))
+        sys.exit(1)
 
 
+    # Prepare to read data from text.
+    fmt_regex = re.compile(r'([^,]*), (.{7}), ([^,]*), ([^,]*)')
+    convert = {'int': int,
+               'float': float,
+               'str': (lambda x: x)}
 
+    # Read text into dictionary.
+    data = defaultdict(dict)
+    for line in text:
+        match = fmt_regex.match(line)
+        if match:
+            a = match.group(1).strip()
+            b = match.group(2).strip()
+            c = match.group(3).strip()
+            d = match.group(4).strip()
+            if b == '':
+                data[a] = convert[d](c)
+            else:
+                data[a][b] = convert[d](c)
 
-    # TODO
+    # Save dictionary into collected data:
+    if uweclang.split_ext(input_filename)[1].startswith('.memo'):
+        _COLLECTED_MEMO_DATA[input_filename] = data
+    else:
+        _COLLECTED_DATA[input_filename] = data
 
-    # # Print task completion.
-    # if verbosity >= 1:
-    #     print('Tagged {} -> "{}"'
-    #           ''.format(os.path.basename(input_filename),
-    #                     os.path.relpath(output_filename)))
+    # Print task completion.
+    if verbosity >= 1:
+        print('Read data for {}.'.format(os.path.basename(input_filename)))
 
 
 
@@ -70,8 +89,6 @@ if __name__ == '__main__':
         description='Summarizes result files',
         parents=[uweclang.BATCH_PARSER])
 
-
-
     # Parse command line arguments.
     args = parser.parse_args()
 
@@ -81,18 +98,49 @@ if __name__ == '__main__':
     # Set default verbosity.
     args.verbose = args.verbose or 1
 
-    # Capture the output extensions into a global variable to that it is
-    # visible to extract_plaintext_from_docx.
-    _OUTPUT_EXTENSION = args.oext
-
-    # Open output file.
-    # try:
-    #     out = io.open(output_filename, 'w', newline='\r\n')
-    # except IOError as e:
-    #     print('Error creating file {}: {}'.format(output_filename, e))
-    #     sys.exit(1)
-
     # Process the files.
     uweclang.batch_process(collect_file, **vars(args))
 
 
+    # Aggregate data.
+    if args.verbose >= 1:
+        print('Aggregating...')
+
+    summary = defaultdict(int)
+    summary['tags'] = defaultdict(int)
+    for file_name, data in _COLLECTED_DATA.iteritems():
+        summary['files_included'] += 1
+        for key, value in data.iteritems():
+            if isinstance(value, dict):
+                for tag, count in value.iteritems():
+                    summary['tags'][tag] += count
+            elif isinstance(value, str):
+                continue
+            else:
+                summary['total_' + key] += value
+
+    # Compute averages.
+    avgs = dict()
+    avg_tags = dict()
+    for key, value in summary.iteritems():
+        if key.startswith('total_'):
+            avgs['avg_'+key[6:]] = value / summary['files_included']
+        elif key == 'tags':
+            for tag, count in value.iteritems():
+                avg_tags['avg_'+tag] = count / summary['files_included']
+
+    # Added averages to summary.
+    summary.update(avgs)
+    summary['tags'].update(avg_tags)
+    summary['tags'] = dict(summary['tags'])
+
+    # Open output file.
+    # try:
+    #     out = io.open(args.output_dir, 'w', newline='\r\n')
+    # except IOError as e:
+    #     print('Error creating file {}: {}'.format(output_filename, e))
+    #     sys.exit(1)
+
+    # Write to output file.
+    pprint(dict(summary))
+    # out.close()
