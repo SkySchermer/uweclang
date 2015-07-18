@@ -63,7 +63,7 @@ def tag_file(input_filename, output_dir, verbosity=1):
     tagged_text = uweclang.tag(text)
 
     # Build text to write to file.
-    ouput_text = []
+    output_text = []
     for sentence in tagged_text:
         for token, tag in sentence:
             output_text.append('{}/{} '.format(token, tag))
