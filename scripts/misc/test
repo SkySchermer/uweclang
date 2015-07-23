@@ -6,13 +6,16 @@ from uweclang import *
 from pprint import pprint
 
 
+text = open("idioms.txt").read().decode('utf-8')
 
 
-text = """There are numerous drug wars across the globe. Throughout all of them, there is a particular war in the United States. The U.S. is battling the Colombian rebels and paramilitary groups in order to fix the war. This process has included the payout of large monetary assistance and massive weaponry shipments. All while trying to solve the war that is created on the streets of the United States, the government is pushing it into earth-shattering violence. My hometown, (Watertown, WI,) has seen some of the effects that cause the drug wars. The damages that drugs cause to homes and families is evident through the town and yet, it doesn't stop. The demand that is created in the United States damages Colombian civilization and Colombian's lives. I will first summarize Marie Javdani's "Plata o Plomo: Silver or Lead" in respect to ethos, audience, purpose and language. (Then I will analyze Javdani's use of appeals, both pathos and logos, as well as her use of ideation to explain the importance of the proper assistance to the drug wars.)"""
+for line in text.splitlines():
 
-tagged = tag(text)
+    tagged = tag(line)
+    t_out = ' '.join(["{}/{}".format(*t) for t in tagged[0]])
+    print(t_out)
 
-# print(tagged_to_plain(tagged))
-pprint(dict(get_tags(tagged)))
+# print(tagged)
+# pprint(dict(get_tags(tagged)))
 
 # pprint(recombine_tag_parentheticals(parse_tag_parentheticals(tagged)))

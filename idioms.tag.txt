@@ -1,0 +1,2185 @@
+a/DT bird/NN in/IN the/DT hand/NN is/VBZ worth/JJ two/CD in/IN the/DT bush/NN
+a/DT bitter/JJ pill/NN
+a/DT blessing/NN in/IN disguise/NN
+a/DT chip/NN on/IN your/PRP$ shoulder/NN
+a/DT dime/NN a/DT dozen/NN
+a/DT doddle/NN
+a/DT doubting/NN Thomas/NNP
+a/DT drop/NN in/IN the/DT bucket/NN
+a/DT fool/NN and/CC his/PRP$ money/NN are/VBP easily/RB parted/VBN
+a/DT house/NN divided/VBN against/IN itself/PRP can/MD not/RB stand/VB
+a/DT kickback/NN
+a/DT leopard/NN ca/MD n't/RB change/VB his/PRP$ spots/NNS
+a/DT lot/NN on/IN your/PRP$ plate/NN
+a/DT notch/NN above/IN
+a/DT penny/NN for/IN your/PRP$ thoughts/NNS
+a/DT penny/NN saved/VBN is/VBZ a/DT penny/NN earned/VBD
+a/DT picture/NN is/VBZ worth/JJ a/DT thousand/NN words/NNS
+a/DT picture/NN paints/NNS a/DT thousand/NN words/NNS
+a/DT piece/NN of/IN cake/NN
+a/DT plum/NN in/IN your/PRP$ mouth/NN
+a/DT plum/NN job/NN
+a/DT rip-off/JJ
+a/DT roaring/NN trade/NN
+a/DT rude/NN awakening/VBG
+a/DT slap/NN on/IN the/DT wrist/NN
+a/DT taste/NN of/IN one/CD 's/POS own/JJ medicine/NN
+a/DT taste/NN of/IN your/PRP$ own/JJ medicine/NN
+a/DT thin/JJ line/NN
+a/DT toss-up/JJ
+abbreviated/VBD piece/NN of/IN nothing/NN
+about/IN face/NN
+about/IN turn/NN
+above/IN and/CC beyond/IN
+above/IN and/CC beyond/IN the/DT call/NN of/IN duty/NN
+above/IN board/NN
+accidentally/RB on/IN purpose/NN
+ace/NN a/DT test/NN
+ace/NN in/IN the/DT hole/NN
+ace/NN up/IN one/CD 's/POS sleeve/NN
+Achilles/NNS heel/VBP
+Achilles/NNS '/POS heel/NN
+acid/NN test/NN
+acquired/VBD taste/NN
+act/NN of/IN God/NNP
+actions/NNS speak/VBP louder/NN than/IN words/NNS
+add/NN fuel/NN to/TO the/DT fire/NN
+add/NN fuel/NN to/TO the/DT flames/NNS
+add/NN insult/VBD to/TO injury/NN
+afraid/VBD of/IN one/CD 's/POS own/JJ shadow/NN
+after/IN the/DT fact/NN
+against/IN one/CD 's/POS better/JJR judgement/NN
+against/IN the/DT clock/NN
+against/IN the/DT grain/NN
+against/IN the/DT tide/NN
+ahead/RB of/IN the/DT pack/NN
+alarm/NN bells/NNS start/VBP to/TO ring/VB
+all/DT along/IN
+all/DT bark/NN and/CC no/DT bite/NN
+all/DT brawn/VBN and/CC no/DT brain/NN
+all/DT clear/JJ
+all/DT downhill/NN
+all/DT ears/NNS
+all/DT else/RB being/VBG equal/JJ
+all/DT eyes/NNS
+all/DT finger/JJR s/NNS and/CC thumbs/NNS
+all/DT fingers/NNS and/CC thumbs/NNS
+all/DT Greek/NNP to/TO me/PRP
+all/DT hands/NNS on/IN deck/NN
+all/DT hell/NN broke/NN loose/NN
+all/DT in/IN the/DT same/JJ boat/NN
+all/DT in/IN your/PRP$ head/NN
+all/DT mouth/NN and/CC no/DT trousers/NNS
+all/DT out/IN
+all/DT shapes/NNS and/CC sizes/NNS
+all/DT sizzle/NN and/CC no/DT steak/NN
+all/DT skin/NN and/CC bone/NN
+all/DT systems/NNS go/VBP
+all/DT that/DT jazz/NN
+all/DT the/DT better/JJR for/IN
+all/DT the/DT rage/NN
+all/DT things/NNS being/VBG equal/JJ
+all/DT things/NNS to/TO all/DT people/NNS
+all/DT thumbs/NNS
+all/DT told/VBD
+all/DT uphill/NN
+all/DT your/PRP$ eggs/NNS in/IN one/CD basket/NN
+along/IN for/IN the/DT ride/NN
+also-ran/JJ
+alter/NN ego/VBD
+ambulance/NN chaser/NN
+an/DT accomplished/VBN fact/NN
+an/DT axe/NN to/TO grind/VB
+answer/NN for/IN something/NN
+answer/NN the/DT call/NN of/IN nature/NN
+ants/NNS in/IN one/CD 's/POS pants/NNS
+any/DT port/NN in/IN a/DT storm/NN
+anyone/NN 's/POS call/NN
+apple/NN of/IN discord/NN
+apple/NN of/IN my/PRP$ eye/NN
+apple/NN of/IN your/PRP$ eye/NN
+apple/NN of/IN your/PRP$ eyes/NNS
+apple-pie/JJ order/NN
+apron/NN strings/NNS
+argue/NN the/DT toss/NN
+arm/NN of/IN the/DT law/NN
+armchair/PRP$ critic/JJ
+armchair/PRP$ traveller/NN
+as/IN high/JJ as/IN a/DT kite/NN
+as/IN the/DT crow/NN flies/VBZ
+as/IN useful/JJ as/IN a/DT
+as/IN useful/JJ as/IN a/DT chocolate/NN teapot/NN
+asking/VBG for/IN trouble/NN
+asleep/NN at/IN the/DT wheel/NN
+at/IN a/DT loss/NN
+at/IN a/DT pinch/NN
+at/IN all/DT costs/NNS
+at/IN each/DT other/JJ 's/POS throats/NNS
+at/IN first/JJ hand/NN
+at/IN loggerheads/NNS
+at/IN someone/NN 's/POS beck/NN and/CC call/NN
+at/IN stake/NN
+at/IN the/DT drop/NN of/IN a/DT hat/JJ
+at/IN the/DT outside/NN
+at/IN the/DT top/JJ end/NN
+at/IN this/DT stage/NN of/IN the/DT game/NN
+at/IN will/MD
+at/IN your/PRP$ wits/NNS '/POS end/NN
+automatic/JJ pilot/NN
+avowed/VBD intent/VBN
+away/RB with/IN the/DT fairies/NNS
+back/RB into/IN shape/NN
+back/RB of/IN beyond/NN
+back/RB on/IN your/PRP$ feet/NN
+back/RB seat/VBD driver/RB
+back/RB the/DT wrong/JJ horse/NN
+back/RB to/TO square/VB one/CD
+back/RB to/TO the/DT drawing/NN board/NN
+back/RB to/TO the/DT salt/NN mines/NNS
+back/RB to/TO the/DT wall/NN
+back-of-the-envelope/NN calculation/NN
+back-room/NN boys/NNS
+backhanded/VBD compliment/VBN
+backseat/NN driver/NN
+bad/JJ egg/NN
+bad/JJ hair/NN day/NN
+badger/NN someone/NN
+bag/NN of/IN bones/NNS
+bag/NN of/IN tricks/NNS
+bait/NN and/CC switch/NN
+baker/NN 's/POS dozen/NN
+balancing/VBG act/NN
+ball/NN and/CC chain/NN
+ball/NN is/VBZ in/IN your/PRP$ court/NN
+ballpark/NN figure/NN
+bandit/NN territory/NN
+bane/NN of/IN one/CD 's/POS life/NN
+bang/NN one/CD 's/POS head/NN against/IN a/DT brick/NN wall/NN
+bar/NN fly/RB
+bare/NN one/CD 's/POS soul/JJ
+barefaced/VBD liar/JJ
+barking/VBG up/IN the/DT wrong/JJ tree/NN
+basket/NN case/NN
+bat/NN out/IN of/IN hell/NN
+bated/VBD breath/NN
+bats/NNS in/IN the/DT belfry/NN
+batten/RB down/IN the/DT hatches/NNS
+battle/NN lines/NNS are/VBP drawn/VBN
+battle/NN of/IN wills/NNS
+be/VB an/DT item/NN
+be/VB full/JJ of/IN beans/NNS
+be/VB glad/VBN to/TO see/VB the/DT back/NN of/IN
+be/VB murder/VBN
+be/VB my/PRP$ guest/NN
+be/VB that/IN as/IN it/PRP may/MD
+be/VB the/DT world/NN to/TO
+be/VB up/IN in/IN arms/NNS
+be-all/JJ and/CC end-all/JJ
+bear/NN fruit/NN
+bear/NN in/IN mind/NN
+bear/NN the/DT brunt/NN
+bear/NN with/IN a/DT sore/JJR head/NN
+beard/NN the/DT lion/NN in/IN his/PRP$ den/NN
+beat/NN a/DT dead/JJ horse/NN
+beat/NN a/DT hasty/NN retreat/NN
+beat/NN around/IN the/DT bush/NN
+beat/NN it/PRP
+beat/NN one/CD 's/POS brain/NN out/IN
+beat/NN someone/NN to/TO the/DT draw/NN
+beat/NN the/DT daylights/NNS
+beat/NN the/DT living/NN daylights/NNS
+beat/flog/JJ a/DT dead/JJ horse/NN
+beat/knock/NN the/DT (/NN living/VBG )/NN daylights/NNS
+beating/VBG around/IN the/DT bush/NN
+beats/NNS me/PRP
+bed/VBD of/IN roses/NNS
+bee/NN in/IN one/CD 's/POS bonnet/NN
+bee/NN 's/POS knees/NNS
+beef/NN something/NN up/RB
+been/VBN in/IN the/DT wars/NNS
+been/VBN in/through/JJ the/DT wars/NNS
+been/VBN there/EX ,/, done/NN that/IN
+been/VBN through/IN the/DT wars/NNS
+before/IN the/DT ink/NN is/VBZ dry/JJ
+before/IN you/PRP know/VBP it/PRP
+before/IN your/PRP$ very/NN eyes/NNS
+beggars/NNS ca/MD n't/RB be/VB choosers/NNS
+behind/IN bars/NNS
+behind/IN closed/VBN doors/NNS
+behind/IN the/DT times/NNS
+belly/RB up/IN
+below/IN the/DT belt/NN
+bend/NN over/IN backwards/NNS
+bend/NN the/DT rules/NNS
+bend/NN the/DT truth/NN
+benefit/NN of/IN the/DT doubt/NN
+bent/NN out/IN of/IN shape/NN
+beside/NN the/DT point/NN
+best/JJS bet/NN
+best/JJS foot/NN forward/RB
+best/JJS of/IN both/DT worlds/NNS
+best/JJS of/IN one/CD 's/POS ability/NN
+best/JJS thing/NN since/IN sliced/VBN bread/NN
+bet/NN on/IN the/DT wrong/JJ horse/NN
+bet/NN your/PRP$ bottom/NN dollar/NN
+better/JJR late/JJ than/IN never/RB
+better/JJR safe/NN than/IN sorry/NN
+better/JJR still/RB
+between/IN a/DT rock/NN and/CC a/DT hard/JJ place/NN
+between/IN the/DT devil/NN and/CC
+between/IN the/DT devil/NN and/CC the/DT deep/NN blue/NN sea/NN
+beyond/IN any/DT reasonable/JJ doubt/NN
+beyond/IN one/CD 's/POS wildest/NN dreams/NNS
+beyond/IN recall/DT
+beyond/IN redemption/NN
+beyond/IN the/DT shadow/NN of/IN a/DT
+beyond/IN the/DT shadow/NN of/IN a/DT doubt/NN
+bide/NN your/PRP$ time/NN
+big/JJ ball/NN of/IN mud/NN
+big/JJ cheese/NN
+big/JJ fish/NN in/IN a/DT small/JJ pond/NN
+big/JJ picture/NN
+bill/NN of/IN health/NN
+binge/NN drinking/VBG
+bird's-eye/JJ view/NN
+birds/NNS of/IN a/DT feather/NN
+birthday/NN suit/NN
+bite/IN off/IN more/JJR than/IN one/CD can/MD chew/VB
+bite/IN off/IN more/JJR than/IN you/PRP can/MD chew/VB
+bite/IN one/CD 's/POS tongue/NN
+bite/IN someone/NN 's/POS head/NN off/IN
+bite/IN the/DT bullet/NN
+bite/IN the/DT dust/NN
+bite/IN the/DT hand/NN that/IN feeds/NNS you/PRP
+bite/IN your/PRP$ tongue/NN
+bitten/RB by/IN the/DT bug/NN
+bitter/NN pill/NN to/TO swallow/VB
+black/NN market/NN
+black/NN out/IN
+black/NN sheep/VBP
+black/NN tie/NN event/NN
+blamestorming/VBG
+blessing/VBG in/IN disguise/NN
+blood/NN is/VBZ thicker/NN than/IN water/NN
+blow/NN it/PRP off/IN
+blow/NN one/CD off/NN
+blown/NN away/RB
+blue/JJ moon/NN
+boils/NNS down/IN to/TO
+born/NN with/IN silver/NN spoon/NN in/IN your/PRP$ mouth/NN
+bottom/NN line/NN
+brain/NN like/IN a/DT sieve/JJ
+break/NN a/DT leg/NN
+burn/NN the/DT midnight/NN oil/NN
+bury/NN the/DT hatchet/NN
+bust/NN one/CD 's/POS chops/NNS
+butter/NN would/MD n't/RB melt/VB in/IN mouth/NN
+buy/NN a/DT lemon/NN
+by/IN a/DT long/JJ chalk/NN
+by/IN a/DT long/JJ shot/NN
+by/IN degrees/NNS
+by/IN the/DT sam/NN e/NN token/NN
+by/IN the/DT seat/NN of/IN one/CD 's/POS pants/NNS
+by/IN the/DT skin/NN of/IN one/CD 's/POS teeth/NN
+by/IN virtue/NN of/IN
+by/IN word/NN of/IN mouth/NN
+call/NN it/PRP a/DT day/NN
+call/NN the/DT shots/NNS
+ca/MD n't/RB fight/VB the/DT city/NN hall/NN
+ca/MD n't/RB for/IN the/DT life/NN of/IN me/PRP
+ca/MD n't/RB judge/VB a/DT book/NN by/IN its/PRP$ cover/NN
+ca/MD n't/RB make/VB an/DT omelette/NN without/IN breaking/VBG a/DT few/JJ eggs/NNS
+ca/MD n't/RB make/VB head/NN or/CC tail/NN of/IN
+ca/MD n't/RB make/VB heads/NNS or/CC tails/NNS of/IN
+ca/MD n't/RB make/VB omelette/JJ
+ca/MD n't/RB put/VB new/JJ wine/NN in/IN old/JJ bottles/NNS
+ca/MD n't/RB see/VB the/DT wood/NN for/IN the/DT trees/NNS
+ca/MD n't/RB stand/VB the/DT pace/NN
+cap/NN in/IN hand/NN
+carrot/NN and/CC stick/NN
+carry/NN the/DT can/MD
+carry/NN the/DT torch/NN
+carry/NN weight/VBD
+carve/NN out/IN a/DT niche/NN
+case/NN in/IN point/NN
+cash/NN cow/NN
+cash/NN in/IN your/PRP$ chips/NNS
+cast/NN a/DT wide/JJ net/NN
+cast/NN iron/VBD stomach/NN
+cast-iron/JJ stomach/NN
+cat/IN and/CC dog/NN life/NN
+cat/IN can/MD look/VB at/IN a/DT king/NN
+cat/IN in/IN gloves/NNS catches/NNS no/DT mice/NN
+cat/IN in/IN hell/NN 's/POS chance/NN
+cat/IN nap/NN
+cat/IN 's/POS lick/NN
+cat/IN 's/POS whiskers/NNS
+catch/NN 22/CD
+catch/NN a/DT wink/NN
+catch/NN as/IN catch/NN can/MD
+catch/NN redhanded/VBD
+catch/NN somebody/NN 's/POS eye/NN
+catching/VBG some/DT Z/NNP 's/POS
+caught/NN between/IN two/CD stools/NNS
+caught/NN in/IN the/DT crossfire/NN
+caught/NN red-handed/JJ
+caught/NN unawares/NNS
+cause/NN a/DT stir/NN
+caveat/NN emptor/NN
+chalk/NN and/CC cheese/JJ
+champ/NN at/IN the/DT bit/NN
+champagne/NN taste/NN on/IN a/DT beer/NN budget/NN
+chance/NN in/IN a/DT million/NN
+chance/NN one/CD 's/POS arm/NN
+change/NN horses/NNS in/IN midstream/NN
+change/NN of/IN heart/NN
+change/NN the/DT face/NN of/IN
+chapter/NN and/CC verse/NN
+charley/NN horse/NN
+chase/NN rainbows/VBZ
+chase/NN your/PRP$ own/JJ tail/NN
+chase/NN your/PRP$ tail/NN
+chasing/VBG tail/NN
+cheap/NN shot/VBD
+cheek/NN by/IN jowl/NN
+cheesed/VBD off/IN
+cherry/NN pick/VBD
+chew/NN someone/NN out/IN
+chew/NN the/DT fat/JJ
+chicken/NN feed/VBD
+chicken/NN out/IN
+chickens/NNS come/VBP home/NN to/TO roost/VB
+child/NN 's/POS play/NN
+chill/NN out/IN
+chill/NN wind/VBD
+chime/NN in/IN
+Chinese/JJ arithmetic/JJ
+Chinese/JJ whispers/NNS
+chink/NN in/IN one/CD 's/POS armor/NN
+chink/NN in/IN someone/NN 's/POS armour/NN
+chinwag/NN
+chip/NN off/IN the/DT old/JJ block/NN
+chip/NN on/IN his/PRP$ shoulder/NN
+chip/NN on/IN the/DT shoulder/NN
+chip/NN on/IN your/PRP$ shoulder/NN
+chips/NNS are/VBP down/RB
+chop/NN and/CC change/NN
+chow/NN down/IN
+Christmas/NNP comes/VBZ but/CC once/RB a/DT year/NN
+clam/NN up/IN
+clap/NN eyes/NNS on/IN
+class/NN act/NN
+claw/NN one/CD 's/POS way/NN back/RB
+clean/JJ as/IN a/DT whistle/NN
+clean/JJ bill/NN of/IN health/NN
+clean/JJ slate/NN
+clear/JJ the/DT air/NN
+clear/JJ the/DT way/NN
+clinch/NN a/DT deal/NN
+clip/NN someone/NN 's/POS wings/NNS
+clock/NN in/IN
+clock/NN in/out/IN
+clock/NN out/IN
+close/JJ as/IN an/DT oyster/NN
+close/JJ but/CC no/DT cigar/NN
+close/JJ call/NN
+close/JJ shave/NN
+close/JJ to/TO home/VB
+cloud/NN cuckoo/VBD land/NN
+cloud/NN on/IN the/DT horizon/NN
+coast/NN is/VBZ clear/JJ
+cock/NN and/CC bull/NN story/NN
+cog/NN in/IN the/DT machine/NN
+cold/NN calls/VBZ
+cold/NN shoulder/NN
+come/NN a/DT long/JJ way/NN
+come/NN apart/NN at/IN the/DT seams/NNS
+come/NN hell/VBD or/CC high/JJ water/NN
+come/NN out/IN of/IN one/CD 's/POS shell/NN
+come/NN out/IN of/IN the/DT woodwork/NN
+come/NN to/TO the/DT point/NN
+come/NN up/RB in/IN the/DT world/NN
+cost/NN an/DT arm/NN and/CC a/DT leg/NN
+costs/NNS an/DT arm/NN and/CC a/DT leg/NN
+couch/JJ potato/NN
+counting/VBG sheep/NN
+crack/NN someone/NN up/IN
+cross/NN that/IN bridge/NN when/WRB we/PRP come/VBP to/TO it/PRP
+cross/NN the/DT line/NN
+cross/NN your/PRP$ fingers/NNS
+cross/NN your/PRP$ mind/NN
+cry/NN one/CD 's/POS eyes/NNS out/IN
+cry/NN over/IN spilt/NN milk/NN
+cry/NN wolf/NN
+cup/NN of/IN joe/NN
+curiosity/NN killed/VBD the/DT cat/NN
+cut/VBD a/DT rug/NN
+cut/VBD corners/NNS
+cut/VBD the/DT cheese/JJ
+cut/VBD the/DT mustard/NN
+cut/VBD to/TO the/DT chase/NN
+dab/NN hand/VBD at/IN something/NN
+dance/NN attendance/NN
+dance/NN to/TO someone/NN 's/POS tune/NN
+dark/NN horse/NN
+darken/NN someone/NN 's/POS door/NN
+day/NN late/RB and/CC a/DT dollar/NN short/NN
+daylight/NN robbery/NN
+dead/NN as/IN a/DT dodo/NN
+dead/NN as/IN a/DT doornail/NN
+dead/NN cert/VBD
+dead/NN duck/VBD
+dead/NN in/IN the/DT water/NN
+dead/NN loss/NN
+dead/NN man/NN walking/VBG
+dead/NN right/RB
+dead/NN ringer/NN
+dead/NN set/VBD against/IN
+dead/NN to/TO the/DT world/NN
+dead/NN wood/VBD
+deaf/NN ear/NN
+deck/NN out/IN
+deep/NN down/IN
+deep/NN pockets/NNS
+deer/NN caught/VBD in/IN the/DT headlights/NNS
+deer/NN in/IN the/DT headlights/NNS
+deliver/NN the/DT goods/NNS
+devil/NN is/VBZ in/IN the/DT details/NNS
+devil/NN makes/VBZ hard/JJ work/NN for/IN idle/NN hands/NNS
+devil/NN take/VBP the/DT hindmost/JJS
+devil/NN 's/POS advocate/NN
+dial/JJ it/PRP back/RB
+dice/NN are/VBP loaded/VBN
+dice/NN with/IN death/NN
+dicey/NN situation/NN
+die/VB is/VBZ cast/VBN
+die/VB with/IN one/CD 's/POS boots/NNS on/IN
+different/JJ kettle/NN of/IN fish/JJ
+different/JJ strokes/NNS for/IN different/JJ folks/NNS
+dig/NN in/IN one/CD 's/POS heels/NNS
+dig/NN one/CD 's/POS own/JJ grave/NN
+dim/NN view/VBD
+dip/NN into/IN one/CD 's/POS savings/NNS
+dip/NN toes/VBZ in/IN the/DT water/NN
+dire/NN straits/NNS
+disappear/NN into/IN thin/JJ air/NN
+disaster/NN written/VBN all/DT over/IN
+dive/JJ in/IN headfirst/JJ
+do/VBP a/DT disappearing/VBG act/NN
+do/VBP a/DT double/JJ take/NN
+do/VBP a/DT good/JJ turn/NN
+do/VBP a/DT world/NN of/IN good/JJ
+do/VBP justice/NN to/TO
+do/VBP more/JJR harm/NN than/IN good/JJ
+do/VBP nothing/NN by/IN halves/NNS
+do/VBP someone/VBN 's/POS dirty/NN work/NN
+do/VBP the/DT spadework/NN
+do/VBP the/DT trick/NN
+dodge/NN a/DT bullet/NN
+dog/NN and/CC pony/NN show/NN
+dog/NN days/NNS of/IN summer/NN
+dog/NN in/IN the/DT manger/NN
+dog/NN with/IN two/CD tails/NNS
+dog/NN 's/POS breakfast/NN
+dog/NN 's/POS life/NN
+dog-eat-dog/JJ
+doggie/NN bag/NN
+do/VBP n't/RB count/VB your/PRP$ chickens/NNS before/IN they/PRP hatch/VBP
+do/VBP n't/RB give/VB up/RP the/DT day/NN job/NN
+do/VBP n't/RB have/VB a/DT cow/NN
+do/VBP n't/RB look/VB a/DT gift/NN horse/NN in/IN the/DT mouth/NN
+do/VBP n't/RB put/VB all/DT your/PRP$ eggs/NNS in/IN one/CD basket/NN
+done/NN and/CC dusted/VBD
+done/NN deal/NN
+done/NN thing/NN
+donkey/NN work/NN
+donkey/NN 's/POS years/NNS
+doom/NN and/CC gloom/NN
+door/NN swings/NNS both/DT ways/NNS
+doozy/NN
+doubting/VBG Thomas/NNP
+down/IN and/CC out/IN
+down/IN at/IN heel/NN
+down/IN in/IN history/NN
+down/IN in/IN the/DT dumps/NNS
+down/IN in/IN the/DT mouth/NN
+down/IN one/CD 's/POS alley/NN
+down/IN payment/NN
+down/IN the/DT drain/NN
+down/IN to/TO earth/JJ
+down/IN to/TO the/DT wire/NN
+down/IN your/PRP$ alley/NN
+drag/NN one/CD 's/POS feet/NN
+drastic/JJ times/NNS call/VBP for/IN drastic/JJ measures/NNS
+draw/NN a/DT blank/NN
+draw/NN a/DT line/NN in/IN the/DT sand/NN
+draw/NN the/DT line/NN
+dream/NN ticket/NN
+dressed/VBD to/TO kill/VB
+dressed/VBD up/IN to/TO nines/NNS
+dressed/VBD up/IN to/TO the/DT nines/NNS
+dribs/NNS and/CC drabs/NNS
+drink/NN like/IN a/DT fish/JJ
+drive/JJ a/DT hard/JJ bargain/NN
+drive/JJ someone/NN up/IN the/DT wall/NN
+drive/JJ up/IN the/DT wall/NN
+drop/NN a/DT bombshell/NN
+drop/NN a/DT dime/NN
+drop/NN dead/VBD gorgeous/JJ
+drop/NN in/IN the/DT ocean/JJ
+drop/NN like/IN a/DT hot/JJ potato/NN
+drop/NN like/IN flies/NNS
+drop/NN names/VBZ
+drop/NN of/IN a/DT hat/JJ
+drop/NN someone/NN a/DT line/NN
+drop/NN the/DT ball/NN
+dropping/VBG like/IN flies/NNS
+drown/NN one/CD 's/POS sorrows/NNS
+drum/NN into/IN someone/NN 's/POS head/NN
+dry/JJ run/VBN
+dumb/NN as/IN an/DT oyster/NN
+dummy/PRP$ run/VBN
+eagle/NN eye/NN
+eagle/NN eyes/NNS
+easy/JJ as/IN pie/NN
+eat/NN humble/JJ pie/NN
+eat/NN into/IN one/CD 's/POS savings/NNS
+eat/NN out/IN of/IN someone/NN 's/POS hand/NN
+eat/NN your/PRP$ words/NNS
+economical/JJ with/IN the/DT truth/NN
+edge/NN of/IN one/CD 's/POS seat/NN
+egg/NN someone/NN on/IN
+ego/IN trip/NN
+eighty/NN six/CD
+elbow/NN grease/NN
+elbow/NN room/NN
+elephant/NN in/IN the/DT room/NN
+eleventh/NN hour/PRP$
+elvis/NNS has/VBZ left/VBN the/DT building/NN
+embarrassment/NN of/IN riches/NNS
+enough/RB said/VBD
+err/NN on/IN the/DT side/NN of/IN caution/NN
+ethnic/JJ cleansing/NN
+even/RB keel/VBP
+even/RB steven/VBN
+even/RB the/DT score/NN
+every/DT cloud/NN has/VBZ a/DT silver/NN lining/VBG
+every/DT dog/NN has/VBZ its/PRP$ day/NN
+every/DT nook/NN and/CC cranny/JJ
+every/DT Tom/NNP ,/, Dick/NNP and/CC Harry/NNP
+everything/NN but/CC the/DT kitchen/NN sink/NN
+exception/NN proves/NNS the/DT rule/NN
+excuse/NN my/PRP$ French/JJ
+excuse/NN my/PRP$ french/NN
+explore/IN all/DT avenues/NNS
+eyes/NNS in/IN back/NN of/IN head/NN
+eyes/NNS in/IN back/NN of/IN one/CD 's/POS head/NN
+eyes/NNS like/IN a/DT hawk/NN
+eyes/NNS on/IN stalks/NNS
+face/NN the/DT music/NN
+fair/PRP$ and/CC square/JJ
+fair/PRP$ hearing/NN
+fair-weather/JJ friend/NN
+fait/NN accompli/NN
+fall/NN at/IN first/JJ hurdle/NN
+fall/NN between/IN stools/NNS
+fall/NN by/IN the/DT wayside/NN
+fall/NN flat/VBD
+fall/NN from/IN grace/NN
+fall/NN into/IN one/CD 's/POS lap/NN
+fall/NN into/IN place/NN
+fall/NN off/IN the/DT back/NN of/IN a/DT lorry/NN
+fall/NN on/IN deaf/NN ears/NNS
+fall/NN on/IN one/CD 's/POS sword/NN
+fall/NN short/RB of/IN
+fall/NN to/TO peices/NNS
+false/NN move/VBD
+false/NN pretences/NNS
+far/RB cry/VBP from/IN
+far/RB from/IN me/PRP be/VB it/PRP
+farm/NN something/NN out/IN
+fast/RB and/CC furious/JJ
+fast/RB talker/JJR
+fast/RB track/VBP something/NN
+fat/JJ cat/NN
+fat/JJ chance/NN
+fat/JJ hits/NNS the/DT fire/NN
+feast/NN your/PRP$ eyes/NNS on/IN
+feather/PRP$ in/IN one/CD 's/POS cap/NN
+feather/PRP$ one/CD 's/POS nest/NN
+feed/VBD someone/NN a/DT line/NN
+feed/VBD the/DT kitty/NN
+feeding/VBG frenzy/NN
+feel/NN a/DT bit/NN under/IN the/DT weather/NN
+feel/NN like/IN a/DT million/CD dollars/NNS
+feel/NN on/IN top/JJ of/IN world/NN
+feel/NN the/DT pinch/NN
+feet/NN of/IN clay/NN
+fender-bender/NN
+fever/NN pitch/NN
+few/JJ and/CC far/RB between/IN
+fiddling/VBG while/IN Rome/NNP burns/NNS
+field/NN day/NN
+fifth/JJ wheel/NN
+fight/NN a/DT losing/NN battle/NN
+fight/NN an/DT uphill/NN battle/NN
+fight/NN like/IN cat/NN and/CC dog/NN
+fight/NN shy/NN
+figment/NN of/IN imagination/NN
+fiirst/NN come/VBN first/RB served/VBN
+find/NN one/CD 's/POS feet/NN
+find/NN your/PRP$ match/NN
+finding/VBG your/PRP$ feet/NN
+fine/NN tuning/VBG
+fine-tooth/JJ comb/NN
+finger/NN lickin/NN '/'' good/JJ
+finger/NN on/IN the/DT pulse/NN
+fire/NN away/RB
+firing/VBG line/NN
+first/JJ and/CC foremost/RB
+first/JJ base/NN
+first/JJ hand/NN
+first/JJ out/IN of/IN the/DT gate/NN
+fish/JJ in/IN troubled/JJ waters/NNS
+fish/JJ out/IN of/IN water/NN
+fishing/VBG expedition/NN
+fishing/VBG for/IN compliments/NNS
+fit/NN as/IN a/DT fiddle/NN
+fit/NN for/IN purpose/NN
+fit/NN like/IN a/DT glove/JJ
+fit/NN of/IN pique/NN
+fit/NN the/DT bill/NN
+fit/NN to/TO be/VB tied/VBN
+five/CD finger/NN discount/NN
+five/CD o'clock/NN shadow/NN
+fixed/VBN in/IN your/PRP$ ways/NNS
+flag/NN of/IN convenience/NN
+flash/NN in/IN the/DT pan/NN
+flea/NN in/IN one/CD 's/POS ear/JJ
+flea/NN market/NN
+flesh/NN and/CC blood/NN
+flight/NN of/IN fancy/NN
+fling/VBG oneself/PRP into/IN
+flip/NN the/DT bird/NN
+flog/NN a/DT dead/JJ horse/NN
+fly/RB off/IN the/DT handle/NN
+fly-by-night/JJ
+foam/NN at/IN the/DT mouth/NN
+fools/NNS '/POS gold/NN
+for/IN a/DT song/JJ
+for/IN that/DT matter/NN
+for/IN the/DT birds/NNS
+french/NN kiss/NN
+from/IN A/DT to/TO Z/NNP
+from/IN rags/NNS to/TO riches/NNS
+from/IN scratch/NN
+from/IN the/DT word/NN go/NN
+frown/NN on/IN
+fuddy-duddy/JJ
+full/JJ monty/NN
+funny/JJ farm/NN
+game/NN of/IN cat/NN and/CC mouse/VB
+get/NN a/DT grip/NN on/IN yourself/PRP
+get/NN a/DT kick/NN out/IN of/IN
+get/NN a/DT load/NN of/IN
+get/NN a/DT move/NN on/IN
+get/NN a/DT raw/NN deal/NN
+get/NN a/DT rise/NN out/IN of/IN
+get/NN a/DT second/JJ bite/NN at/IN the/DT cherry/NN
+get/NN a/DT second/JJ bite/NN of/IN the/DT cherry/NN
+get/NN a/DT word/NN in/IN edgeways/NNS
+get/NN away/RB with/IN murder/NN
+get/NN back/RB into/IN shape/NN
+get/NN bent/VBD out/RP of/IN shape/NN
+get/NN cold/VBD feet/NNS
+get/NN down/IN to/TO brass/NNS tacks/NNS
+get/NN flak/VBD
+get/NN hold/VBD of/IN
+get/NN into/IN gear/NN
+get/NN it/PRP
+get/NN it/PRP down/IN to/TO a/DT fine/NN art/NN
+get/NN me/PRP
+get/NN off/IN my/PRP$ back/NN
+get/NN off/IN scot-free/JJ
+get/NN off/IN the/DT ground/NN
+get/NN off/IN the/DT hook/NN
+get/NN on/IN in/IN years/NNS
+get/NN on/IN like/IN a/DT house/NN on/IN fire/NN
+get/NN on/IN your/PRP$ high/JJ horse/NN
+get/NN one/CD 's/POS act/NN together/NN
+get/NN one/CD 's/POS just/RB deserts/VBZ
+get/NN out/IN of/IN hand/NN
+get/NN over/IN it/PRP
+get/NN someone/NN by/IN the/DT short/JJ hairs/NNS
+get/NN someone/NN 's/POS drift/NN
+get/NN someone/NN 's/POS goat/JJ
+get/NN something/NN off/IN the/DT ground/NN
+get/NN something/NN out/IN of/IN your/PRP$ system/NN
+get/NN the/DT better/JJR of/IN
+get/NN the/DT hang/NN of/IN
+get/NN the/DT jitters/NNS
+get/NN the/DT low-down/JJ
+get/NN the/DT message/NN
+get/NN the/DT picture/NN
+get/NN the/DT sack/NN
+get/NN the/DT show/NN on/IN the/DT road/NN
+get/NN to/TO the/DT bottom/NN of/IN
+get/NN to/TO the/DT point/NN
+get/NN two/CD bites/NNS at/IN the/DT cherry/NN
+get/NN up/IN on/IN the/DT wrong/JJ side/NN of/IN the/DT bed/VBN
+get/NN wind/VBD of/IN
+get/NN wires/NNS crossed/VBD
+get/NN wise/VBP to/TO something/NN
+get/NN worked/VBD up/RP
+get/NN your/PRP$ act/NN together/RB
+get/NN your/PRP$ ducks/NNS in/IN a/DT row/NN
+get/NN your/PRP$ feet/NN wet/NN
+get/NN your/PRP$ fingers/NNS burnt/VBP
+get/NN your/PRP$ hands/NNS dirty/NN
+get/NN your/PRP$ knickers/NNS in/IN a/DT twist/NN
+get/NN your/PRP$ skates/NNS on/IN
+get/NN your/PRP$ walking/NN papers/NNS
+give/JJ a/DT dog/NN a/DT bad/JJ name/NN
+give/JJ a/DT hang/NN
+give/JJ a/DT hard/JJ time/NN
+give/JJ a/DT hoot/NN
+give/JJ a/DT piece/NN of/IN your/PRP$ mind/NN
+give/JJ a/DT run/NN for/IN money/NN
+give/JJ a/DT tongue-lashing/JJ
+give/JJ a/DT wide/JJ berth/NN
+give/JJ as/IN good/JJ as/IN you/PRP get/VBP
+give/JJ benefit/NN of/IN doubt/NN
+give/JJ him/PRP the/DT slip/NN
+give/JJ it/PRP a/DT rest/NN
+give/JJ or/CC take/VB a/DT few/JJ
+give/JJ the/DT benefit/NN of/IN the/DT doubt/NN
+give/JJ the/DT cold/NN shoulder/NN
+give/JJ the/DT game/NN away/RB
+give/JJ the/DT low-down/JJ
+give/JJ the/DT once-over/JJ
+give/JJ the/DT rough/JJ edge/NN of/IN your/PRP$ tongue/NN
+give/JJ the/DT run-around/JJ
+give/JJ the/DT shirt/NN off/RP one/CD 's/POS back/NN
+give/JJ the/DT slip/NN
+give/JJ up/IN the/DT ghost/NN
+give/JJ your/PRP$ right/NN arm/NN
+gizmo/NN
+glass/NN ceiling/NN
+gloves/NNS are/VBP off/RP
+glowing/VBG terms/NNS
+glutton/NN for/IN punishment/NN
+gnomes/NNS of/IN Zurich/NNP
+go/IN ballistic/JJ
+go/IN bananas/RB
+go/IN down/RB like/IN a/DT lead/NN balloon/NN
+go/IN down/RB well/RB
+go/IN downhill/NN
+go/IN for/IN a/DT song/JJ
+go/IN for/IN broke/NN
+go/IN great/JJ guns/NNS
+go/IN haywire/NN
+go/IN hell/NN for/IN leather/NN
+go/IN into/IN overdrive/JJ
+go/IN nuts/NNS
+go/IN overboard/NN
+go/IN pear-shaped/JJ
+go/IN postal/JJ
+go/IN spare/NN
+go/IN the/DT extra/JJ mile/NN
+go/IN the/DT whole/JJ hog/NN
+go/IN to/TO great/JJ lengths/NNS
+go/IN to/TO great/JJ pains/NNS
+go/IN to/TO hell/VB in/IN a/DT handbasket/NN
+go/IN to/TO hell/VB in/IN a/DT handcart/NN
+go/IN to/TO pieces/NNS
+go/IN to/TO rack/VB and/CC ruin/VB
+go/IN to/TO the/DT dogs/NNS
+go/IN up/IN in/IN smoke/NN
+go/IN with/IN the/DT flow/NN
+going/VBG concern/NN
+going/VBG places/NNS
+going/VBG too/RB far/RB
+golden/NN handcuffs/NNS
+golden/NN handshake/VBP
+golden/NN opportunity/NN
+golden/NN parachute/NN
+golden/NN rule/NN
+gone/NN too/RB far/RB
+gone/NN with/IN the/DT wind/NN
+good/JJ as/IN gold/NN
+good/JJ riddance/NN
+good/JJ samaritan/NN
+good/JJ turn/NN
+good/JJ walls/NNS make/VBP good/JJ neighbours/NNS
+goose/NN pimples/NNS
+got/VBD it/PRP made/VBD
+got/VBD out/IN of/IN business/NN
+grab/NN a/DT bite/NN to/TO eat/VB
+grasp/NN at/IN straws/NNS
+grass/NN roots/NNS
+graveyard/NN shift/VBD
+gravy/NN train/NN
+grease/NN somebody/NN 's/POS palm/NN
+grease/NN the/DT skids/NNS
+great/JJ minds/NNS think/VBP alike/IN
+green/JJ fingers/NNS
+green/JJ room/NN
+guilty/NN pleasure/NN
+gut/NN feeling/VBG
+had/VBD one/CD 's/POS chips/NNS
+hammer/NN and/CC tongs/NNS
+hammer/NN home/NN
+hand/NN in/IN glove/NN
+hand/NN in/IN hand/NN
+hand/NN it/PRP to/TO someone/VB
+hand/NN on/IN a/DT platter/NN
+handbrake/NN on/IN a/DT canoe/NN
+handle/NN with/IN kid/JJ gloves/NNS
+hands/NNS full/VBP
+hands/NNS on/IN deck/NN
+hands/NNS tied/VBN
+hang/NN in/IN there/EX
+hang/NN on/IN by/IN fingernails/NNS
+hang/NN on/IN for/IN dear/JJ life/NN
+hang/NN out/IN to/TO dry/JJ
+hang/NN up/IN one/CD 's/POS boots/NNS
+happy/NN as/IN a/DT flea/NN
+happy/NN as/IN Larry/NNP
+happy/NN camper/NN
+happy-go-lucky/JJ
+hard/RB and/CC fast/RB
+hard/RB as/IN nails/NNS
+hard/RB of/IN hearing/NN
+hard/RB time/NN
+hard/RB to/TO come/VB by/IN
+hard/RB to/TO swallow/VB
+hard/RB up/IN
+harebrained/VBD idea/NN
+harp/NN on/IN
+haste/NN makes/VBZ waste/NN
+hat/IN trick/NN
+haul/NN over/IN the/DT coals/NNS
+have/VBP a/DT ball/NN
+have/VBP a/DT blast/JJ
+have/VBP a/DT finger/NN in/IN every/DT pie/NN
+have/VBP a/DT hangover/NN
+have/VBP an/DT ace/NN up/RP your/PRP$ sleeve/NN
+have/VBP an/DT axe/NN to/TO grind/VB
+have/VBP down/VBN pat/IN
+have/VBP eyes/NNS in/IN the/DT back/NN of/IN one/CD 's/POS head/NN
+have/VBP itchy/VBN feet/NNS
+have/VBP kittens/NNS
+have/VBP leg/VBN to/TO stand/VB on/IN
+have/VBP pins/NNS and/CC needles/NNS
+have/VBP someone/VBN in/IN your/PRP$ pocket/NN
+have/VBP the/DT makings/NNS of/IN
+have/VBP the/DT world/NN at/IN your/PRP$ feet/NNS
+have/VBP the/DT world/NN by/IN its/PRP$ tail/NN
+have/VBP you/PRP gone/VBN out/RP of/IN your/PRP$ mind/NN ?/.
+have/VBP you/PRP gone/VBN out/RP of/IN your/PRP$ mind/NN ?/.
+have/VBP your/PRP$ work/NN cut/VBD out/RP
+he/PRP lost/VBD his/PRP$ head/NN
+head/NN against/IN brick/NN wall/NN
+head/NN and/CC shoulders/NNS above/IN
+head/NN in/IN the/DT clouds/NNS
+head/NN on/IN a/DT platter/NN
+head/NN over/IN heels/NNS
+head/NN over/IN heels/NNS in/IN love/NN
+head/NN screwed/VBD on/IN
+head/NN start/NN
+headless/NN chicken/VBN
+hear/NN a/DT pin/NN drop/NN
+hear/NN it/PRP on/IN the/DT grapevine/NN
+hear/NN through/IN the/DT grapevine/NN
+heart/NN on/IN sleeve/NN
+heart/NN in/IN one/CD 's/POS mouth/NN
+heart/NN in/IN right/NN place/NN
+heart/NN misses/NNS a/DT beat/NN
+heart/NN of/IN stone/NN
+heart/NN of/IN the/DT matter/NN
+heart/NN set/VBD on/IN something/NN
+heart/NN sinks/NNS
+heart/NN 's/POS content/NN
+heat/NN is/VBZ on/IN
+heavens/NNS open/VBP
+heavy/JJ hand/NN
+hedge/NN your/PRP$ bets/NNS
+heebie-jeebies/NNS
+hell/NN broke/VBD loose/NN
+hell/NN in/IN a/DT handbasket/NN
+hell/NN in/IN a/DT handcart/NN
+hell/NN or/CC high/JJ water/NN
+hell-bent/JJ on/IN something/NN
+help/NN a/DT lame/NN dog/NN
+hem/PRP and/CC haw/VB
+herd/NN mentality/NN
+herding/VBG cats/NNS
+here/RB today/NN ,/, gone/NN tomorrow/NN
+hidden/NN agenda/NN
+hide/NN multitude/VBP of/IN sins/NNS
+hide/NN one/CD 's/POS light/JJ
+high/JJ and/CC dry/JJ
+high/JJ and/CC mighty/NN
+high/JJ five/CD
+high/JJ horse/NN
+high/JJ on/IN the/DT hog/NN
+highways/NNS and/CC byways/NNS
+himalayan/NN blunder/NN
+hit/VBD and/CC run/VBN accident/NN
+hit/VBD pay/NN dirt/NN
+hit/VBD the/DT airwaves/NNS
+hit/VBD the/DT books/NNS
+hit/VBD the/DT dust/NN
+hit/VBD the/DT ground/NN running/VBG
+hit/VBD the/DT hay/NN
+hit/VBD the/DT nail/NN on/IN the/DT head/NN
+hit/VBD the/DT panic/JJ button/NN
+hit/VBD the/DT road/NN
+hit/VBD the/DT sack/NN
+hit/VBD the/DT sheets/NNS
+hit/VBD the/DT spot/NN
+hitch/NN one/CD 's/POS wagon/NN to/TO a/DT star/NN
+hive/JJ of/IN activity/NN
+hocus/NN pocus/NN
+hold/NN a/DT belief/NN
+hold/NN all/DT the/DT aces/NNS
+hold/NN good/VBD
+hold/NN on/IN for/IN dear/JJ life/NN
+hold/NN one/CD 's/POS own/JJ
+hold/NN the/DT field/NN
+hold/NN the/DT fort/NN
+hold/NN the/DT reins/NNS
+hold/NN water/NN
+hold/NN your/PRP$ breath/NN
+hold/NN your/PRP$ horses/NNS
+hold/NN your/PRP$ tongue/NN
+hot/JJ potato/NN
+icing/VBG on/IN the/DT cake/NN
+idle/NN hands/NNS are/VBP the/DT devil/NN 's/POS tools/NNS
+if/IN it/PRP 's/VBZ not/RB one/CD thing/NN ,/, it/PRP 's/VBZ another/DT
+if/IN memory/NN serves/NNS well/RB
+if/IN the/DT cap/NN fits/VBZ wear/JJ it/PRP
+in/IN a/DT pickle/NN
+in/IN a/DT rut/NN
+in/IN a/DT stew/NN
+in/IN a/DT world/NN of/IN your/PRP$ own/JJ
+in/IN bad/JJ shape/NN
+in/IN black/JJ and/CC white/NN
+in/IN essence/NN
+in/IN fits/NNS and/CC starts/NNS
+in/IN for/IN a/DT penny/NN ,/, in/IN for/IN a/DT pound/NN
+in/IN hot/JJ water/NN
+in/IN leaps/NNS and/CC bounds/NNS
+in/IN like/IN Flynn/NNP
+in/IN mint/NN condition/NN
+in/IN one/CD 's/POS element/NN
+in/IN one/CD 's/POS mind/NN 's/POS eye/NN
+in/IN one/CD 's/POS own/JJ sweet/NN time/NN
+in/IN over/IN your/PRP$ head/NN
+in/IN raptures/NNS
+in/IN retrospect/NN
+in/IN right/NN mind/NN
+in/IN safe/NN hands/NNS
+in/IN seventh/JJ heaven/NN
+in/IN someone/NN 's/POS shoes/NNS
+in/IN tatters/NNS
+in/IN the/DT bag/NN
+in/IN the/DT balance/NN
+in/IN the/DT buff/NN
+in/IN the/DT cards/NNS
+in/IN the/DT dark/JJ
+in/IN the/DT doghouse/NN
+in/IN the/DT doldrums/NNS
+in/IN the/DT eye/NN of/IN the/DT beholder/NN
+in/IN the/DT eye/NN of/IN the/DT storm/NN
+in/IN the/DT first/JJ place/NN
+in/IN the/DT heat/NN of/IN the/DT moment/NN
+in/IN the/DT long/JJ run/NN
+in/IN the/DT lurch/NN
+in/IN the/DT middle/NN of/IN nowhere/RB
+in/IN the/DT nick/NN of/IN time/NN
+in/IN the/DT pink/NN of/IN health/NN
+in/IN the/DT pipeline/NN
+in/IN the/DT red/NN
+in/IN the/DT same/JJ boat/NN
+in/IN the/DT twinkling/NN of/IN an/DT eye/NN
+in/IN the/DT wars/NNS
+in/IN the/DT works/NNS
+in/IN trouble/NN with/IN the/DT law/NN
+in/IN two/CD minds/NNS
+in/IN two/CD shakes/NNS of/IN a/DT lamb/NN 's/POS tail/NN
+in/IN vino/DT veritas/NN
+in/IN words/NNS of/IN one/CD syllable/JJ
+in/IN your/PRP$ face/NN
+indian/JJ giver/NN
+indian/JJ giving/NN
+ins/NNS and/CC outs/NNS
+iron/NN fist/VBD
+iron/NN hand/VBD
+irons/NNS in/IN the/DT fire/NN
+is/VBZ the/DT Pope/NNP Catholic/NNP ?/.
+it/PRP beats/VBZ me/PRP
+it/PRP takes/VBZ two/CD to/TO tango/VB
+it/PRP 's/VBZ a/DT small/JJ world/NN
+it/PRP 's/VBZ anyone/NN 's/POS call/NN
+it/PRP 's/VBZ beyond/IN me/PRP
+it/PRP 's/VBZ no/DT use/NN crying/VBG over/IN spilt/NN milk/NN
+itching/VBG palm/NN
+itchy/NN feet/VBD
+itchy/NN palm/NN
+its/PRP$ anyone/NN 's/POS call/NN
+ivy/NN league/NN
+jaywalk/NN
+joshing/VBG me/PRP
+jump/VB on/IN the/DT bandwagon/NN
+just/RB what/WP the/DT doctor/NN ordered/VBD
+kangaroo/RB court/VBN
+keen/IN as/IN mustard/NN
+keep/VB a/DT civil/JJ tongue/NN
+keep/VB a/DT level/NN head/NN
+keep/VB a/DT lid/JJ on/IN
+keep/VB a/DT low/JJ profile/NN
+keep/VB a/DT stiff/JJ upper/NN lip/NN
+keep/VB an/DT eye/NN on/IN him/PRP
+keep/VB at/IN arm/NN 's/POS length/NN
+keep/VB body/NN and/CC soul/JJ together/NN
+keep/VB eyes/NNS peeled/VBN
+keep/VB feet/VBN on/IN ground/NN
+keep/VB finger/JJR on/IN pulse/NN
+keep/VB fingers/NNS crossed/VBN
+keep/VB head/NN above/IN water/NN
+keep/VB in/IN proportion/NN
+keep/VB nose/NN to/TO the/DT grindstone/NN
+keep/VB one/CD 's/POS feet/NN on/IN the/DT ground/NN
+keep/VB options/NNS open/JJ
+keep/VB posted/VBN
+keep/VB someone/NN at/IN arm/NN 's/POS length/NN
+keep/VB something/NN at/IN bay/NN
+keep/VB the/DT lid/JJ on/IN
+keep/VB the/DT wolf/NN from/IN the/DT door/NN
+keep/VB under/IN wraps/NNS
+keep/VB under/IN your/PRP$ hat/NN
+keep/VB up/IN appearances/NNS
+keep/VB up/IN with/IN Joneses/NNS
+keep/VB wolf/PRP from/IN door/NN
+keep/VB your/PRP$ back/NN covered/VBD
+keep/VB your/PRP$ chin/NN up/RP
+keep/VB your/PRP$ nose/NN clean/NN
+keep/VB your/PRP$ shirt/NN on/IN
+kick/NN the/DT bucket/NN
+kick/NN up/IN a/DT fuss/NN
+kick/NN yourself/PRP
+kill/NN two/CD birds/NNS with/IN one/CD stone/NN
+kill/NN with/IN kindness/NN
+kindred/VBD spirit/NN
+kiss/NN goodbye/NN to/TO something/NN
+kitty-corner/NN
+knee/NN jerk/NN reaction/NN
+knee-high/JJ to/TO a/DT grasshopper/NN
+knickers/NNS in/IN a/DT twist/NN
+knock/NN down/IN with/IN a/DT feather/NN
+knock/NN down/IN with/IN feather/JJR
+knock/NN it/PRP off/IN
+knock/NN on/IN wood/NN
+knock/NN sense/NN into/IN
+knock/NN the/DT daylights/NNS
+knock/NN the/DT living/NN daylights/NNS
+knock/NN your/PRP$ socks/NNS off/IN
+know/RB someone/VBN inside/NN out/IN
+know/RB the/DT ropes/NNS
+know/RB the/DT score/NN
+know/RB which/WDT side/NN your/PRP$ bread/NN is/VBZ buttered/VBN
+know/RB which/WDT way/NN the/DT wind/NN is/VBZ blowing/VBG
+know/RB which/WDT way/NN wind/VBD blows/NNS
+know/RB your/PRP$ own/JJ mind/NN
+knuckle/NN down/IN to/TO
+kowtow/NN to/TO someone/NN
+last/JJ but/CC not/RB least/JJS
+last/JJ legs/NNS
+last/JJ straw/NN
+laugh/IN off/IN
+laugh/IN up/IN one/CD 's/POS sleeve/NN
+laughing/VBG stock/NN
+law/NN of/IN the/DT jungle/JJ
+law/NN onto/IN themselves/PRP
+lay/NN down/IN the/DT law/NN
+lay/NN it/PRP on/IN the/DT line/NN
+lay/NN one/CD 's/POS cards/NNS on/IN the/DT table/NN
+lead/NN to/TO a/DT dead/JJ end/NN
+lead/NN up/IN garden/JJ path/NN
+leaps/NNS and/CC bounds/NNS
+learn/NN the/DT hard/JJ way/NN
+learn/NN the/DT ropes/NNS
+learning/VBG curve/NN
+leave/NN high/JJ and/CC dry/JJ
+leave/NN no/DT stone/NN unturned/VBD
+leave/NN somebody/NN holding/VBG the/DT baby/NN
+leave/NN the/DT door/NN open/JJ
+leave/NN well/RB alone/RB
+led/VBD by/IN the/DT nose/NN
+left/VBD hand/VBN does/VBZ n't/RB know/VB what/WP the/DT right/NN hand/NN is/VBZ doing/VBG
+left/VBD hanging/VBG in/IN the/DT air/NN
+left/VBD to/TO one/CD 's/POS own/JJ devices/NNS
+left/VBD to/TO own/VB devises/NNS
+lend/NN an/DT ear/NN
+lend/NN me/PRP your/PRP$ ear/NN
+lend/NN oneself/PRP to/TO
+less/JJR is/VBZ more/JJR
+lesser/NN of/IN two/CD evils/NNS
+let/NN bygones/NNS be/VB bygones/NNS
+let/NN grass/NN grow/NN under/IN your/PRP$ feet/NN
+let/NN me/PRP bounce/NN this/DT off/NN you/PRP
+let/NN off/IN steam/NN
+let/NN one/CD 's/POS hair/NN down/IN
+let/NN ride/VBD
+let/NN sleeping/VBG dogs/NNS lie/VBP
+let/NN slip/NN through/IN fingers/NNS
+let/NN something/NN ride/NN
+let/NN the/DT cat/NN out/IN of/IN the/DT bag/NN
+level/NN playing/NN field/NN
+licence/NN to/TO print/VB money/NN
+lick/NN and/CC promise/VB
+lick/NN into/IN shape/NN
+lick/NN one/CD 's/POS lips/NNS
+lick/NN one/CD 's/POS wounds/NNS
+lick/NN someone/NN 's/POS boots/NNS
+lie/NN in/IN
+lie/NN through/IN teeth/NN
+lie/NN way/NN
+life/NN and/CC soul/JJ of/IN the/DT party/NN
+life/NN is/VBZ just/RB a/DT bowl/NN of/IN cherries/NNS
+life/NN of/IN riley/NN
+lift/NN a/DT finger/NN
+light/NN at/IN end/NN of/IN tunnel/NN
+light/NN bulb/NN moment/NN
+light/NN years/NNS ahead/RB
+lights/NNS on/IN but/CC no/DT one/NN home/NN
+like/IN a/DT cat/JJ on/IN hot/JJ bricks/NNS
+like/IN a/DT chicken/NN with/IN its/PRP$ head/NN cut/VBD off/RP
+like/IN a/DT deer/NN caught/NN in/IN the/DT headlights/NNS
+like/IN a/DT deer/NN in/IN the/DT headlights/NNS
+like/IN a/DT rabbit/NN caught/NN in/IN the/DT headlights/NNS
+like/IN a/DT rabbit/NN in/IN the/DT headlights/NNS
+like/IN a/DT scalded/JJ ca/NN t/NN
+like/IN cat/NN and/CC dog/NN
+like/IN clockwork/NN
+like/IN it/PRP or/CC lump/VB it/PRP
+like/IN ships/NNS that/WDT pass/NN in/IN the/DT night/NN
+like/IN something/NN the/DT cat/NN
+like/IN the/DT back/NN of/IN one/CD 's/POS hand/NN
+like/IN the/DT cat/JJ that/IN ate/JJ the/DT canary/JJ
+like/IN two/CD peas/NNS in/IN a/DT pod/NN
+likely/JJ story/NN
+line/NN of/IN least/JJS resistance/NN
+lion/NN 's/POS share/NN
+lip/NN service/NN
+lips/NNS are/VBP sealed/VBN
+lipstick/NN on/IN a/DT pig/NN
+liquor/NN someone/NN up/IN
+live/JJ a/DT lie/NN
+live/JJ beyond/NN means/VBZ
+live/JJ from/IN hand/NN to/TO mouth/VB
+live/JJ high/JJ off/IN the/DT hog/NN
+live/JJ in/IN an/DT ivory/NN tower/NN
+live/JJ in/IN clover/NN
+live/JJ on/IN borrowed/VBN time/NN
+live/JJ on/IN the/DT breadline/NN
+live/JJ on/IN the/DT edge/NN
+live/JJ out/IN of/IN suitcase/NN
+live/JJ the/DT life/NN of/IN riley/NN
+live/JJ to/TO fight/NN another/DT day/NN
+live/JJ to/TO tell/VB the/DT tale/NN
+live/JJ up/IN to/TO reputation/NN
+live/JJ wire/NN
+lo/NN and/CC behold/VBD
+load/NN of/IN baloney/NN
+load/NN off/IN your/PRP$ mind/NN
+loan/NN shark/VBD
+lock/NN horns/NNS
+lock/NN ,/, stock/NN and/CC barrel/NN
+long/RB in/IN the/DT tooth/NN
+long/RB row/VBP to/TO hoe/VB
+look/NN a/DT sight/NN
+look/NN before/IN you/PRP leap/VBP
+look/NN daggers/NNS
+look/NN down/IN one/CD 's/POS nose/NN
+look/NN like/IN a/DT million/CD dollars/NNS
+look/NN on/IN the/DT bright/JJ side/NN
+look/NN out/IN for/IN number/NN one/CD
+look/NN the/DT part/NN
+look/NN the/DT picture/NN
+look/NN the/DT picture/NN of/IN health/NN
+loose/NN cannon/VBD
+loose/NN end/NN
+lose/NN one/CD 's/POS marbles/NNS
+lose/NN sleep/NN
+lose/NN the/DT plot/NN
+lose/NN the/DT thread/NN
+lose/NN track/VBD of/IN time/NN
+lose/NN train/NN of/IN thought/NN
+lose/NN your/PRP$ shirt/NN
+lose/NN your/PRP$ touch/NN
+mad/NN as/IN a/DT hatter/NN
+made/VBD of/IN money/NN
+make/VB a/DT beeline/NN for/IN
+make/VB a/DT big/JJ thing/NN of/IN
+make/VB a/DT comeback/NN
+make/VB a/DT killing/NN
+make/VB a/DT long/JJ story/NN short/JJ
+make/VB a/DT mint/NN
+make/VB a/DT monkey/NN out/IN of/IN
+make/VB a/DT mountain/NN out/IN of/IN a/DT molehill/NN
+make/VB a/DT pig/JJ of/IN
+make/VB a/DT pig/JJ of/IN yourself/PRP
+make/VB a/DT pig/JJ 's/POS ear/JJ of/IN
+make/VB a/DT point/NN of/IN
+make/VB a/DT song/JJ and/CC dance/NN
+make/VB a/DT virtue/NN of/IN necessity/NN
+make/VB an/DT ass/NN of/IN yourself/PRP
+make/VB blood/NN boil/NN
+make/VB blood/NN run/VBN cold/NN
+make/VB cold/VBN calls/NNS
+make/VB ends/NNS meet/VB
+make/VB exhibition/NN of/IN
+make/VB flesh/JJ crawl/NN
+make/VB hackles/NNS rise/VB
+make/VB hair/PRP$ stand/NN on/IN end/NN
+make/VB hay/NN while/IN the/DT sun/NN shines/NNS
+make/VB headway/NN
+make/VB inroads/NNS
+make/VB it/PRP snappy/VB
+make/VB light/JJ of/IN
+make/VB light/JJ work/NN
+make/VB light/JJ work/NN of/IN
+make/VB mincemeat/VBN of/IN
+make/VB mouth/JJ water/NN
+make/VB no/DT bones/NNS about/IN
+make/VB no/DT bones/NNS about/IN something/NN
+make/VB nothing/NN of/IN
+make/VB or/CC break/VB
+make/VB right/RB noises/VBZ
+make/VB sense/NN of/IN
+make/VB short/JJ work/NN of/IN
+make/VB skin/NN crawl/NN
+make/VB someone/NN see/VB reason/NN
+make/VB the/DT best/JJS of/IN things/NNS
+make/VB the/DT cut/NN
+make/VB up/RP for/IN lost/JJS time/NN
+make/VB your/PRP$
+make/VB your/PRP$ ears/NNS burn/VBP
+make/VB your/PRP$ flesh/JJ crawl/NN
+make/VB your/PRP$ way/NN to/TO
+make/VB yourself/PRP scarce/VB
+makes/NNS my/PRP$ blood/NN boil/NN
+makes/NNS two/CD of/IN us/PRP
+matter/NN of/IN time/NN
+mean/JJ business/NN
+mean/JJ the/DT world/NN to/TO
+meet/NN halfway/NN
+meet/NN your/PRP$ maker/NN
+meet/NN your/PRP$ match/NN
+meet-and-greet/JJ
+megaphone/NN diplomacy/NN
+memory/NN like/IN a/DT sieve/JJ
+method/NN in/IN madness/NN
+method/NN to/TO one/CD 's/POS madness/NN
+middle/NN of/IN nowhere/RB
+middle/NN of/IN the/DT road/NN
+might/MD is/VBZ right/RB
+milk/NN of/IN human/NN kindness/NN
+millstone/NN around/IN neck/NN
+mince/NN words/NNS
+mind/NN of/IN your/PRP$ own/JJ
+mind/NN over/IN matter/NN
+mind/NN your/PRP$ language/NN
+mind/NN your/PRP$ own/JJ business/NN
+mind/NN your/PRP$ Ps/NNP and/CC Qs/NNP
+mint/NN condition/NN
+miss/NN a/DT trick/NN
+miss/NN the/DT boat/NN
+miss/NN the/DT point/NN
+mix/NN business/NN with/IN pleasure/NN
+mixed/VBD blessing/VBG
+mixed/VBD feelings/NNS
+moment/NN of/IN truth/NN
+money/NN burns/NNS a/DT hole/NN in/IN your/PRP$ pocket/NN
+money/NN does/VBZ n't/RB grow/VB on/IN trees/NNS
+money/NN for/IN jam/NN
+money/NN for/IN old/JJ rope/NN
+money/NN laundering/VBG
+money/NN spinner/NN
+money/NN talks/NNS
+money/NN to/TO burn/VB
+monkey/NN business/NN
+month/NN of/IN Sundays/NNS
+moonlight/NN flit/VBD
+moot/NN point/NN
+more/JJR by/IN
+more/JJR by/IN accident/NN than/IN by/IN design/NN
+more/JJR by/IN accident/NN than/IN design/NN
+more/JJR fun/VBN than/IN a/DT barrel/NN of/IN monkeys/NNS
+more/JJR heat/NN than/IN light/JJ
+more/JJR money/NN than/IN sense/NN
+more/JJR power/NN to/TO elbow/VB
+more/JJR than/IN meets/NNS eye/VBP
+more/JJR than/IN meets/NNS the/DT eye/NN
+mouse/NN potato/IN
+move/NN heaven/VBN and/CC earth/JJ
+move/NN in/IN same/JJ circles/NNS
+move/NN the/DT goalposts/NNS
+move/NN up/IN in/IN the/DT world/NN
+movers/NNS and/CC shakers/NNS
+much/RB ado/VBP about/IN nothing/NN
+much/RB obliged/VBD
+much/RB of/IN a/DT muchness/NN
+muddy/NN the/DT waters/NNS
+mug/NN 's/POS game/NN
+mum/NN 's/POS the/DT word/NN
+mumbo/NN jumbo/VBD
+murder/NN something/NN
+murphy/NN 's/POS law/NN
+music/NN to/TO one/CD 's/POS ears/NNS
+mutton/NN dressed/VBD as/IN lamb/NN
+my/PRP$ dogs/NNS are/VBP barking/VBG
+my/PRP$ way/NN or/CC the/DT highway/NN
+nailed/VBD it/PRP
+nature/NN calls/VBZ
+nature/NN 's/POS call/NN
+necessary/JJ evil/NN
+neither/DT fish/JJ nor/CC fowl/NN
+neither/DT here/RB nor/CC there/EX
+nest/NN egg/NN
+never/RB a/DT dull/JJ moment/NN
+never/RB bite/VBP the/DT hand/NN that/IN feeds/NNS you/PRP
+never/RB in/IN a/DT million/NN years/NNS
+never/RB looked/VBD back/RB
+never/RB mind/VBD
+never/RB rains/VBZ but/CC it/PRP pours/VBZ
+never/RB say/VBP die/VB
+new/JJ kid/NN on/IN the/DT block/NN
+new/JJ lease/NN of/IN life/NN
+new/JJ to/TO this/DT game/NN
+New/NNP York/NNP minute/NN
+next/JJ best/NN thing/NN
+next/JJ to/TO nothing/NN
+nice/NN as/IN pie/NN
+night/NN owl/NN
+nine/NN times/NNS out/IN of/IN ten/CD
+nine-day/JJ wonder/NN
+nitty-gritty/JJ
+no/DT accounting/NN for/IN taste/NN
+no/DT dice/NN
+no/DT end/NN
+no/DT fixed/VBN abode/NN
+no/DT flies/NNS on/IN
+no/DT great/JJ shakes/NNS
+no/DT hard/JJ feelings/NNS
+no/DT holds/NNS barred/VBD
+no/DT horse/NN in/IN this/DT race/NN
+no/DT picnic/JJ
+no/DT room/NN to/TO swing/NN a/DT cat/NN
+no/DT smoke/NN without/IN fire/NN
+no/DT spring/NN chicken/VBN
+no/DT two/CD ways/NNS about/IN it/PRP
+no/DT use/NN crying/VBG over/IN spilt/NN milk/NN
+no-brainer/NN
+no-go/JJ area/NN
+nodding/VBG terms/NNS
+non/NN sequitur/PRP$
+none/NN the/DT wiser/NN
+nose/NN out/IN of/IN joint/JJ
+not/RB a/DT patch/NN on/IN
+not/RB a/DT spark/NN of/IN decency/NN
+not/RB all/DT there/EX
+not/RB for/IN all/DT the/DT tea/NN in/IN China/NNP
+not/RB for/IN all/DT the/DT world/NN
+not/RB for/IN love/RB or/CC money/NN
+not/RB getting/VBG anywhere/RB
+not/RB give/VBP the/DT time/NN of/IN day/NN
+not/RB have/VBP a/DT clue/NN
+not/RB have/VBP a/DT stitch/NN on/IN
+not/RB in/IN one/CD 's/POS right/NN mind/IN
+not/RB in/IN the/DT same/JJ league/NN
+not/RB let/VBP grass/NN grow/NN under/IN your/PRP$ feet/NN
+not/RB only/RB pebble/JJ on/IN beach/NN
+not/RB playing/VBG with/IN a/DT full/JJ deck/NN
+not/RB the/DT brightest/JJS bulb/NN in/IN the/DT box/NN
+not/RB the/DT only/JJ pebble/JJ on/IN the/DT beach/NN
+not/RB the/DT sharpest/JJS knife/NN in/IN the/DT drawer/NN
+not/RB the/DT sharpest/JJS tool/NN in/IN the/DT shed/JJ
+not/RB up/IN to/TO scratch/VB
+nothing/NN doing/VBG
+nothing/NN succeeds/NNS like/IN success/NN
+nothing/NN to/TO it/PRP
+nothing/NN to/TO write/VB home/NN about/IN
+nothing/NN ventured/VBD ,/, nothing/NN gained/VBD
+now/RB you/PRP 're/VBP talking/VBG
+nowhere/RB to/TO be/VB found/VBN
+null/NN and/CC void/JJ
+number/NN cruncher/RB
+nuts/NNS and/CC bolts/NNS
+of/IN all/DT people/NNS
+of/IN no/DT avail/NN
+of/IN the/DT first/JJ water/NN
+of/IN your/PRP$ own/JJ accord/NN
+off/IN on/IN a/DT tangent/NN
+off/IN on/IN the/DT wrong/JJ foot/NN
+off/IN one/CD 's/POS rocker/NN
+off/IN one/CD 's/POS trolley/NN
+off/IN someone/NN 's/POS Christmas/NNP list/NN
+off/IN the/DT deep/NN end/NN
+off/IN the/DT hook/NN
+off/IN the/DT mark/NN
+off/IN the/DT rails/NNS
+off/IN the/DT record/NN
+off/IN with/IN a/DT bang/NN
+old/JJ chestnut/NN
+old/JJ dog/NN for/IN a/DT hard/JJ road/NN
+old/JJ head/NN on/IN young/JJ shoulders/NNS
+on/IN a/DT shoestring/NN
+on/IN cloud/VBN nine/CD
+on/IN hand/NN
+on/IN ice/NN
+on/IN its/PRP$ k/NN nees/NNS
+on/IN one/CD 's/POS last/JJ legs/NNS
+on/IN one/CD 's/POS uppers/NNS
+on/IN paper/NN
+on/IN pins/NNS and/CC needles/NNS
+on/IN second/JJ thoughts/NNS
+on/IN somebody/NN 's/POS tail/NN
+on/IN tap/NN
+on/IN tenterhooks/NNS
+on/IN the/DT ball/NN
+on/IN the/DT cards/NNS
+on/IN the/DT dole/NN
+on/IN the/DT edge/NN of/IN one/CD 's/POS seat/NN
+on/IN the/DT fence/NN
+on/IN the/DT fly/NN
+on/IN the/DT level/NN
+on/IN the/DT lookout/NN
+on/IN the/DT map/NN
+on/IN the/DT mend/NN
+on/IN the/DT move/NN
+on/IN the/DT pig/NN 's/POS back/NN
+on/IN the/DT QT/NNP
+on/IN the/DT run/NN
+on/IN the/DT safe/NN side/NN
+on/IN the/DT same/JJ page/NN
+on/IN the/DT same/JJ wavelength/NN
+on/IN the/DT sly/RB
+on/IN the/DT up/NN and/CC up/IN
+once/RB bitten/VBN twice/NN shy/NN
+once/RB in/IN a/DT blue/JJ moon/NN
+one/CD born/NN every/DT minute/NN
+one/CD fell/VBD swoop/NN
+one/CD gets/NNS it/PRP
+one/CD gets/NNS me/PRP
+one/CD good/JJ turn/NN deserves/NNS another/DT
+one/CD hand/NN washes/NNS the/DT other/JJ
+one/CD hand/NN washes/NNS the/DT other/JJ and/CC together/RB they/PRP wash/VBP the/DT face/NN
+one/CD horse/NN town/NN
+one/CD in/IN the/DT eye/NN
+one/CD over/IN the/DT eight/CD
+one/CD step/NN ahead/RB
+one/CD too/RB many/JJ
+one/CD track/NN mind/NN
+one/CD 's/POS number/NN is/VBZ up/IN
+one/CD 's/POS own/JJ undoing/NN
+one-track/JJ mind/NN
+one-upmanship/NN
+only/RB to/TO be/VB expected/VBN
+open/JJ doors/NNS for/IN
+open/JJ doors/NNS to/TO
+open/JJ old/JJ wounds/NNS
+open/JJ secret/NN
+open/JJ the/DT floodgates/NNS
+open/JJ the/DT kimono/NN
+open-and-shut/NN case/NN
+opposite/IN number/NN
+ostrich/NN policy/NN
+ostrich/NN strategy/NN
+other/JJ fish/JJ to/TO fry/NN
+other/JJ side/NN of/IN the/DT coin/NN
+other/JJ things/NNS being/VBG equal/JJ
+out/IN like/IN a/DT light/JJ
+out/IN of/IN character/NN
+out/IN of/IN circulation/NN
+out/IN of/IN earshot/NN
+out/IN of/IN harm/NN 's/POS way/NN
+out/IN of/IN my/PRP$ league/NN
+out/IN of/IN sorts/NNS
+out/IN of/IN sync/NN
+out/IN of/IN the/DT blue/JJ
+out/IN of/IN the/DT picture/NN
+out/IN of/IN the/DT question/NN
+out/IN of/IN this/DT world/NN
+out/IN of/IN touch/JJ
+out/IN of/IN whack/NN
+out/IN of/IN your/PRP$ depth/NN
+out/IN of/IN your/PRP$ pocket/NN
+out/IN of/IN your/PRP$ way/NN
+out/IN on/IN a/DT limb/NN
+out/IN on/IN the/DT town/NN
+out/IN the/DT window/NN
+out/IN to/TO lunch/NN
+over/IN and/CC done/NN with/IN
+over/IN dead/JJ body/NN
+over/IN my/PRP$ dead/NN body/NN
+over/IN the/DT hill/NN
+over/IN the/DT moon/NN
+over/IN the/DT top/JJ
+over-egg/JJ the/DT pudding/NN
+overplay/NN your/PRP$ hand/NN
+overshoot/NN the/DT mark/NN
+overstep/NN the/DT mark/NN
+paddle/NN one/CD 's/POS own/JJ canoe/NN
+paint/NN the/DT town/NN red/VBD
+paper/NN pusher/RB
+paper/NN trail/NN
+par/NN for/IN the/DT course/NN
+part/NN and/CC parcel/NN
+parting/VBG shot/NN
+partner/NN in/IN crime/NN
+party/NN is/VBZ over/IN
+pass/NN muster/NN
+pass/NN the/DT buck/NN
+passing/VBG fancy/NN
+pat/IN answer/JJR
+pay/NN dearly/RB for/IN
+pay/NN dividends/NNS
+pay/NN over/IN the/DT odds/NNS
+pedal/NN to/TO metal/NN
+pedal/NN to/TO the/DT metal/NN
+peeping/VBG tom/NN
+pen/NN is/VBZ mightier/JJR than/IN sword/NN
+pen/NN pusher/NN
+penny/NN drops/NNS
+penny/NN for/IN your/PRP$ thoughts/NNS
+perish/JJ the/DT thought/NN
+pervert/NN the/DT course/NN of/IN justice/NN
+pester/NN power/NN
+pick/NN a/DT fight/NN
+pick/NN brains/NNS
+pick/NN holes/NNS
+pick/NN up/IN steam/NN
+pick/NN up/IN the/DT pieces/NNS
+pick/NN up/IN the/DT tab/NN
+pick/NN up/IN your/PRP$ ears/NNS
+picture/NN paints/NNS a/DT thousand/NN words/NNS
+pie/NN in/IN the/DT sky/NN
+pie-eyed/JJ
+piece/NN of/IN cake/NN
+piece/NN of/IN the/DT action/NN
+pig/NN in/IN a/DT poke/NN
+pig/NN out/IN
+pigs/NNS get/VBP fat/JJ ,/, hogs/NNS get/VBP slaughtered/VBN
+pigs/NNS might/MD fly/RB
+pillar/JJ to/TO post/VB
+pink/NN elephants/NNS
+pipe/NN down/IN
+place/NN in/IN the/DT sun/NN
+plain/NN sailing/VBG
+plan/NN B/NNP
+plastic/JJ smile/NN
+play/NN a/DT waiting/VBG game/NN
+play/NN by/IN ear/NN
+play/NN by/IN the/DT rules/NNS
+play/NN cat/VBD and/CC mouse/NN
+play/NN footsie/NN
+play/NN for/IN time/NN
+play/NN games/NNS with/IN someone/NN
+play/NN gooseberry/NN
+play/NN havoc/NN
+play/NN into/IN someone/NN 's/POS hands/NNS
+play/NN possum/NN
+play/NN second/JJ fiddle/NN
+play/NN the/DT game/NN
+play/NN the/DT market/NN
+play/NN to/TO the/DT gallery/NN
+play/NN truant/VBD
+play/NN with/IN fire/NN
+play/NN your/PRP$ cards/NNS right/RB
+playing/NN with/IN a/DT full/JJ deck/NN
+pleased/VBD as/IN punch/NN
+plenty/NN of/IN other/JJ fish/JJ
+pluck/NN out/IN of/IN the/DT air/NN
+plug/NN something/NN
+pocket/NN of/IN resistance/NN
+point/NN of/IN no/DT return/NN
+poker/NN face/NN
+polish/JJ off/NN
+politically/RB correct/VBP
+pony/NN up/IN
+pop/NN one/CD 's/POS clogs/NNS
+pop/NN the/DT question/NN
+pot/NN calling/VBG the/DT kettle/NN black/NN
+pot/NN luck/VBD
+pound/NN the/DT pavement/NN
+pour/PRP$ cold/NN water/NN on/IN
+pour/PRP$ water/NN into/IN a/DT sieve/JJ
+pour/PRP$ your/PRP$ heart/NN out/RP
+practice/NN makes/VBZ perfect/NN
+proud/NN as/IN punch/NN
+pull/NN somebody/NN 's/POS leg/NN
+pull/NN someone/NN 's/POS leg/NN
+pull/NN the/DT plug/NN
+pulling/VBG your/PRP$ leg/NN
+pushing/VBG up/IN daisies/NNS
+put/VB a/DT damper/NN on/IN
+put/VB a/DT finger/NN on/IN something/NN
+put/VB a/DT sock/NN in/IN it/PRP
+put/VB in/IN a/DT good/JJ word/NN
+put/VB in/IN the/DT right/NN perspective/NN
+put/VB lipstick/NN on/IN a/DT pig/NN
+put/VB money/NN where/WRB mouth/JJ is/VBZ
+put/VB on/IN your/PRP$ thinking/NN cap/NN
+put/VB one/CD 's/POS cards/NNS on/IN the/DT table/NN
+put/VB the/DT cart/NN before/IN the/DT horse/NN
+put/VB the/DT cat/NN among/IN the/DT pigeons/NNS
+put/VB the/DT kibosh/NN on/IN
+put/VB the/DT records/NNS straight/RB
+put/VB through/IN the/DT mill/NN
+put/VB to/TO bed/VBN
+put/VB to/TO death/NN
+put/VB to/TO sleep/VB
+put/VB wool/NN over/IN other/JJ people/NNS 's/POS eyes/NNS
+put/VB words/NNS in/IN someone/NN 's/POS mouth/NN
+queer/NN the/DT pitch/NN
+rabbit/NN in/IN the/DT headlights/NNS
+race/NN against/IN time/NN
+raincheck/NN
+raining/VBG cats/NNS and/CC dogs/NNS
+raise/NN the/DT roof/NN
+rake/NN in/IN the/DT money/NN
+ram/NN down/IN someone/NN 's/POS throat/JJ
+rant/NN and/CC rave/VB
+rap/NN on/IN the/DT knuckles/NNS
+raring/VBG to/TO go/VB
+rather/RB you/PRP than/IN me/PRP
+rats/NNS in/IN the/DT attic/JJ
+raw/NN deal/NN
+reach/NN for/IN the/DT moon/NN
+reach/NN saturation/NN point/NN
+read/NN between/IN lines/NNS
+read/NN the/DT riot/NN act/NN
+ready/RB and/CC waiting/VBG
+ready/RB to/TO drop/VB
+reap/NN the/DT harvest/NN
+reap/NN what/WP you/PRP sow/VBP
+rear/NN its/PRP$ ugly/JJ head/NN
+recharge/NN one/CD 's/POS batteries/NNS
+recipe/NN for/IN disaster/NN
+red/VBD carpet/VBN
+red/VBD flag/NN to/TO a/DT bull/NN
+red/VBD herring/VBG
+red/VBD light/VBN district/NN
+red/VBD tape/NN
+redress/NN the/DT balance/NN
+reduce/NN to/TO tears/NNS
+refresh/NN someone/NN 's/POS memory/NN
+regain/NN one/CD 's/POS composure/NN
+regain/NN one/CD 's/POS feet/NN
+remains/NNS to/TO be/VB seen/VBN
+reopen/NN old/VBD wounds/NNS
+rest/NN is/VBZ history/NN
+ride/NN coattails/NNS
+ride/NN it/PRP out/RP ride/RB out/RP the/DT storm/NN
+ride/NN roughshod/VBD over/IN
+riding/VBG high/JJ
+right/RB as/IN rain/NN
+right/RB up/IN your/PRP$ alley/NN
+ring/VBG a/DT bell/NN
+ring/VBG fencing/NN
+ring/VBG out/IN the/DT old/JJ year/NN and/CC ring/VBG in/IN the/DT new/JJ
+ripple/NN effect/NN
+rise/NN and/CC shine/NN
+rise/NN to/TO the/DT occasion/NN
+risk/NN life/NN and/CC limb/NN
+road/NN rage/NN
+rob/NN Peter/NNP to/TO pay/VB Paul/NNP
+rob/NN the/DT cradle/NN
+rock/NN the/DT boat/NN
+rocket/NN science/NN
+roll/NN up/IN one/CD 's/POS sleeves/NNS
+roll/NN with/IN the/DT punches/NNS
+rolling/VBG in/IN money/NN
+rome/NN was/VBD not/RB built/VBN in/IN one/CD day/NN
+root/NN and/CC branch/NN
+rooted/VBD to/TO the/DT spot/NN
+rose/VBD tinted/VBN glasses/NNS
+rose/VBD tinted/VBN lenses/NNS
+rotten/RB apple/VBP
+rough/IN and/CC ready/JJ
+rough/IN diamond/NN
+rough/IN justice/NN
+rub/NN shoulders/NNS with/IN
+rubber/NN hits/NNS the/DT road/NN
+rue/NN the/DT day/NN
+rule/NN of/IN thumb/NN
+rule/NN the/DT roost/NN
+run/NN a/DT mile/NN
+run/NN a/DT taut/NN ship/NN
+run/NN circles/NNS around/IN
+run/NN down/IN
+run/NN out/IN of/IN steam/NN
+run/NN rings/NNS around/IN
+run/NN riot/VBD
+run/NN round/VBD in/IN circles/NNS
+run/NN the/DT gamut/NN of/IN
+run/NN with/IN the/DT hare/NN
+run/NN with/IN the/DT hare/NN and/CC hunt/NN with/IN the/DT hounds/NNS
+run-of-the-mill/NN
+running/VBG battle/NN
+runs/NNS in/IN the/DT family/NN
+rushed/VBD off/IN your/PRP$ feet/NN
+same/JJ page/NN
+same/JJ wavelength/NN
+sauce/NN for/IN the/DT goose/NN
+save/NN face/NN
+save/NN one/CD 's/POS neck/NN
+save/NN the/DT day/NN
+save/NN your/PRP$ bacon/NN
+save/NN your/PRP$ breath/NN
+saved/VBD by/IN the/DT bell/NN
+saving/VBG grace/NN
+say/VBP a/DT mouthful/JJ
+scales/NNS fall/VBP from/IN your/PRP$ eyes/NNS
+scapegoat/IN
+scarce/NN as/IN hen/WRB 's/POS teeth/NN
+scare/NN out/IN of/IN one/CD 's/POS wits/NNS
+scare/NN the/DT daylights/NNS out/IN of/IN
+scared/VBD stiff/JJ
+school/NN of/IN hard/JJ knocks/NNS
+scot-free/JJ
+scrape/NN the/DT bottom/NN of/IN the/DT barrel/NN
+scratch/NN the/DT surface/NN
+scream/NN blue/NN murder/NN
+screw/VBD loose/VBN
+screw/VBD the/DT pooch/NN
+scrimp/NN and/CC save/VB
+sea/NN legs/NNS
+seal/NN of/IN approval/NN
+seamy/PRP$ side/NN of/IN life/NN
+second/JJ a/DT motion/NN
+second/JJ nature/NN
+second/JJ to/TO none/NN
+see/NN colour/PRP$ of/IN someone/NN 's/POS money/NN
+see/NN error/NN of/IN ways/NNS
+see/NN eye/NN to/TO eye/VB
+see/NN in/IN a/DT new/JJ light/NN
+see/NN light/VBD at/IN end/NN of/IN tunnel/NN
+see/NN red/VBD
+see/NN the/DT colour/NN of/IN money/NN
+see/NN the/DT error/NN of/IN ways/NNS
+see/NN the/DT forest/NN for/IN the/DT trees/NNS
+seeing/VBG is/VBZ believing/VBG
+seen/IN better/JJR days/NNS
+sell/NN down/IN the/DT river/NN
+sell/NN ice/NN to/TO Eskimos/NNP
+sell/NN your/PRP$ soul/NN
+send/NN a/DT shiver/NN down/IN your/PRP$ spine/NN
+send/NN about/IN one/CD 's/POS business/NN
+send/NN packing/VBG
+send/NN up/IN a/DT trial/NN balloon/NN
+senior/JJ moment/NN
+separate/JJ sheep/NN from/IN goats/NNS
+set/NN great/VBD store/NN by/IN
+set/NN in/IN one/CD 's/POS ways/NNS
+set/NN in/IN stone/NN
+set/NN the/DT alarm/NN bells/NNS ringing/VBG
+set/NN the/DT records/NNS straight/RB
+set/NN the/DT stage/NN
+set/NN you/PRP back/RB
+settle/NN a/DT score/NN
+shake/NN like/IN a/DT leaf/NN
+shank/NN 's/POS pony/NN
+shape/NN of/IN things/NNS to/TO come/VB
+shape/NN up/IN or/CC ship/NN out/IN
+sharp/JJ as/IN a/DT tack/NN
+sharp/JJ cookie/NN
+sharp/JJ practice/NN
+shed/VBD light/VBN
+shelf/PRP life/VBP
+shilly-shally/RB
+shoe/NN is/VBZ on/IN the/DT other/JJ foot/NN
+shoot/NN the/DT breeze/NN
+shoot/NN yourself/PRP in/IN the/DT foot/NN
+shop/NN around/IN
+shop/NN till/IN you/PRP drop/NN
+shopping/VBG spree/NN
+shopping/VBG therapy/NN
+short/JJ and/CC sweet/JJ
+short/JJ end/NN of/IN stick/NN
+short/JJ fuse/NN
+short/JJ shrift/NN
+shot/NN in/IN the/DT dark/JJ
+shotgun/NN approach/NN
+shoulder/NN surfing/VBG
+shouting/VBG match/NN
+show/NN of/IN hands/NNS
+show/NN one/CD 's/POS true/JJ colours/NNS
+show/NN someone/NN the/DT ropes/NNS
+shrinking/VBG violet/NN
+shrug/NN something/NN off/IN
+shut/NN the/DT stable/NN door/NN when/WRB the/DT horse/NN has/VBZ bolted/VBN
+sick/NN as/IN a/DT dog/NN
+sight/NN for/IN sore/NN eyes/NNS
+sign/NN of/IN the/DT times/NNS
+sign/NN on/IN dotted/VBN line/NN
+sign/NN own/VBN death/NN warrant/NN
+signed/VBD ,/, sealed/VBN ,/, and/CC delivered/VBD
+significant/JJ other/JJ
+silver/NN bullet/VBD
+silver/NN lining/VBG
+silver/NN surfer/VBP
+silver-tongued/JJ
+simplicity/NN itself/PRP
+sink/NN one/CD 's/POS teeth/NN into/IN
+sit/NN on/IN the/DT fence/NN
+sitting/VBG shotgun/VBN
+sixth/JJ sense/NN
+skid/VBD row/NN
+sleep/NN with/IN the/DT fishes/NNS
+smack/NN dab/NN in/IN the/DT middle/NN
+smack/NN one/CD 's/POS lips/NNS
+smack/NN your/PRP$ lips/NNS
+small/JJ dog/NN ,/, tall/JJ weeds/NNS
+small/JJ potatoes/NNS
+smell/NN a/DT rat/NN
+smell/NN something/NN fishy/NN
+something/NN smells/NNS fishy/JJ
+son/NN of/IN a/DT gun/NN
+sore/IN point/NN
+southpaw/NN
+speak/NN of/IN the/DT devil/NN
+spill/NN the/DT beans/NNS
+spitting/VBG image/NN
+split/NN the/DT whistle/NN
+spring/NN chicken/VBN
+square/NN peg/VBD in/IN round/NN hole/NN
+start/NN from/IN scratch/NN
+start/NN the/DT ball/NN rolling/VBG
+steal/NN someone/NN 's/POS thunder/NN
+steep/NN price/NN to/TO pay/VB
+stiff/NN upper/NN lip/NN
+straight/RB from/IN the/DT horse/NN 's/POS mouth/NN
+strike/NN pay/NN dirt/NN
+strike/NN right/RB note/VB
+sweep/NN under/IN rug/NN
+tail/NN wagging/VBG the/DT dog/NN
+take/VB a/DT back/NN seat/NN
+take/VB a/DT chance/NN
+take/VB a/DT dim/NN view/NN
+take/VB a/DT dim/NN view/NN of/IN
+take/VB a/DT fancy/NN
+take/VB a/DT fancy/NN to/TO
+take/VB a/DT load/NN off/RP one/CD 's/POS mind/NN
+take/VB a/DT nosedive/JJ
+take/VB a/DT rain/NN check/NN
+take/VB a/DT stand/NN
+take/VB as/IN read/JJ
+take/VB care/NN
+take/VB cover/NN
+take/VB down/IN a/DT peg/NN
+take/VB flak/NN
+take/VB for/IN a/DT ride/NN
+take/VB in/IN good/JJ part/NN
+take/VB in/IN your/PRP$ stride/NN
+take/VB it/PRP easy/JJ
+take/VB it/PRP on/IN the/DT chin/NN
+take/VB it/PRP upon/IN yourself/PRP
+take/VB leave/VBP of/IN your/PRP$ senses/NNS
+take/VB lying/NN down/IN
+take/VB matters/NNS into/IN your/PRP$ own/JJ hands/NNS
+take/VB no/DT for/IN an/DT answer/NN
+take/VB offline/NN
+take/VB one/CD 's/POS cue/NN
+take/VB one/CD 's/POS life/NN into/IN one/CD 's/POS hands/NNS
+take/VB pains/NNS
+take/VB shape/NN
+take/VB steps/NNS to/TO
+take/VB stock/NN of/IN
+take/VB the/DT biscuit/NN
+take/VB the/DT bloom/NN off/RP something/NN
+take/VB the/DT bull/NN by/IN the/DT horns/NNS
+take/VB the/DT cake/NN
+take/VB the/DT easy/JJ way/NN out/IN
+take/VB the/DT floor/NN
+take/VB the/DT mickey/NN out/IN of/IN
+take/VB the/DT plunge/NN
+take/VB the/DT rap/NN
+take/VB the/DT rough/JJ with/IN the/DT smooth/NN
+take/VB the/DT sting/NN out/IN of/IN something/NN
+take/VB the/DT words/NNS out/IN of/IN someone/NN 's/POS mouth/NN
+take/VB to/TO something/NN like/IN a/DT duck/NN to/TO water/NN
+take/VB to/TO the/DT cleaners/NNS
+take/VB unawares/NNS
+take/VB under/IN your/PRP$ wing/NN
+take/VB with/IN a/DT grain/NN of/IN salt/NN
+take/VB your/PRP$ courage/NN in/IN both/DT hands/NNS
+take/VB your/PRP$ mind/NN off/IN
+takes/VBZ the/DT biscuit/NN
+takes/VBZ two/CD to/TO tango/VB
+taking/VBG it/PRP head/RB on/IN
+talk/NN nineteen/VBN to/TO the/DT dozen/NN
+talk/NN shop/NN
+talk/NN the/DT hind/NN leg/NN off/IN a/DT donkey/NN
+tall/NN story/NN
+tar/NN baby/NN
+tar/NN with/IN the/DT same/JJ brush/NN
+taste/NN of/IN one/CD 's/POS own/JJ medicine/NN
+taste/NN of/IN your/PRP$ own/JJ medicine/NN
+teach/NN an/DT old/JJ dog/NN new/JJ tricks/NNS
+teach/NN someone/NN a/DT lesson/NN
+tear/NN a/DT strip/NN off/RP
+tear/NN one/CD 's/POS hair/NN out/IN
+tech/NN savvy/NN
+teeth/NN chattering/VBG
+teething/VBG problems/NNS
+tell/NN someone/NN a/DT thing/NN or/CC two/CD
+test/NN the/DT waters/NNS
+text-walking/JJ
+thank/NN one/CD 's/POS lucky/JJ stars/NNS
+that/DT being/VBG said/VBD
+that/DT figures/NNS
+that/DT ship/NN has/VBZ sailed/VBN
+the/DT apple/NN of/IN your/PRP$ eye/NN
+the/DT ball/NN is/VBZ in/IN your/PRP$ court/NN
+the/DT best/JJS of/IN both/DT worlds/NNS
+the/DT bigger/JJR they/PRP are/VBP the/DT harder/NN they/PRP fall/VBP
+the/DT down/NN low/JJ
+the/DT last/JJ straw/NN
+the/DT look/NN of/IN things/NNS
+the/DT mind/NN boggles/NNS
+the/DT picture/NN of/IN health/NN
+the/DT pits/NNS
+the/DT way/NN the/DT ball/NN bounces/NNS
+the/DT way/NN the/DT cookie/NN crumbles/NNS
+the/DT whole/JJ nine/CD yards/NNS
+the/DT works/NNS
+the/DT world/NN is/VBZ your/PRP$ oyster/NN
+there/EX for/IN the/DT taking/VBG
+there/EX was/VBD n't/RB a/DT soul/JJ
+there/EX 'll/MD be/VB the/DT devil/NN to/TO pay/VB
+thick/NN as/IN thieves/NNS
+thin/JJ end/NN of/IN the/DT wedge/NN
+thin/JJ on/IN the/DT top/JJ
+thing/NN of/IN the/DT past/JJ
+things/NNS are/VBP looking/VBG up/RP
+think/NN again/RB
+think/NN better/RBR of/IN
+think/NN on/IN one/CD 's/POS feet/NN
+think/NN on/IN your/PRP$ feet/NN
+think/NN outside/IN the/DT box/NN
+think/NN the/DT sun/NN rises/VBZ and/CC sets/NNS on/IN someone/NN
+think/NN the/DT world/NN of/IN
+thinly/RB veiled/VBD
+third/JJ times/NNS a/DT charm/NN
+thorn/NN in/IN your/PRP$ side/NN
+thorny/NN issue/NN
+thrilled/VBD to/TO bits/NNS
+through/IN the/DT mill/NN
+through/IN the/DT motions/NNS
+through/IN the/DT roof/NN
+through/IN the/DT wars/NNS
+through/IN thick/NN and/CC thin/JJ
+throw/NN a/DT bone/NN
+throw/NN a/DT spanner/NN in/IN the/DT works/NNS
+throw/NN a/DT tantrum/NN
+throw/NN a/DT wobbler/NN
+throw/NN a/DT wobbly/RB
+throw/NN caution/NN to/TO the/DT wind/NN
+throw/NN dust/VBD in/IN someone/NN 's/POS eyes/NNS
+throw/NN good/VBD money/NN after/IN bad/JJ
+throw/NN in/IN the/DT towel/NN
+throw/NN it/PRP over/IN the/DT wall/NN
+throw/NN money/NN at/IN
+throw/NN one/CD 's/POS hat/JJ
+throw/NN one/CD 's/POS hat/JJ into/IN the/DT ring/NN
+throw/NN pearls/NNS to/TO pigs/NNS
+throw/NN something/NN together/RB
+throw/NN your/PRP$ hat/NN into/IN the/DT ring/NN
+thumb/NN one/CD 's/POS nose/NN
+tick/NN the/DT right/NN boxes/VBZ
+tickle/NN the/DT ivories/NNS
+tickled/VBD pink/NN
+tide/NN has/VBZ turned/VBN
+tide/NN over/IN
+tie/NN one/CD on/IN
+tie/NN the/DT knot/NN
+tie/NN yourself/PRP up/IN in/IN knots/NNS
+tied/VBD to/TO apron/VB strings/NNS
+tight/NN spot/VBD
+tight/NN squeeze/NN
+tighten/RB your/PRP$ belt/NN
+til/IN the/DT cows/NNS come/VBP home/NN
+till/NN the/DT cows/NNS come/VBP home/NN
+time/NN after/IN time/NN
+to/TO a/DT fault/NN
+to/TO make/VB a/DT long/JJ story/NN short/JJ
+to/TO steal/VB someone/NN 's/POS thunder/NN
+to/TO the/DT best/JJS of/IN one/CD 's/POS ability/NN
+to/TO the/DT letter/NN
+tongue-in-cheek/JJ
+too/RB many/JJ chiefs/NNS ,/, not/RB enough/RB indians/VBZ
+toss/NN one/CD 's/POS hat/JJ
+touch/NN on/IN wood/NN
+trip/NN down/IN memory/NN lane/NN
+trip/NN the/DT light/NN fantastic/JJ
+turn/NN a/DT blind/JJ eye/NN
+turn/NN of/IN events/NNS
+turn/NN on/IN heat/NN
+turn/NN on/IN the/DT heat/NN
+turn/NN up/IN heat/NN
+turn/NN up/IN like/IN a/DT bad/JJ penny/NN
+turn/NN up/IN the/DT heat/NN
+twenty/NN three/CD skidoo/NN
+two/CD left/VBN feet/NNS
+ugly/RB as/IN sin/NN
+uncharted/VBD waters/NNS
+under/IN close/JJ scrutiny/NN
+under/IN one/CD 's/POS belt/NN
+under/IN scrutiny/NN
+under/IN the/DT knife/NN
+under/IN the/DT weather/NN
+under/IN your/PRP$ thumb/NN
+unmitigated/VBD disaster/NN
+unring/VBG a/DT bell/NN
+until/IN hell/NN freezes/NNS over/IN
+unvarnished/VBD truth/NN
+up/IN a/DT blind/JJ alley/NN
+up/IN and/CC about/IN
+up/IN in/IN arms/NNS
+up/IN one/CD 's/POS alley/NN
+up/IN to/TO the/DT hilt/NN
+up/IN your/PRP$ alley/NN
+upper/NN hand/VBD
+upset/NN the/DT applecart/NN
+use/NN one/CD 's/POS noodle/NN
+use/NN your/PRP$ loaf/NN
+Van/NNP Gogh/NNP 's/POS ear/JJ for/IN music/JJ
+vanish/JJ into/IN thin/JJ air/NN
+variety/NN is/VBZ the/DT spice/NN of/IN life/NN
+vent/NN your/PRP$ spleen/NN
+vertically/RB challenged/VBD
+vested/VBD interest/NN
+vicious/JJ circle/NN
+vim/NN and/CC vigour/PRP$
+virtue/NN is/VBZ its/PRP$ own/JJ reward/NN
+voice/NN in/IN the/DT wilderness/NN
+vote/NN with/IN one/CD 's/POS feet/NN
+wag/NN the/DT dog/NN
+wagging/VBG the/DT dog/NN
+walk/NN a/DT tightrope/NN
+walk/NN on/IN eggshells/NNS
+walking/VBG encyclopaedia/NNS
+walking/VBG on/IN air/NN
+walking/VBG papers/NNS
+want/NN head/NN on/IN a/DT platter/NN
+wash/NN ones/NNS dirty/NN linen/NN
+wash/NN ones/NNS hands/NNS of/IN
+wash/NN your/PRP$ hands/NNS of/IN
+watch/NN like/IN a/DT hawk/NN
+watch/NN one/CD 's/POS step/NN
+watch/NN your/PRP$ language/NN
+water/NN down/IN
+water/NN off/IN a/DT duck/NN 's/POS back/NN
+water/NN under/IN the/DT bridge/NN
+wave/NN a/DT dead/JJ chicken/NN
+wax/NN lyrical/JJ
+wax/NN poetic/JJ
+ways/NNS and/CC means/VBZ
+weak/JJ at/IN the/DT knees/NNS
+weal/NN and/CC woe/NN
+wear/NN heart/NN on/IN sleeve/NN
+wear/NN many/JJ hats/NNS
+wear/NN out/IN one/CD 's/POS welcome/NN
+wear/NN the/DT trousers/NNS
+wear/NN thin/IN
+wear/NN your/PRP$ heart/NN on/IN your/PRP$ sleeve/NN
+weather/NN the/DT storm/NN
+weigh/NN pros/NNS and/CC cons/NNS
+weigh/NN your/PRP$ words/NNS
+weight/NN off/IN your/PRP$ mind/NN
+wet/NN behind/IN the/DT ears/NNS
+wet/NN blanket/NN
+wet/NN the/DT baby/NN 's/POS head/NN
+whale/NN of/IN a/DT time/NN
+what/WP goes/VBZ round/NN comes/VBZ round/NN
+what/WP makes/VBZ someone/NN tick/NN
+whatever/NN floats/NNS your/PRP$ boat/NN
+wheeling/VBG and/CC dealing/VBG
+wheels/NNS fall/VBP off/RP
+when/WRB in/IN Rome/NNP ,/, do/VBP as/RB the/DT Romans/NNP do/VBP
+when/WRB it/PRP rains/VBZ ,/, it/PRP pours/VBZ
+when/WRB pigs/NNS fly/RB
+when/WRB the/DT going/VBG gets/NNS tough/IN
+when/WRB the/DT going/VBG gets/NNS tough/IN ,/, the/DT tough/JJ get/NN going/VBG
+when/WRB the/DT rubber/NN hits/VBZ the/DT road/NN
+where/WRB the/DT shoe/NN pinches/VBZ
+while/IN the/DT going/NN is/VBZ good/JJ
+whistle/NN in/IN the/DT dark/JJ
+whistle-blower/NN
+white/IN as/IN a/DT ghost/NN
+white/IN Christmas/NNP
+white/IN elephant/JJ
+white/IN lie/NN
+whiz/NN kid/VBD
+whole/NN caboodle/NN
+whole/NN new/JJ ball/NN game/NN
+whole/NN nine/NN yards/NNS
+why/WRB buy/NN a/DT cow/NN when/WRB you/PRP can/MD get/VB milk/NN for/IN free/JJ
+why/WRB keep/VBP a/DT dog/NN and/CC bark/VB yourself/PRP
+whys/NNS and/CC wherefores/NNS
+wide/JJ off/NN the/DT mark/NN
+widow/NN 's/POS peak/NN
+wild/NN and/CC woolly/RB
+wild/NN goose/VBD chase/NN
+win/NN by/IN a/DT nose/NN
+win-win/JJ
+wind/NN up/IN
+wind/NN up/IN in/IN the/DT wrong/JJ hands/NNS
+window/NN on/IN the/DT world/NN
+window/NN shopping/VBG
+wine/NN and/CC dine/NN
+wing/VBG it/PRP
+wink/NN of/IN sleep/NN
+winning/VBG ways/NNS
+wipe/NN that/IN smile/JJ off/NN
+wipe/NN the/DT slate/NN clean/NN
+wise/NN after/IN the/DT event/NN
+wise/NN up/IN to/TO
+wish/NN the/DT ground/NN would/MD swallow/VB you/PRP up/RP
+wishful/JJ thinking/NN
+with/IN bells/NNS on/IN
+with/IN one/CD voice/NN
+with/IN one/CD 's/POS eyes/NNS open/JJ
+with/IN the/DT times/NNS
+wither/PRP$ on/IN the/DT vine/NN
+without/IN a/DT doubt/NN
+without/IN a/DT hitch/NN
+wolf/NN in/IN sheep/NN 's/POS clothing/NN
+wonders/NNS will/MD never/RB cease/VB
+wooden/NN spoon/VBD
+wool-gathering/JJ
+words/NNS fail/VBP me/PRP
+words/NNS of/IN one/CD syllable/JJ
+work/NN fingers/NNS to/TO bone/NN
+work/NN like/IN a/DT charm/NN
+work/NN the/DT system/NN
+work/NN to/TO rule/NN
+work/NN your/PRP$ fingers/NNS to/TO the/DT bone/NN
+world/NN of/IN difference/NN
+worse/NN still/RB
+would/MD n't/RB be/VB caught/VBN dead/JJ
+would/MD n't/RB be/VB seen/VBN dead/JJ
+wound/NN up/IN
+X/NNP marks/VBZ the/DT spot/NN
+you/PRP are/VBP what/WP you/PRP eat/VBP
+you/PRP can/MD say/VB that/IN again/RB
+you/PRP ca/MD n't/RB judge/VB a/DT book/NN by/IN its/PRP$ cover/NN
+you/PRP ca/MD n't/RB take/VB it/PRP with/IN you/PRP
+your/PRP$ guess/NN is/VBZ as/IN good/JJ as/IN mine/JJ
+your/PRP$ money/NN 's/POS worth/NN
+your/PRP$ wish/NN is/VBZ my/PRP$ command/NN
+zero/NN tolerance/NN
