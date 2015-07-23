@@ -183,6 +183,13 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
         # Remove extra spaces:
         line = uweclang.clean_punctuation(line)
 
+        # Remove starting numbers from lines.
+        m = re.match(r'(\d+)(.*)', line)
+        if m:
+            print('Line {}: EDIT OUT (Number Prefix, {} characters):'
+                  '\n\t{}\n'.format(line_number, len(m.group(1)), m.group(1)),
+                  file=log)
+            line = re.group(2)
 
         if found_memo:
             print(line, file=memo)

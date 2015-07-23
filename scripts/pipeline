@@ -36,7 +36,9 @@ echo "Tagging processed files..."
 scripts/tag "Student Corpus/Processed Files/" \
 		 -o "Student Corpus/Tagged Files/"	  \
 		 --recursive						  \
-		 --no-overwrite .tag.txt
+		 --no-overwrite .tag.txt # This prevents retagging files only because it
+		 						 # takes a long time. It is more efficient to
+		 						 # delete any tag files you want to retag.
 
 
 # Exit if the last command failed.
