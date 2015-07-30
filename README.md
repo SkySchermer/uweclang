@@ -122,8 +122,13 @@ UWEC Language Tools - Available Functions
       - `line_split(text)`
   + tagged
     * [tag](uweclang/tagged/tag.py)
-      - `TaggedText`
       - `tag(text)`
+      - `get_tags(tagged)`
+      - `read_tagged_string(text)`
+      - `tagged_to_plain(tagged)`
+      - `parse_tag_parentheticals(tagged)`
+      - `recombine_tag_parentheticals(parse_tree)`
+      - `ngram(words)`
 
 
 Additional Resources

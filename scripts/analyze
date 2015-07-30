@@ -14,7 +14,7 @@ import re
 import argparse
 import uweclang
 from itertools import chain
-from collections import OrderedDict
+from collections import OrderedDict, Counter
 
 # We want to write all files in UTF-8 encoding. (This is a Python 3 forward
 # compatability issue.)
@@ -43,18 +43,39 @@ def analyze_text(text, file_name=None):
     punctuation = re.compile(r'``|\'\'|[^\w\s]')
 
     # Count sentences, words, tokens.
-    data['sentence_count'] = len(tagged)
-    data['word_count'] = len([x for x in tokens if not punctuation.match(x[0])])
-    data['token_count'] = len(tokens)
+    data['Sentence Count'] = len(tagged)
+    data['Word Count'] = len([x for x in tokens if not punctuation.match(x[0])])
+    data['Token Count'] = len(tokens)
 
-    data['punctuation_token_count'] = data['token_count'] - data['word_count']
-    data['avg_words_per_sentence'] = data['word_count'] / data['sentence_count']
-    data['avg_tokens_per_sentence'] = data['token_count'] / data['sentence_count']
-    data['avg_tokens_per_word'] = data['token_count'] / data['word_count']
+    data['Punctuation Token Count'] = data['Token Count'] - data['Word Count']
+    data['AVG Words/Sentence'] = data['Word Count'] / data['Sentence Count']
+    data['AVG Tokens/Sentence'] = data['Token Count'] / data['Sentence Count']
+    data['AVG Tokens/Word'] = data['Token Count'] / data['Word Count']
 
-    data['tags'] = {}
+    data['Tags'] = {}
     for tag, info in uweclang.get_tags(tagged).iteritems():
-        data['tags'][tag] = sum(info.values())
+        data['Tags'][tag] = sum(info.values())
+
+
+    # 1. count words per file, ignoring punctuation
+    # 2. calculate type/token ratio for first 500 words
+    data['Words'] = Counter()
+    for tag, word in tagged:
+        data['Words'].put(word)
+    data['Type/Token Ratio'] = len(data['Words']) / len(tokens)
+
+    # 3. count nominalizations
+    # 4. calculate percentage of tensed verbs that are in present tense
+    # 5. estimate percentage of tensed clauses that are in passive voice
+    # 6. calculate percentage of nouns that are immediately preceded by an adjective
+
+    # Passives
+    # Past/Present Tense
+    # Nominalization Frequency
+    # Linking Adverbials (time/place vs other)
+    # Modified Noun Phrases
+    # Type/Token ratio
+    # Modals?
 
 
     return data

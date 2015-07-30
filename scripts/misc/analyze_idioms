@@ -1,0 +1,20 @@
+#! /usr/bin/env python
+
+
+from uweclang import *
+# import re
+from pprint import pprint
+
+
+idioms = open("idioms.txt").read().decode('utf-8').splitlines()
+
+for idiom in idioms:
+    t_idiom = tag(idiom)[0]
+    # if any(t[1]=='PRP$' for t in t_idiom):
+    #     print(idiom)
+
+    pprint(list(ngram(t_idiom, 3)))
+
+    pprint(get_tags(t_idiom))
+    break
+

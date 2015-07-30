@@ -3,7 +3,6 @@ a/DT bitter/JJ pill/NN
 a/DT blessing/NN in/IN disguise/NN
 a/DT chip/NN on/IN your/PRP$ shoulder/NN
 a/DT dime/NN a/DT dozen/NN
-a/DT doddle/NN
 a/DT doubting/NN Thomas/NNP
 a/DT drop/NN in/IN the/DT bucket/NN
 a/DT fool/NN and/CC his/PRP$ money/NN are/VBP easily/RB parted/VBN

@@ -14,7 +14,13 @@ from collections import defaultdict
 
 
 def tag(text):
-    """
+    """Tags the input text.
+
+    Arguments:
+        text (str): The text to tag.
+
+    Returns:
+        ([[(str, str)]]): List of sentences containing lists of word/tag pairs.
     """
     #Separate the input text into sentences
     sentences = nltk.sent_tokenize(text)
@@ -33,6 +39,15 @@ def tag(text):
 
 
 def get_tags(tagged):
+    """Returns a dict of all tags in the given tagged text, allong with their
+    counts and word set.
+
+    Arguments:
+        tagged (str): The tagged text.
+
+    Returns:
+        (dict):
+    """
     tag_dict = defaultdict(dict)
     for token, tag in chain.from_iterable(tagged):
         try:
@@ -175,3 +190,20 @@ def recombine_tag_parentheticals(parse_tree, selector_function=None):
         r = [parse_tree['parens'][1]]
         return [x for x in chain.from_iterable([l, tagged, r]) if x is not None]
     return []
+
+
+def ngram(words, n=2):
+    """Returns a generator producing the ngrams of lenght n of the input sentence.
+
+    Arguments:
+        words ([str]): A list of words.
+        n (int): The length of the n-grams.
+
+    Returns:
+        [(str, str, ...)]: A list of word tuples containing nearby words in
+        n-length groups.
+    """
+    cur = 0
+    while cur < len(words)-(n-1):
+        yield words[cur:cur+n]
+        cur += 1
