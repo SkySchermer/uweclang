@@ -27,12 +27,12 @@ from pprint import pprint
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-_COLLECTED_DATA = dict()
-_COLLECTED_MEMO_DATA = dict()
-
+_COLLECTED_DATA = None
+_COLLECTED_MEMO_DATA = None
+_CSV_FILE = None
 
 def collect_file(input_filename, output_dir, verbosity=1):
-    """Batch processing function for tagging plaintext files.
+    """Batch processing function for collecting file data.
 
     Arguments:
         input_filename (str): The input file.
@@ -45,7 +45,9 @@ def collect_file(input_filename, output_dir, verbosity=1):
     Raises:
         (None): Will kill the program on IOErrors.
     """
-    # Get document text.
+    global _COLLECTED_DATA, _COLLECTED_MEMO_DATA, _CSV_FILE
+
+    # Get analysis document text.
     try:
        with open(input_filename, 'r') as f:
            text = f.read().splitlines()
@@ -54,14 +56,14 @@ def collect_file(input_filename, output_dir, verbosity=1):
         sys.exit(1)
 
 
-    # Prepare to read data from text.
+    # Prepare to read data from file.
     fmt_regex = re.compile(r'(\t)?(.*), ([^,]*), ([^,]*);')
     convert = {'int': int,
                'float': float,
                'str': (lambda x: x)}
 
-    # Read text into dictionary.
-    data = dict()
+    # Read analysis file into dictionary.
+    data = {'File' : uweclang.split_ext(input_filename)[0]}
     last = None
     for line in text:
         match = fmt_regex.match(line)
@@ -82,16 +84,41 @@ def collect_file(input_filename, output_dir, verbosity=1):
                 data[last][m[0]] += convert[m[2]](m[1])
 
 
-    # Save dictionary into collected data:
+    # Load collected data into dictionary:
     if uweclang.split_ext(input_filename)[1].startswith('.memo'):
-        _COLLECTED_MEMO_DATA[input_filename] = data
+        summary = _COLLECTED_MEMO_DATA
     else:
-        _COLLECTED_DATA[input_filename] = data
+        summary = _COLLECTED_DATA
+
 
     # Print task completion.
     if verbosity >= 1:
         print('Read data for {}.'.format(os.path.basename(input_filename)))
 
+
+    # Initialize summary from first file if necessary.
+    if summary is None:
+        summary = data.copy()
+        summary['Files'] = [summary.pop('File', None)]
+    else:
+        # Aggregate current file data into summary.
+        summary['Files'].append(data['File'])
+        for k, v in data.iteritems():
+            if isinstance(v, str):
+                continue
+            elif isinstance(v, Counter):
+                summary[k].update(v)
+            elif isinstance(v, int) or isinstance(v, float):
+                summary[k] += v
+
+    # Write CSV Data
+    csv_writer.writerow(uweclang.get_csv_data(data))
+
+    # Save dictionary into collected data:
+    if uweclang.split_ext(input_filename)[1].startswith('.memo'):
+        _COLLECTED_MEMO_DATA = summary
+    else:
+        _COLLECTED_DATA = summary
 
 
 if __name__ == '__main__':
@@ -119,40 +146,18 @@ if __name__ == '__main__':
     # Set default verbosity.
     args.verbose = args.verbose or 1
 
-    # Process the files.
-    uweclang.batch_process(collect_file, **vars(args))
 
     # Open CSV file for writing.
-    csv_file = open('summary.csv', 'wb')
-    csv_writer = csv.DictWriter(csv_file,
+    _CSV_FILE = open('summary.csv', 'wb')
+    csv_writer = csv.DictWriter(_CSV_FILE,
                                 fieldnames=uweclang.CSV_ANALYSIS_HEADER,
                                 dialect='excel')
     csv_writer.writeheader()
 
-    # Aggregate data.
-    if args.verbose >= 1:
-        print('Aggregating... (Ignoring memo files.)')
 
-    summary = None
-    for file_name, data in _COLLECTED_DATA.iteritems():
-        # Initialize summary from first file.
-        if summary is None:
-            summary = data
-            summary['Files'] = [summary.pop('File', None)]
-            continue
-
-        # Aggregate current file data into summary.
-        summary['Files'].append(data['File'])
-        for k, v in data.iteritems():
-            if isinstance(v, str):
-                continue
-            elif isinstance(v, Counter):
-                summary[k].update(v)
-            elif isinstance(v, int) or isinstance(v, float):
-                summary[k] += v
-
-        # Write CSV Data
-        csv_writer.writerow(uweclang.get_csv_data(data))
+    # Process the files.
+    uweclang.batch_process(collect_file, **vars(args))
+    summary = _COLLECTED_DATA
 
 
     # Correct averages for multiple files.
@@ -166,6 +171,7 @@ if __name__ == '__main__':
 
     # Print short summary.
     if args.verbose >= 1:
+        print('Summary of aggregated files: ')
         fmt = '{:25}{}'
         for k, v in summary.iteritems():
             if isinstance(v, list):
@@ -183,4 +189,4 @@ if __name__ == '__main__':
     # Write to output file.
     out.write(uweclang.analysis_to_str(summary))
     out.close()
-    csv_file.close()
+    _CSV_FILE.close()
