@@ -142,5 +142,6 @@ Additional Resources
     * [Regexr](http://www.regexr.com/) -- helpful tool for building and understanding regex. (This uses JavaScript, so its regular expressions may not behave exactly like python in corner cases.)
     * [Pythex](http://pythex.org/) -- A not-as-good regex tester that uses Python.
   - [Python 2/Python 3 compatability](http://python-future.org/compatible_idioms.html)
+  - [Python 2 Unicode handling](https://pythonhosted.org/kitchen/unicode-frustrations.html)
 
 [nltk.org]: http://www.nltk.org/

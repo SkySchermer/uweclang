@@ -50,7 +50,7 @@ def capitalization_density(text):
     return (caps / len(words)) if len(words) > 0 else 0.0
 
 
-def clean_punctuation(text, punctuation=r',\.!\?:;…'):
+def clean_punctuation(text, punctuation=r',\.!\?:;'):
     """Returns text modified by removing whitespace before punctuation.
 
     Arguments:
@@ -64,6 +64,7 @@ def clean_punctuation(text, punctuation=r',\.!\?:;…'):
     # Straighten quotes, remove interior spaces.
     text = re.sub(r'“ ?| ?”', '\"', text)
     text = re.sub(r'‘ ?| ?’', '\'', text)
+    text = re.sub(r'…', '...', text)
 
     # Remove punctuation after quotes.
     text = re.sub(r'([”"])\s*([{0}])'.format(punctuation), r'\2\1 ', text)

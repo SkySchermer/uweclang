@@ -27,6 +27,11 @@ from pprint import pprint
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+
+_OUTPUT_FILENAME = str('summary')
+_CSV_EXT = '.csv'
+_TXT_EXT = '.txt'
+
 _COLLECTED_DATA = None
 _COLLECTED_MEMO_DATA = None
 _CSV_FILE = None
@@ -129,13 +134,6 @@ if __name__ == '__main__':
         description='Summarizes result files',
         parents=[uweclang.BATCH_PARSER])
 
-    # Add extra command line arguments for this script.
-    parser.add_argument('-c', '--csv-extension',
-                        nargs='?',
-                        default='.csv',
-                        metavar='cext',
-                        dest='cext',
-                        help='extension for output csv file')
 
     # Parse command line arguments.
     args = parser.parse_args()
@@ -147,8 +145,13 @@ if __name__ == '__main__':
     args.verbose = args.verbose or 1
 
 
-    # Open CSV file for writing.
-    _CSV_FILE = open('summary.csv', 'wb')
+    # Open CSV file for writing. (Must be opened in binary 'b' mode.)
+    csv_filename = _OUTPUT_FILENAME + _CSV_EXT
+    try:
+        _CSV_FILE = open(args.output_dir + csv_filename, 'wb')
+    except IOError as e:
+        print('Error creating file {}: {}'.format(csv_filename, e))
+        sys.exit(1)
     csv_writer = csv.DictWriter(_CSV_FILE,
                                 fieldnames=uweclang.CSV_ANALYSIS_HEADER,
                                 dialect='excel')
@@ -166,7 +169,7 @@ if __name__ == '__main__':
             summary[k] /= len(summary['Files'])
 
     # Write CSV Data Sammary
-    summary['File'] = 'Summary'
+    summary['File'] = _OUTPUT_FILENAME
     csv_writer.writerow(uweclang.get_csv_data(summary))
 
     # Print short summary.
@@ -180,8 +183,10 @@ if __name__ == '__main__':
                 print(fmt.format(k, v))
 
     # Open output file.
+    output_filename = _OUTPUT_FILENAME + _TXT_EXT
     try:
-        out = io.open(args.output_dir, 'w', newline='\r\n')
+        out = io.open(args.output_dir + output_filename,
+                      'w', newline='\r\n')
     except IOError as e:
         print('Error creating file {}: {}'.format(output_filename, e))
         sys.exit(1)
