@@ -10,7 +10,28 @@ import re
 import nltk
 
 from itertools import chain
-from collections import defaultdict
+from collections import defaultdict, Counter
+
+NOMINALIZATION_SUFFIXES = [
+    'tion',
+    'tions',
+    'ment',
+    'ments',
+    'ness',
+    'nesses',
+    'ity',
+    'ities'
+    ]
+
+BE_FORMS = ['am',
+    'are',
+    'be',
+    'been',
+    'being',
+    'is',
+    'was',
+    'were'
+    ]
 
 
 def tag(text):
@@ -207,3 +228,64 @@ def ngram(words, n=2):
     while cur < len(words)-(n-1):
         yield words[cur:cur+n]
         cur += 1
+
+def analysis_to_str(data):
+    """Converts a dictionary of analyzed file data to a formatted string for
+    printing.
+
+    Arguments:
+        data (dict): The data to format.
+
+    Returns:
+        (str): A string representation of the data.
+    """
+    fmt = '{:30}, {:>6}, {};'
+    sfmt = '\t{:26}, {:>6}, {};'
+    lines = []
+    for key, val in data.iteritems():
+        if isinstance(val, Counter):
+            total = sum(val.values())
+            lines.append(fmt.format(key, total, type(total).__name__))
+            for k, v in val.iteritems():
+                if isinstance(k, tuple):
+                    lines.append(sfmt.format(' '.join(k), v, type(v).__name__))
+                else:
+                    lines.append(sfmt.format(k, v, type(v).__name__))
+        else:
+            lines.append(fmt.format(key, val, type(val).__name__))
+
+    return '\r\n'.join(lines)
+
+
+_CSV_ANALYSIS_HEADER_MEASURES =[
+    'File',
+    'Sentences (Total)',
+    'Tokens (Total)',
+    'Words (Total)',
+    'Punc. Tokens (Total)',
+    'Nouns (Total)',
+    'Modified Nouns (Total)',
+    'Modified Noun Ratio',
+    'Nominalizations (Total)',
+    'Verbs (Total)',
+    'Tensed Verb Ratio',
+    'Passives (Total)',
+    'Passives/Verb',
+    'Tags (Total)',
+    'Type/Token Ratio',
+    'Words/Sentence',
+    'Tokens/Word',
+    'Tokens/Sentence',
+    ]
+CSV_ANALYSIS_HEADER = _CSV_ANALYSIS_HEADER_MEASURES + NOMINALIZATION_SUFFIXES
+
+def analysis_to_row(data):
+    """Converts a dictionary of analyzed file data to a list of CSV row
+    entries.
+
+    Arguments:
+        data (dict): The data to format.
+
+    """
+    row = CSV_ANALYSIS_HEADER
+    return row

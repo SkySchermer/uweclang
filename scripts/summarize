@@ -17,8 +17,9 @@ import uweclang
 import nltk
 
 from nltk.corpus import TaggedCorpusReader
-from collections import defaultdict
+from collections import Counter
 from pprint import pprint
+
 
 # We want to write all files in UTF-8 encoding. (This is a Python 3 forward
 # compatability issue.)
@@ -53,24 +54,30 @@ def collect_file(input_filename, output_dir, verbosity=1):
 
 
     # Prepare to read data from text.
-    fmt_regex = re.compile(r'([^,]*), (.{7}), ([^,]*), ([^,]*)')
+    fmt_regex = re.compile(r'(\t)?(.*), ([^,]*), ([^,]*);')
     convert = {'int': int,
                'float': float,
                'str': (lambda x: x)}
 
     # Read text into dictionary.
-    data = defaultdict(dict)
+    data = dict()
+    last = None
     for line in text:
         match = fmt_regex.match(line)
         if match:
-            a = match.group(1).strip()
-            b = match.group(2).strip()
-            c = match.group(3).strip()
-            d = match.group(4).strip()
-            if b == '':
-                data[a] = convert[d](c)
+            # Strip groups
+            m = (match.group(2).strip(),
+                 match.group(3).strip(),
+                 match.group(4).strip())
+
+            if match.group(1) is None:
+                data[m[0]] = convert[m[2]](m[1])
+                last = m[0]
             else:
-                data[a][b] = convert[d](c)
+                if not isinstance(data[last], Counter):
+                    data[last + ' (Total)'] = data[last]
+                    data[last] = Counter()
+                data[last][m[0]] += convert[m[2]](m[1])
 
     # Save dictionary into collected data:
     if uweclang.split_ext(input_filename)[1].startswith('.memo'):
@@ -109,42 +116,48 @@ if __name__ == '__main__':
     if args.verbose >= 1:
         print('Aggregating...')
 
-    summary = defaultdict(int)
-    summary['tags'] = defaultdict(int)
+    summary = None
     for file_name, data in _COLLECTED_DATA.iteritems():
-        summary['files_included'] += 1
-        for key, value in data.iteritems():
-            if isinstance(value, dict):
-                for tag, count in value.iteritems():
-                    summary['tags'][tag] += count
-            elif isinstance(value, str):
+        # Initialize summary from first file.
+        if summary is None:
+            summary = data
+            summary['Files'] = [summary.pop('File', None)]
+            continue
+
+        # Aggregate current file data into summary.
+        summary['Files'].append(data['File'])
+        for k, v in data.iteritems():
+            if isinstance(v, str):
                 continue
+            elif isinstance(v, Counter):
+                summary[k].update(v)
             else:
-                summary['total_' + key] += value
+                summary[k] += v
 
-    # Compute averages.
-    avgs = dict()
-    avg_tags = dict()
-    for key, value in summary.iteritems():
-        if key.startswith('total_'):
-            avgs['avg_'+key[6:]] = value / summary['files_included']
-        elif key == 'tags':
-            for tag, count in value.iteritems():
-                avg_tags['avg_'+tag] = count / summary['files_included']
+        # Print CSV Data
+        print(uweclang.analysis_to_row(data))
 
-    # Added averages to summary.
-    summary.update(avgs)
-    summary['tags'].update(avg_tags)
-    summary['tags'] = dict(summary['tags'])
+    # Correct averages for multiple files.
+    for k, v in summary.iteritems():
+        if isinstance(v, float):
+            summary[k] /= len(summary['Files'])
 
+    # Print short summary.
+    if args.verbose >= 1:
+        fmt = '{:25}{}'
+        for k, v in summary.iteritems():
+            if isinstance(v, list):
+                print(fmt.format(k, len(v)))
+            elif not isinstance(v, Counter):
+                print(fmt.format(k, v))
 
     # Open output file.
-    # try:
-    #     out = io.open(args.output_dir, 'w', newline='\r\n')
-    # except IOError as e:
-    #     print('Error creating file {}: {}'.format(output_filename, e))
-    #     sys.exit(1)
+    try:
+        out = io.open(args.output_dir, 'w', newline='\r\n')
+    except IOError as e:
+        print('Error creating file {}: {}'.format(output_filename, e))
+        sys.exit(1)
 
     # Write to output file.
-    pprint(dict(summary))
-    # out.close()
+    out.write(uweclang.analysis_to_str(summary))
+    out.close()

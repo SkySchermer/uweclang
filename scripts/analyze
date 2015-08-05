@@ -37,23 +37,16 @@ def analyze_text(text, file_name=None):
     Returns:
         (dict): The analysis of the text.
     """
-    data = OrderedDict([('file', os.path.basename(file_name))])
+    data = OrderedDict([('File', os.path.basename(file_name))])
 
     tagged = uweclang.read_tagged_string(text)
     tokens = list(chain.from_iterable(tagged))
 
     punctuation = re.compile(r'``|\'\'|[^\w\s]')
 
-    # Count sentences, words, tokens.
-    data['Sentence Count'] = len(tagged)
-    data['Word Count'] = len([x for x in tokens if not punctuation.match(x[0])])
-    data['Token Count'] = len(tokens)
-
-    data['Punc. Token Count'] = data['Token Count'] - data['Word Count']
-    data['Words/Sentence'] = data['Word Count'] / data['Sentence Count']
-    data['Tokens/Sentence'] = data['Token Count'] / data['Sentence Count']
-    data['Tokens/Word'] = data['Token Count'] / data['Word Count']
-
+    # Count sentences and tokens.
+    data['Sentences (Total)'] = len(tagged)
+    data['Tokens (Total)'] = len(tokens)
 
     suffixes = ['tion', 'tions', 'ment', 'ments', 'ness', 'nesses', 'ity', 'ities']
     beForms = ['am', 'are', 'be', 'been', 'being', 'is', 'was', 'were']
@@ -64,7 +57,7 @@ def analyze_text(text, file_name=None):
     data['Nominalizations'] = Counter()
     data['Verbs'] = Counter()
     data['Modified Nouns'] = Counter()
-    data['Passive Count'] = 0
+    data['Passives (Total)'] = 0
 
     for t1, t2, t3 in uweclang.ngram(tokens, 3):
         word, tag = t1
@@ -83,7 +76,7 @@ def analyze_text(text, file_name=None):
             data['Verbs'][word] += 1
         # Count passives
         if word in beForms and t2[1]=='VBN' or t3[1]=='VBN':
-            data['Passive Count'] += 1
+            data['Passives (Total)'] += 1
 
         # Count nouns
         if tag != None and tag.startswith('NN'):
@@ -95,12 +88,18 @@ def analyze_text(text, file_name=None):
 
             data['Modified Nouns'][(word, t2[0])] += 1
 
+    # Count words, puntuation, and ratios.
+    data['Words (Total)'] = sum(data['Words'].values())
+    data['Punc. Tokens (Total)'] = data['Tokens (Total)'] - data['Words (Total)']
+    data['Words/Sentence'] = data['Words (Total)'] / data['Sentences (Total)']
+    data['Tokens/Sentence'] = data['Tokens (Total)'] / data['Sentences (Total)']
+    data['Tokens/Word'] = data['Tokens (Total)'] / data['Words (Total)']
 
     # 2. calculate type/token ratio
     data['Type/Token Ratio'] = len(data['Words']) / len(tokens)
 
     # 3. count nominalizations
-    data['Total Nominalizations'] = sum(data['Nominalizations'].values())
+    data['Nominalizations (Total)'] = sum(data['Nominalizations'].values())
 
     # 4. calculate percentage of tensed verbs that are in present tense
     present_tense = sum(data['Tags'][tag] for tag in ['VBD', 'VBZ'])
@@ -110,10 +109,10 @@ def analyze_text(text, file_name=None):
         data['Tensed Verb Ratio'] = present_tense / (present_tense+past_tense)
 
     # 5. Estimate percentage of tensed clauses that are in passive voice
-    data['Passive Ratio'] = data['Passive Count'] / sum(data['Verbs'].values())
+    data['Passives/Verb'] = data['Passives (Total)'] / sum(data['Verbs'].values())
 
     # 6. calculate percentage of nouns that are immediately preceded by an adjective
-    data['Modified Noun Ratio'] = sum(data['Nouns'].values())/sum(data['Modified Nouns'].values())
+    data['Modified Noun Ratio'] = sum(data['Modified Nouns'].values())/sum(data['Nouns'].values())
 
     # Passives
     # Past/Present Tense
@@ -165,22 +164,7 @@ def analyze_file(input_filename, output_dir, verbosity=1):
     # Perform analysis and write to file.
     data = analyze_text(text, input_filename)
 
-    fmt = '{:30}, {:>6}, {};'
-    sfmt = '\t{:26}, {:>6}, {};'
-    lines = []
-    for key, val in data.iteritems():
-        if isinstance(val, Counter):
-            total = sum(val.values())
-            lines.append(fmt.format(key, total, type(total).__name__))
-            for k, v in val.iteritems():
-                if isinstance(k, tuple):
-                    lines.append(sfmt.format(' '.join(k), v, type(v).__name__))
-                else:
-                    lines.append(sfmt.format(k, v, type(v).__name__))
-        else:
-            lines.append(fmt.format(key, val, type(val).__name__))
-
-    out.write('\n'.join(lines))
+    out.write(uweclang.analysis_to_str(data))
     out.close()
 
     # Print task completion.
