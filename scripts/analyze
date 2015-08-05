@@ -13,6 +13,7 @@ import io
 import re
 import argparse
 import uweclang
+from uweclang import is_punctuation
 from itertools import chain
 from collections import OrderedDict, Counter
 
@@ -42,8 +43,6 @@ def analyze_text(text, file_name=None):
     tagged = uweclang.read_tagged_string(text)
     tokens = list(chain.from_iterable(tagged))
 
-    punctuation = re.compile(r'``|\'\'|[^\w\s]')
-
     # Count sentences and tokens.
     data['Sentences (Total)'] = len(tagged)
     data['Tokens (Total)'] = len(tokens)
@@ -57,12 +56,20 @@ def analyze_text(text, file_name=None):
     data['Nominalizations'] = Counter()
     data['Verbs'] = Counter()
     data['Modified Nouns'] = Counter()
+    data['Additive Adverbs'] = Counter()
+    data['Linking Adverbs'] = Counter()
     data['Passives (Total)'] = 0
 
     for t1, t2, t3 in uweclang.ngram(tokens, 3):
+
+        # Lowercase non-proper noun words.
+        t1, t2, t3 = ((t1[0].lower() if t1[1]!='NNP' else t1[0], t1[1]),
+                      (t2[0].lower() if t2[1]!='NNP' else t2[0], t2[1]),
+                      (t3[0].lower() if t3[1]!='NNP' else t3[0], t3[1]))
         word, tag = t1
+
         # Count the number of occurences of each tag and word.
-        if not punctuation.match(word):
+        if not is_punctuation(word):
             data['Words'][word] += 1
         data['Tags'][tag] += 1
 
@@ -74,6 +81,7 @@ def analyze_text(text, file_name=None):
         # Count verbs
         if tag in ['MD', 'VBD', 'VBP', 'VBZ']:
             data['Verbs'][word] += 1
+
         # Count passives
         if word in beForms and t2[1]=='VBN' or t3[1]=='VBN':
             data['Passives (Total)'] += 1
@@ -88,6 +96,18 @@ def analyze_text(text, file_name=None):
 
             data['Modified Nouns'][(word, t2[0])] += 1
 
+        # Count linking adverbs
+        if (t1[0], t2[0], t3[0]) in uweclang.LINKING_TRIGRAMS:
+            data['Linking Adverbs'][(t1[0], t2[0], t3[0])] += 1
+        elif (t1[0], t2[0]) in uweclang.LINKING_BIGRAMS:
+            data['Linking Adverbs'][(t1[0], t2[0])] += 1
+        elif (t1[0], t2[0]) in uweclang.ADDITIVE_BIGRAMS:
+            data['Additive Adverbs'][(t1[0], t2[0])] += 1
+        elif t1[0] in uweclang.LINKING_ADVERBS:
+            data['Linking Adverbs'][t1[0]] += 1
+        elif t1[0] in uweclang.ADDITIVE_ADVERBS:
+            data['Additive Adverbs'][t1[0]] += 1
+
     # Count words, puntuation, and ratios.
     data['Words (Total)'] = sum(data['Words'].values())
     data['Punc. Tokens (Total)'] = data['Tokens (Total)'] - data['Words (Total)']
@@ -100,6 +120,10 @@ def analyze_text(text, file_name=None):
 
     # 3. count nominalizations
     data['Nominalizations (Total)'] = sum(data['Nominalizations'].values())
+
+    # Count linking adverbs
+    data['Linking Adverbs (Total)'] = sum(data['Linking Adverbs'].values())
+    data['Additive Adverbs (Total)'] = sum(data['Additive Adverbs'].values())
 
     # 4. calculate percentage of tensed verbs that are in present tense
     present_tense = sum(data['Tags'][tag] for tag in ['VBD', 'VBZ'])

@@ -10,6 +10,7 @@ from __future__ import unicode_literals
 import sys
 import os
 import io
+import csv
 import re
 import argparse
 
@@ -71,13 +72,15 @@ def collect_file(input_filename, output_dir, verbosity=1):
                  match.group(4).strip())
 
             if match.group(1) is None:
-                data[m[0]] = convert[m[2]](m[1])
-                last = m[0]
-            else:
-                if not isinstance(data[last], Counter):
-                    data[last + ' (Total)'] = data[last]
+                if m[2] == 'Counter':
+                    last = m[0]
+                    data[last + ' (Total)'] = int(m[1])
                     data[last] = Counter()
+                else:
+                    data[m[0]] = convert[m[2]](m[1])
+            else:
                 data[last][m[0]] += convert[m[2]](m[1])
+
 
     # Save dictionary into collected data:
     if uweclang.split_ext(input_filename)[1].startswith('.memo'):
@@ -99,6 +102,14 @@ if __name__ == '__main__':
         description='Summarizes result files',
         parents=[uweclang.BATCH_PARSER])
 
+    # Add extra command line arguments for this script.
+    parser.add_argument('-c', '--csv-extension',
+                        nargs='?',
+                        default='.csv',
+                        metavar='cext',
+                        dest='cext',
+                        help='extension for output csv file')
+
     # Parse command line arguments.
     args = parser.parse_args()
 
@@ -111,10 +122,16 @@ if __name__ == '__main__':
     # Process the files.
     uweclang.batch_process(collect_file, **vars(args))
 
+    # Open CSV file for writing.
+    csv_file = open('summary.csv', 'wb')
+    csv_writer = csv.DictWriter(csv_file,
+                                fieldnames=uweclang.CSV_ANALYSIS_HEADER,
+                                dialect='excel')
+    csv_writer.writeheader()
 
     # Aggregate data.
     if args.verbose >= 1:
-        print('Aggregating...')
+        print('Aggregating... (Ignoring memo files.)')
 
     summary = None
     for file_name, data in _COLLECTED_DATA.iteritems():
@@ -131,16 +148,21 @@ if __name__ == '__main__':
                 continue
             elif isinstance(v, Counter):
                 summary[k].update(v)
-            else:
+            elif isinstance(v, int) or isinstance(v, float):
                 summary[k] += v
 
-        # Print CSV Data
-        print(uweclang.analysis_to_row(data))
+        # Write CSV Data
+        csv_writer.writerow(uweclang.get_csv_data(data))
+
 
     # Correct averages for multiple files.
     for k, v in summary.iteritems():
         if isinstance(v, float):
             summary[k] /= len(summary['Files'])
+
+    # Write CSV Data Sammary
+    summary['File'] = 'Summary'
+    csv_writer.writerow(uweclang.get_csv_data(summary))
 
     # Print short summary.
     if args.verbose >= 1:
@@ -161,3 +183,4 @@ if __name__ == '__main__':
     # Write to output file.
     out.write(uweclang.analysis_to_str(summary))
     out.close()
+    csv_file.close()
