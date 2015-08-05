@@ -47,9 +47,6 @@ def analyze_text(text, file_name=None):
     data['Sentences (Total)'] = len(tagged)
     data['Tokens (Total)'] = len(tokens)
 
-    suffixes = ['tion', 'tions', 'ment', 'ments', 'ness', 'nesses', 'ity', 'ities']
-    beForms = ['am', 'are', 'be', 'been', 'being', 'is', 'was', 'were']
-
     data['Tags'] = Counter()
     data['Words'] = Counter()
     data['Nouns'] = Counter()
@@ -73,8 +70,8 @@ def analyze_text(text, file_name=None):
             data['Words'][word] += 1
         data['Tags'][tag] += 1
 
-        # 3. Count nominalizations
-        for suffix in suffixes:
+        # Count nominalizations
+        for suffix in uweclang.NOMINALIZATION_SUFFIXES:
             if word.isalpha() and word.lower().endswith(suffix):
                 data['Nominalizations'][suffix] += 1
 
@@ -83,7 +80,7 @@ def analyze_text(text, file_name=None):
             data['Verbs'][word] += 1
 
         # Count passives
-        if word in beForms and t2[1]=='VBN' or t3[1]=='VBN':
+        if word in uweclang.BE_FORMS and t2[1]=='VBN' or t3[1]=='VBN':
             data['Passives (Total)'] += 1
 
         # Count nouns
@@ -115,36 +112,30 @@ def analyze_text(text, file_name=None):
     data['Tokens/Sentence'] = data['Tokens (Total)'] / data['Sentences (Total)']
     data['Tokens/Word'] = data['Tokens (Total)'] / data['Words (Total)']
 
-    # 2. calculate type/token ratio
+    # Calculate type/token ratio
     data['Type/Token Ratio'] = len(data['Words']) / len(tokens)
 
-    # 3. count nominalizations
+    # Count nominalizations
     data['Nominalizations (Total)'] = sum(data['Nominalizations'].values())
 
     # Count linking adverbs
     data['Linking Adverbs (Total)'] = sum(data['Linking Adverbs'].values())
     data['Additive Adverbs (Total)'] = sum(data['Additive Adverbs'].values())
 
-    # 4. calculate percentage of tensed verbs that are in present tense
+    # Calculate percentage of tensed verbs that are in present tense
     present_tense = sum(data['Tags'][tag] for tag in ['VBD', 'VBZ'])
     past_tense = data['Tags']['VBD']
     data['Tensed Verb Ratio'] = 0
     if past_tense+present_tense > 0:
         data['Tensed Verb Ratio'] = present_tense / (present_tense+past_tense)
 
-    # 5. Estimate percentage of tensed clauses that are in passive voice
+    # Estimate percentage of tensed clauses that are in passive voice
     data['Passives/Verb'] = data['Passives (Total)'] / sum(data['Verbs'].values())
 
-    # 6. calculate percentage of nouns that are immediately preceded by an adjective
+    # Calculate percentage of nouns that are immediately preceded by an adjective
     data['Modified Noun Ratio'] = sum(data['Modified Nouns'].values())/sum(data['Nouns'].values())
 
-    # Passives
-    # Past/Present Tense
-    # Nominalization Frequency
-    # Linking Adverbials (time/place vs other)
-    # Modified Noun Phrases
-    # Type/Token ratio
-    # Modals?
+
     return data
 
 

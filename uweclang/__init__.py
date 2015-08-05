@@ -51,6 +51,7 @@ from uweclang.plain.clean import *
 
 # Import all functions from the tagged module:
 from uweclang.tagged.tag import *
+from uweclang.tagged.analysis import *
 
 # Import all functions from the batch module:
 from uweclang.batch.batch import *
