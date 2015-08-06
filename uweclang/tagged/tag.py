@@ -24,7 +24,7 @@ def tag(text):
         ([[(str, str)]]): List of sentences containing lists of word/tag pairs.
     """
     #Separate the input text into sentences
-    sentences = nltk.sent_tokenize(text)
+    sentences = nltk.sent_tokenize(str(text))
 
     #Separate each sentence into words
     nested = []

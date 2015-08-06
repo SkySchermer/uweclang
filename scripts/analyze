@@ -107,12 +107,19 @@ def analyze_text(text, file_name=None):
     # Count words, puntuation, and ratios.
     data['Words (Total)'] = sum(data['Words'].values())
     data['Punc. Tokens (Total)'] = data['Tokens (Total)'] - data['Words (Total)']
-    data['Words/Sentence'] = data['Words (Total)'] / data['Sentences (Total)']
-    data['Tokens/Sentence'] = data['Tokens (Total)'] / data['Sentences (Total)']
-    data['Tokens/Word'] = data['Tokens (Total)'] / data['Words (Total)']
+
+    data['Words/Sentence'] = (data['Words (Total)'] / data['Sentences (Total)']
+                              if data['Sentences (Total)'] != 0 else 0)
+
+    data['Tokens/Sentence'] = (data['Tokens (Total)'] / data['Sentences (Total)']
+                               if data['Sentences (Total)'] != 0 else 0)
+
+    data['Tokens/Word'] = (data['Tokens (Total)'] / data['Words (Total)']
+                           if data['Words (Total)'] != 0 else 0)
 
     # Calculate type/token ratio
-    data['Type/Token Ratio'] = len(data['Words']) / len(tokens)
+    data['Type/Token Ratio'] = (len(data['Words']) / len(tokens)
+                                if len(tokens) != 0 else 0)
 
     # Count nominalizations
     data['Nominalizations (Total)'] = sum(data['Nominalizations'].values())
@@ -129,10 +136,14 @@ def analyze_text(text, file_name=None):
         data['Tensed Verb Ratio'] = present_tense / (present_tense+past_tense)
 
     # Estimate percentage of tensed clauses that are in passive voice
-    data['Passives/Verb'] = data['Passives (Total)'] / sum(data['Verbs'].values())
+    verb_count = sum(data['Verbs'].values())
+    data['Passives/Verb'] = (data['Passives (Total)'] / verb_count)
+                             if verb_count != 0 else 0)
 
     # Calculate percentage of nouns that are immediately preceded by an adjective
-    data['Modified Noun Ratio'] = sum(data['Modified Nouns'].values())/sum(data['Nouns'].values())
+    noun_count = sum(data['Nouns'].values())
+    data['Modified Noun Ratio'] = (sum(data['Modified Nouns'].values()) / noun_count
+                                   if noun_count != 0 else 0)
 
 
     return data
