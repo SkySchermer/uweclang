@@ -83,7 +83,7 @@ The student corpus scripts are meant to be run in sequence to accomplish the fol
 6. Summarize analysis files. (Script: [summarize](scripts/summarize))
   - output: summary.txt
 
-You can see how this all comes together by looking at the [pipeline](scripts/pipeline) script. (This script is written in [bash](http://www.gnu.org/software/bash/))
+You can see how this all comes together by looking at the [pipeline](scripts/pipeline?ts=4) script. (This script is written in [bash](http://www.gnu.org/software/bash/).)
 
 ### Intermediate Files
 
