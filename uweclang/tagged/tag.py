@@ -8,6 +8,7 @@ from __future__ import unicode_literals
 # Standard imports
 import re
 import nltk
+from nltk.data import load
 
 from itertools import chain
 from collections import defaultdict, Counter
@@ -30,10 +31,21 @@ def tag(text):
     for sentence in sentences:
         nested.append(nltk.word_tokenize(sentence))
 
+    # Prepare default tagger
+    _POS_TAGGER = 'taggers/maxent_treebank_pos_tagger/english.pickle'
+    tagger = load(_POS_TAGGER)  # Same tagger as using nltk.pos_tag
+
+    # Prepare regex tagger for custom tags
+    regexp_tagger = nltk.tag.RegexpTagger([(r'\(|\)', '()'),
+                                           (r'\[|\]', '[]'),
+                                           (r'_+', 'None')],
+                                          backoff=tagger)
+
     #Add a part of speech tag to each word
     nested_tagged = []
     for sentence in nested:
-        nested_tagged.append(nltk.pos_tag(sentence))
+        # nested_tagged.append(nltk.pos_tag(sentence))
+        nested_tagged.append(regexp_tagger.tag(sentence))
 
     return nested_tagged
 

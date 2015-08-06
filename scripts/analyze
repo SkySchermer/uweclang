@@ -60,9 +60,8 @@ def analyze_text(text, file_name=None):
     for t1, t2, t3 in uweclang.ngram(tokens, 3):
 
         # Lowercase non-proper noun words.
-        t1, t2, t3 = ((t1[0].lower() if t1[1]!='NNP' else t1[0], t1[1]),
-                      (t2[0].lower() if t2[1]!='NNP' else t2[0], t2[1]),
-                      (t3[0].lower() if t3[1]!='NNP' else t3[0], t3[1]))
+        t1, t2, t3 = tuple((t[0].lower() if t[1] not in ['NNP','NNPS'] else t[0], t[1])
+                            for t in [t1, t2, t3])
         word, tag = t1
 
         # Count the number of occurences of each tag and word.

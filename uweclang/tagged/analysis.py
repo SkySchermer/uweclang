@@ -121,8 +121,8 @@ def analysis_to_str(data):
     Returns:
         (str): A string representation of the data.
     """
-    fmt = '{:30}, {:>6}, {};'
-    sfmt = '\t{:26}, {:>6}, {};'
+    fmt = '{:32}, {:>15}, {};'
+    sfmt = '\t{:28}, {:>15}, {};'
     lines = []
     for key, val in data.iteritems():
         if isinstance(val, list):
@@ -137,7 +137,11 @@ def analysis_to_str(data):
         if isinstance(val, Counter):
             total = sum(val.values())
             lines.append(fmt.format(key, total, 'Counter'))
-            for k, v in val.iteritems():
+
+            # Get values in Counter. We sort the values by -count, then by key
+            # name
+            for k, v in ((k, val[k]) for k in sorted(val,
+                                                     key=lambda x: (-val[x], x))):
                 if isinstance(k, tuple):
                     lines.append(sfmt.format(' '.join(k), v, type(v).__name__))
                 else:
@@ -183,6 +187,12 @@ def get_csv_data(data):
     Arguments:
         data (dict): The data to format.
 
+    Returns:
+        (list): A list of CSV columns for the given data.
+
+    Use CSV_ANALYSIS_HEADER to get a header for the data produced by this
+    function.
+
     """
     row = dict()
 
@@ -193,21 +203,21 @@ def get_csv_data(data):
         row[item] = data[item]
 
     for item in NOMINALIZATION_SUFFIXES:
-        row[item] = data['Nominalizations'].get(item, 0)
+        row[item] = data['Nominalizations'].get(item, None)
 
     for item in ADDITIVE_ADVERBS:
-        row[item] = data['Additive Adverbs'].get(item, 0)
+        row[item] = data['Additive Adverbs'].get(item, None)
 
     for item in [' '.join(x) for x in ADDITIVE_BIGRAMS]:
-        row[item] = data['Additive Adverbs'].get(item, 0)
+        row[item] = data['Additive Adverbs'].get(item, None)
 
     for item in LINKING_ADVERBS:
-        row[item] = data['Linking Adverbs'].get(item, 0)
+        row[item] = data['Linking Adverbs'].get(item, None)
 
     for item in [' '.join(x) for x in LINKING_BIGRAMS]:
-        row[item] = data['Linking Adverbs'].get(item, 0)
+        row[item] = data['Linking Adverbs'].get(item, None)
 
     for item in [' '.join(x) for x in LINKING_TRIGRAMS]:
-        row[item] = data['Linking Adverbs'].get(item, 0)
+        row[item] = data['Linking Adverbs'].get(item, None)
 
     return row

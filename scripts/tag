@@ -48,9 +48,13 @@ def tag_file(input_filename, output_dir, verbosity=1):
 
     # Construct output filename.
     global _OUTPUT_EXTENSION
+    memo_ext = ''
+    if uweclang.split_ext(input_filename)[1].startswith('.memo'):
+        memo_ext = '.memo'
+
     output_filename = os.path.join(output_dir,
                                    uweclang.split_ext(os.path.basename(input_filename))[0]
-                                   + _OUTPUT_EXTENSION)
+                                   + memo_ext + _OUTPUT_EXTENSION)
 
     # Open output file.
     try:

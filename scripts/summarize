@@ -160,38 +160,46 @@ if __name__ == '__main__':
 
     # Process the files.
     uweclang.batch_process(collect_file, **vars(args))
-    summary = _COLLECTED_DATA
 
+    # Summarize the collected data.
+    for summary, dat_type in [(_COLLECTED_MEMO_DATA, '.memo'),
+                              (_COLLECTED_DATA, None)]:
 
-    # Correct averages for multiple files.
-    for k, v in summary.iteritems():
-        if isinstance(v, float):
-            summary[k] /= len(summary['Files'])
-
-    # Write CSV Data Sammary
-    summary['File'] = _OUTPUT_FILENAME
-    csv_writer.writerow(uweclang.get_csv_data(summary))
-
-    # Print short summary.
-    if args.verbose >= 1:
-        print('Summary of aggregated files: ')
-        fmt = '{:25}{}'
+        # Correct averages for multiple files.
         for k, v in summary.iteritems():
-            if isinstance(v, list):
-                print(fmt.format(k, len(v)))
-            elif not isinstance(v, Counter):
-                print(fmt.format(k, v))
+            if isinstance(v, float):
+                summary[k] /= len(summary['Files'])
 
-    # Open output file.
-    output_filename = _OUTPUT_FILENAME + _TXT_EXT
-    try:
-        out = io.open(args.output_dir + output_filename,
-                      'w', newline='\r\n')
-    except IOError as e:
-        print('Error creating file {}: {}'.format(output_filename, e))
-        sys.exit(1)
+        # Write CSV Data Sammary
+        if dat_type:
+            summary['File'] = '{} ({})'.format(_OUTPUT_FILENAME, dat_type)
+        else:
+            summary['File'] = _OUTPUT_FILENAME
 
-    # Write to output file.
-    out.write(uweclang.analysis_to_str(summary))
-    out.close()
+        csv_writer.writerow(uweclang.get_csv_data(summary))
+
+        # Print short summary.
+        if args.verbose >= 1:
+            print('\nSummary of aggregated files ({}): '.format(summary['File']))
+            fmt = '{:25}{}'
+            for k, v in summary.iteritems():
+                if isinstance(v, list):
+                    print(fmt.format(k, len(v)))
+                elif not isinstance(v, Counter):
+                    print(fmt.format(k, v))
+
+        # Open output file.
+        output_filename = _OUTPUT_FILENAME
+        output_filename += dat_type if dat_type else ''
+        output_filename += _TXT_EXT
+        try:
+            out = io.open(args.output_dir + output_filename,
+                          'w', newline='\r\n')
+        except IOError as e:
+            print('Error creating file {}: {}'.format(output_filename, e))
+            sys.exit(1)
+
+        # Write to formatted analysis to output file.
+        out.write(uweclang.analysis_to_str(summary))
+        out.close()
     _CSV_FILE.close()
