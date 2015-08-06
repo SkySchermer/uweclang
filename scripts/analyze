@@ -11,6 +11,7 @@ import sys
 import os
 import io
 import re
+import random
 import argparse
 import uweclang
 from uweclang import is_punctuation
@@ -38,6 +39,11 @@ def analyze_text(text, file_name=None):
     Returns:
         (dict): The analysis of the text.
     """
+    # Prepare random sample of words
+    sample = []
+    sample_count = 0
+    sample_size = 500
+
     data = OrderedDict([('File', os.path.basename(file_name))])
 
     tagged = uweclang.read_tagged_string(text)
@@ -67,6 +73,13 @@ def analyze_text(text, file_name=None):
         # Count the number of occurences of each tag and word.
         if not is_punctuation(word):
             data['Words'][word] += 1
+
+            if sample_count < sample_size
+                sample.append(t1)
+            else:
+                sample[random.SystemRandom().randint(0, sample_size)] = t1
+            sample_count += 1
+
         data['Tags'][tag] += 1
 
         # Count nominalizations
@@ -108,18 +121,14 @@ def analyze_text(text, file_name=None):
     data['Words (Total)'] = sum(data['Words'].values())
     data['Punc. Tokens (Total)'] = data['Tokens (Total)'] - data['Words (Total)']
 
-    data['Words/Sentence'] = (data['Words (Total)'] / data['Sentences (Total)']
-                              if data['Sentences (Total)'] != 0 else 0)
+    data['Words/Sentence'] = (data['Words (Total)'] / data['Sentences (Total)'] if data['Sentences (Total)'] != 0 else 0)
 
-    data['Tokens/Sentence'] = (data['Tokens (Total)'] / data['Sentences (Total)']
-                               if data['Sentences (Total)'] != 0 else 0)
+    data['Tokens/Sentence'] = (data['Tokens (Total)'] / data['Sentences (Total)'] if data['Sentences (Total)'] != 0 else 0)
 
-    data['Tokens/Word'] = (data['Tokens (Total)'] / data['Words (Total)']
-                           if data['Words (Total)'] != 0 else 0)
+    data['Tokens/Word'] = (data['Tokens (Total)'] / data['Words (Total)'] if data['Words (Total)'] != 0 else 0)
 
     # Calculate type/token ratio
-    data['Type/Token Ratio'] = (len(data['Words']) / len(tokens)
-                                if len(tokens) != 0 else 0)
+    data['Type/Token Ratio'] = calculate_type_token_ratio(sample)
 
     # Count nominalizations
     data['Nominalizations (Total)'] = sum(data['Nominalizations'].values())
@@ -137,13 +146,11 @@ def analyze_text(text, file_name=None):
 
     # Estimate percentage of tensed clauses that are in passive voice
     verb_count = sum(data['Verbs'].values())
-    data['Passives/Verb'] = (data['Passives (Total)'] / verb_count)
-                             if verb_count != 0 else 0)
+    data['Passives/Verb'] = (data['Passives (Total)'] / verb_count if verb_count != 0 else 0)
 
     # Calculate percentage of nouns that are immediately preceded by an adjective
     noun_count = sum(data['Nouns'].values())
-    data['Modified Noun Ratio'] = (sum(data['Modified Nouns'].values()) / noun_count
-                                   if noun_count != 0 else 0)
+    data['Modified Noun Ratio'] = (sum(data['Modified Nouns'].values()) / noun_count if noun_count != 0 else 0)
 
 
     return data

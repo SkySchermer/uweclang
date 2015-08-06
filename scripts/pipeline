@@ -51,7 +51,8 @@ echo "Analyzing tagged files..."
 
 scripts/analyze "Student Corpus/Tagged Files/" \
 		 	 -o "Student Corpus/Results/"	   \
-		 	 --recursive
+		 	 --recursive					   \
+		 	 --no-overwrite .res.txt
 
 
 # Exit if the last command failed.

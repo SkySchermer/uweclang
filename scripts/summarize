@@ -166,6 +166,8 @@ if __name__ == '__main__':
     # Summarize the collected data.
     for summary, dat_type in [(_COLLECTED_MEMO_DATA, '.memo'),
                               (_COLLECTED_DATA, None)]:
+        if summary is None:
+            continue
 
         # Correct averages for multiple files.
         for k, v in summary.iteritems():

@@ -221,3 +221,11 @@ def get_csv_data(data):
         row[item] = data['Linking Adverbs'].get(item, None)
 
     return row
+
+def calculate_type_token(tokens):
+    return (len(set((x[0] for x in tokens))),
+            len(set((x[1] for x in tokens))))
+
+def calculate_type_token_ratio(tokens):
+    type_c, token_c = calculate_type_token(tokens)
+    return type_c / token_c if token_c != 0 else 0
