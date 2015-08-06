@@ -79,6 +79,7 @@ def collect_file(input_filename, output_dir, verbosity=1):
                  match.group(4).strip())
 
             if match.group(1) is None:
+                # We are on a line without a tab.
                 if m[2] == 'Counter':
                     last = m[0]
                     data[last + ' (Total)'] = int(m[1])
@@ -86,6 +87,7 @@ def collect_file(input_filename, output_dir, verbosity=1):
                 else:
                     data[m[0]] = convert[m[2]](m[1])
             else:
+                # We are on a line with a tab.
                 data[last][m[0]] += convert[m[2]](m[1])
 
 

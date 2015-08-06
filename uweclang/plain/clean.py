@@ -64,7 +64,6 @@ def clean_punctuation(text, punctuation=r',\.!\?:;'):
     # Straighten quotes, remove interior spaces.
     text = re.sub(r'“ ?| ?”', '\"', text)
     text = re.sub(r'‘ ?| ?’', '\'', text)
-    text = re.sub(r'…', '...', text)
 
     # Remove punctuation after quotes.
     text = re.sub(r'([”"])\s*([{0}])'.format(punctuation), r'\2\1 ', text)

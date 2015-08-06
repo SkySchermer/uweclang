@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rm -rf "Student Corpus/Plain Files"/*
+rm -rf "Student Corpus/Processed Files"/*
+rm -rf "Student Corpus/Tagged Files"/*
+rm -rf "Student Corpus/Results"/*
