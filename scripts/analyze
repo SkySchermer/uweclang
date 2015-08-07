@@ -74,10 +74,10 @@ def analyze_text(text, file_name=None):
         if not is_punctuation(word):
             data['Words'][word] += 1
 
-            if sample_count < sample_size
+            if sample_count < sample_size:
                 sample.append(t1)
             else:
-                sample[random.SystemRandom().randint(0, sample_size)] = t1
+                sample[random.SystemRandom().randint(0, sample_size-1)] = t1
             sample_count += 1
 
         data['Tags'][tag] += 1
@@ -128,7 +128,7 @@ def analyze_text(text, file_name=None):
     data['Tokens/Word'] = (data['Tokens (Total)'] / data['Words (Total)'] if data['Words (Total)'] != 0 else 0)
 
     # Calculate type/token ratio
-    data['Type/Token Ratio'] = calculate_type_token_ratio(sample)
+    data['Type/Token Ratio'] = uweclang.calculate_type_token_ratio(sample)
 
     # Count nominalizations
     data['Nominalizations (Total)'] = sum(data['Nominalizations'].values())

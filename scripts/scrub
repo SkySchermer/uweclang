@@ -105,6 +105,13 @@ def scrub_plaintext(input_filename, output_dir, verbosity=1):
                   file=log)
             continue
 
+        # Remove date lines.
+        if uweclang.DATE_REGEX_ANY_FULL.match(line):
+            print('Line {}: DATE LINE (Date Line, {} characters):'
+                  '\n\t{}\n'.format(line_number, len(line), line),
+                  file=log)
+            continue
+
         global _CAPS_LIMIT, _PUNC_LIMIT
         punc = uweclang.punctuation_density(line)
         caps = uweclang.capitalization_density(line)

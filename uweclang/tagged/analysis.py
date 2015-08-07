@@ -7,12 +7,53 @@ from __future__ import unicode_literals
 
 # Standard imports
 import re
-import nltk
 
 from itertools import chain
 from collections import defaultdict, Counter
 
 _PUNCTUATION_REGEX = re.compile(r'``|\'\'|[^\w\s]')
+
+DATE_REGEX_MDY = re.compile(r"""
+    (1[012]|0\d|\d)
+    \ ?/\ ?
+    (3[01]|[012]\d|\d)
+    \ ?/\ ?
+    (\d{2,4})?
+    """, re.VERBOSE)
+
+DATE_REGEX_DMY = re.compile(r"""
+    (3[01]|[012]\d|\d)?
+    \ ?/\ ?
+    (1[012]|0\d|\d)
+    \ ?/\ ?
+    (\d{2,4})?
+    """, re.VERBOSE)
+
+DATE_REGEX_DMONY = re.compile(r"""
+    (3[01]|[012]\d|\d)?
+    \ ?
+    (jan(?:uary)?
+    |feb(?:ruary)?
+    |mar(?:ch)?
+    |apr(?:il)?
+    |may
+    |jun(?:e)?
+    |jul(?:y)?
+    |aug(?:ust)?
+    |sep(?:tember)?
+    |oct(?:ober)?
+    |nov(?:ember)?
+    |dec(?:ember)?)
+    \ ?
+    (\d{2,4})?
+    """, re.IGNORECASE | re.VERBOSE)
+
+DATE_REGEX_ANY = re.compile('(?:' + DATE_REGEX_DMY.pattern + ')|' +
+                            '(?:' + DATE_REGEX_MDY.pattern + ')|' +
+                            '(?:' + DATE_REGEX_DMONY.pattern + ')',
+                            re.IGNORECASE | re.VERBOSE)
+
+DATE_REGEX_ANY_FULL = re.compile('^' + DATE_REGEX_ANY.pattern + '$', re.IGNORECASE | re.VERBOSE)
 
 NOMINALIZATION_SUFFIXES = {
     'tion',

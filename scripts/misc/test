@@ -6,16 +6,19 @@ from uweclang import *
 from pprint import pprint
 
 
-text = open("idioms.txt").read().decode('utf-8')
+pat = re.compile('^' + DATE_REGEX_ANY.pattern + '$', re.IGNORECASE | re.VERBOSE)
 
+if pat.match('12 / 12 / 1221'):
+    print(pat.match('12 / 12 / 1221').groups())
 
-for line in text.splitlines():
+if pat.match('12 Jan 1202'):
+    print(pat.match('12 Jan 1202').groups())
 
-    tagged = tag(line)
-    t_out = ' '.join(["{}/{}".format(*t) for t in tagged[0]])
-    print(t_out)
+if pat.match('12 Dec 2015'):
+    print(pat.match('12 Dec 2015').groups())
 
-# print(tagged)
-# pprint(dict(get_tags(tagged)))
+if pat.match('12 December 2015 and a date'):
+    print(pat.match('12 December 2015').groups())
 
-# pprint(recombine_tag_parentheticals(parse_tag_parentheticals(tagged)))
+if pat.match('Not a date'):
+    print(pat.match('Not a date').groups())
