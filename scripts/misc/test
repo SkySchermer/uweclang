@@ -6,9 +6,9 @@ from pprint import pprint
 
 tagged = tag('This is a test sentence. This is (possible sequenced) another.')
 
-# sep = parse_tag_parentheticals(tagged)
-# pprint(sep)
-# pprint(recombine_tag_parentheticals(sep))
+sep = parse_tag_parentheticals(tagged)
+pprint(sep)
+pprint(recombine_tag_parentheticals(sep))
 
 
 # tok = TaggedToken('Word', 'TG')
@@ -16,5 +16,3 @@ tagged = tag('This is a test sentence. This is (possible sequenced) another.')
 # print(tok._asdict()['tag'])
 
 
-print(list(nfollowing((x for x in range(3)), 2)))
-print(list(ngram((x for x in range(3)), 3)))

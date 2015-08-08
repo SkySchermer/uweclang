@@ -3,7 +3,6 @@
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
-# from __future__ import unicode_literals
 
 # Standard imports
 import re
@@ -13,7 +12,6 @@ from nltk.data import load
 from itertools import chain, islice
 from collections import defaultdict, Counter, namedtuple, deque
 
-_EMPTY_GENERATOR = (_ for _ in ())
 
 # A simple class for connecting tokens and tags.
 TaggedToken = namedtuple('TaggedToken', ['token', 'tag'])
@@ -41,8 +39,10 @@ def tag(text):
     tagger = load(_POS_TAGGER)  # Same tagger as using nltk.pos_tag
 
     # Prepare regex tagger for custom tags
-    regexp_tagger = nltk.tag.RegexpTagger([(r'\(|\)', '()'),
-                                           (r'\[|\]', '[]'),
+    regexp_tagger = nltk.tag.RegexpTagger([(r'\(', '('),
+                                           (r'\)', ')'),
+                                           (r'\[', '['),
+                                           (r'\]', ']'),
                                            (r'_+', 'None')],
                                           backoff=tagger)
 
@@ -106,7 +106,7 @@ def parse_tag_parentheticals(tagged, lparen='(', rparen=')', use_tag=False):
             text. Defaults to False (text).
 
     Returns:
-        (dict | [(str, str)]): A dictionary representing the parse tree or a
+        (dict | [TaggedToken]): A dictionary representing the parse tree or a
         list of tagged tokens. Each node of the tree will have the following
         structure:
 
@@ -178,7 +178,7 @@ def recombine_tag_parentheticals(parse_tree, selector_function=None):
             (TAG is of the form (str, str))
 
     Returns:
-        ([(str, str)]): The resulting tagged text.
+        ([TaggedToken]): The resulting tagged text.
 
     Raises:
         (ValueError): When unkown values are contained in parse_tree.
