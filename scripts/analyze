@@ -14,11 +14,10 @@ import re
 import random
 import argparse
 import uweclang
-from uweclang import is_punctuation
+from uweclang import is_punctuation, TaggedToken
 from itertools import chain
 from collections import OrderedDict, Counter
 
-from pprint import pprint
 
 # We want to write all files in UTF-8 encoding. (This is a Python 3 forward
 # compatability issue.)
@@ -63,16 +62,22 @@ def analyze_text(text, file_name=None):
     data['Linking Adverbs'] = Counter()
     data['Passives (Total)'] = 0
 
-    for t1, t2, t3 in uweclang.ngram(tokens, 3):
+    # Function to lowercase non-propernoun TaggedTokens
+    def lower_nonproper(t):
+        if t.tag in ['NNP','NNPS']:
+            return t
+        return TaggedToken(t.token.lower(), t.tag)
+
+
+    for t1, t2, t3 in uweclang.nfollowing(tokens, 2):
 
         # Lowercase non-proper noun words.
-        t1, t2, t3 = tuple((t[0].lower() if t[1] not in ['NNP','NNPS'] else t[0], t[1])
-                            for t in [t1, t2, t3])
-        word, tag = t1
+        t1, t2, t3 = tuple(lower_nonproper(t) if t is not None else t
+                           for t in [t1, t2, t3])
 
-        # Count the number of occurences of each tag and word.
-        if not is_punctuation(word):
-            data['Words'][word] += 1
+        # Count the number of occurences of each tag and token.
+        if not is_punctuation(t1.token):
+            data['Words'][t1.token] += 1
 
             if sample_count < sample_size:
                 sample.append(t1)
@@ -80,42 +85,45 @@ def analyze_text(text, file_name=None):
                 sample[random.SystemRandom().randint(0, sample_size-1)] = t1
             sample_count += 1
 
-        data['Tags'][tag] += 1
+        data['Tags'][t1.tag] += 1
 
         # Count nominalizations
         for suffix in uweclang.NOMINALIZATION_SUFFIXES:
-            if word.isalpha() and word.lower().endswith(suffix):
+            if t1.token.isalpha() and t1.token.lower().endswith(suffix):
                 data['Nominalizations'][suffix] += 1
 
         # Count verbs
-        if tag in ['MD', 'VBD', 'VBP', 'VBZ']:
-            data['Verbs'][word] += 1
-
-        # Count passives
-        if word in uweclang.BE_FORMS and t2[1]=='VBN' or t3[1]=='VBN':
-            data['Passives (Total)'] += 1
+        if t1.tag in ['MD', 'VBD', 'VBP', 'VBZ']:
+            data['Verbs'][t1.token] += 1
 
         # Count nouns
-        if tag != None and tag.startswith('NN'):
-            data['Nouns'][word] += 1
+        if t1.tag != None and t1.tag.startswith('NN'):
+            data['Nouns'][t1.token] += 1
 
-        # Count modified nouns
-        if (t2[1] is not None and t2[1].startswith('NN') and
-            tag != None and tag.startswith('JJ')):
+        if t2 is not None:
+            if t3 is not None:
+                # Count passives
+                if t1.token in uweclang.BE_FORMS and t2[1]=='VBN' or t3[1]=='VBN':
+                    data['Passives (Total)'] += 1
 
-            data['Modified Nouns'][(word, t2[0])] += 1
+            # Count modified nouns
+            if (t2.tag is not None and t2.tag.startswith('NN') and
+                t1.tag != None and t1.tag.startswith('JJ')):
 
-        # Count linking adverbs
-        if (t1[0], t2[0], t3[0]) in uweclang.LINKING_TRIGRAMS:
-            data['Linking Adverbs'][(t1[0], t2[0], t3[0])] += 1
-        elif (t1[0], t2[0]) in uweclang.LINKING_BIGRAMS:
-            data['Linking Adverbs'][(t1[0], t2[0])] += 1
-        elif (t1[0], t2[0]) in uweclang.ADDITIVE_BIGRAMS:
-            data['Additive Adverbs'][(t1[0], t2[0])] += 1
-        elif t1[0] in uweclang.LINKING_ADVERBS:
-            data['Linking Adverbs'][t1[0]] += 1
-        elif t1[0] in uweclang.ADDITIVE_ADVERBS:
-            data['Additive Adverbs'][t1[0]] += 1
+                data['Modified Nouns'][(t1.token, t2.token)] += 1
+
+            # Count linking adverbs
+            if t3 is not None:
+                if (t1.token, t2.token, t3.token) in uweclang.LINKING_TRIGRAMS:
+                    data['Linking Adverbs'][(t1.token, t2.token, t3.token)] += 1
+            elif (t1.token, t2.token) in uweclang.LINKING_BIGRAMS:
+                data['Linking Adverbs'][(t1.token, t2.token)] += 1
+            elif (t1.token, t2.token) in uweclang.ADDITIVE_BIGRAMS:
+                data['Additive Adverbs'][(t1.token, t2.token)] += 1
+            elif t1.token in uweclang.LINKING_ADVERBS:
+                data['Linking Adverbs'][t1.token] += 1
+            elif t1.token in uweclang.ADDITIVE_ADVERBS:
+                data['Additive Adverbs'][t1.token] += 1
 
     # Count words, puntuation, and ratios.
     data['Words (Total)'] = sum(data['Words'].values())

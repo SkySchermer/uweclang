@@ -48,9 +48,28 @@ DATE_REGEX_DMONY = re.compile(r"""
     (\d{2,4})?
     """, re.IGNORECASE | re.VERBOSE)
 
+DATE_REGEX_MONDY = re.compile(r"""
+    (jan(?:uary)?
+    |feb(?:ruary)?
+    |mar(?:ch)?
+    |apr(?:il)?
+    |may
+    |jun(?:e)?
+    |jul(?:y)?
+    |aug(?:ust)?
+    |sep(?:tember)?
+    |oct(?:ober)?
+    |nov(?:ember)?
+    |dec(?:ember)?)
+    \ ?
+    (3[01]|[012]\d|\d)
+    (,\ ?\d{2,4})?
+    """, re.IGNORECASE | re.VERBOSE)
+
 DATE_REGEX_ANY = re.compile('(?:' + DATE_REGEX_DMY.pattern + ')|' +
                             '(?:' + DATE_REGEX_MDY.pattern + ')|' +
-                            '(?:' + DATE_REGEX_DMONY.pattern + ')',
+                            '(?:' + DATE_REGEX_DMONY.pattern + ')|' +
+                            '(?:' + DATE_REGEX_MONDY.pattern + ')',
                             re.IGNORECASE | re.VERBOSE)
 
 DATE_REGEX_ANY_FULL = re.compile('^' + DATE_REGEX_ANY.pattern + '$', re.IGNORECASE | re.VERBOSE)

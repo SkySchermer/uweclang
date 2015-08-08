@@ -3,15 +3,20 @@
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
-from __future__ import unicode_literals
+# from __future__ import unicode_literals
 
 # Standard imports
 import re
 import nltk
 from nltk.data import load
 
-from itertools import chain
-from collections import defaultdict, Counter
+from itertools import chain, islice
+from collections import defaultdict, Counter, namedtuple, deque
+
+_EMPTY_GENERATOR = (_ for _ in ())
+
+# A simple class for connecting tokens and tags.
+TaggedToken = namedtuple('TaggedToken', ['token', 'tag'])
 
 
 def tag(text):
@@ -44,8 +49,7 @@ def tag(text):
     #Add a part of speech tag to each word
     nested_tagged = []
     for sentence in nested:
-        # nested_tagged.append(nltk.pos_tag(sentence))
-        nested_tagged.append(regexp_tagger.tag(sentence))
+        nested_tagged.append([TaggedToken(*x) for x in regexp_tagger.tag(sentence)])
 
     return nested_tagged
 
@@ -66,16 +70,26 @@ def get_tags(tagged):
             tag_dict[tag][token] += 1
         except KeyError:
             tag_dict[tag].update({token : 1})
-    return tag_dict
+    return dict(tag_dict)
 
 
 def read_tagged_string(text):
-    return [[nltk.tag.str2tuple(x) for x in line.split()] for line in text.split('\n')]
+    """
+    """
+
+    def get_tagged(x):
+        return TaggedToken(*nltk.tag.str2tuple(x))
+
+    result = []
+    for line in text.split('\n'):
+        result.append([get_tagged(x) for x in line.split()])
+
+    return result
 
 
 def tagged_to_plain(tagged):
     tagged = chain.from_iterable(tagged)
-    text = ' '.join((x[0] for x in tagged))
+    text = ' '.join((x.token for x in tagged))
 
     text = re.sub(r"`` | ''", '"', text)
     text = re.sub(r' (n\'t|\'s|[^\w\s\"\'])', r'\1', text)
@@ -107,9 +121,10 @@ def parse_tag_parentheticals(tagged, lparen='(', rparen=')', use_tag=False):
         rparens will have None as their second parens tuple element. If there
         are no parentheticals, a list of tagged tokens will be returned.
     """
+    # Flatten hierarchical input.
     tagged = chain.from_iterable(tagged)
 
-    part = 1 if use_tag else 0
+    part = 'tag' if use_tag else 'token'
 
     # Build root of tree.
     tree = {'parens': (None, None),
@@ -118,23 +133,23 @@ def parse_tag_parentheticals(tagged, lparen='(', rparen=')', use_tag=False):
     context = [tree]
 
     # Keep parsing until nothing is left.
-    for item in tagged:
+    for tagged_token in tagged:
         node = context[0]
 
         # Match rparens.
-        if item[part] == rparen:
+        if getattr(tagged_token, part) == rparen:
 
             if node['parens'] == (None, None):
-                node['tagged'].append(item[0])
+                node['tagged'].append(tagged_token.token)
             else:
                 node = context.pop(0)
-                node['parens'] = (node['parens'][0], item)
+                node['parens'] = (node['parens'][0], tagged_token)
 
             continue
 
         # Match lparens.
-        if item[part] == lparen:
-            new_node = {'parens': (item, None),
+        if getattr(tagged_token, part) == lparen:
+            new_node = {'parens': (tagged_token, None),
                         'tagged': []}
             node['tagged'].append(new_node)
             context.insert(0, new_node)
@@ -142,7 +157,7 @@ def parse_tag_parentheticals(tagged, lparen='(', rparen=')', use_tag=False):
             continue
 
         # Match text.
-        node['tagged'].append(item)
+        node['tagged'].append(tagged_token)
 
     # Remove highest level tree if whole string is parenthetical.
     if len(tree['tagged']) == 1:
@@ -203,18 +218,59 @@ def recombine_tag_parentheticals(parse_tree, selector_function=None):
         return [x for x in chain.from_iterable([l, tagged, r]) if x is not None]
     return []
 
-def ngram(words, n=2):
-    """Returns a generator producing the ngrams of lenght n of the input sentence.
+
+def ngram(items, n=2, step=1):
+    """Returns a generator producing the ngrams of lenght n of the input items.
 
     Arguments:
-        words ([str]): A list of words.
+        items (list|iterator): A list or iterator of items.
         n (int): The length of the n-grams.
 
     Returns:
-        [(str, str, ...)]: A list of word tuples containing nearby words in
+        generator(tuple): A generator of tuples containing nearby items in
         n-length groups.
     """
-    cur = 0
-    while cur < len(words)-(n-1):
-        yield words[cur:cur+n]
-        cur += 1
+    items = iter(items)
+    window = deque(islice(items, n))
+    while True: # Continue till StopIteration gets raised.
+        if len(window) == 0:
+            raise StopIteration
+        yield tuple(window)
+        for i in range(step):
+            window.append(items.next())
+            window.popleft()
+
+def nfollowing(items, n=1, step=1, default=None):
+    """Returns a generator producing the items of the input, and n following
+    items.
+
+    Arguments:
+        items (list|iterator): A list or iterator of items.
+        n (int): The number of following items
+        default: The value to use for items past the end of the input. Defaults
+            to None.
+
+    Returns:
+        generator(tuple): A list of tuples containing nearby items in n-length
+        groups.
+    """
+    # Try to convert to non-empty iterator. If we can't find length.
+    # If empty, return empty iterator.
+    items = iter(items)
+    window = deque(islice(items, n+1))
+    overflow = n
+    while True: # Continue till StopIteration gets raised.
+        if len(window) == 0:
+            raise StopIteration
+        yield tuple(window)
+        for i in range(step):
+            try:
+                window.append(items.next())
+            except StopIteration:
+                if overflow > 0:
+                    overflow -= 1
+                    window.append(default)
+                else:
+                    raise StopIteration
+
+            window.popleft()
