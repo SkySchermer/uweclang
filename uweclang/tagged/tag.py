@@ -80,11 +80,9 @@ def read_tagged_string(text):
     def get_tagged(x):
         return TaggedToken(*nltk.tag.str2tuple(x))
 
-    result = []
     for line in text.split('\n'):
-        result.append([get_tagged(x) for x in line.split()])
+        yield([get_tagged(x) for x in line.split()])
 
-    return result
 
 
 def tagged_to_plain(tagged):

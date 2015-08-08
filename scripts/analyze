@@ -4,7 +4,7 @@
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
-from __future__ import unicode_literals
+# from __future__ import unicode_literals
 
 # Standard imports
 import sys
@@ -45,7 +45,7 @@ def analyze_text(text, file_name=None):
 
     data = OrderedDict([('File', os.path.basename(file_name))])
 
-    tagged = uweclang.read_tagged_string(text)
+    tagged = list(uweclang.read_tagged_string(text))
     tokens = list(chain.from_iterable(tagged))
 
     # Count sentences and tokens.
@@ -160,7 +160,6 @@ def analyze_text(text, file_name=None):
     noun_count = sum(data['Nouns'].values())
     data['Modified Noun Ratio'] = (sum(data['Modified Nouns'].values()) / noun_count if noun_count != 0 else 0)
 
-
     return data
 
 
@@ -216,13 +215,11 @@ def analyze_file(input_filename, output_dir, verbosity=1):
 
 
 if __name__ == '__main__':
-
     # Create a command line argument parser based on the BATCH_PARSER template.
     # See uweclang/batch/tools.py for details.
     parser = argparse.ArgumentParser(
         description='Analyzes tagged files',
         parents=[uweclang.BATCH_PARSER])
-
 
     # Add extra command line arguments for this script.
     parser.add_argument('-x', '--o-extension',
