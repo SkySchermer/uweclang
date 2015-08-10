@@ -10,6 +10,7 @@ import re
 
 from itertools import chain
 from collections import defaultdict, Counter
+from uweclang import TaggedToken
 
 _PUNCTUATION_REGEX = re.compile(r'``|\'\'|[^\w\s]')
 
@@ -166,8 +167,8 @@ LINKING_TRIGRAMS = {
 
 
 def is_punctuation(word):
-    if isinstance(word, tuple):
-        word = word[0]
+    if isinstance(word, TaggedToken):
+        word = word.token
     return _PUNCTUATION_REGEX.match(word) is not None
 
 
@@ -268,16 +269,16 @@ def get_csv_data(data):
     for item in ADDITIVE_ADVERBS:
         row[item] = data['Additive Adverbs'].get(item, None)
 
-    for item in [' '.join(x) for x in ADDITIVE_BIGRAMS]:
+    for item in (' '.join(x) for x in ADDITIVE_BIGRAMS):
         row[item] = data['Additive Adverbs'].get(item, None)
 
     for item in LINKING_ADVERBS:
         row[item] = data['Linking Adverbs'].get(item, None)
 
-    for item in [' '.join(x) for x in LINKING_BIGRAMS]:
+    for item in (' '.join(x) for x in LINKING_BIGRAMS):
         row[item] = data['Linking Adverbs'].get(item, None)
 
-    for item in [' '.join(x) for x in LINKING_TRIGRAMS]:
+    for item in (' '.join(x) for x in LINKING_TRIGRAMS):
         row[item] = data['Linking Adverbs'].get(item, None)
 
     return row
