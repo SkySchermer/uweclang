@@ -12,6 +12,11 @@ from __future__ import unicode_literals
 # Standard imports
 import re
 
+# Setup logger.
+import logging
+logging.getLogger(__name__).addHandler(logging.NullHandler())
+
+
 def punctuation_density(text, punctuation=r'[^\w\s]'):
     """Returns the punctuation density of the given text.
 

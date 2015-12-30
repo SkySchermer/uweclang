@@ -8,6 +8,10 @@ from __future__ import division
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+# Setup logger.
+import logging
+logging.getLogger(__name__).addHandler(logging.NullHandler())
+
 
 def line_split(text, remove_empty_lines=True, strip_lines=True, sep='\n'):
     """Splits plaintext input into lines.

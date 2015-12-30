@@ -1,0 +1,7 @@
+define TEST [ //Creating the definition
+	around,
+	the,
+	world,
+];
+
+TEST //Using the created definition

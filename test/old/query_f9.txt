@@ -1,0 +1,7 @@
+define TEST [ //Creating the definition
+	has,
+	fail.*,
+	:tag:n.*{0,4},
+];
+TEST //Using the created definition
+"\."

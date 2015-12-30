@@ -1,0 +1,2 @@
+Grossman/NNP provides/VBZ the/DT reader/NN with/IN the/DT emotion/NN shame/NN ./. 
+Shame/NNP that/IN we/PRP ,/, as/IN Americans/NNPS our/PRP$ directly/RB endangering/VBG others/NNS ./. 

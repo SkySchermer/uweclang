@@ -1,0 +1,10 @@
+// Corpus: simple
+
+a
+	b // second b
+		a
+; // end
+1 /*words */2
+3//
+;//
+"\."/**/

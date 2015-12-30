@@ -1,0 +1,7 @@
+define TEST [ //Creating the definition
+	:tag:dt{0,2},
+	part.*,
+	issue,
+];
+TEST //Using the created definition
+"\."

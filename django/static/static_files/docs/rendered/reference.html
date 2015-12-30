@@ -1,0 +1,118 @@
+<link rel="stylesheet" type="text/css" href="documentation.css"/>
+
+<h1>Query Syntax Reference</h1>
+
+<table style="width: 100%;" border="1" cellspacing="0" cellpadding="5">
+    <tbody>
+        <tr>
+            <td valign="top" width="18%">
+                <p><b>Meaning</p></b>
+            </td>
+            <td valign="top" width="45%">
+                <p><b>Examples</p></b>
+            </td>
+            <td valign="top" width="36%">
+                <p><b>Sample matches</p></b>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="18%">
+                <p>One exact word</p>
+            </td>
+            <td valign="top" width="45%">
+                <p>mysterious</p>
+            </td>
+            <td valign="top" width="36%">
+                <p>mysterious</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="18%">
+                <p>Part of speech (exact)<br /> Part of speech (wildcard)</p>
+            </td>
+            <td valign="top" width="45%">
+                <p>:tag:vvg</p>
+                <p>:tag:v.*</p>
+            </td>
+            <td valign="top" width="36%">
+                <p>going, using</p>
+                <p>find, does, keeping, started<br /> <br /> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="18%">
+                <p>Customized lists</p>
+            </td>
+            <td valign="top" width="45%">
+                <p>define CLOTHES [</p>
+				<p>tie,</p>
+				<p>shirt,</p>
+				<p>blouse</p>
+				<p>];</p>
+				<p>CLOTHES</p>
+            </td>
+            <td valign="top" width="36%">
+                <p>tie, shirt, blouse<br /> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="18%">
+                <p>Any of these words</p>
+            </td>
+            <td valign="top" width="45%">
+                <p>stunning|gorgeous|charming</p>
+            </td>
+            <td valign="top" width="36%">
+                <p>stunning, charming, gorgeous</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="18%">
+                <p>Wildcard: .* = any # letters<br /> Wildcard: ? = one letter</p>
+            </td>
+            <td valign="top" width="45%">
+                <p>un.*ly</p>
+                <p>s.?ng</p>
+                <p>s.?ng.*</p>
+            </td>
+            <td valign="top" width="36%">
+                <p>unlikely, unusually</p>
+                <p>sing, sang, song</p>
+                <p>song, singer, songbirds</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="18%">
+                <p>NOT (followed by PoS, word, etc.)</p>
+            </td>
+            <td valign="top" width="45%">
+                <p>~:tag:nn.*</p>
+            </td>
+            <td valign="top" width="36%">
+                <p>the, in, is</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="18%">
+                <p>Exact word and part of speech</p>
+            </td>
+            <td valign="top" width="45%">
+                <p>strike:tag:v.*</p>
+            </td>
+            <td valign="top" width="36%">
+                <p>strike (only as a verb)</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" width="18%">
+                <p>Substring and part of speech</p>
+            </td>
+            <td valign="top" width="45%">
+                <p>dis.*:tag:vvd</p>
+            </td>
+            <td valign="top" width="36%">
+                <p>discovered, disappeared, discussed</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

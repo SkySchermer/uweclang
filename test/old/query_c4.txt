@@ -1,0 +1,7 @@
+define TEST [
+	directly,
+	endangering,
+	others,
+];
+
+TEST

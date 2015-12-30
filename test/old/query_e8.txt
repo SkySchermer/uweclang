@@ -1,0 +1,7 @@
+define TEST [ //Creating the definition
+	for,
+	their,
+	misdeeds,
+];
+
+TEST //Using the created definition

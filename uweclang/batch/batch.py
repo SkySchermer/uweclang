@@ -34,6 +34,9 @@ import argparse
 from itertools import chain
 from math import ceil
 
+# Setup logger.
+import logging
+logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 # Build base for batch argument parsing.
 BATCH_PARSER = argparse.ArgumentParser(add_help=False)
@@ -168,10 +171,6 @@ def get_files(search_locations, extensions=None, recursive=False):
         extensions will be included in the output. The extensions argument only
         effects files in the directories given.
     """
-    if (isinstance(search_locations, str)
-        or isinstance(search_locations, unicode)):
-        search_locations = [search_locations]
-
     search_locations = set(search_locations)
 
     files = [x for x in search_locations if os.path.isfile(x)]
@@ -201,13 +200,11 @@ def get_files(search_locations, extensions=None, recursive=False):
                 # pprint(split_ext(x)[1]); pprint(extensions)
                 if (extensions is None or
                     split_ext(x)[1].endswith(tuple(extensions))):
-
                     files.append(x)
         else:
             # Handle a file.
             if (extensions is None or
                 split_ext(item)[1].endswith(tuple(extensions))):
-
                 files.append(item)
 
     full_files = set()

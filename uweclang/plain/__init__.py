@@ -13,3 +13,7 @@ __status__     = 'Development' # or Production/Deprecated
 
 
 __all__ = ['clean', 'plain']
+
+# Setup logger.
+import logging
+logging.getLogger('uweclang.plain').addHandler(logging.NullHandler())

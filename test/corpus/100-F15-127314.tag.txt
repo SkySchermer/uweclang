@@ -1,0 +1,7 @@
+Wellbutrin/NNP and/CC Paxil/NNP are/VBP antidepressants/NNS that/IN are/VBP used/VBN for/IN ADHD/NNP ,/, weight/VBD loss/NN ,/, substance/NN addiction/NN ,/, and/CC more/JJR ./. 
+WIth/IN the/DT drug/NN Paxil/NNP there/EX has/VBZ been/VBN many/JJ cases/NNS where/WRB it/PRP would/MD trigger/VB suicidal/JJ thoughts/NNS for/IN a/DT patient/NN that/WDT has/VBZ led/VBN to/TO a/DT lot/NN of/IN issues/NNS ./. 
+After/IN these/DT two/CD drugs/NNS were/VBD put/VBN out/RP on/IN the/DT market/NN ,/, the/DT FDA/NNP tested/VBD them/PRP and/CC found/VBD that/IN these/DT pills/NNS were/VBD basically/RB sugar/NN pills/NNS ./. 
+The/DT biggest/JJS issue/NN that/WDT Medicaid/NNP has/VBZ faced/VBN with/IN GSK/NNP was/VBD with/IN the/DT drug/NN Avandia/NNP ,/, the/DT biggest/JJS selling/VBG diabetes/NNS drug/NN ./. 
+GSK/NN has/VBZ hidden/VBN crucial/JJ information/NN from/IN Medicaid/NNP that/IN has/VBZ failed/VBN Medicaid/NNP patient/NN safety/NN rights/NNS ./. 
+There/EX have/VBP been/VBN quite/RB a/DT few/JJ cases/NNS of/IN death/NN from/IN this/DT drug/NN ,/, and/CC it/PRP was/VBD the/DT most/JJS effective/JJ in/IN health/NN related/VBN problems/NNS ,/, like/IN causing/NN heart/NN attacks/NNS ./. 
+Anyone/NN taking/VBG these/DT drugs/NNS has/VBZ been/VBN affected/VBN by/IN the/DT wrongdoing/NN of/IN GSK/NNP ./. 

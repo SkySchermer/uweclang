@@ -1,0 +1,137 @@
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="documentation.css"/>
+</head>
+
+<body>
+
+<h1 class = "title" id="query-syntax-help">Query Syntax Help</h1>
+<h3 id="comments">Comments</h3>
+<p>Comments can be inserted into the query using two different comment notations:</p>
+<pre><code>// This is a line comment. Any text on this line after the &#39;//&#39; symbol is ignored.
+
+/*
+   This is a block comment. 
+   These comments can span multiple lines.
+ */ </code></pre>
+<h3 id="literal-matches">Literal Matches</h3>
+<p>To match a literal word or an exact sequence of words, just type type the words to match:</p>
+<pre><code>// This will match an exact sequence of words:
+
+she visited the bank;
+
+// The matched words are separated by whitespace, so you can arrange them vertically at your convenience:
+
+// An equivalent query:
+    she
+    visited
+    the
+    bank</code></pre>
+<p>Note the semicolon (<code>;</code>): this character is used to separate distinct queries. It is not required on the last query.</p>
+<h3 id="regular-expressions">Regular Expressions</h3>
+<p>Literal matches and match functions employ <a href="https://docs.python.org/2/library/re.html#regular-expression-syntax">Python Regular Expressions</a>.</p>
+<pre><code>&quot;This is a regular expression&quot;
+&quot;.*&quot;        // matches anything
+&quot;...&quot;       // matches any three letter word
+&quot;{gu}(2,3)&quot; // matches &#39;gugu&#39; and &#39;gugugu&#39;
+&quot;h[ao]t&quot;    // matches &#39;hot&#39; and &#39;hat&#39;</code></pre>
+<h3 id="match-functions">Match Functions</h3>
+<p>The colon (<code>:</code>) character is used to invoke a <code>match function</code>. The default behavior of the match function is to perform a match on the result of another match.</p>
+<pre><code>// This will match the words starting with &quot;she&quot;:
+    she.*
+
+// This will match the words ending with &quot;&#39;s&quot;:
+    .*&#39;s
+
+// We can match both at the same time (words starting with &quot;she&quot; that end with &quot;&#39;s&quot;) by using the default match function:
+    she.*:.*&#39;s
+
+// This example is a little contrived, because there is a more straightforward way of making this query:
+    she.*&#39;s
+
+// However, you might consider using the match function with match definitions. </code></pre>
+<p>Alternate behaviors of the match function can be invoked by naming a built-in function:</p>
+<pre><code>// This will match any noun:
+    .*:tag:n.*
+
+// The initial &quot;.*&quot; will match any word, then the &quot;:tag&quot; match function will extract the tag of that word, then the &quot;:n.*&quot; default match function will match only tags starting with &quot;n&quot;.
+
+// Furthermore, if a match function is supplied without a given literal to match, an implicit &quot;.*&quot; is provided. Thus, the above qury can be simplified:
+    :tag:n.*</code></pre>
+<h3 id="quoting">Quoting</h3>
+<p>In order to match text that includes special characters used by the query language, you can quote the match pattern:</p>
+<pre><code>// This will match a semicolon:
+    &quot;;&quot;
+
+// Becase the quoted text is a regular expression, regular expression symbols will need to be escaped.
+
+// This will match a period:
+    &quot;\.&quot;
+
+// This will match a double quote:
+    &quot;\&quot;&quot;
+</code></pre>
+<h3 id="or-match">Or-Match</h3>
+<p>Matching one or more of a set of options is builtin to the regular expression syntax.</p>
+<pre><code>// This will match any of four different phrases:
+    he|she
+    visited
+    the
+    bank|store
+
+// he visited the bank
+// he visited the store
+// she visited the bank
+// she visited the store</code></pre>
+<h3 id="intersection-match">Intersection Match</h3>
+<p>Matching a word that must meet two conditions requires the match function. The default match function will match against the result of the previous match:</p>
+<pre><code>// Matches any word starting with &quot;s&quot; and ending with &quot;&#39;s&quot;:
+    s.*:.*&#39;s
+
+// To match against a word and a tag, the tag match function can be used:
+// Matches any word &quot;hit&quot; used as a noun:
+    hit:tag:n.*
+</code></pre>
+<h3 id="negated-match">Negated Match</h3>
+<p>To negate a match, use the <code>~</code> symbol:</p>
+<pre><code>// Matches any word except &#39;button&#39;:
+    ~button
+
+// Matches any word not tagged &#39;NNP&#39;:
+    .*:tag:~NNP</code></pre>
+<h3 id="backreference">Backreference</h3>
+<p>A backreference will require that the word match a previous word exactly.</p>
+<pre><code>// This will match &quot;The a a&quot; where &#39;a&#39; is any word.
+    the
+    .*
+    \2</code></pre>
+<p>Backreferences only work in the first position, not after a match function <code>:</code>.</p>
+<h3 id="match-definitions">Match Definitions</h3>
+<p>Subqueries can be defined for convenience in writing complex queries. This allows you to match against a list of words using another name:</p>
+<pre><code>define ADDITIVE_ADVERB [
+    additionally,
+    also,
+    alternatively,
+    further,
+    furthermore,
+    likewise,
+    moreover,
+    namely,
+    similarly,
+];
+
+define LINKING_TRIGRAM [
+    all things considered,
+    as a consequence,
+    as a result,
+    in that case,
+]
+
+// Finds all additive adverbs with following commas and linking trigrams:
+    ADDITIVE_ADVERB 
+    &quot;,&quot; 
+    LINKING_TRIGRAM
+</code></pre>
+
+</body>
+</html>

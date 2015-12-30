@@ -1,0 +1,10 @@
+define TEST [ //Creating the definition
+	:tag:i.*{0,3},
+	determining,
+	the,
+	potential,
+	side,
+	e.*,
+];
+TEST //Using the created definition
+"\."

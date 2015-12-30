@@ -34,13 +34,17 @@ See also:
 """
 __author__     = 'Skylor R. Schermer'
 __copyright__  = 'Copyright 2015'
-__credits__    = ['Skylor R. Schermer']
+__credits__    = ['Skylor R. Schermer',
+                  'Victor Francisco']
 __license__    = 'MIT'
 __version__    = '0.1.0'
 __maintainer__ = 'Skylor R. Schermer'
 __email__      = 'schermsr@uwec.edu'
 __status__     = 'Development' # or Production/Deprecated
 
+# Setup default logger.
+import logging
+logging.getLogger('uweclang').addHandler(logging.NullHandler())
 
 # Import all functions from the binary module:
 from uweclang.binary.docx import *
@@ -55,3 +59,13 @@ from uweclang.tagged.analysis import *
 
 # Import all functions from the batch module:
 from uweclang.batch.batch import *
+
+# Import all functions from the query module:
+from uweclang.query.query import *
+from uweclang.query.result import *
+from uweclang.query.abstract import *
+from uweclang.query.grammar import *
+
+# Import all functions from the corpus module:
+from uweclang.corpus.manager import *
+from uweclang.corpus.student import *

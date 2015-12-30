@@ -1,0 +1,6 @@
+.*man
+g.*
+g.*:.*man
+g.*man
+.*:tag:nnp
+:tag:nnp

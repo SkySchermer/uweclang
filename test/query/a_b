@@ -1,0 +1,5 @@
+// Corpus: simple
+
+a b;
+a b a;
+c d;

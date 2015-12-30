@@ -1,0 +1,8 @@
+define TEST [ //Creating the definition
+	him,
+	and,
+	his,
+	udiences,
+];
+
+TEST //Using the created definition

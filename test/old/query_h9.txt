@@ -1,0 +1,8 @@
+define TEST [ //Creating the definition
+	:tag:v.*{0,2},
+	beliefs
+	","
+	th.*,
+];
+TEST //Using the created definition
+","

@@ -1,0 +1,7 @@
+define TEST [ //Creating the definition
+	reduce,
+	the,
+	damages,
+];
+
+TEST //Using the created definition

@@ -12,9 +12,45 @@ from nltk.data import load
 from itertools import chain, islice
 from collections import defaultdict, Counter, namedtuple, deque
 
+# Setup logger.
+import logging
+logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 # A simple class for connecting tokens and tags.
-TaggedToken = namedtuple('TaggedToken', ['token', 'tag'])
+class TaggedToken(object):
+    def __init__(self, token='', tag=''):
+        self._token = token
+        self.tag = tag
+
+    @property
+    def token(self):
+        return self._token
+
+    @token.setter
+    def token(self, token):
+        self._token = token
+
+    @property
+    def tag(self):
+        return self._tag
+
+    @tag.setter
+    def tag(self, tag):
+        self._tag = tag.upper()
+
+    @staticmethod
+    def tag_promoted(tagged_token, tag='TAG'):
+        return TaggedToken(token=tagged_token._tag, tag=tag)
+
+    def __str__(self):
+        return '{}/{}'.format(self._token, self._tag)
+
+    def __repr__(self):
+        return 'TaggedToken(token={}, tag={})'.format(self._token, self._tag)
+
+    def __eq__(self, other):
+        return self._token == other._token and self._tag == other._tag
+
 
 
 def tag(text):
@@ -74,9 +110,9 @@ def get_tags(tagged):
 
 
 def read_tagged_string(text):
+    """Converts the given tagged text to a list of sentences containing
+    TaggedToken objects.
     """
-    """
-
     def get_tagged(x):
         return TaggedToken(*nltk.tag.str2tuple(x))
 
@@ -86,8 +122,10 @@ def read_tagged_string(text):
 
 
 def tagged_to_plain(tagged):
+    """Converts a list of TaggedToken object to plain text, dropping any tags.
+    """
     tagged = chain.from_iterable(tagged)
-    text = ' '.join((x.token for x in tagged))
+    text = ' '.join(x.token for x in tagged)
 
     text = re.sub(r"`` | ''", '"', text)
     text = re.sub(r' (n\'t|\'s|[^\w\s\"\'])', r'\1', text)
@@ -237,6 +275,7 @@ def ngram(items, n=2, step=1):
         for i in range(step):
             window.append(items.next())
             window.popleft()
+
 
 def nfollowing(items, n=1, step=1, default=None):
     """Returns a generator producing the items of the input, and n following

@@ -1,0 +1,4 @@
+// Corpus: simple
+
+~a b;
+a ~b;

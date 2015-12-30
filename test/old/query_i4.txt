@@ -1,0 +1,7 @@
+define TEST [
+	sink,
+	into,
+	debts,
+];
+
+TEST

@@ -1,0 +1,6 @@
+.*t
+wi.*
+w.*:.*t
+s.*t
+.*:tag:cd
+:tag:cd

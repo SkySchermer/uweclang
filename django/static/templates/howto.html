@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UWEC Corpus Search</title>
+    <link rel="icon" type="image/png" href="/static/img/blugold.png">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/attic.css" rel="stylesheet">
+
+    <script>
+        function go(loc) {
+            document.getElementById('scrollarea').src = loc;
+        }
+    </script>
+
+</head>
+<body>
+<div class="col-md-12 top-pane">
+    <ul class="nav navbar-nav">
+        <li><a class="top-tab" href="../home">Query</a></li>
+        <li><a class="top-tab" href="../profile">My Profile</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a class="top-tab" href="../howto/">Help</a></li>
+        <li><a class="top-tab" href="../logout/">Log Out</a></li>
+    </ul>
+</div>
+
+<div style="position: absolute; left: 50%;">
+    <div style="position: relative; left: -50%;">
+        <h1 class="title">UWEC Corpus Search</h1>
+    </div>
+</div>
+
+<div class="col-md-3 left-pane">
+    <div class="col-md-12 query-pane text-center">
+        <h1>QuickLinks</h1>
+        <hr class="color:#FFFFFF">
+
+        <p>click the links to scroll to that section</p>
+        <hr class="color:#FFFFFF">
+        <p><a class="button-link" onclick="go('/static/docs/rendered/reference.html')" value="Reference">Query Syntax Reference</a></p>
+        <p><a class="button-link" onclick="go('/static/docs/rendered/syntax.html')" value="Query Syntax">Query Syntax Help</a></p>
+        <p><a class="button-link" onclick="go('/static/docs/rendered/tags.html')" value="Query Tags">List of Query Tags</a></p>
+
+    </div>
+</div>
+
+<div id ="help_info" class="col-md-9 right-pane">
+    <div frameborder=0 class="col-md-12 results text-center">
+        <p align="left">
+            <iframe id="scrollarea" src="/static/docs/rendered/reference.html" width="100%" frameborder=0
+                   style="position: absolute; height: 100%; border: none" >
+            </iframe>
+        </p>
+    </div>
+</div>
+
+</body>
+
+</html>

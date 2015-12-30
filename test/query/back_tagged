@@ -1,0 +1,3 @@
+// Corpus: simple
+
+2 3 .* \2:tag:[b, d] \1:tag:[a, c]

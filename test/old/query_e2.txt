@@ -1,0 +1,6 @@
+.*ing
+h.*
+h.*:.*ing
+h.*ing
+.*:tag:vbg
+:tag:vbg

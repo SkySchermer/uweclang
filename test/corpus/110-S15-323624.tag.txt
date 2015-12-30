@@ -1,0 +1,3 @@
+The/DT exigence/NN is/VBZ ``/`` the/DT event/NN or/CC the/DT title/NN by/IN which/WDT the/DT author/NN gets/VBZ ready/RB to/TO appeal/VB his/PRP$ audience/NN 's/POS attentions/NNS at/IN a/DT particular/JJ issue/NN ./. 
+``/`` The/DT author/NN tried/VBD hard/JJ to/TO make/VB people/NNS understand/VBP what/WP kind/NN of/IN problems/NNS they/PRP are/VBP going/VBG to/TO face/VB in/IN the/DT coming/VBG future/JJ due/JJ to/TO the/DT economic/JJ collapse/NN ./. 
+He/PRP thought/VBD that/IN linking/NN The/DT American/NNP Dream/NNP with/IN the/DT economic/JJ crisis/NN that/WDT happened/VBD in/IN the/DT United/NNP States/NNPS in/IN 2008/CD would/MD work/VB in/IN a/DT really/RB supportive/JJ way/NN as/IN an/DT exigence/NN to/TO the/DT main/JJ issue/NN ./. 

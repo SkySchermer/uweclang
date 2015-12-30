@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UWEC Corpus Search</title>
+    <link rel="icon" type="image/png" href="/static/img/blugold.png">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/attic.css" rel="stylesheet">
+</head>
+<body>
+<div class="col-md-12 top-pane">
+    <ul class="nav navbar-nav">
+        <li><a class="top-tab" href="../home">Query</a></li>
+        <li><a class="top-tab" href="../profile/{{ session.id }}">My Profile</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a class="top-tab" href="../reset-session/">New Session</a></li>
+        <li><a class="top-tab" href="../logout/">Log Out</a></li>
+    </ul>
+</div>
+
+<div style="position: absolute; left: 50%;">
+    <div style="position: relative; left: -50%;">
+        <h1 class="title">UWEC Corpus Search</h1>
+    </div>
+</div>
+
+<div class="col-md-3 left-pane">
+    <div class="col-md-12 query-pane text-center">
+            <p><strong>Username:</strong></p>
+
+            <p>{{ username }}</p>
+
+            <p><strong>Joined:</strong></p>
+
+            <p>{{ date_joined }}</p>
+
+            <p><strong>Last Logged in:</strong></p>
+
+            <p>{{ last_login }}</p>
+
+            <p><strong>Times Logged in:</strong>
+
+            <p>{{ n_logins }}</p>
+
+            <form action="../modify">
+                <input class="attic-button" type="submit" value="Change Username or Password"/>
+            </form>
+
+    </div>
+</div>
+<div class="col-md-9 right-pane">
+    <div class="col-md-12 profile-pane text-center">
+
+        <div class="col-md-12 profile-buttons-div">
+            <div class="dropdown pull-left">
+                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                    Select Session
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    {% for session in sessions %}
+                    <li><a href="../profile/{{ session.id }}">{{ session }} - {{ session.date }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <a href="../delete-session/{{ session.id }}" class="btn btn-danger pull-right" role="button">Delete
+                Session</a>
+        </div>
+
+        <h1 class="text-center">Results for Session: {{ session }}</h1>
+
+        {% if messages %}
+        <div class="row" id="message">
+            <div class="col-sm-6 col-sm-offset-3 text-center">
+                {% for message in messages %}
+                <h3 class="alert alert-danger">{{ message }}</h3>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="col-md-10 col-md-offset-1 tab-pane fade active in" id="home">
+            <br>
+            <table class="table table-bordered text-center">
+                <thead>
+                <tr>
+                    <th class="col-md-9">Query</th>
+                    <th class="col-md-2">Result</th>
+                    <th class="col-md-1">Delete?</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for query in queries %}
+                <tr>
+                    <td class="col-md-9">{{ query.query }}</td>
+                    <td class="col-md-2">{{ query.result }}</td>
+                    <td class="col-md-1">
+
+                        <a href="../delete-query-from-profile/{{ query.id }}"
+                           onclick="return confirm('Are you sure you want to delete this Query?')">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </a>
+
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+
+<!-- J Query -->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript for Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>

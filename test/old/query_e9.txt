@@ -1,0 +1,9 @@
+define TEST [ //Creating the definition
+	:tag:to{0,3},
+	pay,
+	for,
+	their,
+	m.*,
+];
+TEST //Using the created definition
+"\."

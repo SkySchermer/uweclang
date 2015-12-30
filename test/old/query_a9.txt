@@ -1,0 +1,11 @@
+define TEST [ //Creating the definition
+	:tag:v.*{0,3},
+	to,
+	help,
+	reduce,
+	the,
+	d.*,
+];
+~test
+TEST //Using the created definition
+"\."

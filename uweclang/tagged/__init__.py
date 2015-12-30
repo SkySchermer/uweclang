@@ -13,3 +13,7 @@ __status__     = 'Development' # or Production/Deprecated
 
 
 __all__ = ['tag', 'analysis']
+
+# Setup logger.
+import logging
+logging.getLogger('uweclang.tagged').addHandler(logging.NullHandler())

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if ["$(hostname)" == trinda]; then
+	cd /root/uwecserv;
+fi
+export PYTHONPATH=.
+
+./django/src/manage.py syncdb
+./django/src/manage.py collectstatic
+./django/src/manage.py runserver
+

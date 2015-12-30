@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UWEC Corpus Search</title>
+    <link rel="icon" type="image/png" href="/static/img/blugold.png">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/attic.css" rel="stylesheet">
+</head>
+<body>
+<div class="col-md-12 top-pane">
+    <ul class="nav navbar-nav">
+        <li><a class="top-tab" href="../home">Query</a></li>
+        <li><a class="top-tab" href="../profile/{{ session.id }}">My Profile</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a class="top-tab" href="../reset-session/">New Session</a></li>
+        <li><a class="top-tab" href="../logout/">Log Out</a></li>
+    </ul>
+</div>
+
+<div style="position: absolute; left: 50%;">
+    <div style="position: relative; left: -50%;">
+        <h1 class="title">UWEC Corpus Search</h1>
+    </div>
+</div>
+
+<div class="col-md-3 left-pane">
+
+</div>
+
+<div class="col-md-9 right-pane">
+    <div class="col-md-12 results text-center">
+        {% if messages %}
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 text-center">
+                {% for message in messages %}
+                <h3 class="alert alert-danger">{{ message }}</h3>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="col-md-6">
+            <h3>Change Username</h3>
+
+            <form method="POST"> {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="username1" class="control-label">New Username:</label>
+                    <input type="text" class="form-control" id="username1"
+                           name="username1">
+                </div>
+
+                <div class="form-group">
+                    <label for="username2" class="control-label">Retype New Username:</label>
+                    <input type="text" class="form-control" id="username2"
+                           name="username2">
+                </div>
+
+                <input class="attic-button" type="submit" name="username"
+                       id="username_button" onclick="return confirm('Are you sure you want to change your Username, all history will be lost?')" value="Submit Username Change"/>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Change Password</h3>
+
+            <form method="POST"> {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="password1" class="control-label">New Password:</label>
+                    <input type="password" class="form-control" id="password1"
+                           name="password1">
+                </div>
+
+                <div class="form-group">
+                    <label for="password2" class="control-label">Retype New Password:</label>
+                    <input type="password" class="form-control" id="password2"
+                           name="password2">
+                </div>
+
+
+                    <input class="attic-button" type="submit" name="password"
+                           id="password_button" value="Submit Password Change"/>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- J Query -->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript for Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>

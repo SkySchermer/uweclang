@@ -1,0 +1,7 @@
+define TEST [ //Creating the definition
+	university,
+	of,
+	virginia,
+];
+
+TEST //Using the created definition

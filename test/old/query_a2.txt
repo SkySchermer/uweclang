@@ -1,0 +1,6 @@
+.*ed
+d.*
+d.*:.*ed
+d.*ed
+.*:tag:wdt
+:tag:wdt

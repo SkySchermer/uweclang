@@ -1,0 +1,6 @@
+Brownlee/NNP likes/VBZ to/TO look/VB into/IN ways/NNS to/TO avoid/VB certain/JJ healthcare/NN issues/NNS ./. 
+Joe/NNP Colucci/NNP has/VBZ a/DT similar/JJ interest/NN to/TO that/DT of/IN Brownlee/NNP ,/, but/CC he/PRP mainly/RB focuses/VBZ on/IN evidence/NN based/VBN practice/NN ,/, health/NN care/NN delivery/NN system/NN errors/NNS ,/, medical/JJ regularity/NN ,/, and/CC more/JJR ./. 
+The/DT purpose/NN of/IN both/DT of/IN these/DT author/NN 's/POS writing/NN is/VBZ due/JJ to/TO not/RB having/VBG enough/RB information/NN on/IN medications/NNS or/CC medical/JJ diagnosis/NN ./. 
+Receiving/VBG false/NN information/NN on/IN a/DT drug/NN can/MD cost/VB people/NNS money/NN ,/, and/CC be/VB quite/RB dangerous/JJ to/TO a/DT consumer/NN ./. 
+Pharmaceutical/JJ companies/NNS are/VBP being/VBG fined/VBN for/IN involving/VBG the/DT illegal/JJ promotion/NN of/IN various/JJ pharmaceutical/JJ drugs/NNS ./. 
+GSK/NN was/VBD given/VBN a/DT $/$ 2.2/CD billion/CD fine/NN a/DT year/NN ,/, which/WDT they/PRP considered/VBD to/TO be/VB a/DT small/JJ price/NN to/TO pay/VB for/IN their/PRP$ misdeeds/NNS ./. 

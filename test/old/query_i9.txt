@@ -1,0 +1,9 @@
+define TEST [ //Creating the definition
+	:tag:v.*{0,2},
+	to,
+	sink,
+	into,
+	de.*,
+];
+TEST //Using the created definition
+","

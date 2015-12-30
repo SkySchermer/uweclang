@@ -1,0 +1,6 @@
+.*t
+p.*
+p.*:.*t
+p.*t
+.*:tag:vbp
+:tag:vbp

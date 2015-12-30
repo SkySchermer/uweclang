@@ -1,0 +1,6 @@
+.*ive
+sup.*
+sup.*:.*ive
+sup.*ive
+.*:tag:md
+:tag:md

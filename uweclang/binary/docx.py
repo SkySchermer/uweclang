@@ -16,6 +16,9 @@ import re
 
 from xml.etree.cElementTree import XML
 
+# Setup logger.
+import logging
+logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 def parse_element_plain(element):
     """Recursively parses an ElementTree Element object and returns a string

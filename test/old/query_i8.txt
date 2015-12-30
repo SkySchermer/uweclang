@@ -1,0 +1,7 @@
+define TEST [ //Creating the definition
+	sink,
+	into,
+	debts,
+];
+
+TEST //Using the created definition

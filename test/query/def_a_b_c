@@ -1,0 +1,8 @@
+// Corpus: simple
+
+define BD [
+	b,
+	d,
+];
+
+a BD c

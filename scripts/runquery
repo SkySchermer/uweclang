@@ -1,0 +1,123 @@
+#! /usr/bin/env python
+
+# Python 3 forward compatability imports.
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
+from __future__ import unicode_literals
+
+# Standard imports
+import sys
+import os
+from subprocess import call
+from time import time
+import uweclang
+import pickle
+from pprint import pprint
+
+# Configure logging.
+import logging
+logger = logging.getLogger('trollius')
+sh = logging.StreamHandler()
+sh.setFormatter(logging.Formatter(
+    '[%(name)s] %(filename)s:%(lineno)d at %(asctime)s: %(levelname)s %(message)s',
+    '%H:%M:%S'
+))
+logger.addHandler(sh)
+logger.setLevel(logging.INFO)
+
+logger = logging.getLogger('uweclang')
+sh = logging.StreamHandler()
+sh.setFormatter(logging.Formatter(
+    '[%(name)s] %(filename)s:%(lineno)d at %(asctime)s: %(levelname)s %(message)s',
+    '%H:%M:%S'
+))
+logger.addHandler(sh)
+logger.setLevel(logging.INFO)
+
+
+# We want to write all files in UTF-8 encoding. (This is a Python 3 forward
+# compatability issue.)
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+_CORPUS_LOCATION = r'/Volumes/archive$/WOLTERLK/Summer 2015/Student Corpus/Tagged Files'
+_CORPUS_CACHE = '.cached.corpus'
+
+if __name__ == '__main__':
+    log = logging.getLogger('uweclang')
+    log.info('Reading query file')
+    # Open query file.
+    document = None
+    query_text = None
+    if len(sys.argv) >= 2:
+        query_text = open(sys.argv[1], 'r').read()
+
+    log.info('Parsing query.')
+    if query_text:
+        # Parse query.
+        try:
+            document = uweclang.QueryDocument(query_text)
+        except uweclang.QueryParseError as e:
+            print(e)
+            sys.exit(1)
+
+    # Load corpus.
+    corpus = None
+    if os.path.isfile(_CORPUS_CACHE):
+        try:
+            with open(_CORPUS_CACHE, 'rb') as corpus_file:
+                log.info('Loading corpus... ')
+                corpus = pickle.load(corpus_file)
+                log.info('Done. ({} files identified)'.format(corpus.file_count))
+        except EOFError:
+            print('Error loading corpus.')
+            pass
+
+    # Setup Corpus
+    if not corpus:
+        log.info('Initializing corpus... ')
+        sys.stdout.flush()
+        old_dir = os.getcwd()
+        os.chdir(_CORPUS_LOCATION)
+        run_time = 0
+        start_time = time()
+        # Build corpus.
+        corpus = uweclang.StudentCorpus(search_locations='.', recursive=True)
+        run_time += time()-start_time
+        os.chdir(old_dir)
+        log.info('{} files added ({} words) ({:0.3f}s)'.format(
+            corpus.file_count,
+            corpus.word_count,
+            run_time))
+
+        with open(_CORPUS_CACHE, 'w') as corpus_file:
+            pickle.dump(corpus, corpus_file, pickle.HIGHEST_PROTOCOL)
+
+    sys.stdout.flush()
+    # Run query.
+    if document and corpus:
+        run_time = 0
+
+        log.info('Running queries...')
+        # Execute queries.
+        start_time = time()
+        results = list(corpus.execute_queries_async(
+            document.queries,
+            definitions=document.definitions,
+            meta_filter=lambda x: x['corpus_id'] < 5))
+        run_time += time()-start_time
+
+        print('{} quer{} completed: {} results ({:0.3f}s)'.format(
+            len(document.queries),
+            'y' if len(document.queries) == 1 else 'ies',
+            len(results),
+            run_time))
+        for result in results:
+            print('\t{}'.format(result))
+
+        pprint(uweclang.compile_statistics(results, corpus, categories=['semester', 'class']))
+
+
+# cp -r ./uweclang /Volumes/archive\$/WOLTERLK/Summer\ 2015/uweclang
+# ./scripts/runquery test/query/nnp_nnp | tee q_res

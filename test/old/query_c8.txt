@@ -1,0 +1,7 @@
+define TEST [ //Creating the definition
+	directly,
+	endangering,
+	others,
+];
+
+TEST //Using the created definition

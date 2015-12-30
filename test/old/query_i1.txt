@@ -1,0 +1,5 @@
+sink
+into
+/1
+/0
+debts

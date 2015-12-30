@@ -1,0 +1,6 @@
+.*ed
+f.*
+f.*:.*ed
+f.*ed
+.*:tag:vbn
+:tag:vbn

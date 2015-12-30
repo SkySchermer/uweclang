@@ -1,0 +1,7 @@
+define TEST [ //Creating the definition
+	causing,
+	heart,
+	attacks,
+];
+
+TEST //Using the created definition

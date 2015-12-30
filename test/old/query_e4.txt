@@ -1,0 +1,7 @@
+define TEST [
+	for,
+	their,
+	misdeeds,
+];
+
+TEST

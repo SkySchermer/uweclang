@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UWEC Corpus Search</title>
+    <link rel="icon" type="image/png" href="/static/img/blugold.png">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/attic.css" rel="stylesheet">
+</head>
+<body>
+<div class="col-md-12 top-pane">
+
+</div>
+
+<div style="position: absolute; left: 50%;">
+    <div style="position: relative; left: -50%;">
+        <h1 class="title">UWEC Corpus Search</h1>
+    </div>
+</div>
+
+<div class="col-md-3 left-pane">
+    <div class="col-md-12 query-pane text-center">
+        <h2>Log In</h2>
+        <hr class="color:#FFFFFF">
+        <form method="POST"> {% csrf_token %}
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">Username:</label>
+
+                    <input type="text" class="form-control" id="username" name="username">
+
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">Password:</label>
+
+                    <input type="password" class="form-control" id="password" name="password">
+
+            </div>
+            <div class="row">
+                <input class="attic-button" type="submit" name="login" id="login_button" value="Login"/>
+            </div>
+
+        </form>
+        <hr class="color:#FFFFFF">
+
+    </div>
+</div>
+<div class="col-md-9 right-pane">
+
+{% if messages %}
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 text-center">
+                {% for message in messages %}
+                <h3 class="alert alert-danger">{{ message }}</h3>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+</div>
+
+
+<!-- J Query -->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript for Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>

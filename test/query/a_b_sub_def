@@ -1,0 +1,5 @@
+// Corpus: simple
+
+define SUB a b c;
+
+SUB .*

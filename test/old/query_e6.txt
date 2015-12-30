@@ -1,0 +1,3 @@
+pharmaceutical ~drugs;
+pharmaceutical
+~companies

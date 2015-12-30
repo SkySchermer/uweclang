@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UWEC Corpus Search</title>
+    <link rel="icon" type="image/png" href="/static/img/blugold.png">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/attic.css" rel="stylesheet">
+</head>
+<body>
+<div class="col-md-12 top-pane">
+    <ul class="nav navbar-nav">
+        <li><a class="top-tab" href="../home">Query</a></li>
+        <li><a class="top-tab" href="../profile/{{ session.id }}">My Profile</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a class="top-tab" href="../reset-session/">New Session</a></li>
+        <li><a class="top-tab" href="../logout/">Log Out</a></li>
+    </ul>
+</div>
+
+<div style="position: absolute; left: 50%;">
+    <div style="position: relative; left: -50%;">
+        <h1 class="title">UWEC Corpus Search</h1>
+    </div>
+</div>
+
+<div class="col-md-3 left-pane">
+    <div class="col-md-12 query-pane text-center">
+        <h2>Query Database</h2>
+
+        <form method="POST"> {% csrf_token %}
+            <div class="form-group">
+                <textarea class="form-control query-input" rows=8 id="query"
+                          name="query"
+                          placeholder="Enter Query Here"></textarea>
+                <input class="attic-button" type="submit" name="submit_query"
+                       id="query_button" value="Run Query"/>
+            </div>
+            <div>
+                {{ error_message }}
+            </div>
+
+
+        </form>
+
+    </div>
+</div>
+<div class="col-md-9 right-pane">
+    <div class="col-md-12 results text-center">
+        <h1>Results for Session: {{ session }}</h1>
+
+
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">Total</a></li>
+            <li class=""><a href="#Matches" data-toggle="tab">Matches</a></li>
+            <li class=""><a href="#Semester" data-toggle="tab">By Semester</a>
+            </li>
+            <li class=""><a href="#Class" data-toggle="tab">By Class</a></li>
+            <li class="help-tab"><a href="#Tag" data-toggle="tab">Tag Reference</a></li>
+            <li class="help-tab"><a href="#Syntax-Reference" data-toggle="tab">Syntax
+                Reference</a></li>
+            <li class="help-tab"><a href="#Syntax-Help" data-toggle="tab">Syntax
+                Help</a></li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+
+            <div class="col-md-10 col-md-offset-1 tab-pane fade active in"
+                 id="home">
+                <br>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-md-9">Query</th>
+                        <th class="col-md-2">Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="col-md-9">{{ query.query }}</td>
+                        <td class="col-md-2">{{ query.result }}</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-10 col-md-offset-1 tab-pane fade" id="Matches">
+                <br>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-md-9">Match</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for res in query_results %}
+                    <tr>
+                        <td class="col-md-9">{{ res }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-10 col-md-offset-1 tab-pane fade" id="Semester">
+                <br>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-md-9">Semester</th>
+                        <th class="col-md-2">Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, val in semester_stats.items %}
+                    <tr>
+                        <td class="col-md-9">{{ key }}</td>
+                        <td class="col-md-2">{{ val }}</td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-10 col-md-offset-1 tab-pane fade" id="Class">
+                <br>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-md-9">Class</th>
+                        <th class="col-md-2">Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, val in class_stats.items %}
+                    <tr>
+                        <td class="col-md-9">{{ key }}</td>
+                        <td class="col-md-2">{{ val }}</td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-10 col-md-offset-1 tab-pane fade" id="Tag">
+                <br>
+
+                <div class="col-md-6">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr class="header">
+                            <th align="left">Tag</th>
+                            <th align="left">Meaning</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="odd">
+                            <td align="left">CC</td>
+                            <td align="left">Coordinating conjunction</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">CD</td>
+                            <td align="left">Cardinal number</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">DT</td>
+                            <td align="left">Determiner</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">EX</td>
+                            <td align="left">Existential there</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">FW</td>
+                            <td align="left">Foreign word</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">IN</td>
+                            <td align="left">Preposition or subordinating
+                                conjunction
+                            </td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">JJ</td>
+                            <td align="left">Adjective</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">JJR</td>
+                            <td align="left">Adjective, comparative</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">JJS</td>
+                            <td align="left">Adjective, superlative</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">LS</td>
+                            <td align="left">List item marker</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">MD</td>
+                            <td align="left">Modal</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">NN</td>
+                            <td align="left">Noun, singular or mass</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">NNS</td>
+                            <td align="left">Noun, plural</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">NNP</td>
+                            <td align="left">Proper noun, singular</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">NNPS</td>
+                            <td align="left">Proper noun, plural</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">PDT</td>
+                            <td align="left">Predeterminer</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">POS</td>
+                            <td align="left">Possessive ending</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">PRP</td>
+                            <td align="left">Personal pronoun</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">PRP$</td>
+                            <td align="left">Possessive pronoun</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">RB</td>
+                            <td align="left">Adverb</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">RBR</td>
+                            <td align="left">Adverb, comparative</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">RBS</td>
+                            <td align="left">Adverb, superlative</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">RP</td>
+                            <td align="left">Particle</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">SYM</td>
+                            <td align="left">Symbol</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">TO</td>
+                            <td align="left">to</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">UH</td>
+                            <td align="left">Interjection</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">VB</td>
+                            <td align="left">Verb, base form</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">VBD</td>
+                            <td align="left">Verb, past tense</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">VBG</td>
+                            <td align="left">Verb, gerund or present
+                                participle
+                            </td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">VBN</td>
+                            <td align="left">Verb, past participle</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">VBP</td>
+                            <td align="left">Verb, non-3rd person singular
+                                present
+                            </td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">VBZ</td>
+                            <td align="left">Verb, 3rd person singular present
+                            </td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">WDT</td>
+                            <td align="left">Wh-determiner</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">WP</td>
+                            <td align="left">Wh-pronoun</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">WP$</td>
+                            <td align="left">Possessive wh-pronoun</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">WRB</td>
+                            <td align="left">Wh-adverb</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr class="header">
+                            <th align="left">Tag</th>
+                            <th align="left">Meaning</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="odd">
+                            <td align="left">.</td>
+                            <td align="left">Period</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">,</td>
+                            <td align="left">Comma</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">;</td>
+                            <td align="left">Colon</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">:</td>
+                            <td align="left">Semicolon</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">(</td>
+                            <td align="left">Open Parenthesis</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">)</td>
+                            <td align="left">Close Parenthesis</td>
+                        </tr>
+                        <tr class="odd">
+                            <td align="left">``</td>
+                            <td align="left">Open quote</td>
+                        </tr>
+                        <tr class="even">
+                            <td align="left">''</td>
+                            <td align="left">Close quote</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="col-md-10 col-md-offset-1 tab-pane fade"
+                 id="Syntax-Reference">
+                <br>
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td valign="top" width="18%">
+                            <p><b>Meaning</p></b>
+                        </td>
+                        <td valign="top" width="45%">
+                            <p><b>Examples</p></b>
+                        </td>
+                        <td valign="top" width="36%">
+                            <p><b>Sample matches</p></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="18%">
+                            <p>One exact word</p>
+                        </td>
+                        <td valign="top" width="45%">
+                            <p>mysterious</p>
+                        </td>
+                        <td valign="top" width="36%">
+                            <p>mysterious</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="18%">
+                            <p>Part of speech (exact)<br/> Part of speech
+                                (wildcard)</p>
+                        </td>
+                        <td valign="top" width="45%">
+                            <p>:tag:vvg</p>
+
+                            <p>:tag:v.*</p>
+                        </td>
+                        <td valign="top" width="36%">
+                            <p>going, using</p>
+
+                            <p>find, does, keeping, started<br/> <br/> &nbsp;
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="18%">
+                            <p>Customized lists</p>
+                        </td>
+                        <td valign="top" width="45%">
+                            <p>define CLOTHES [</p>
+
+                            <p>tie,</p>
+
+                            <p>shirt,</p>
+
+                            <p>blouse</p>
+
+                            <p>];</p>
+
+                            <p>CLOTHES</p>
+                        </td>
+                        <td valign="top" width="36%">
+                            <p>tie, shirt, blouse<br/> &nbsp;</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="18%">
+                            <p>Any of these words</p>
+                        </td>
+                        <td valign="top" width="45%">
+                            <p>stunning|gorgeous|charming</p>
+                        </td>
+                        <td valign="top" width="36%">
+                            <p>stunning, charming, gorgeous</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="18%">
+                            <p>Wildcard: .* = any # letters<br/> Wildcard: ? =
+                                one letter</p>
+                        </td>
+                        <td valign="top" width="45%">
+                            <p>un.*ly</p>
+
+                            <p>s.?ng</p>
+
+                            <p>s.?ng.*</p>
+                        </td>
+                        <td valign="top" width="36%">
+                            <p>unlikely, unusually</p>
+
+                            <p>sing, sang, song</p>
+
+                            <p>song, singer, songbirds</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="18%">
+                            <p>NOT (followed by PoS, word, etc.)</p>
+                        </td>
+                        <td valign="top" width="45%">
+                            <p>~:tag:nn.*</p>
+                        </td>
+                        <td valign="top" width="36%">
+                            <p>the, in, is</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="18%">
+                            <p>Exact word and part of speech</p>
+                        </td>
+                        <td valign="top" width="45%">
+                            <p>strike:tag:v.*</p>
+                        </td>
+                        <td valign="top" width="36%">
+                            <p>strike (only as a verb)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="18%">
+                            <p>Substring and part of speech</p>
+                        </td>
+                        <td valign="top" width="45%">
+                            <p>dis.*:tag:vvd</p>
+                        </td>
+                        <td valign="top" width="36%">
+                            <p>discovered, disappeared, discussed</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-10 col-md-offset-1 tab-pane fade"
+                 id="Syntax-Help">
+
+
+                <h3 id="comments">Comments</h3>
+
+                <p>Comments can be inserted into the query using two different
+                    comment notations:</p>
+                <pre>
+                    <code>
+// This is a line comment. Any text on this line after the &#39;//&#39; symbol is ignored.
+
+/*
+This is a block comment.
+These comments can span multiple lines.
+*/
+                    </code>
+                </pre>
+                <br>
+
+                <h3 id="literal-matches">Literal Matches</h3>
+
+                <p>To match a literal word or an exact sequence of words, just
+                    type type the words to match:</p>
+                <pre>
+                    <code>
+// This will match an exact sequence of words:
+
+she visited the bank;
+
+// The matched words are separated by whitespace, so you can arrange them vertically at your convenience:
+
+// An equivalent query:
+
+she
+visited
+the
+bank
+                    </code>
+                </pre>
+                <p><strong>Note the semicolon (<code>;</code>): this character is used to separate distinct queries. It is not required on the last query.</strong></p>
+                <br>
+
+                <h3 id="regular-expressions">Regular Expressions</h3>
+
+                <p>Literal matches and match functions employ <a href="https://docs.python.org/2/library/re.html#regular-expression-syntax">Python
+                                    Regular Expressions</a>.</p>
+
+                <pre>
+                    <code>
+&quot;This is a regular expression&quot;
+&quot;.*&quot;          // matches anything
+&quot;...&quot;         // matches any three letter word
+&quot;{gu}(2,3)&quot;   // matches &#39;gugu&#39; and &#39;gugugu&#39;
+&quot;h[ao]t&quot;      // matches &#39;hot&#39; and &#39;hat&#39;
+                    </code>
+                </pre>
+                <br>
+
+                <h3 id="match-functions">Match Functions</h3>
+
+                <p>The colon (<code>:</code>) character is used to invoke a
+                                    <code>match function</code>. The default behavior of the
+                                    match function is to perform a match on the result of
+                                    another match.</p>
+
+                <pre>
+                    <code>
+// This will match the words starting with &quot;she&quot;:
+she.*
+
+// This will match the words ending with &quot;&#39;s&quot;:
+.*&#39;s
+
+// We can match both at the same time (words starting with &quot;she&quot; that end with &quot;&#39;s&quot;) by using the default match function:
+she.*:.*&#39;s
+
+// This example is a little contrived, because there is a more straightforward way of making this query:
+she.*&#39;s
+
+// However, you might consider using the match function with match definitions.
+                    </code>
+                </pre>
+                <p>Alternate behaviors of the match function can be invoked by
+                                    naming a built-in function:</p>
+                <pre>
+                    <code>
+// This will match any noun:
+.*:tag:n.*
+
+// The initial &quot;.*&quot; will match any word, then the &quot;:tag&quot; match function will extract the tag of that word,
+// then the &quot;:n.*&quot; default match function will match only tags starting with &quot;n&quot;.
+
+// Furthermore, if a match function is supplied without a given literal to match, an implicit &quot;.*&quot; is provided.
+// Thus, the above query can be simplified:
+:tag:n.*
+                    </code>
+                </pre>
+                <br>
+
+                <h3 id="quoting">Quoting</h3>
+
+                <p>In order to match text that includes special characters used
+                                    by the query language, you can quote the match pattern:</p>
+
+                <pre>
+                    <code>
+// This will match a semicolon:
+&quot;;&quot;
+
+// Becase the quoted text is a regular expression, regular expression symbols will need to be escaped.
+
+// This will match a period:
+&quot;\.&quot;
+
+// This will match a double quote:
+&quot;\&quot;&quot;
+                    </code>
+                </pre>
+                <br>
+
+                <h3 id="or-match">Or-Match</h3>
+
+                <p>Matching one or more of a set of options is builtin to the
+                                    regular expression syntax.</p>
+
+                <pre>
+                    <code>
+// This will match any of four different phrases:
+he|she
+visited
+the
+bank|store
+
+// he visited the bank
+// he visited the store
+// she visited the bank
+// she visited the store
+                    </code>
+                </pre>
+                <br>
+
+                <h3 id="intersection-match">Intersection Match</h3>
+
+                <p>Matching a word that must meet two conditions requires the
+                                    match function. The default match function will match
+                                    against the result of the previous match:</p>
+
+                <pre>
+                    <code>
+// Matches any word starting with &quot;s&quot; and ending with &quot;&#39;s&quot;:
+s.*:.*&#39;s
+
+// To match against a word and a tag, the tag match function can be used:
+// Matches any word &quot;hit&quot; used as a noun:
+hit:tag:n.*
+                    </code>
+                </pre>
+                <br>
+
+                <h3 id="negated-match">Negated Match</h3>
+
+                <p>To negate a match, use the <code>~</code> symbol:</p>
+
+                <pre>
+                    <code>
+// Matches any word except &#39;button&#39;:
+~button
+
+// Matches any word not tagged &#39;NNP&#39;:
+.*:tag:~NNP
+                    </code>
+                </pre>
+                <br>
+
+                <h3 id="backreference">Backreference</h3>
+
+                <p>A backreference will require that the word match a previous
+                                    word exactly.</p>
+
+                <pre>
+                    <code>
+// This will match &quot;The a a&quot; where &#39;a&#39; is any word.
+the
+.*
+\2
+                    </code>
+                </pre>
+                <p><strong>Backreferences only work in the first position, not after a
+                                    match function <code>:</code>.</strong></p>
+                <br>
+
+
+                <h3 id="match-definitions">Match Definitions</h3>
+
+                <p>Subqueries can be defined for convenience in writing complex
+                                    queries. This allows you to match against a list of words
+                                    using another name:</p>
+
+                <pre>
+                    <code>
+define ADDITIVE_ADVERB [
+    additionally,
+    also,
+    alternatively,
+    further,
+    furthermore,
+    likewise,
+    moreover,
+    namely,
+    similarly,
+];
+
+define LINKING_TRIGRAM [
+    all things considered,
+    as a consequence,
+    as a result,
+    in that case,
+]
+
+// Finds all additive adverbs with following commas and linking trigrams:
+ADDITIVE_ADVERB
+&quot;,&quot;
+LINKING_TRIGRAM
+                    </code>
+                </pre>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- J Query -->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<!-- Latest compiled and minified JavaScriptfor Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!-- J Query for Tabs -->
+<script src="/static/js/tabs.js"></script>
+
+</body>
+</html>

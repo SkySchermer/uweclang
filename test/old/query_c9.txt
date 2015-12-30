@@ -1,0 +1,9 @@
+define TEST [ //Creating the definition
+	:tag:n.*{0,3},
+	our,
+	directly,
+	endangering,
+	o.*,
+];
+TEST //Using the created definition
+"\."

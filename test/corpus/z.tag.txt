@@ -1,0 +1,5 @@
+a/a b/b a/a b/b a/a b/b a/a b/b a/a b/b ./.
+a/a b/b c/c a/a b/b c/c ./.
+a/a b/b c/c d/d c/c b/b a/a ./.
+1/a 2/b 3/c 4/d 3/b 2/c ./.
+a/x b/y c/z a/x d/w c/g ./.

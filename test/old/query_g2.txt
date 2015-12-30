@@ -1,0 +1,6 @@
+.*ed
+men.*
+u.*:.*ed
+m.*ed
+.*:tag:jj
+:tag:jj

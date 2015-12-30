@@ -1,0 +1,7 @@
+define TEST [
+	a,
+	particular,
+	issue,
+];
+
+TEST

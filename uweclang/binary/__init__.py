@@ -13,3 +13,7 @@ __status__     = 'Development' # or Production/Deprecated
 
 
 __all__ = ['docx']
+
+# Setup logger.
+import logging
+logging.getLogger('uweclang.binary').addHandler(logging.NullHandler())

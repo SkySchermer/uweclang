@@ -12,6 +12,10 @@ from itertools import chain
 from collections import defaultdict, Counter
 from uweclang import TaggedToken
 
+# Setup logger.
+import logging
+logging.getLogger(__name__).addHandler(logging.NullHandler())
+
 _PUNCTUATION_REGEX = re.compile(r'``|\'\'|[^\w\s]')
 
 DATE_REGEX_MDY = re.compile(r"""

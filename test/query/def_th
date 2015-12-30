@@ -1,0 +1,12 @@
+// Corpus: full
+
+define TH [
+	the,
+	that,
+	there,
+	this,
+	these,
+	those
+];
+
+:tag:i.* TH :tag:n.*
